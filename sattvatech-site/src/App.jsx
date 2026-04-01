@@ -365,7 +365,7 @@ export default function App() {
               <div style={{ marginBottom: 24 }}>
                 <div style={{ fontSize: 10, color: t.text5, letterSpacing: "0.15em", textTransform: "uppercase", fontFamily: "sans-serif", marginBottom: 8 }}>Contact</div>
                 <div style={{ fontSize: 16, color: t.text2, marginBottom: 6 }}>Atul Patel, CEO</div>
-                <a href="tel:5089168447" style={{ display: "block", fontSize: 14, color: t.accent, fontFamily: "sans-serif", marginBottom: 4, textDecoration: "none" }}>(508) 916-8447</a>
+                <a href="tel:5083430101" style={{ display: "block", fontSize: 14, color: t.accent, fontFamily: "sans-serif", marginBottom: 4, textDecoration: "none" }}>(508) 343-0101</a>
                 <a href="mailto:apatel@sattvatech.com" style={{ display: "block", fontSize: 13, color: t.accent, fontFamily: "sans-serif", textDecoration: "none" }}>apatel@sattvatech.com</a>
               </div>
               <div style={{ marginBottom: 28 }}>
@@ -386,14 +386,14 @@ export default function App() {
                   <div style={{ color: t.text5, fontFamily: "sans-serif", fontSize: 13 }}>We'll be in touch shortly.</div>
                 </div>
               ) : (
-                <form onSubmit={e => { e.preventDefault(); setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                <form onSubmit={async e => { e.preventDefault(); const res = await fetch("https://formspree.io/f/mbdpkqyj", { method: "POST", headers: { "Accept": "application/json" }, body: new FormData(e.target) }); if (res.ok) setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                   {[["name", "text", "Your Name", true], ["email", "email", "Email Address", true], ["company", "text", "Company / Organization", false]].map(([field, type, placeholder, req]) => (
-                    <input key={field} type={type} placeholder={placeholder} required={req}
+                    <input key={field} name={field} type={type} placeholder={placeholder} required={req}
                       value={formState[field]} onChange={e => setFormState({ ...formState, [field]: e.target.value })}
                       style={{ background: t.inputBg, border: `1px solid ${t.inputBorder}`, borderRadius: 0, color: t.text2, padding: "13px 14px", fontSize: 13, fontFamily: "sans-serif", outline: "none", width: "100%", boxSizing: "border-box" }}
                     />
                   ))}
-                  <textarea placeholder="Tell us about your project or opportunity" required rows={4}
+                  <textarea name="message" placeholder="Tell us about your project or opportunity" required rows={4}
                     value={formState.message} onChange={e => setFormState({ ...formState, message: e.target.value })}
                     style={{ background: t.inputBg, border: `1px solid ${t.inputBorder}`, borderRadius: 0, color: t.text2, padding: "13px 14px", fontSize: 13, fontFamily: "sans-serif", outline: "none", resize: "vertical", width: "100%", boxSizing: "border-box" }}
                   />
@@ -419,7 +419,7 @@ export default function App() {
           <span style={{ fontSize: 11, fontFamily: "sans-serif" }}>
             <a href="mailto:apatel@sattvatech.com" style={{ color: t.text6, textDecoration: "none" }}>apatel@sattvatech.com</a>
             {" · "}
-            <a href="tel:5089168447" style={{ color: t.text6, textDecoration: "none" }}>(508) 916-8447</a>
+            <a href="tel:5083430101" style={{ color: t.text6, textDecoration: "none" }}>(508) 343-0101</a>
           </span>
         </div>
       </footer>
