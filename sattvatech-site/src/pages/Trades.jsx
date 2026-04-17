@@ -2,11 +2,11 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 const T = {
-  bg1: '#0e0e0e', bg2: '#131313', bg3: '#080808',
-  accent: '#c0392b', accentHover: '#e74c3c',
-  text1: '#f5f0e8', text2: '#e8e4dc', text3: '#ccc',
-  text4: '#999', text5: '#666', text6: '#444', text7: '#222',
-  border: 'rgba(192,57,43,0.15)',
+  bg1: '#f5f0e8', bg2: '#ede8de', bg3: '#1c1c1c',
+  accent: '#c0392b', accentHover: '#a93226',
+  text1: '#1c1c1c', text2: '#2a2522', text3: '#444',
+  text4: '#5a5248', text5: '#6a6258', text6: '#8a8278', text7: '#ccc8be',
+  border: '#d8d0c0',
 }
 
 const HOW_IT_WORKS = [
@@ -32,7 +32,7 @@ export default function Trades() {
     <div style={{ fontFamily: "'Georgia', serif", background: T.bg1, minHeight: '100vh', color: T.text2 }}>
 
       {/* NAV */}
-      <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: `${T.bg1}f5`, borderBottom: `1px solid ${T.border}`, padding: '0 2.5rem', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', backdropFilter: 'blur(8px)' }}>
+      <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: '#1c1c1c', borderBottom: `1px solid ${T.border}`, padding: '0 2.5rem', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', backdropFilter: 'blur(8px)' }}>
         <button onClick={() => navigate('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{ fontSize: 18, color: T.accent }}>←</span>
           <img src="/sattva-logo.png" alt="Sattva" style={{ height: 28 }} />
@@ -150,12 +150,12 @@ export default function Trades() {
           ) : (
             <form onSubmit={async e => { e.preventDefault(); const res = await fetch('https://formspree.io/f/mbdpkqyj', { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(e.target) }); if (res.ok) setSubmitted(true); }}
               style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <input name="name" type="text" placeholder="Your Name" required value={formState.name} onChange={e => setFormState({ ...formState, name: e.target.value })} style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${T.accent}25`, color: T.text2, padding: '13px 14px', fontSize: 13, fontFamily: 'sans-serif', outline: 'none', borderRadius: 0, boxSizing: 'border-box' }} />
-              <input name="email" type="email" placeholder="Email Address" required value={formState.email} onChange={e => setFormState({ ...formState, email: e.target.value })} style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${T.accent}25`, color: T.text2, padding: '13px 14px', fontSize: 13, fontFamily: 'sans-serif', outline: 'none', borderRadius: 0, boxSizing: 'border-box' }} />
-              <input name="trade" type="text" placeholder="Your Trade / Specialty" required value={formState.trade} onChange={e => setFormState({ ...formState, trade: e.target.value })} style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${T.accent}25`, color: T.text2, padding: '13px 14px', fontSize: 13, fontFamily: 'sans-serif', outline: 'none', borderRadius: 0, boxSizing: 'border-box' }} />
+              <input name="name" type="text" placeholder="Your Name" required value={formState.name} onChange={e => setFormState({ ...formState, name: e.target.value })} style={{ background: '#fff', border: `1px solid ${T.accent}25`, color: T.text2, padding: '13px 14px', fontSize: 13, fontFamily: 'sans-serif', outline: 'none', borderRadius: 0, boxSizing: 'border-box' }} />
+              <input name="email" type="email" placeholder="Email Address" required value={formState.email} onChange={e => setFormState({ ...formState, email: e.target.value })} style={{ background: '#fff', border: `1px solid ${T.accent}25`, color: T.text2, padding: '13px 14px', fontSize: 13, fontFamily: 'sans-serif', outline: 'none', borderRadius: 0, boxSizing: 'border-box' }} />
+              <input name="trade" type="text" placeholder="Your Trade / Specialty" required value={formState.trade} onChange={e => setFormState({ ...formState, trade: e.target.value })} style={{ background: '#fff', border: `1px solid ${T.accent}25`, color: T.text2, padding: '13px 14px', fontSize: 13, fontFamily: 'sans-serif', outline: 'none', borderRadius: 0, boxSizing: 'border-box' }} />
               <textarea name="message" placeholder="Tell us about your experience, the types of jobs you do, and what you're looking for" required rows={5}
                 value={formState.message} onChange={e => setFormState({ ...formState, message: e.target.value })}
-                style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${T.accent}25`, color: T.text2, padding: '13px 14px', fontSize: 13, fontFamily: 'sans-serif', outline: 'none', resize: 'vertical', borderRadius: 0, boxSizing: 'border-box' }}
+                style={{ background: '#fff', border: `1px solid ${T.accent}25`, color: T.text2, padding: '13px 14px', fontSize: 13, fontFamily: 'sans-serif', outline: 'none', resize: 'vertical', borderRadius: 0, boxSizing: 'border-box' }}
               />
               <button type="submit" style={{ background: T.accent, border: 'none', color: '#fff', fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '15px', cursor: 'pointer', fontFamily: 'sans-serif', fontWeight: 600 }}
                 onMouseEnter={e => e.target.style.background = T.accentHover}
