@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import Landing from './pages/Landing.jsx'
 import Gov from './pages/Gov.jsx'
-import Trades from './pages/Trades.jsx'
-import AgTech from './pages/AgTech.jsx'
+import Construction from './pages/Construction.jsx'
+import LeanAg from './pages/LeanAg.jsx'
 import Samana from './pages/Samana.jsx'
 import Quote from './pages/Quote.jsx'
 import Farmmetric from './pages/Farmmetric.jsx'
@@ -12,8 +12,10 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/gov" element={<Gov />} />
-      <Route path="/trades" element={<Trades />} />
-      <Route path="/agtech" element={<AgTech />} />
+      <Route path="/trades" element={<Construction />} />
+      <Route path="/agtech" element={<LeanAg />} />
+      <Route path="/construction" element={<Construction />} />
+      <Route path="/lean-ag" element={<LeanAg />} />
       <Route path="/samana" element={<Samana />} />
       <Route path="/quote" element={<Quote />} />
       <Route path="/farmmetric" element={<Farmmetric />} />

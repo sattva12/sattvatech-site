@@ -169,3 +169,13 @@
 /* Farmmetric: the same sheet, in field green */
 .sm.fm { --sheet: #23613f; --deep: #17432b; --night: #0f2f1e; }
 .sm.fm .sm-arm .what, .sm.fm .sm-next li .tag { color: #23613f; }
+
+/* contact form on the service pages */
+.sm-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; max-width: 760px; }
+.sm-form label { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; color: var(--ink, #16212c); }
+.sm-form .wide { grid-column: 1 / -1; }
+.sm-form input, .sm-form textarea { font: 400 16px/1.4 'IBM Plex Sans', system-ui, sans-serif; padding: 11px 12px; border: 2px solid #b9c6d6; border-radius: 6px; background: #fff; color: #16212c; }
+.sm-form input:focus-visible, .sm-form textarea:focus-visible { outline: 3px solid #ffb454; outline-offset: 1px; border-color: #1d4f91; }
+.sm.fm .sm-form input:focus-visible, .sm.fm .sm-form textarea:focus-visible { border-color: #23613f; }
+.sm-err { color: #a3261b; font-size: 15px; margin-left: 12px; }
+@media (max-width: 640px) { .sm-form { grid-template-columns: 1fr; } }

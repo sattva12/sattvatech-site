@@ -83,10 +83,12 @@ export function SamanaNav({ here }) {
       <div className="sm-wrap">
         <Link to="/" className="sm-brand"><b>SATTVA</b><span>Technologies</span></Link>
         <Link className="sm-l" to="/">Services</Link>
+        <Link className="sm-l" to="/construction" aria-current={here === 'construction' ? 'page' : undefined}>Construction</Link>
+        <Link className="sm-l" to="/lean-ag" aria-current={here === 'ag' ? 'page' : undefined}>Lean ag</Link>
         <Link className="sm-l" to="/samana" aria-current={here === 'samana' ? 'page' : undefined}>Samana</Link>
         <Link className="sm-l" to="/farmmetric" aria-current={here === 'farmmetric' ? 'page' : undefined}>Farmmetric</Link>
         <Link className="sm-l" to="/quote" aria-current={here === 'quote' ? 'page' : undefined}>Quote service</Link>
-        {here === 'quote' ? <a className="sm-btn go" href="tel:5089168447">Call or text</a> : <a className="sm-btn go" href={signIn}>{here === 'farmmetric' ? 'Farmmetric sign in' : 'Samana sign in'}</a>}
+        {here === 'quote' ? <a className="sm-btn go" href="tel:5089168447">Call or text</a> : (here === 'ag' || here === 'construction') ? <a className="sm-btn go" href="#talk">Talk to us</a> : <a className="sm-btn go" href={signIn}>{here === 'farmmetric' ? 'Farmmetric sign in' : 'Samana sign in'}</a>}
       </div>
     </nav>
   )

@@ -74,8 +74,8 @@ export default function Farmmetric() {
       <section className="sm-end sm-grid" aria-labelledby="end">
         <div className="sm-wrap">
           <h2 id="end">Built by people who build farms.</h2>
-          <p>Sattva Technologies designs and builds licensed farms and their buildings. Farmmetric is the tool we wanted on site.</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}><a className="sm-btn go" href={FARM}>Go to Farmmetric</a><Link className="sm-btn ghost" to="/agtech">Our AgTech work</Link></div>
+          <p>Sattva Technologies plans and builds licensed farms and runs them lean. Farmmetric is the tool we wanted on site, and we use it every day. See if it works for you.</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}><a className="sm-btn go" href={FARM}>Go to Farmmetric</a><Link className="sm-btn ghost" to="/lean-ag">Lean agriculture</Link></div>
         </div>
       </section>
       <SamanaFoot />
