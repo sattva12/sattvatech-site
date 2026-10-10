@@ -59,6 +59,9 @@ export default function Landing() {
               onMouseEnter={e => e.target.style.color = RED} onMouseLeave={e => e.target.style.color = '#aaa'}
             >{`0${i + 1} ${d.title.split(' ')[0]}`}</button>
           ))}
+          <button onClick={() => navigate('/samana')}
+            style={{ background: 'none', border: 'none', color: '#ffb454', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif', fontWeight: 700 }}
+          >Samana app</button>
           <a href="mailto:apatel@sattvatech.com"
             style={{ fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: 'sans-serif', color: RED, border: `1px solid ${RED}`, padding: '7px 16px', textDecoration: 'none' }}
             onMouseEnter={e => { e.target.style.background = RED; e.target.style.color = '#fff'; }}
@@ -79,6 +82,21 @@ export default function Landing() {
             <p style={{ fontSize: '1rem', color: MUTED, lineHeight: 1.78, maxWidth: 520, fontFamily: 'sans-serif', fontWeight: 300, margin: 0 }}>
               Sattva Technologies brings 25+ years of engineering and construction expertise across government contracting, licensed trade supervision, and agricultural technology.
             </p>
+          </div>
+        </div>
+
+        {/* SAMANA */}
+        <div onClick={() => navigate('/samana')} role="link" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') navigate('/samana') }}
+          style={{ cursor: 'pointer', backgroundColor: '#1d4f91', backgroundImage: 'linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px)', backgroundSize: '24px 24px', color: '#eaf2fc', padding: '40px 2.5rem', borderBottom: '1px solid #12345f' }}>
+          <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '18px 40px' }}>
+            <div style={{ flex: '1 1 420px' }}>
+              <div style={{ fontFamily: "'IBM Plex Sans Condensed', 'Arial Narrow', sans-serif", fontWeight: 600, fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1, color: '#fff' }}>Samana: draw the job, and every stud is priced.</div>
+              <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 17, lineHeight: 1.5, margin: '12px 0 0', maxWidth: 560 }}>Our contractor app: the takeoff, drawings, customer quote, crew work order and cash flow from one drawing. Live now at app.sattvatech.com.</p>
+            </div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <span style={{ background: '#ffb454', color: '#2a1a02', fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 600, fontSize: 16, padding: '12px 20px', borderRadius: 6 }}>See Samana</span>
+              <a href="/quote" onClick={(e) => { e.stopPropagation(); e.preventDefault(); navigate('/quote') }} style={{ border: '2px solid rgba(234,242,252,.55)', color: '#eaf2fc', fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 600, fontSize: 16, padding: '10px 18px', borderRadius: 6, textDecoration: 'none' }}>Quote service</a>
+            </div>
           </div>
         </div>
 
