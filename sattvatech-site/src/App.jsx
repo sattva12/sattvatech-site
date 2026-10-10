@@ -5,6 +5,7 @@ import Trades from './pages/Trades.jsx'
 import AgTech from './pages/AgTech.jsx'
 import Samana from './pages/Samana.jsx'
 import Quote from './pages/Quote.jsx'
+import Farmmetric from './pages/Farmmetric.jsx'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <Route path="/agtech" element={<AgTech />} />
       <Route path="/samana" element={<Samana />} />
       <Route path="/quote" element={<Quote />} />
+      <Route path="/farmmetric" element={<Farmmetric />} />
     </Routes>
   )
 }

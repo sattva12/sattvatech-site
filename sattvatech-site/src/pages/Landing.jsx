@@ -59,9 +59,10 @@ export default function Landing() {
               onMouseEnter={e => e.target.style.color = RED} onMouseLeave={e => e.target.style.color = '#aaa'}
             >{`0${i + 1} ${d.title.split(' ')[0]}`}</button>
           ))}
-          <button onClick={() => navigate('/samana')}
-            style={{ background: 'none', border: 'none', color: '#ffb454', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif', fontWeight: 700 }}
-          >Samana app</button>
+          <button onClick={() => document.getElementById('software')?.scrollIntoView({ behavior: 'smooth' })}
+            style={{ background: 'none', border: 'none', color: '#aaa', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.target.style.color = RED} onMouseLeave={e => e.target.style.color = '#aaa'}
+          >04 Software</button>
           <a href="mailto:apatel@sattvatech.com"
             style={{ fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: 'sans-serif', color: RED, border: `1px solid ${RED}`, padding: '7px 16px', textDecoration: 'none' }}
             onMouseEnter={e => { e.target.style.background = RED; e.target.style.color = '#fff'; }}
@@ -82,21 +83,6 @@ export default function Landing() {
             <p style={{ fontSize: '1rem', color: MUTED, lineHeight: 1.78, maxWidth: 520, fontFamily: 'sans-serif', fontWeight: 300, margin: 0 }}>
               Sattva Technologies brings 25+ years of engineering and construction expertise across government contracting, licensed trade supervision, and agricultural technology.
             </p>
-          </div>
-        </div>
-
-        {/* SAMANA */}
-        <div onClick={() => navigate('/samana')} role="link" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') navigate('/samana') }}
-          style={{ cursor: 'pointer', backgroundColor: '#1d4f91', backgroundImage: 'linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px)', backgroundSize: '24px 24px', color: '#eaf2fc', padding: '40px 2.5rem', borderBottom: '1px solid #12345f' }}>
-          <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '18px 40px' }}>
-            <div style={{ flex: '1 1 420px' }}>
-              <div style={{ fontFamily: "'IBM Plex Sans Condensed', 'Arial Narrow', sans-serif", fontWeight: 600, fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1, color: '#fff' }}>Samana: draw the job, and every stud is priced.</div>
-              <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 17, lineHeight: 1.5, margin: '12px 0 0', maxWidth: 560 }}>Our contractor app: the takeoff, drawings, customer quote, crew work order and cash flow from one drawing. Live now at app.sattvatech.com.</p>
-            </div>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <span style={{ background: '#ffb454', color: '#2a1a02', fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 600, fontSize: 16, padding: '12px 20px', borderRadius: 6 }}>See Samana</span>
-              <a href="/quote" onClick={(e) => { e.stopPropagation(); e.preventDefault(); navigate('/quote') }} style={{ border: '2px solid rgba(234,242,252,.55)', color: '#eaf2fc', fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 600, fontSize: 16, padding: '10px 18px', borderRadius: 6, textDecoration: 'none' }}>Quote service</a>
-            </div>
           </div>
         </div>
 
@@ -127,6 +113,29 @@ export default function Landing() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* SOFTWARE: the two apps, built from the work */}
+        <div id="software" style={{ background: CREAM, borderBottom: `1px solid ${BORDER}`, padding: '56px 2.5rem' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <div style={{ fontSize: 10, letterSpacing: '0.3em', color: RED, textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: 14 }}>Division 04 · Software</div>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 3.4vw, 2.6rem)', fontWeight: 400, lineHeight: 1.12, color: CHARCOAL, margin: '0 0 10px', maxWidth: 760 }}>We do the work in construction and agriculture, so we build the tools for it.</h2>
+            <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.7, maxWidth: 640, fontFamily: 'sans-serif', fontWeight: 300, margin: '0 0 28px' }}>Two apps, each usable on its own. On a farm we build, they work as one: the build and the budget in Samana, the plants and the compliance in Farmmetric.</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 18 }}>
+              {[
+                { to: '/samana', name: 'Samana', for: 'For contractors', bg: '#1d4f91', d: 'Draw the job and every stud is priced: takeoff, drawings, the customer quote, the crew work order and the cash flow, from one drawing.', cta: 'See Samana' },
+                { to: '/farmmetric', name: 'Farmmetric', for: 'For licensed growers', bg: '#23613f', d: 'Crop compliance from your phone: tag scans, moves, harvests and kills to Metrc, with inspections, feed and inventory logged.', cta: 'See Farmmetric' },
+              ].map((s) => (
+                <div key={s.to} onClick={() => navigate(s.to)} role="link" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') navigate(s.to) }}
+                  style={{ cursor: 'pointer', backgroundColor: s.bg, backgroundImage: 'linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px)', backgroundSize: '24px 24px', color: '#eaf2fc', padding: '28px 28px 26px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  <div style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, opacity: .8 }}>{s.for}</div>
+                  <div style={{ fontFamily: "'IBM Plex Sans Condensed', 'Arial Narrow', sans-serif", fontWeight: 600, fontSize: 40, lineHeight: 1, color: '#fff' }}>{s.name}</div>
+                  <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 16, lineHeight: 1.5, margin: 0, flex: 1 }}>{s.d}</p>
+                  <span style={{ alignSelf: 'flex-start', background: '#ffb454', color: '#2a1a02', fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 600, fontSize: 15, padding: '10px 18px', borderRadius: 6 }}>{s.cta}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* STATS STRIP */}

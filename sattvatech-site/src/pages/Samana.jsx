@@ -75,15 +75,18 @@ function Clip({ name, label }) {
   return <video ref={ref} src={`/media/${name}.mp4`} poster={`/media/${name}.jpg`} muted loop playsInline preload="metadata" controls={reduce} aria-label={label} />
 }
 
+export const FARM = 'https://www.myfarmmetric.com'
 export function SamanaNav({ here }) {
+  const signIn = here === 'farmmetric' ? FARM : APP
   return (
     <nav className="sm-nav" aria-label="Sattva Technologies">
       <div className="sm-wrap">
-        <Link to="/samana" className="sm-brand"><b>SAMANA</b><span>by Sattva Technologies</span></Link>
-        <Link className="sm-l" to="/samana" aria-current={here === 'samana' ? 'page' : undefined}>The app</Link>
+        <Link to="/" className="sm-brand"><b>SATTVA</b><span>Technologies</span></Link>
+        <Link className="sm-l" to="/">Services</Link>
+        <Link className="sm-l" to="/samana" aria-current={here === 'samana' ? 'page' : undefined}>Samana</Link>
+        <Link className="sm-l" to="/farmmetric" aria-current={here === 'farmmetric' ? 'page' : undefined}>Farmmetric</Link>
         <Link className="sm-l" to="/quote" aria-current={here === 'quote' ? 'page' : undefined}>Quote service</Link>
-        <Link className="sm-l" to="/">Sattva Technologies</Link>
-        <a className="sm-btn go" href={APP}>Sign in</a>
+        {here === 'quote' ? <a className="sm-btn go" href="tel:5089168447">Call or text</a> : <a className="sm-btn go" href={signIn}>{here === 'farmmetric' ? 'Farmmetric sign in' : 'Samana sign in'}</a>}
       </div>
     </nav>
   )
@@ -137,7 +140,7 @@ export default function Samana() {
         <div className="sm-wrap">
           <div>
             <h1>Draw the job. Samana prices every stud.</h1>
-            <p className="lede">Your own general contractor setup: the takeoff, the drawings, the customer's quote, the crew's work order and the cash, all from one drawing. Built by a licensed Massachusetts construction supervisor, for contractors who do the work.</p>
+            <p className="lede">Samana, from Sattva Technologies, is your own general contractor setup: the takeoff, the drawings, the customer's quote, the crew's work order and the cash, all from one drawing. Built by a licensed Massachusetts construction supervisor, for contractors who do the work.</p>
             <div className="acts"><a className="sm-btn go" href={APP}>Start with a free sample job</a><a className="sm-btn ghost" href="#sheets">See it work</a></div>
             <small>Sign in with Google or your email. Your first company comes with a sample 3-floor job to take apart.</small>
           </div>
