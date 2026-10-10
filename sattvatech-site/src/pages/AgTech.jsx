@@ -12,7 +12,7 @@ const T = {
 const SERVICES = [
   { icon: '◈', title: 'CEA Facility Design', items: ['Controlled-environment MEP from day one', 'HVAC, lighting, irrigation integration', 'Process flow engineered before construction', 'Inspection-ready on first submission'] },
   { icon: '⬡', title: 'Process Engineering', items: ['Production workflow optimization', 'Lean / Six Sigma applied to ag operations', '30–50% operational cost reductions', 'Equipment selection & installation'] },
-  { icon: '◇', title: 'Farmetric Platform', items: ['Farm operations management software', 'Environmental monitoring & controls', 'Production tracking & compliance', 'Data-driven yield optimization'] },
+  { icon: '◇', title: 'Farmmetric Platform', items: ['Farm operations management software', 'Environmental monitoring & controls', 'Production tracking & compliance', 'Data-driven yield optimization'] },
   { icon: '◉', title: 'Sectors Served', items: ['Indoor vertical farming', 'Greenhouse & controlled-environment ag', 'Specialty crop production facilities', 'Research & development farm builds'] },
 ]
 
@@ -35,10 +35,10 @@ export default function AgTech() {
         <button onClick={() => navigate('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{ fontSize: 18, color: T.accent }}>←</span>
           <img src="/sattva-logo.png" alt="Sattva" style={{ height: 28 }} />
-          <span style={{ fontSize: 10, color: T.text4, fontFamily: 'sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>AgTech & Farmetric</span>
+          <span style={{ fontSize: 10, color: T.text4, fontFamily: 'sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>AgTech & Farmmetric</span>
         </button>
         <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-          {['Services', 'Projects', 'Farmetric', 'Contact'].map(s => (
+          {['Services', 'Projects', 'Farmmetric', 'Contact'].map(s => (
             <button key={s} onClick={() => document.getElementById(s.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
               style={{ background: 'none', border: 'none', color: T.text4, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif' }}
               onMouseEnter={e => e.target.style.color = T.accent}
@@ -66,7 +66,7 @@ export default function AgTech() {
             25 years of process engineering applied to controlled-environment agriculture. We design and build facilities where MEP systems, production workflows, and technology are integrated from the first drawing — not retrofitted after the fact.
           </p>
           <p style={{ fontSize: '0.95rem', color: T.text5, lineHeight: 1.7, maxWidth: 560, margin: '0 0 44px', fontFamily: 'sans-serif', fontWeight: 300 }}>
-            Plus Farmetric — our farm operations management platform built from real experience running these facilities.
+            Plus Farmmetric — our farm operations management platform built from real experience running these facilities.
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -75,7 +75,7 @@ export default function AgTech() {
             </button>
             <button onClick={() => document.getElementById('farmetric')?.scrollIntoView({ behavior: 'smooth' })}
               style={{ background: 'none', border: `1px solid ${T.accent}50`, color: T.accent, fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '14px 28px', cursor: 'pointer', fontFamily: 'sans-serif' }}>
-              Farmetric Platform →
+              Farmmetric Platform →
             </button>
           </div>
           <div style={{ display: 'flex', gap: 40, marginTop: 72, paddingTop: 40, borderTop: `1px solid ${T.border}`, flexWrap: 'wrap' }}>
@@ -131,12 +131,12 @@ export default function AgTech() {
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
           <div>
             <div style={{ fontSize: 10, letterSpacing: '0.25em', color: T.accent, textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: 16 }}>The Platform</div>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 400, color: T.text1, margin: '0 0 20px', lineHeight: 1.2 }}>Farmetric</h2>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 400, color: T.text1, margin: '0 0 20px', lineHeight: 1.2 }}>Farmmetric</h2>
             <p style={{ fontSize: '1rem', color: T.text4, lineHeight: 1.8, margin: '0 0 20px', fontFamily: 'sans-serif', fontWeight: 300 }}>
               Farm operations management built by people who have actually designed, built, and run these facilities — not software engineers guessing at what farmers need.
             </p>
             <p style={{ fontSize: '0.95rem', color: T.text5, lineHeight: 1.75, margin: '0 0 36px', fontFamily: 'sans-serif', fontWeight: 300 }}>
-              Farmetric brings process engineering discipline to daily farm management: environmental monitoring, production tracking, compliance documentation, and data-driven insights to continuously reduce costs and increase yields.
+              Farmmetric brings process engineering discipline to daily farm management: environmental monitoring, production tracking, compliance documentation, and data-driven insights to continuously reduce costs and increase yields.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {['Environmental Monitoring', 'Production Tracking', 'Compliance Docs', 'Yield Analytics', 'Cost Optimization', 'Mobile Ready'].map(tag => (
@@ -172,7 +172,7 @@ export default function AgTech() {
         <div style={{ maxWidth: 680, margin: '0 auto' }}>
           <div style={{ fontSize: 10, letterSpacing: '0.25em', color: T.accent, textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: 12, textAlign: 'center' }}>Start a Conversation</div>
           <h2 style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.4rem)', fontWeight: 400, color: T.text1, textAlign: 'center', margin: '0 0 12px' }}>Contact</h2>
-          <p style={{ color: T.text5, fontFamily: 'sans-serif', fontSize: 14, textAlign: 'center', margin: '0 0 48px' }}>Facility design, Farmetric early access, or process engineering questions.</p>
+          <p style={{ color: T.text5, fontFamily: 'sans-serif', fontSize: 14, textAlign: 'center', margin: '0 0 48px' }}>Facility design, Farmmetric early access, or process engineering questions.</p>
           {submitted ? (
             <div style={{ border: `1px solid ${T.accent}50`, padding: 48, textAlign: 'center' }}>
               <div style={{ fontSize: 28, color: T.accent, marginBottom: 12 }}>✓</div>
@@ -199,7 +199,7 @@ export default function AgTech() {
 
       {/* FOOTER */}
       <footer style={{ background: T.bg3, padding: '24px 2.5rem', borderTop: `1px solid ${T.border}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-        <span style={{ fontSize: 10, color: T.text7, fontFamily: 'sans-serif' }}>© 2025 Sattva Technologies LLC — AgTech & Farmetric Division</span>
+        <span style={{ fontSize: 10, color: T.text7, fontFamily: 'sans-serif' }}>© 2025 Sattva Technologies LLC — AgTech & Farmmetric Division</span>
         <button onClick={() => navigate('/')} style={{ background: 'none', border: 'none', color: T.text5, fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif' }}>← Back to Sattva Technologies</button>
       </footer>
     </div>

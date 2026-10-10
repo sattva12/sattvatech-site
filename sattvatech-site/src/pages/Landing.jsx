@@ -21,10 +21,10 @@ const DIVISIONS = [
   {
     path: '/agtech',
     number: '03',
-    title: 'AgTech & Farmetric',
+    title: 'AgTech & Farmmetric',
     sub: 'Controlled Environment Ag',
-    description: 'Engineering meets agriculture. Process-driven MEP design for controlled-environment facilities, plus the Farmetric platform for farm operations management.',
-    tags: ['Farmetric App', 'CEA Design', 'Process Engineering', 'MEP Integration'],
+    description: 'Engineering meets agriculture. Process-driven MEP design for controlled-environment facilities, plus the Farmmetric platform for farm operations management.',
+    tags: ['Farmmetric App', 'CEA Design', 'Process Engineering', 'MEP Integration'],
   },
 ]
 
