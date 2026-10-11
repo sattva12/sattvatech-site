@@ -35,7 +35,7 @@ export default function Trades() {
       <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: '#1c1c1c', borderBottom: `1px solid ${T.border}`, padding: '0 2.5rem', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', backdropFilter: 'blur(8px)' }}>
         <button onClick={() => navigate('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{ fontSize: 18, color: T.accent }}>←</span>
-          <img src="/sattva-logo.png" alt="Sattva" style={{ height: 28 }} />
+          <img src="/brand/sattva-logo-small-dark.svg" alt="Sattva" style={{ height: 28 }} />
           <span style={{ fontSize: 10, color: T.text4, fontFamily: 'sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Construction Supervision</span>
         </button>
         <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>

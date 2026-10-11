@@ -46,7 +46,7 @@ export default function Landing() {
       {/* NAV */}
       <nav style={{ background: CHARCOAL, padding: '0 2.5rem', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <img src="/sattva-logo.png" alt="Sattva" style={{ height: 34, objectFit: 'contain', filter: 'brightness(10) saturate(0)' }} />
+          <img src="/brand/sattva-logo-small-dark.svg" alt="Sattva" style={{ height: 34 }} />
           <div>
             <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', color: CREAM, fontFamily: 'sans-serif', textTransform: 'uppercase' }}>Technologies LLC</div>
             <div style={{ fontSize: 9, color: RED, letterSpacing: '0.12em', fontFamily: 'sans-serif', textTransform: 'uppercase' }}>Est. 2019 · Seekonk, MA</div>
