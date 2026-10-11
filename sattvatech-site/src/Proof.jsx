@@ -4,7 +4,7 @@ import './site.css'
 const VIEWS = [['Takeoff', 'Count it and price it'], ['Lean', 'Steps, crews and dates'], ['Flow', 'Cash by month']]
 const ROWS = [
   { name: 'A construction job', what: 'The sample house: a basement, two floors and a deck',
-    cells: [['$142,047', '100 material lines, each one priced'], ['15 steps', '885 crew hours, 56 days on site'], ['$142,047 in', 'Material $55,014 and labor $48,670 out, by month']] },
+    cells: [['$142,047', '100 material lines, each one priced'], ['15 steps', 'The work order from Takeoff: 885 crew hours, 56 days on site'], ['$142,047 in', 'Material $55,014 and labor $48,670 out, by month']] },
   { name: 'A farm season', what: 'A five-acre site in Minnesota',
     cells: [['1,000 ft of fence', '20 rows, 6 camera poles, 5 containers'], ['May to October', 'Planting from June 1, harvest from September 1'], ['By month', 'The build as capital, the season as running cost']] },
   { name: 'A production run', what: 'A lab line: material in, product out',

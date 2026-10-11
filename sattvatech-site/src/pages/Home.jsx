@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SiteHeader, SiteFoot, APP, FARM, TEL, TEL_HREF, MAIL } from '../Chrome.jsx'
 import ContactForm from './ContactForm.jsx'
-import { PlanBasement, PlanDeck, PlanFarm, PlanContainer, PlanSoftware, PhoneFarmmetric } from '../drawings.jsx'
+import { PlanBasement, PlanDeck, PlanFarm, PlanContainer, PlanSoftware } from '../drawings.jsx'
 import Proof from '../Proof.jsx'
 import '../samana.css'
 import '../site.css'
@@ -151,17 +151,23 @@ const BUILDS = [
 
 /* ---------- the platform: one job going through Samana, on the real clips ---------- */
 const STEPS = [
-  { k: 'Measure', s: '199 LF of framing', clip: 'takeoff', h: 'Put in the sizes the way you measure them.', p: 'Samana draws the plan to scale and builds the takeoff behind it. Guesses stay marked until they are measured.',
+  { k: 'Measure', arm: 'Takeoff', s: '199 LF of framing', clip: 'takeoff', h: 'Put in the sizes the way you measure them.', p: 'Samana draws the plan to scale and builds the takeoff behind it. Guesses stay marked until they are measured.',
     facts: [['Wall framing', '199 LF'], ['Wall board', '2,070 SF'], ['Time on site', '56 days']] },
-  { k: 'Draw', s: '8 layers', clip: 'layers', h: 'A real drawing set, with the trades on layers.', p: 'Electrical, HVAC, plumbing and framing each sit on their own layer, with dimensions and notes on top.',
+  { k: 'Draw', arm: 'Takeoff', s: '8 layers', clip: 'layers', h: 'A real drawing set, with the trades on layers.', p: 'Electrical, HVAC, plumbing and framing each sit on their own layer, with dimensions and notes on top.',
     facts: [['Outlets', '25'], ['Lights', '24'], ['Layers', '8']] },
-  { k: 'See it', s: 'In 3D', clip: 'threed', h: 'Walk the job in 3D before anything is ordered.', p: 'Finished or framing view, level by level, from the same drawing.',
+  { k: 'See it', arm: 'Takeoff', s: 'In 3D', clip: 'threed', h: 'Walk the job in 3D before anything is ordered.', p: 'Finished or framing view, level by level, from the same drawing.',
     facts: [['Levels', '4 and the property'], ['Views', 'Finished, framing'], ['Source', 'The same drawing']] },
-  { k: 'Price', s: '$142,047', clip: 'customer', h: 'The customer sees every line.', p: 'The quote carries the drawing, an allowance for each thing they choose, and options priced on their own.',
+  { k: 'Price', arm: 'Takeoff', s: '$142,047', clip: 'customer', h: 'The customer sees every line.', p: 'The quote carries the drawing, an allowance for each thing they choose, and options priced on their own.',
     facts: [['Base price', '$123,719'], ['Allowances', '$18,328'], ['Total', '$142,047']] },
-  { k: 'Change', s: '+$3,569', clip: 'revs', h: 'Every change is a Rev.', p: 'Move a wall and the price moves with it, division by division, written up before the work is done.',
+  { k: 'Change', arm: 'Takeoff', s: '+$3,569', clip: 'revs', h: 'Every change is a Rev.', p: 'Move a wall and the price moves with it, division by division, written up before the work is done.',
     facts: [['Rev A', '$142,047'], ['Rev B', '$145,616'], ['Change', '+$3,569']] },
-  { k: 'Cash', s: 'By month', clip: 'flow', h: 'Every dollar has a cost code and a date.', p: 'Material and labor roll up by division into cash by month, so you know what is due and when.',
+  { k: 'Plan', arm: 'Lean', s: '5 steps in field prep', clip: 'lean-plan', h: 'Every stage becomes steps with dates and people.', p: 'Lean lays the steps on the calendar, shows who is needed each day, and raises an alert for anything to order or check in the next two weeks. Nothing starts until someone presses Go.',
+    facts: [['Steps in field prep', '5'], ['Busiest day', '4 people'], ['Alerts', '14']] },
+  { k: 'Order', arm: 'Lean', s: '17 materials', clip: 'lean-order', h: 'It tells you what to order, and by when.', p: 'Every material the plan uses, with what is on hand, how long it takes to arrive and the day to order by. Ask a team member to order it and the request lands in their app.',
+    facts: [['Materials', '17'], ['To order soon', '8'], ['First needed', 'May 3']] },
+  { k: 'Do the work', arm: 'Farmmetric', s: 'From the field', clip: 'farmmetric-crew', h: 'The crew sees its own list and logs what happened.', p: 'Each person opens the jobs released to them, runs a timer or types the hours, and marks the step done. What they log becomes the real numbers in the plan.',
+    facts: [['On now', '2 jobs'], ['Waiting for Go', '4 steps'], ['Logged', '3 hours']] },
+  { k: 'Cash', arm: 'Flow', s: 'By month', clip: 'flow', h: 'Every dollar has a cost code and a date.', p: 'Material and labor roll up by division into cash by month, so you know what is due and when.',
     facts: [['Material', '$55,014'], ['Labor', '$48,670'], ['Revenue', '$142,047']] },
 ]
 
@@ -185,11 +191,11 @@ function Platform() {
     <div className="st-plat-b">
       <div className="st-screen"><Clip name={s.clip} label={s.h} /></div>
       <div className="st-panel">
-        <div className="st-panel-h"><h2>One job, six steps</h2></div>
+        <div className="st-panel-h"><h2>Samana, step by step</h2></div>
         <div className="st-acc">
           {STEPS.map((x, n) => (
             <div key={x.k} className={n === i ? 'on' : undefined}>
-              <button type="button" aria-expanded={n === i} onClick={() => setI(n)}><i /><span>{n + 1}</span><b>{x.k}</b><small>{x.s}</small></button>
+              <button type="button" aria-expanded={n === i} onClick={() => setI(n)}><i /><span>{n + 1}</span><b>{x.k}</b><em data-arm={x.arm}>{x.arm}</em><small>{x.s}</small></button>
               {n === i && (
                 <div className="st-acc-b">
                   <h4>{x.h}</h4><p>{x.p}</p>
@@ -348,8 +354,8 @@ export default function Home() {
             <h3 className="st-h3" id="farmmetric">The app: Farmmetric</h3>
             <div className="st-two st-app">
               <div className="st-sheet st-phone">
-                <div className="st-stage"><PhoneFarmmetric still /></div>
-                <div className="st-tb"><b>Farmmetric</b><span>Phone view, drawn</span></div>
+                <div className="st-stage"><div className="st-bezel"><Clip name="farmmetric-phone" label="Farmmetric on a phone: my work, the spray and feed mixes, and sending an unplanned job to the boss" /></div></div>
+                <div className="st-tb"><b>Farmmetric</b><span>On a phone, sample farm</span></div>
               </div>
               <div className="st-panel">
                 <div className="st-panel-h"><h2>The crew's day, on a phone</h2></div>
@@ -392,7 +398,7 @@ export default function Home() {
             <Proof />
 
             <h3 className="st-h3" id="platform">See it run</h3>
-            <p className="st-sub">The sample house going through Samana, recorded in the real app.</p>
+            <p className="st-sub">Recorded in the real app: the sample house through Takeoff and Flow, and a sample farm through Lean and Farmmetric.</p>
             <Platform />
           </div>
         </section>

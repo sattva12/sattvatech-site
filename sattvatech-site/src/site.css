@@ -213,8 +213,13 @@
 .st-acc button i { flex: none; width: 7px; height: 7px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(-45deg); }
 .st-acc button[aria-expanded="true"] i { transform: rotate(45deg); }
 .st-acc button span { font: 600 15px/1 var(--cond); color: var(--sheet); width: 1em; }
-.st-acc button b { font-weight: 600; font-size: 15px; }
-.st-acc button small { margin-left: auto; color: var(--muted); font-size: 13px; }
+.st-acc button b { font-weight: 600; font-size: 15px; white-space: nowrap; }
+.st-acc button em { font: 500 11.5px/1 var(--sans); font-style: normal; border-radius: 99px; padding: 3px 8px; background: #d6e3f5; color: #1b467c; white-space: nowrap; }
+.st-acc button em[data-arm="Lean"] { background: #f6e3bd; color: #6a4508; }
+.st-acc button em[data-arm="Farmmetric"] { background: #d5e9db; color: #1c5433; }
+.st-acc button em[data-arm="Flow"] { background: #e3e7ea; color: #36424e; }
+.st-acc button small { margin-left: auto; color: var(--muted); font-size: 13px; text-align: right; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (min-width: 900px) { .st-plat-b .st-screen { position: sticky; top: 62px; } }
 .st-acc .on > button small { visibility: hidden; }
 .st-acc-b { padding: 2px 16px 0; }
 .st-acc-b h4 { font: 600 25px/1.08 var(--cond); text-wrap: balance; }
@@ -245,6 +250,8 @@
 @media (min-width: 900px) { .st-two.st-app { grid-template-columns: minmax(0, 320px) minmax(0, 1fr); } }
 .st-phone .st-stage { padding: 14px 10px; }
 .st-phone .st-dw { max-width: 300px; }
+.st-bezel { width: 100%; max-width: 276px; border: 6px solid #0b1f14; border-radius: 26px; overflow: hidden; background: #0b1f14; box-shadow: 0 18px 34px -18px rgba(0,0,0,.7); }
+.st-bezel video { display: block; width: 100%; height: auto; aspect-ratio: 720 / 1440; }
 
 /* products */
 .st-rooms .st-row { display: grid; gap: 2px; justify-content: stretch; min-height: 0; padding: 10px 16px; }
