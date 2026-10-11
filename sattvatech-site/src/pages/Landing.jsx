@@ -23,8 +23,8 @@ const DIVISIONS = [
     number: '03',
     title: 'Lean Agriculture',
     sub: 'Licensed Farms',
-    description: 'Lean production for licensed farms: build it, plan the season, run it on data and follow the cash. We run our own farm work on Farmmetric.',
-    tags: ['Farm Builds', 'Season Planning', 'IPM & Process', 'Farmmetric'],
+    description: 'Lean production for licensed farms: build it, plan the season, run it on data and follow the cash. We build drying and extraction containers and ship them anywhere, and we run our own farm work on Farmmetric.',
+    tags: ['Farm Builds', 'Containers Shipped', 'Season Planning', 'Farmmetric'],
   },
 ]
 

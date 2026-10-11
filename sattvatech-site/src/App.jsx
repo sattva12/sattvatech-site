@@ -3,6 +3,7 @@ import Landing from './pages/Landing.jsx'
 import Gov from './pages/Gov.jsx'
 import Construction from './pages/Construction.jsx'
 import LeanAg from './pages/LeanAg.jsx'
+import Containers from './pages/Containers.jsx'
 import Samana from './pages/Samana.jsx'
 import Quote from './pages/Quote.jsx'
 import Farmmetric from './pages/Farmmetric.jsx'
@@ -16,6 +17,7 @@ export default function App() {
       <Route path="/agtech" element={<LeanAg />} />
       <Route path="/construction" element={<Construction />} />
       <Route path="/lean-ag" element={<LeanAg />} />
+      <Route path="/containers" element={<Containers />} />
       <Route path="/samana" element={<Samana />} />
       <Route path="/quote" element={<Quote />} />
       <Route path="/farmmetric" element={<Farmmetric />} />

@@ -48,6 +48,14 @@ export default function LeanAg() {
         </div>
       </section>
 
+      <section className="sm-arms" aria-labelledby="box">
+        <div className="sm-wrap">
+          <h2 className="sm-h2" id="box">Drying and extraction containers, shipped anywhere.</h2>
+          <p className="sm-sub">We build the drying and extraction rooms in 40 ft containers, ship them to your site or build them there, and sell the full design if you would rather build it yourself.</p>
+          <Link className="sm-btn go" to="/containers">See the containers</Link>
+        </div>
+      </section>
+
       <section className="sm-arms" aria-labelledby="us">
         <div className="sm-wrap">
           <h2 className="sm-h2" id="us">It works for us. See if it works for you.</h2>
