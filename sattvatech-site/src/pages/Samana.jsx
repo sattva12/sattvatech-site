@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SiteHeader, SiteFoot, APP, FARM } from '../Chrome.jsx'
 import Proof from '../Proof.jsx'
+import { Platform } from '../Walkthrough.jsx'
 import '../samana.css'
 
 export { APP, FARM }
@@ -83,7 +84,7 @@ export function SamanaNav({ here }) {
     : here === 'samana' ? <a className="sm-btn go" href={APP}>Start free</a>
     : here === 'farmmetric' ? <a className="sm-btn go" href={FARM}>Free trial</a>
     : (here === 'ag' || here === 'construction' || here === 'containers') ? <a className="sm-btn go" href="#talk">Talk to us</a> : null
-  const tab = here === 'samana' ? 'samana' : (here === 'construction' || here === 'quote') ? 'construction' : (here === 'ag' || here === 'farmmetric') ? 'farms' : here === 'containers' ? 'products' : undefined
+  const tab = (here === 'construction' || here === 'quote') ? 'construction' : here === 'ag' ? 'farms' : (here === 'containers' || here === 'samana' || here === 'farmmetric' || here === 'apps') ? 'products' : undefined
   return <SiteHeader here={tab} cta={cta} />
 }
 export function SamanaFoot() {
@@ -161,6 +162,14 @@ export default function Samana() {
           <h2 className="sm-h2" id="proof">One platform, three kinds of work.</h2>
           <p className="sm-sub">Construction and farms are where we built it and proved it. A production run reads the same way: the same three views, whatever the job is.</p>
           <Proof />
+        </div>
+      </section>
+
+      <section className="sm-arms" id="run" aria-labelledby="run-h" style={{ paddingTop: 0 }}>
+        <div className="sm-wrap">
+          <h2 className="sm-h2" id="run-h">See it run.</h2>
+          <p className="sm-sub">Recorded in the real app: the sample house through Takeoff and Flow, and a sample farm through Lean and Farmmetric.</p>
+          <div className="st st-embed"><Platform /></div>
         </div>
       </section>
 

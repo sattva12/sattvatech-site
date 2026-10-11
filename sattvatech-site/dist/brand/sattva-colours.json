@@ -1,0 +1,25 @@
+{
+  "name": "Sattva logo colours",
+  "set": "2026-10-11",
+  "main_version": "White line on navy (the files ending -dark)",
+  "squares": {
+    "blue_on_dark": { "hex": "#3D7FD0", "rgb": [61, 127, 208] },
+    "blue_on_light": { "hex": "#134E89", "rgb": [19, 78, 137] },
+    "red": { "hex": "#E44936", "rgb": [228, 73, 54] },
+    "green": { "hex": "#3EA059", "rgb": [62, 160, 89] },
+    "yellow": { "hex": "#F6B70A", "rgb": [246, 183, 10] }
+  },
+  "square_order_by_row": [["blue", "red", "green"], ["yellow", "blue", "red"], ["green", "yellow", "blue"]],
+  "on_dark": {
+    "line": { "hex": "#FFFFFF", "rgb": [255, 255, 255] },
+    "sattva": { "hex": "#FFFFFF", "rgb": [255, 255, 255] },
+    "technologies": { "hex": "#DFE6EE", "rgb": [223, 230, 238] },
+    "background_navy": { "hex": "#0D2747", "rgb": [13, 39, 71] },
+    "background_app_blue": { "hex": "#153D72", "rgb": [21, 61, 114] }
+  },
+  "on_light": {
+    "line": { "hex": "#525355", "rgb": [82, 83, 85] },
+    "lettering": { "hex": "#2F3033", "rgb": [47, 48, 51] }
+  },
+  "one_colour": { "ink": { "hex": "#16212C", "rgb": [22, 33, 44] }, "white": { "hex": "#FFFFFF", "rgb": [255, 255, 255] } }
+}

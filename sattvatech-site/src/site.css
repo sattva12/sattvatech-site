@@ -19,6 +19,8 @@
 :where(.st) :where(h1, h2, h3, h4, p, dl, dd, ol) { margin: 0; }
 .st-wrap { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
 .st section[id], .st h3[id] { scroll-margin-top: 70px; }
+/* a piece of the site's parts used inside one of the older pages */
+.st.st-embed { background: none; min-height: 0; text-align: left; }
 
 /* ----- the top bar, as in the app ----- */
 .st-top { position: sticky; top: 0; z-index: 50; display: flex; align-items: stretch; gap: 6px 18px; padding: 0 16px; background: linear-gradient(90deg, #0d2a55 0%, #153d72 35%, #1f5498 70%, #2e69b3 100%); color: var(--line); font-family: var(--sans); box-sizing: border-box; }

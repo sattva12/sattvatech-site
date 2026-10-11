@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { SamanaNav, SamanaFoot, FARM } from './Samana.jsx'
+import { FarmmetricPhone } from '../Walkthrough.jsx'
 import '../samana.css'
 
 const FEATURES = [
@@ -30,6 +31,14 @@ export default function Farmmetric() {
           </div>
         </div>
       </header>
+
+      <section className="sm-arms" aria-labelledby="phone-h">
+        <div className="sm-wrap">
+          <h2 className="sm-h2" id="phone-h">The crew's day, on a phone.</h2>
+          <p className="sm-sub">Recorded in the real app on a sample farm.</p>
+          <div className="st st-embed"><FarmmetricPhone /></div>
+        </div>
+      </section>
 
       <section className="sm-arms" aria-labelledby="what">
         <div className="sm-wrap">

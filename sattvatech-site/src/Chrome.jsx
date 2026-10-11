@@ -11,8 +11,7 @@ export const MAIL = 'apatel@sattvatech.com'
 /* The app's own top bar, used across the site: the name, the lines of work as tabs, sign in on the right. */
 const TABS = [
   { id: 'construction', name: 'Construction', sub: 'Homes and commercial', href: '/#construction' },
-  { id: 'farms', name: 'Farms', sub: 'Lean farming', href: '/#farms' },
-  { id: 'samana', name: 'Samana', sub: 'Lean operations software', href: '/#samana' },
+  { id: 'farms', name: 'Farms', sub: 'Set up and run', href: '/#farms' },
   { id: 'products', name: 'Products', sub: 'Containers and apps', href: '/#products' },
 ]
 
