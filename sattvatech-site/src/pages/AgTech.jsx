@@ -34,7 +34,7 @@ export default function AgTech() {
       <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: '#1c1c1c', borderBottom: `1px solid ${T.border}`, padding: '0 2.5rem', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', backdropFilter: 'blur(8px)' }}>
         <button onClick={() => navigate('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{ fontSize: 18, color: T.accent }}>←</span>
-          <img src="/brand/sattva-logo-wide-white.svg" alt="Sattva" style={{ height: 28 }} />
+          <img src="/brand/sattva-logo-small-white.svg" alt="Sattva" style={{ height: 28 }} />
           <span style={{ fontSize: 10, color: T.text4, fontFamily: 'sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>AgTech & Farmmetric</span>
         </button>
         <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>

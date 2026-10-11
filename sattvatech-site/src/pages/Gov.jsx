@@ -40,7 +40,7 @@ function NavBar({ navigate }) {
     <nav style={{ background: CHARCOAL, padding: '0 2.5rem', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100 }}>
       <button onClick={() => navigate('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}>
         <span style={{ color: RED, fontSize: 16 }}>←</span>
-        <img src="/brand/sattva-logo-wide-white.svg" alt="Sattva" style={{ height: 28 }} />
+        <img src="/brand/sattva-logo-small-white.svg" alt="Sattva" style={{ height: 28 }} />
         <span style={{ fontSize: 10, color: '#aaa', fontFamily: 'sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Government Contracting</span>
       </button>
       <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
