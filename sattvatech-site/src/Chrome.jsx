@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Logo } from './brand.jsx'
 import './site.css'
 
 export const APP = 'https://app.sattvatech.com'
@@ -18,7 +19,7 @@ const TABS = [
 export function SiteHeader({ here, cta }) {
   return (
     <header className="st-top">
-      <Link to="/" className="st-name">SATTVA<span>Technologies</span></Link>
+      <Link to="/" className="st-name" aria-label="Sattva Technologies, home"><Logo size={36} fill="silver" /><span>Technologies</span></Link>
       <nav className="st-tabs" aria-label="Sattva Technologies">
         {TABS.map((t) => t.href.startsWith('/#')
           ? <a key={t.id} href={t.href} aria-current={here === t.id ? 'true' : undefined}><b>{t.name}</b><small>{t.sub}</small></a>
@@ -39,7 +40,7 @@ export function SiteFoot() {
     <footer className="st-foot">
       <div className="st-wrap">
         <div>
-          <b>SATTVA</b>
+          <Logo className="st-foot-logo" size={44} fill="silver" />
           <p>Sattva Technologies LLC, Seekonk, Massachusetts.<br />Construction Supervisor CS-122574, HIC 218120.</p>
         </div>
         <nav aria-label="Pages">
