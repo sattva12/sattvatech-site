@@ -1,7 +1,7 @@
 import './site.css'
 
 /* One platform, three kinds of work: each shown as the same three views. Numbers are the app's own, on the sample house and our Minnesota site. */
-const VIEWS = [['Takeoff', 'Count it and price it'], ['Lean', 'Steps, crews and dates'], ['Flow', 'Cash by month']]
+const VIEWS = [['Takeoff', 'Buildout'], ['Lean', 'Lean manufacturing'], ['Flow', 'Cost analysis and budgeting']]
 const ROWS = [
   { name: 'A construction job', what: 'The sample house: a basement, two floors and a deck',
     cells: [['$142,047', '100 material lines, each one priced'], ['15 steps', 'The work order from Takeoff: 885 crew hours, 56 days on site'], ['$142,047 in', 'Material $55,014 and labor $48,670 out, by month']] },

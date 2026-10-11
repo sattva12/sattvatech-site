@@ -21,7 +21,7 @@
 .st section[id], .st h3[id] { scroll-margin-top: 70px; }
 
 /* ----- the top bar, as in the app ----- */
-.st-top { position: sticky; top: 0; z-index: 50; display: flex; align-items: stretch; gap: 6px 18px; padding: 0 16px; background: var(--deep); color: var(--line); font-family: var(--sans); box-sizing: border-box; }
+.st-top { position: sticky; top: 0; z-index: 50; display: flex; align-items: stretch; gap: 6px 18px; padding: 0 16px; background: linear-gradient(90deg, #0d2a55 0%, #153d72 35%, #1f5498 70%, #2e69b3 100%); color: var(--line); font-family: var(--sans); box-sizing: border-box; }
 .st-name { display: flex; align-items: center; gap: 10px; font: 600 16px/1 var(--cond); letter-spacing: .16em; color: var(--line); text-decoration: none; }
 .st-name span { font: 400 13px/1 var(--sans); letter-spacing: 0; opacity: .7; }
 .st-tabs { display: flex; gap: 2px; min-width: 0; }
@@ -147,26 +147,30 @@
 .st-head .st-acts { margin-top: 16px; }
 @media (min-width: 980px) { .st-head { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); } .st-head h1 { white-space: nowrap; } }
 
-.st-work { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
-.st-opts { display: grid; gap: 6px; padding: 12px; }
-.st-opt { display: grid; gap: 2px; width: 100%; text-align: left; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); padding: 9px 12px; cursor: pointer; color: var(--ink); font-family: var(--sans); }
-.st-opt b { font: 600 15.5px/1.25 var(--sans); }
-.st-opt small { color: var(--muted); font-size: 13px; line-height: 1.35; }
-.st-opt:hover { border-color: var(--muted); }
-.st-opt[aria-selected="true"] { border-color: var(--sheet); box-shadow: inset 0 0 0 1px var(--sheet); background: var(--field); }
-.st-facts .st-total p { min-height: 2.9em; }
-@media (min-width: 1120px) {
-  .st-work { grid-template-columns: 286px minmax(0, 1fr) 350px; }
+.st-work { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; align-items: start; }
+.st-col { display: grid; gap: 12px; min-width: 0; }
+.st-chev { flex: none; width: 7px; height: 7px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); margin: 0 4px 3px 2px; }
+.st-panel-h .st-btn { margin-left: auto; min-height: 32px; padding: 4px 10px; font-size: 13.5px; }
+.st-scope > div:last-child { border-bottom: 0; }
+.st-scope button { min-height: 50px; }
+.st-scope button small { margin-left: 0; flex: 1; }
+.st-scope button strong { flex: none; min-width: 4.4em; text-align: right; font: 600 17px/1 var(--cond); font-variant-numeric: tabular-nums; }
+.st-scope button strong:empty { display: none; }
+.st-scope .st-acc-b p { margin: 2px 0 12px; }
+.st-scope .st-acc-b .st-panel-f { padding: 12px 0 14px; }
+.st-scope .st-acc-b .st-kpis { border-bottom: 1px solid var(--rule); }
+.st-lvlrow { overflow-x: auto; scrollbar-width: none; }
+.st-lvlrow::-webkit-scrollbar { display: none; }
+.st-lvlrow .st-seg { margin-left: 0; flex: none; }
+.st-lvlrow .st-seg button { white-space: nowrap; font-size: 15px; min-height: 36px; }
+.st-work > .st-sheet .st-dw { max-height: max(300px, calc(100vh - 416px)); width: auto; max-width: 100%; }
+@media (min-width: 1000px) {
+  .st-work { grid-template-columns: minmax(330px, 400px) minmax(0, 1fr); }
+  .st-work > .st-sheet { order: 2; }
 }
-@media (max-width: 1119px) {
-  /* below the three columns, the list becomes the app's chip row above the sheet */
-  .st-do { border: 0; background: transparent; }
-  .st-do .st-panel-h, .st-do .st-note { display: none; }
-  .st-opts { display: flex; gap: 6px; padding: 0; overflow-x: auto; scrollbar-width: none; }
-  .st-opts::-webkit-scrollbar { display: none; }
-  .st-opt { width: auto; flex: none; padding: 8px 14px; border-radius: 18px; }
-  .st-opt small { display: none; }
-  .st-opt[aria-selected="true"] { background: var(--sheet); color: #fff; }
+@media (max-width: 999px) {
+  .st-work > .st-sheet { order: -1; }
+  .st-lvlrow .st-lvl { display: none; }
 }
 
 .st-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 12px; border: 1px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--panel); }
@@ -184,7 +188,7 @@
 .st-h3 + .st-two, .st-h3 + .st-panel { margin-top: 18px; }
 .st-sub { color: var(--muted); font-size: 17px; max-width: 46em; margin: 6px 0 18px; }
 .st-two { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; align-items: stretch; }
-@media (min-width: 900px) { .st-two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .st-two.st-wide { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); } }
+@media (min-width: 900px) { .st-two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .st-two.st-wide { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); } .st-two.st-wide > .st-sheet { order: 2; } }
 .st-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; align-items: stretch; }
 
 .st-run { list-style: none; padding: 0; counter-reset: s; }
@@ -204,7 +208,7 @@
 
 /* the platform: a job walked through the app, steps folding open like the app's own sections */
 .st-plat-b { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; align-items: start; }
-@media (min-width: 900px) { .st-plat-b { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); } }
+@media (min-width: 900px) { .st-plat-b { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); } .st-plat-b > .st-screen { order: 2; } }
 .st-screen { border-radius: 10px; overflow: hidden; background: var(--night); border: 1px solid var(--ink); }
 .st-screen video { display: block; width: 100%; height: auto; aspect-ratio: 1280 / 800; }
 .st-acc > div { border-bottom: 1px solid var(--rule); }
@@ -247,7 +251,7 @@
   .st-gr span { font-size: 14px; } .st-gr span small { display: block; }
   .st-gr i { padding: 0; }
 }
-@media (min-width: 900px) { .st-two.st-app { grid-template-columns: minmax(0, 320px) minmax(0, 1fr); } }
+@media (min-width: 900px) { .st-two.st-app { grid-template-columns: minmax(0, 1fr) minmax(0, 320px); } .st-two.st-app > .st-sheet { order: 2; } }
 .st-phone .st-stage { padding: 14px 10px; }
 .st-phone .st-dw { max-width: 300px; }
 .st-bezel { width: 100%; max-width: 276px; border: 6px solid #0b1f14; border-radius: 26px; overflow: hidden; background: #0b1f14; box-shadow: 0 18px 34px -18px rgba(0,0,0,.7); }

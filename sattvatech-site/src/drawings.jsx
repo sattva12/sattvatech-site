@@ -185,9 +185,9 @@ export function PlanSoftware({ still }) {
   )
   return (
     <Sheet still={still} label="Samana drawn as a triangle: Takeoff, Lean and Flow, with Farmmetric feeding Lean from the field">
-      {node(272, 50, 'Takeoff', 'Drawings, quantities, cost lines', 0)}
-      {node(86, 236, 'Lean', 'The plan, the crew, the dates', 0.3)}
-      {node(458, 236, 'Flow', 'Cash by month', 0.6)}
+      {node(272, 50, 'Takeoff', 'Buildout', 0)}
+      {node(86, 236, 'Lean', 'Lean manufacturing', 0.3)}
+      {node(458, 236, 'Flow', 'Cost analysis and budgeting', 0.6)}
       {node(86, 366, 'Farmmetric', 'The crew’s phone, in the field', 0.9)}
       <P c="a" t={1.1} d="M300 112L196 236M420 112L524 236M262 267H458M174 298V366" />
       <T x={228} y={170} c="lv" a="end" t={1.4}>What was built,</T><T x={228} y={186} c="lv" a="end" t={1.4}>and when it is ready</T>

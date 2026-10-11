@@ -29,8 +29,8 @@ const LEVELS = [
     to: '#farms', cta: 'See farms' },
   { id: 'samana', tab: 'Samana', sub: 'Lean operations software', Drawing: PlanSoftware,
     tb: ['Samana: Takeoff, Lean, Flow', 'Farmmetric in the field', 'One job, one set of numbers'],
-    big: 'Samana', cap: 'Lean operations software for businesses that build, grow and make things.',
-    kpis: [['Takeoff', 'Build'], ['Lean', 'Run'], ['Flow', 'Cash']],
+    big: '', cap: 'Lean operations software for businesses that build, grow and make things.',
+    kpis: [['Parts', '4'], ['Walkthrough', '9 steps'], ['Sample job', 'Free']],
     rows: [['Takeoff', 'Counts and prices every piece'], ['Lean', 'Steps, crews, dates, orders'], ['Flow', 'Cash by month'], ['Farmmetric', 'The crew\u2019s phone']],
     to: '#samana', cta: 'See Samana' },
   { id: 'products', tab: 'Products', sub: 'Container rooms, built to order', Drawing: PlanContainer,
@@ -40,6 +40,9 @@ const LEVELS = [
     rows: [['Rooms', 'Drying, lab, grow, storage'], ['Also', 'Site office, power room'], ['Ways to buy', 'Shipped, built, or the design'], ['Flyer', 'One page, PDF']],
     to: '#products', cta: 'See products' },
 ]
+
+/* the three parts of Samana, in the words a buyer looks for */
+const ARMS = [['Takeoff', 'Buildout'], ['Lean', 'Lean manufacturing'], ['Flow', 'Cost analysis and budgeting']]
 
 function Opening() {
   const [i, setI] = useState(0)
@@ -68,35 +71,46 @@ function Opening() {
         </div>
 
         <div className="st-work" onMouseEnter={() => setHold(true)} onMouseLeave={() => setHold(false)} onFocus={() => setHold(true)} onBlur={() => setHold(false)}>
-          <div className="st-panel st-do">
-            <div className="st-panel-h"><h2>What we do</h2></div>
-            <div className="st-opts" role="tablist" aria-label="What we do">
-              {LEVELS.map((l, n) => (
-                <button key={l.id} type="button" role="tab" aria-selected={n === i} className="st-opt" onClick={() => pick(n)}>
-                  <b>{l.tab}</b><small>{l.sub}</small>
-                </button>
-              ))}
+          <div className="st-col">
+            <div className="st-panel">
+              <div className="st-panel-h"><i className="st-chev" /><h2>What we do</h2></div>
+              <div className="st-acc st-scope">
+                {LEVELS.map((l, n) => (
+                  <div key={l.id} className={n === i ? 'on' : undefined}>
+                    <button type="button" aria-expanded={n === i} onClick={() => pick(n)}><i /><b>{l.tab}</b><small>{l.sub}</small><strong>{l.big}</strong></button>
+                    {n === i && (
+                      <div className="st-acc-b">
+                        <p>{l.cap}</p>
+                        <dl className="st-kpis">{l.kpis.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+                        <div className="st-panel-f"><Go className="st-btn primary" to={l.to}>{l.cta}</Go></div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
-            <p className="st-note">One company. Pick a level to put it on the sheet.</p>
+            <div className="st-panel">
+              <div className="st-panel-h"><h2>Run on Samana</h2><a className="st-btn" href="#samana">See the platform</a></div>
+              <div className="st-rows">
+                {ARMS.map(([k, v]) => <div className="st-row" key={k}><span>{k}</span><b>{v}</b></div>)}
+              </div>
+            </div>
           </div>
 
-          <div className="st-sheet" role="tabpanel" aria-label={L.tab}>
-            <div className="st-sheet-top"><span className="st-lvl">Level</span><b>{L.tab}</b></div>
+          <div className="st-sheet">
+            <div className="st-sheet-top st-lvlrow">
+              <span className="st-lvl">Level</span>
+              <span className="st-seg" role="group" aria-label="Level">
+                {LEVELS.map((l, n) => <button key={l.id} type="button" aria-pressed={n === i} onClick={() => pick(n)}>{l.tab}</button>)}
+              </span>
+            </div>
             <div className="st-stage"><L.Drawing key={L.id} /></div>
-            <div className="st-tb"><b>{L.tb[0]}</b>{L.tb.slice(1).map((s) => <span key={s}>{s}</span>)}</div>
+            <div className="st-tb"><b>{L.tb[0]}</b>{L.tb.slice(1).map((x) => <span key={x}>{x}</span>)}</div>
             <div className="st-rev">
               <button type="button" aria-label="Previous sheet" onClick={() => pick(i - 1)}>&lsaquo;</button>
               <div>Sheet {i + 1} of {LEVELS.length}<small>{L.sub}</small></div>
               <button type="button" aria-label="Next sheet" onClick={() => pick(i + 1)}>&rsaquo;</button>
             </div>
-          </div>
-
-          <div className="st-panel st-facts">
-            <div className="st-panel-h"><h2>{L.tab}</h2></div>
-            <div className="st-total"><div className="st-big">{L.big}</div><p>{L.cap}</p></div>
-            <dl className="st-kpis">{L.kpis.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-            <div className="st-rows">{L.rows.map(([k, v]) => <div className="st-row" key={k}><span>{k}</span><b>{v}</b></div>)}</div>
-            <div className="st-panel-f"><Go className="st-btn primary" to={L.to}>{L.cta}</Go></div>
           </div>
         </div>
 
@@ -374,7 +388,7 @@ export default function Home() {
           <div className="st-wrap">
             <div className="st-head2">
               <h2 className="st-h2" id="h-sam">Samana</h2>
-              <p className="st-lede">Lean operations software for businesses that build, grow and make things.</p>
+              <p className="st-lede"><b>Buildout, lean manufacturing, cost analysis and budgeting, in one platform.</b> Lean operations software for businesses that build, grow and make things.</p>
             </div>
             <div className="st-two st-wide">
               <div className="st-sheet">
@@ -386,7 +400,7 @@ export default function Home() {
                 <div className="st-panel-h"><h2>From the first measurement to the last dollar</h2></div>
                 <div className="st-total"><h4>We built it to run our own construction and farm work.</h4><p>It runs any operation that has steps, people and materials: plan the work, price every piece, schedule it, hand it to the crew, check it was done, and see the money by month.</p></div>
                 <div className="st-rows st-rtop st-rooms">
-                  {[['Takeoff', 'Counts every piece and prices it'], ['Lean', 'Turns it into steps with dates, crews and materials, and tells you when to order'], ['Flow', 'Shows the cash by month'], ['Farmmetric', 'The crew works from a phone, and what they log becomes the real numbers']]
+                  {[['Takeoff: buildout', 'Counts every piece and prices it'], ['Lean: lean manufacturing', 'Turns it into steps with dates, crews and materials, and tells you when to order'], ['Flow: cost analysis and budgeting', 'Shows the cash by month, against the budget'], ['Farmmetric: the crew', 'The crew works from a phone, and what they log becomes the real numbers']]
                     .map(([k, v]) => <div className="st-row" key={k}><span>{k}</span><b>{v}</b></div>)}
                 </div>
                 <div className="st-panel-f"><a className="st-btn primary" href={APP}>Start with a free sample job</a><Link className="st-btn" to="/samana">What Samana does</Link></div>

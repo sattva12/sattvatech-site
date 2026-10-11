@@ -149,9 +149,9 @@ export default function Samana() {
           <h2 className="sm-h2" id="arms">One drawing feeds three arms.</h2>
           <p className="sm-sub">Change a wall and the price, the work order and the cash flow change with it. No copying numbers between spreadsheets.</p>
           <div className="row">
-            <div className="sm-arm"><h3>Takeoff</h3><p className="what">Builds the job.</p><ul><li>Plans, levels and pieces of work</li><li>Every material, hour and price</li><li>Quote, drawings and work order</li></ul></div>
-            <div className="sm-arm"><h3>Lean</h3><p className="what">Plans the work.</p><ul><li>Steps in order, with the people each needs</li><li>Monday to Friday, unless you record an actual</li><li>A build, a season or a production run, stage by stage</li></ul></div>
-            <div className="sm-arm"><h3>Flow</h3><p className="what">Follows the cash.</p><ul><li>What comes in and goes out, by month</li><li>Every rev and how it moved the money</li><li>Cost codes on every dollar</li></ul></div>
+            <div className="sm-arm"><h3>Takeoff</h3><p className="what">Buildout.</p><ul><li>Plans, levels and pieces of work</li><li>Every material, hour and price</li><li>Quote, drawings and work order</li></ul></div>
+            <div className="sm-arm"><h3>Lean</h3><p className="what">Lean manufacturing.</p><ul><li>Steps in order, with the people each needs</li><li>Monday to Friday, unless you record an actual</li><li>A build, a season or a production run, stage by stage</li></ul></div>
+            <div className="sm-arm"><h3>Flow</h3><p className="what">Cost analysis and budgeting.</p><ul><li>What comes in and goes out, by month</li><li>Every rev and how it moved the money</li><li>Cost codes on every dollar</li></ul></div>
           </div>
         </div>
       </section>
