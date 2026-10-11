@@ -51,7 +51,7 @@ export default function Construction() {
           <a href="/sattva-container-flyer.pdf"><img src="/media/container-flyer.jpg" alt="The container flyer" loading="lazy" /></a>
           <div>
             <h2 className="sm-h2" id="box">Containers, built in our shop and shipped anywhere.</h2>
-            <p className="sm-sub">Drying and extraction rooms in 40 ft containers: shipped ready to set, built on site by our crew, or the full design for your builder.</p>
+            <p className="sm-sub">Drying rooms, extraction labs, grow rooms, storage and site offices in 40 ft containers: shipped ready to set, built on site by our crew, or the full design for your builder.</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}><Link className="sm-btn go" to="/containers">See the containers</Link><a className="sm-btn" style={{ border: '2px solid #16212c', color: '#16212c' }} href="/sattva-container-flyer.pdf">Flyer (PDF)</a></div>
           </div>
         </div>
