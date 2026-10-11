@@ -18,24 +18,28 @@ const LEVELS = [
   { id: 'construction', tab: 'Construction', sub: 'Basements, baths, decks, fit-outs', Drawing: PlanBasement,
     tb: ['Sample house, basement level', '876 SF gross', '836 SF finished', 'Ceiling 7′ 6″'],
     big: '$142,047', cap: 'The sample house, priced as it is drawn.',
+    m: [['15', 'steps in order'], ['885', 'crew hours'], ['100', 'material lines']],
     kpis: [['Material', '$55,014'], ['Labor', '$48,670'], ['Time on site', '56 days']],
     rows: [['Work in order', '15 steps, 885 hr'], ['Materials list', '100 lines'], ['Trades on layers', 'Electrical, HVAC, plumbing'], ['License', 'MA CS-122574']],
     to: '#construction', cta: 'See construction' },
   { id: 'farms', tab: 'Farms', sub: 'Site builds and lean farming', Drawing: PlanFarm,
     tb: ['Farm site, 5.02 acres', 'Fence 1,000 ft', '20 rows of 272 ft', '400 A service'],
     big: '5.02 acres', cap: 'A farm site in Minnesota, drawn and priced from clearing to power.',
+    m: [['6', 'camera poles'], ['400 A', 'service'], ['5', 'containers']],
     kpis: [['Fence', '1,000 ft'], ['Rows', '20'], ['Cameras', '14']],
     rows: [['Camera poles', '6, at 16 ft'], ['Power', '400 A, 330 ft line'], ['Containers', 'Power, drying, lab'], ['The season', 'Planned in Lean']],
     to: '#farms', cta: 'See farms' },
   { id: 'samana', tab: 'Samana', sub: 'Lean operations software', Drawing: PlanSoftware,
     tb: ['Samana: Takeoff, Lean, Flow', 'Farmmetric in the field', 'One job, one set of numbers'],
-    big: '', cap: 'Lean operations software for businesses that build, grow and make things.',
-    kpis: [['Parts', '4'], ['Walkthrough', '9 steps'], ['Sample job', 'Free']],
-    rows: [['Takeoff', 'Counts and prices every piece'], ['Lean', 'Steps, crews, dates, orders'], ['Flow', 'Cash by month'], ['Farmmetric', 'The crew\u2019s phone']],
+    big: 'Samana', fig: '', cap: 'Lean operations software for businesses that build, grow and make things.',
+    m: [['4', 'parts'], ['9', 'steps on film'], ['Free', 'sample job']],
+    kpis: [['Takeoff', 'Buildout'], ['Lean', 'Lean manufacturing'], ['Flow', 'Cost analysis and budgeting']],
+    rows: [['Takeoff', 'Counts and prices every piece'], ['Lean', 'Steps, crews, dates, orders'], ['Flow', 'The budget and the cash flow'], ['Farmmetric', 'The crew\u2019s phone']],
     to: '#samana', cta: 'See Samana' },
   { id: 'products', tab: 'Products', sub: 'Container rooms, built to order', Drawing: PlanContainer,
     tb: ['Drying room in a 40 ft container', '2 AC units', '2 dehumidifiers', '2 fans'],
     big: '40 ft', cap: 'A working room built inside a container, in our shop or on your site.',
+    m: [['6', 'kinds of room'], ['3', 'ways to buy'], ['1', 'page flyer']],
     kpis: [['AC', '2 units'], ['Dehumidifiers', '2'], ['Fans', '3,500 CFM']],
     rows: [['Rooms', 'Drying, lab, grow, storage'], ['Also', 'Site office, power room'], ['Ways to buy', 'Shipped, built, or the design'], ['Flyer', 'One page, PDF']],
     to: '#products', cta: 'See products' },
@@ -77,11 +81,10 @@ function Opening() {
               <div className="st-acc st-scope">
                 {LEVELS.map((l, n) => (
                   <div key={l.id} className={n === i ? 'on' : undefined}>
-                    <button type="button" aria-expanded={n === i} onClick={() => pick(n)}><i /><b>{l.tab}</b><small>{l.sub}</small><strong>{l.big}</strong></button>
+                    <button type="button" aria-expanded={n === i} onClick={() => pick(n)}><i /><b>{l.tab}</b><small>{l.sub}</small><strong>{l.fig !== undefined ? l.fig : l.big}</strong></button>
                     {n === i && (
                       <div className="st-acc-b">
-                        <p>{l.cap}</p>
-                        <dl className="st-kpis">{l.kpis.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+                        <div className="st-rows">{l.rows.map(([k, v]) => <div className="st-row" key={k}><span>{k}</span><b>{v}</b></div>)}</div>
                         <div className="st-panel-f"><Go className="st-btn primary" to={l.to}>{l.cta}</Go></div>
                       </div>
                     )}
@@ -97,19 +100,23 @@ function Opening() {
             </div>
           </div>
 
-          <div className="st-sheet">
-            <div className="st-sheet-top st-lvlrow">
-              <span className="st-lvl">Level</span>
-              <span className="st-seg" role="group" aria-label="Level">
-                {LEVELS.map((l, n) => <button key={l.id} type="button" aria-pressed={n === i} onClick={() => pick(n)}>{l.tab}</button>)}
-              </span>
+          <div className="st-rcol">
+            <div className="st-hl">
+              <div className="st-hl-in">
+                <div className="st-hl-t"><div className="st-big">{L.big}</div><p>{L.cap}</p></div>
+                <dl className="st-kpis">{L.kpis.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+              </div>
+              <div className="st-hl-m">{L.m.map(([v, k]) => <span key={k}><b>{v}</b>{k}</span>)}</div>
             </div>
-            <div className="st-stage"><L.Drawing key={L.id} /></div>
-            <div className="st-tb"><b>{L.tb[0]}</b>{L.tb.slice(1).map((x) => <span key={x}>{x}</span>)}</div>
-            <div className="st-rev">
-              <button type="button" aria-label="Previous sheet" onClick={() => pick(i - 1)}>&lsaquo;</button>
-              <div>Sheet {i + 1} of {LEVELS.length}<small>{L.sub}</small></div>
-              <button type="button" aria-label="Next sheet" onClick={() => pick(i + 1)}>&rsaquo;</button>
+            <div className="st-sheet">
+              <div className="st-sheet-top st-lvlrow">
+                <span className="st-lvl">Level</span>
+                <span className="st-seg" role="group" aria-label="Level">
+                  {LEVELS.map((l, n) => <button key={l.id} type="button" aria-pressed={n === i} onClick={() => pick(n)}>{l.tab}</button>)}
+                </span>
+              </div>
+              <div className="st-stage"><L.Drawing key={L.id} /></div>
+              <div className="st-tb"><b>{L.tb[0]}</b>{L.tb.slice(1).map((x) => <span key={x}>{x}</span>)}</div>
             </div>
           </div>
         </div>
