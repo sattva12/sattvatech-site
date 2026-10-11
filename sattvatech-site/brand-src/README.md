@@ -21,5 +21,25 @@ The files in `public/brand/`:
 | `.svg` and `.png` | Every one comes as both. The PNGs have a clear background. |
 | `sattva-share.jpg` | The picture shown when a link to the site is shared. |
 
-The square colours: blue `#134e89`, red `#e44936`, green `#3ea059`, yellow `#f6b70a`.
+## The logo colours (set by Atul, 2026-10-11)
+
+The white-line logo on navy (the files ending `-dark`) is the main version. The same list is in `public/brand/sattva-colours.json`, and as a picture in `public/brand/sattva-colours.png`.
+
+| Colour | Hex | RGB | Where |
+|---|---|---|---|
+| Blue | `#3D7FD0` | 61, 127, 208 | The blue squares, on dark backgrounds |
+| Red | `#E44936` | 228, 73, 54 | The red squares |
+| Green | `#3EA059` | 62, 160, 89 | The green squares |
+| Yellow | `#F6B70A` | 246, 183, 10 | The yellow squares |
+| White | `#FFFFFF` | 255, 255, 255 | The S line and SATTVA, on dark |
+| Pale grey | `#DFE6EE` | 223, 230, 238 | TECHNOLOGIES, on dark |
+| Navy | `#0D2747` | 13, 39, 71 | The background behind the logo |
+| App blue | `#153D72` | 21, 61, 114 | The top bar of the site and the app |
+| Deep blue | `#134E89` | 19, 78, 137 | The blue squares, on white paper only |
+| Line grey | `#525355` | 82, 83, 85 | The S line, on white paper only |
+| Charcoal | `#2F3033` | 47, 48, 51 | The lettering, on white paper only |
+| Ink | `#16212C` | 22, 33, 44 | The one-colour logo |
+
+These are screen colours. No print (CMYK or Pantone) numbers have been set; a printer should match to the hex values.
+
 The browser-tab icon (`public/favicon.svg`) and the phone icons are the dark-background mark on navy `#0d2747`. The tab icon is drawn so that at 32 px every edge lands on a whole pixel.
