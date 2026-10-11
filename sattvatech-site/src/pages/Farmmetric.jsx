@@ -23,7 +23,7 @@ export default function Farmmetric() {
       <header className="sq-hero sm-grid">
         <div className="sm-wrap">
           <h1>Every plant on the books, without the spreadsheet.</h1>
-          <p>Farmmetric is crop compliance software for licensed cannabis growers, from 10 plants in a greenhouse to 10,000 across a field. Tag scans, moves, harvests and kills go to Metrc from your phone, and the dashboard shows where every plant stands.</p>
+          <p>Farmmetric is crop compliance software for licensed growers, from 10 plants in a greenhouse to 10,000 across a field. Tag scans, moves, harvests and kills go to Metrc from your phone, and the dashboard shows where every plant stands.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
             <a className="sm-btn go" href={FARM}>Start the 30-day free trial</a>
             <a className="sm-btn ghost" href="#samana">How it works with Samana</a>

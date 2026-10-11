@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import Landing from './pages/Landing.jsx'
-import Gov from './pages/Gov.jsx'
+import Home from './pages/Home.jsx'
 import Construction from './pages/Construction.jsx'
 import LeanAg from './pages/LeanAg.jsx'
 import Containers from './pages/Containers.jsx'
@@ -12,8 +11,7 @@ import Farmmetric from './pages/Farmmetric.jsx'
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/gov" element={<Gov />} />
+      <Route path="/" element={<Home />} />
       <Route path="/trades" element={<Construction />} />
       <Route path="/agtech" element={<LeanAg />} />
       <Route path="/construction" element={<Construction />} />
@@ -24,6 +22,7 @@ export default function App() {
       <Route path="/samana" element={<Samana />} />
       <Route path="/quote" element={<Quote />} />
       <Route path="/farmmetric" element={<Farmmetric />} />
+      <Route path="*" element={<Home />} />
     </Routes>
   )
 }

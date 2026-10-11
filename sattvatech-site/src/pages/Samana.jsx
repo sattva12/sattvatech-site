@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { SiteHeader, SiteFoot, APP, FARM } from '../Chrome.jsx'
 import '../samana.css'
 
-export const APP = 'https://app.sattvatech.com'
+export { APP, FARM }
 
 /* the hero drawing: the sample 3-floor job drawn line by line while the takeoff adds up */
 const seg = (pts) => { let d = 0; for (let i = 1; i < pts.length; i++) d += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return Math.ceil(d) + 2 }
@@ -75,34 +76,17 @@ function Clip({ name, label }) {
   return <video ref={ref} src={`/media/${name}.mp4`} poster={`/media/${name}.jpg`} muted loop playsInline preload="metadata" controls={reduce} aria-label={label} />
 }
 
-export const FARM = 'https://www.myfarmmetric.com'
 export function SamanaNav({ here }) {
   /* the company first: two divisions, the containers, the quote service; the apps live under their divisions and sign in from one place */
   const cta = here === 'quote' ? <a className="sm-btn go" href="tel:5089168447">Call or text</a>
     : here === 'samana' ? <a className="sm-btn go" href={APP}>Start free</a>
     : here === 'farmmetric' ? <a className="sm-btn go" href={FARM}>Free trial</a>
     : (here === 'ag' || here === 'construction' || here === 'containers') ? <a className="sm-btn go" href="#talk">Talk to us</a> : null
-  return (
-    <nav className="sm-nav" aria-label="Sattva Technologies">
-      <div className="sm-wrap">
-        <Link to="/" className="sm-brand"><b>SATTVA</b><span>Technologies</span></Link>
-        <Link className="sm-l" to="/construction" aria-current={here === 'construction' || here === 'samana' ? 'page' : undefined}>Construction</Link>
-        <Link className="sm-l" to="/lean-ag" aria-current={here === 'ag' || here === 'farmmetric' ? 'page' : undefined}>Lean ag</Link>
-        <Link className="sm-l" to="/containers" aria-current={here === 'containers' ? 'page' : undefined}>Containers</Link>
-        <Link className="sm-l" to="/quote" aria-current={here === 'quote' ? 'page' : undefined}>Quote service</Link>
-        <Link className="sm-l keep" to="/apps" aria-current={here === 'apps' ? 'page' : undefined}>Sign in</Link>
-        {cta}
-      </div>
-    </nav>
-  )
+  const tab = (here === 'construction' || here === 'samana' || here === 'quote') ? 'construction' : (here === 'ag' || here === 'farmmetric') ? 'farms' : here === 'containers' ? 'products' : undefined
+  return <SiteHeader here={tab} cta={cta} />
 }
 export function SamanaFoot() {
-  return (
-    <footer className="sm-foot"><div className="sm-wrap">
-      <span>Sattva Technologies LLC, Seekonk, Massachusetts. Construction Supervisor CS-122574, HIC 218120.</span>
-      <span><a href={APP}>app.sattvatech.com</a> &nbsp; <a href={APP + '/privacy'}>Privacy</a> &nbsp; <a href={APP + '/terms'}>Terms</a> &nbsp; <a href="mailto:apatel@sattvatech.com">apatel@sattvatech.com</a></span>
-    </div></footer>
-  )
+  return <SiteFoot />
 }
 
 const SHEETS = [
@@ -132,7 +116,7 @@ const PIECES = [
   ['Windows and doors', 'Double-hung, casement, picture; insert or full frame; interior, outside, sliding and storm doors.', 'Old ones out and disposed of'],
   ['Flooring', 'Plank, laminate, hardwood, tile or carpet by room; underlayment, transitions, baseboard.', 'Up to eight rooms a piece'],
   ['Painting and trim', 'Walls, ceilings, trim and doors by room and wall height; baseboard, crown, chair rail and casings.', 'Primer only where it is needed'],
-  ['Farms and properties', 'Fence, cameras, power, containers, drying, wells and hoop houses on the real lot line, with Lean planning the season.', 'Built for licensed cannabis farms first'],
+  ['Farms and properties', 'Fence, cameras, power, containers, drying, wells and hoop houses on the real lot line, with Lean planning the season.', 'Built for our own farm sites first'],
 ]
 
 export default function Samana() {
