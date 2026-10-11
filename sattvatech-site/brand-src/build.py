@@ -1,57 +1,56 @@
 """Writes every Sattva logo file. Run from this folder:  python3 build.py ../public/brand
-Needs shapely and fonttools (with brotli, to read the woff2 font)."""
+Needs shapely and fonttools (with brotli, to read the woff2 fonts)."""
 import os, sys, json
 from shapely import affinity
-import mark as M, letters as L, word as Wd
+import mark as M, word as Wd
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else 'out'
 os.makedirs(OUT, exist_ok=True)
 HERE = os.path.dirname(os.path.abspath(__file__))
-FONT = os.path.join(HERE, 'montserrat-latin-500-normal.woff2')      # the letters of TECHNOLOGIES
+BOLD = os.path.join(HERE, 'montserrat-latin-600-normal.woff2')      # SATTVA
+MED = os.path.join(HERE, 'montserrat-latin-500-normal.woff2')       # TECHNOLOGIES
 
 INK, BLUE = '#16212c', '#153d72'
 SILVER = '<linearGradient id="sv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b9c3cb"/></linearGradient>'
-STEEL = '<linearGradient id="st" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb0c4"/><stop offset="1" stop-color="#75889f"/></linearGradient>'
 TECH_ON_DARK = '#c9d3dc'
 
 def place(g, k=1.0, dx=0.0, dy=0.0): return affinity.translate(affinity.scale(g, k, k, origin=(0, 0)), dx, dy)
+def fitted(font, text, cap, width, tol):
+    """The word at this cap height, its letters spaced out to this width; top left at 0,0."""
+    w0 = Wd.word(font, text, 0, 0, cap); t = (width - (w0.bounds[2] - w0.bounds[0])) / (len(text) - 1)
+    g = Wd.word(font, text, t, 0, cap).simplify(tol); return affinity.translate(g, -g.bounds[0], -g.bounds[1])
 
-H = M.LEN                                          # the mark fits a square this size
-S = M.s_shape()
-BARS_FULL = M.bars()                               # for two colours: the S is simply drawn on top
-BARS_CUT = M.mark()[1].simplify(0.4)                             # for one colour: the bars stop short of the S
-SAT = L.sattva(); SW = SAT.bounds[2]               # SATTVA, 733.6 wide, 100 tall
-CAP, LEAD = 40.0, 42.0                             # TECHNOLOGIES: its height, and the space above it, where SATTVA is 100 tall
-def _tech():
-    w0 = Wd.word(FONT, 'TECHNOLOGIES', 0, 0, CAP); t = (SW - (w0.bounds[2] - w0.bounds[0])) / 11
-    g = Wd.word(FONT, 'TECHNOLOGIES', t, 0, CAP).simplify(0.12); return affinity.translate(g, -g.bounds[0], -g.bounds[1])
-TECH = _tech()                                     # spaced out to the same width as SATTVA
+H = M.SIZE                                         # the mark is a square this size (560)
+MARK = M.mark()
+# The words, drawn where SATTVA is 100 tall: SATTVA 625 wide, TECHNOLOGIES four tenths as tall and the same width, as measured from Atul's picture.
+NAME_W, TECH_CAP, LEAD = 625.0, 40.0, 30.0
+SAT = fitted(BOLD, 'SATTVA', 100.0, NAME_W, 0.15)
+TECH = fitted(MED, 'TECHNOLOGIES', TECH_CAP, NAME_W, 0.1)
+BLOCK = 100 + LEAD + TECH_CAP                      # the height of the two lines together
 
-WIDE_K, WIDE_GAP = 3.536, 120.0                    # side by side: SATTVA stands about a third of the mark's height
-STACK_K, STACK_GAP = 1.9, 110.0                    # stacked: SATTVA a third wider than the mark
+STACK_K, STACK_GAP = H / NAME_W, 75.0              # stacked: the words exactly as wide as the mark
+WIDE_K, WIDE_GAP = 1.8, 120.0                      # side by side: SATTVA stands about a third of the mark's height
+SMALL_K = 2.1                                      # side by side without TECHNOLOGIES: SATTVA a little bigger
 
 def lock(kind):
-    """Returns the pieces in place: S, bars (full), bars (cut), SATTVA, TECHNOLOGIES or None; then width and height."""
-    if kind == 'mark':
-        return [place(S, 1, H / 2, H / 2), place(BARS_FULL, 1, H / 2, H / 2), place(BARS_CUT, 1, H / 2, H / 2), None, None], H, H
-    if kind in ('wide', 'small'):
-        tech = kind == 'wide'; k = WIDE_K; x0 = H + WIDE_GAP
-        y0 = (H - (100 + (LEAD + CAP if tech else 0)) * k) / 2
-        return [place(S, 1, H / 2, H / 2), place(BARS_FULL, 1, H / 2, H / 2), place(BARS_CUT, 1, H / 2, H / 2), place(SAT, k, x0, y0),
-                place(TECH, k, x0, y0 + (100 + LEAD) * k) if tech else None], x0 + SW * k, H
+    """The pieces in place: mark, SATTVA, TECHNOLOGIES or None; then width and height."""
+    if kind == 'mark': return [MARK, None, None], H, H
     if kind == 'stacked':
-        k = STACK_K; w = max(H, SW * k); xm = w / 2; x0 = (w - SW * k) / 2; y0 = H + STACK_GAP
-        return [place(S, 1, xm, H / 2), place(BARS_FULL, 1, xm, H / 2), place(BARS_CUT, 1, xm, H / 2), place(SAT, k, x0, y0),
-                place(TECH, k, x0, y0 + (100 + LEAD) * k)], w, y0 + (100 + LEAD + CAP) * k
+        k = STACK_K; y0 = H + STACK_GAP
+        return [MARK, place(SAT, k, 0, y0), place(TECH, k, 0, y0 + (100 + LEAD) * k)], H, y0 + BLOCK * k
+    if kind == 'wide':
+        k = WIDE_K; x0 = H + WIDE_GAP; y0 = (H - BLOCK * k) / 2
+        return [MARK, place(SAT, k, x0, y0), place(TECH, k, x0, y0 + (100 + LEAD) * k)], x0 + NAME_W * k, H
+    if kind == 'small':
+        k = SMALL_K; x0 = H + WIDE_GAP; y0 = (H - 100 * k) / 2
+        return [MARK, place(SAT, k, x0, y0), None], x0 + NAME_W * k, H
 
 def svg(kind, colour, title='Sattva Technologies'):
-    (s, bf, bc, sat, tech), w, h = lock(kind)
+    (m, sat, tech), w, h = lock(kind)
     P = lambda g, fill: f'<path fill="{fill}" fill-rule="evenodd" d="{M.path_d(g)}"/>' if g is not None else ''
-    if colour == 'silver':                         # two colours, for dark backgrounds
-        body = P(bf, 'url(#st)') + P(s, 'url(#sv)') + P(sat, 'url(#sv)') + P(tech, TECH_ON_DARK); defs = f'<defs>{SILVER}{STEEL}</defs>'
-    else:                                          # one colour
-        body = ''.join(P(g, colour) for g in (bc, s, sat, tech)); defs = ''
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.1f} {h:.1f}" role="img" aria-label="{title}"><title>{title}</title>{defs}{body}</svg>')
+    if colour == 'silver': body = P(m, 'url(#sv)') + P(sat, 'url(#sv)') + P(tech, TECH_ON_DARK); defs = f'<defs>{SILVER}</defs>'
+    else: body = ''.join(P(g, colour) for g in (m, sat, tech)); defs = ''
+    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.1f} {h:.1f}" role="img" aria-label="{title}"><title>{title}</title>{defs}{body}</svg>'
 
 def write(name, text):
     with open(os.path.join(OUT, name), 'w') as f: f.write(text)
@@ -60,19 +59,20 @@ def write(name, text):
 for stem, kind in (('sattva-mark', 'mark'), ('sattva-logo', 'stacked'), ('sattva-logo-wide', 'wide'), ('sattva-logo-small', 'small')):
     write(stem + '.svg', svg(kind, INK)); write(stem + '-white.svg', svg(kind, '#ffffff')); write(stem + '-silver.svg', svg(kind, 'silver'))
 
-# The browser-tab icon and the phone icon: the S in white on the app's blue, the bars running off the edges.
-def icon(size, s_height, rx):
-    k = s_height / (2 * M.T); c = size / 2; big = size / k
-    old = M.LEN; M.LEN = big * 1.2; b = M.bars(); M.LEN = old
-    clip = f'<clipPath id="c"><rect width="{size}" height="{size}" rx="{rx}"/></clipPath>'
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}"><defs>{clip}</defs><g clip-path="url(#c)"><rect width="{size}" height="{size}" fill="{BLUE}"/>'
-            f'<path fill="#8ea3bf" d="{M.path_d(place(b, k, c, c), 1, 0, 0, 2)}"/><path fill="#fff" d="{M.path_d(place(S, k, c, c), 1, 0, 0, 2)}"/></g></svg>')
-write('favicon.svg', icon(32, 25.5, 6))
-write('icon.svg', icon(512, 330, 0))
+# The browser-tab icon and the phone icon: the mark in white on the app's blue.
+def icon(size, mark_size, rx, nd):
+    k = mark_size / H; o = (size - mark_size) / 2
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}"><rect width="{size}" height="{size}" rx="{rx}" fill="{BLUE}"/>'
+            f'<path fill="#fff" d="{M.path_d(place(MARK, k, o, o), 1, 0, 0, nd)}"/></svg>')
+# At 32 the squares are 6 wide, the gaps 3 and the links 4, so every edge lands on a whole pixel.
+old = (M.SQ, M.GAP, M.LINK, M.RAD); M.SQ, M.GAP, M.LINK, M.RAD = 6.0, 3.0, 4.0, 0.9
+tiny = M.mark(); M.SQ, M.GAP, M.LINK, M.RAD = old
+write('favicon.svg', f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="{BLUE}"/><path fill="#fff" d="{M.path_d(place(tiny, 1, 4, 4), 1, 0, 0, 2)}"/></svg>')
+write('icon.svg', icon(512, 300, 0, 1))
 
-# The shapes for the site's own code (src/brand.jsx), side by side, in place.
-(s, bf, bc, sat, tech), w, h = lock('wide')
-json.dump({'h': h, 'w': round(w, 1), 'mark_w': H, 'lift': round((LEAD + CAP) * WIDE_K / 2, 1),
-           's': M.path_d(s), 'bars': M.path_d(bf), 'bars_cut': M.path_d(bc), 'sattva': M.path_d(sat), 'tech': M.path_d(tech)},
+# The shapes for the site's own code (src/brand.jsx): the side-by-side layout, in place.
+(m, sat, tech), w, h = lock('wide')
+(_, sat2, _), w2, _ = lock('small')
+json.dump({'h': h, 'w': round(w, 1), 'w_small': round(w2, 1), 'mark': M.path_d(m), 'sattva': M.path_d(sat), 'tech': M.path_d(tech), 'sattva_small': M.path_d(sat2)},
           open(os.path.join(OUT, 'brand.json'), 'w'))
 print('brand.json', os.path.getsize(os.path.join(OUT, 'brand.json')))

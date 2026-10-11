@@ -22,7 +22,7 @@
 
 /* ----- the top bar, as in the app ----- */
 .st-top { position: sticky; top: 0; z-index: 50; display: flex; align-items: stretch; gap: 6px 18px; padding: 0 16px; background: linear-gradient(90deg, #0d2a55 0%, #153d72 35%, #1f5498 70%, #2e69b3 100%); color: var(--line); font-family: var(--sans); box-sizing: border-box; }
-.st-name { display: flex; align-items: center; padding: 3px 4px 3px 0; color: var(--line); text-decoration: none; }
+.st-name { display: flex; align-items: center; padding: 5px 6px 5px 0; color: var(--line); text-decoration: none; }
 .st-name svg { display: block; flex: none; }
 .st-logo-small { display: none !important; }
 .st-tabs { display: flex; gap: 2px; min-width: 0; }
