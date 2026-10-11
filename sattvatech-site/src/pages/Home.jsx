@@ -23,12 +23,12 @@ const LEVELS = [
     rows: [['Homes', 'Basements, bathrooms, decks, floors, windows'], ['Commercial', 'Fit-outs, planned around your opening date'], ['Quality', 'Each step checked before the next starts'], ['License', 'MA CS-122574, HIC 218120']],
     to: '#construction', cta: 'See construction' },
   { id: 'farms', tab: 'Farms', sub: 'Set up, and made to work', Drawing: PlanFarm,
-    photo: '/media/work/farm-after.jpg', alt: 'A farm site from above, part way through the build: the graded field, the yard, the storm pond and the access road', ptb: ['A farm site we built, from above', 'Rhode Island', 'Part way through: the field graded and fenced'],
+    photo: '/media/work/farm-hoops.jpg', alt: 'Rows of steel hoop house frames standing over the whole field, with the yard and containers beyond', ptb: ['A farm site we built', 'Rhode Island', 'Hoop house frames up over the field'],
     tb: ['Farm site, 5.02 acres', 'Fence 1,000 ft', '20 rows of 272 ft', '400 A service'],
     big: 'From bare land to a working farm', cap: 'We set the farm up, then build it into a business with a plan and a budget.',
     m: [['Set up', 'clearing, a bridge, power, a well, paving'], ['A plan', 'for every stage of the season'], ['A budget', 'by month']],
-    kpis: [['Fence', '1,000 ft'], ['Rows', '20'], ['Service', '400 A']],
-    rows: [['Set up', 'Clearing, roads and a bridge, fence, power, a well, paving'], ['The plan', 'Every stage in steps, with people and dates'], ['The budget', 'Capital, running costs and cash by month'], ['The season', 'Run on the plan, checked as it goes']],
+    kpis: [['Land', 'Cleared and graded'], ['Access', 'Roads and a bridge'], ['Services', 'Power and a well']],
+    rows: [['Set up', 'Clearing, roads and a bridge, fence, power, a well, paving, hoop houses'], ['The plan', 'Every stage in steps, with people and dates'], ['The budget', 'Capital, running costs and cash by month'], ['The season', 'Run on the plan, checked as it goes']],
     to: '#farms', cta: 'See farms' },
   { id: 'products', tab: 'Products', sub: 'Containers and apps', Drawing: PlanContainer,
     tb: ['Drying room in a 40 ft container', '2 AC units', '2 dehumidifiers', '2 fans'],
@@ -220,12 +220,12 @@ const FARM_PHOTOS = [
   ['farm-before', 'Before', 'Woods, marked out', 'The site from above before the build: woods, with the first clearing and access roads cut in'],
   ['farm-clearing', 'Clearing', 'Trees down and chipped', 'An excavator with a mulching head clearing trees'],
   ['farm-bridge-set', 'The bridge', 'Precast sections, set by crane', 'Four precast concrete bridge sections set side by side in the woods'],
-  ['farm-bridge', 'The bridge, open', 'The road in, between its walls', 'The finished bridge: the road running between two concrete walls with fence posts set'],
+  ['farm-bridge-done', 'The bridge, finished', 'Walled, fenced and in use', 'The finished bridge in winter: the road running between concrete walls and a screened fence'],
   ['farm-after', 'Graded', 'The field and the yard take shape', 'The site from above part way through: the field graded and fenced, the yard and the storm pond in'],
-  ['farm-containers', 'Containers', 'Set on a gravel pad', 'Two shipping containers set on a gravel pad'],
   ['farm-water', 'The well', 'Pumps, pressure tank and controls', 'The well room: pumps, pressure tank and controls on the wall'],
-  ['farm-paving', 'Paving', 'The yard and the road', 'The yard freshly paved, with the screened fence behind it'],
-  ['farm-road', 'After', 'Paved, fenced and working', 'The finished site from above: the paved road and yard, the fence, and the buildings in place'],
+  ['farm-paved', 'Paving', 'The road in and the yard', 'The paved road and yard from above, with the gate, the containers and the corner of the field'],
+  ['farm-hoops', 'Hoop houses', 'Frames up over the field', 'Rows of steel hoop house frames standing over the whole field'],
+  ['farm-done', 'After', 'Paved, fenced and working', 'The finished site from above: the paved road, the fenced yard with its buildings and containers, and the field'],
 ]
 
 /* ---------- the farm site, with its layers ---------- */
@@ -357,7 +357,7 @@ export default function Home() {
             <FarmSite />
 
             <h3 className="st-h3">On the ground</h3>
-            <p className="st-sub">One farm site in Rhode Island, from woods to a working site: cleared, bridged, fenced, given power and a well, and paved. Built by Sattva Technologies.</p>
+            <p className="st-sub">One farm site in Rhode Island, from woods to a working site: cleared, bridged, fenced, given power and a well, paved, and framed with hoop houses. Built by Sattva Technologies.</p>
             <div className="st-cards st-photos">
               {FARM_PHOTOS.map(([f, k, v, alt]) => (
                 <div className="st-sheet" key={f}><div className="st-stage"><img src={'/media/work/' + f + '.jpg'} alt={alt} loading="lazy" /></div><div className="st-tb"><b>{k}</b><span>{v}</span></div></div>
