@@ -26,9 +26,9 @@ const LEVELS = [
     photo: '/media/work/farm-after.jpg', alt: 'A farm site from above, part way through the build: the graded field, the yard, the storm pond and the access road', ptb: ['A farm site we built, from above', 'Rhode Island', 'Part way through: the field graded and fenced'],
     tb: ['Farm site, 5.02 acres', 'Fence 1,000 ft', '20 rows of 272 ft', '400 A service'],
     big: 'From bare land to a working farm', cap: 'We set the farm up, then build it into a business with a plan and a budget.',
-    m: [['Set up', 'clearing, fence, power, water'], ['A plan', 'for every stage of the season'], ['A budget', 'by month']],
+    m: [['Set up', 'clearing, a bridge, power, a well, paving'], ['A plan', 'for every stage of the season'], ['A budget', 'by month']],
     kpis: [['Fence', '1,000 ft'], ['Rows', '20'], ['Service', '400 A']],
-    rows: [['Set up', 'Clearing, fence, power, water, buildings'], ['The plan', 'Every stage in steps, with people and dates'], ['The budget', 'Capital, running costs and cash by month'], ['The season', 'Run on the plan, checked as it goes']],
+    rows: [['Set up', 'Clearing, roads and a bridge, fence, power, a well, paving'], ['The plan', 'Every stage in steps, with people and dates'], ['The budget', 'Capital, running costs and cash by month'], ['The season', 'Run on the plan, checked as it goes']],
     to: '#farms', cta: 'See farms' },
   { id: 'products', tab: 'Products', sub: 'Containers and apps', Drawing: PlanContainer,
     tb: ['Drying room in a 40 ft container', '2 AC units', '2 dehumidifiers', '2 fans'],
@@ -219,9 +219,12 @@ function Rebuild() {
 const FARM_PHOTOS = [
   ['farm-before', 'Before', 'Woods, marked out', 'The site from above before the build: woods, with the first clearing and access roads cut in'],
   ['farm-clearing', 'Clearing', 'Trees down and chipped', 'An excavator with a mulching head clearing trees'],
+  ['farm-bridge-set', 'The bridge', 'Precast sections, set by crane', 'Four precast concrete bridge sections set side by side in the woods'],
+  ['farm-bridge', 'The bridge, open', 'The road in, between its walls', 'The finished bridge: the road running between two concrete walls with fence posts set'],
   ['farm-after', 'Graded', 'The field and the yard take shape', 'The site from above part way through: the field graded and fenced, the yard and the storm pond in'],
   ['farm-containers', 'Containers', 'Set on a gravel pad', 'Two shipping containers set on a gravel pad'],
-  ['farm-water', 'Water', 'Well pumps and controls', 'The well room: pumps, pressure tank and controls on the wall'],
+  ['farm-water', 'The well', 'Pumps, pressure tank and controls', 'The well room: pumps, pressure tank and controls on the wall'],
+  ['farm-paving', 'Paving', 'The yard and the road', 'The yard freshly paved, with the screened fence behind it'],
   ['farm-road', 'After', 'Paved, fenced and working', 'The finished site from above: the paved road and yard, the fence, and the buildings in place'],
 ]
 
@@ -349,12 +352,12 @@ export default function Home() {
           <div className="st-wrap">
             <div className="st-head2">
               <h2 className="st-h2" id="h-farm">Farms</h2>
-              <p className="st-lede"><b>We set the farm up, then build it into a business that works.</b> Clearing, fence, power, water and buildings first. Then a plan for the season and a budget for the money.</p>
+              <p className="st-lede"><b>We set the farm up, then build it into a business that works.</b> Clearing, roads, fence, power, water and buildings first. Then a plan for the season and a budget for the money.</p>
             </div>
             <FarmSite />
 
             <h3 className="st-h3">On the ground</h3>
-            <p className="st-sub">One farm site in Rhode Island, from woods to a working field. Built by Sattva Technologies.</p>
+            <p className="st-sub">One farm site in Rhode Island, from woods to a working site: cleared, bridged, fenced, given power and a well, and paved. Built by Sattva Technologies.</p>
             <div className="st-cards st-photos">
               {FARM_PHOTOS.map(([f, k, v, alt]) => (
                 <div className="st-sheet" key={f}><div className="st-stage"><img src={'/media/work/' + f + '.jpg'} alt={alt} loading="lazy" /></div><div className="st-tb"><b>{k}</b><span>{v}</span></div></div>
