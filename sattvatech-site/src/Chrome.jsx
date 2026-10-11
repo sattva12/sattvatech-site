@@ -11,6 +11,7 @@ export const MAIL = 'apatel@sattvatech.com'
 const TABS = [
   { id: 'construction', name: 'Construction', sub: 'Homes and commercial', href: '/#construction' },
   { id: 'farms', name: 'Farms', sub: 'Lean farming', href: '/#farms' },
+  { id: 'samana', name: 'Samana', sub: 'Lean operations software', href: '/#samana' },
   { id: 'products', name: 'Products', sub: 'Containers and apps', href: '/#products' },
 ]
 

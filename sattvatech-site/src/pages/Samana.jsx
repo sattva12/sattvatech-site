@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SiteHeader, SiteFoot, APP, FARM } from '../Chrome.jsx'
+import Proof from '../Proof.jsx'
 import '../samana.css'
 
 export { APP, FARM }
@@ -82,7 +83,7 @@ export function SamanaNav({ here }) {
     : here === 'samana' ? <a className="sm-btn go" href={APP}>Start free</a>
     : here === 'farmmetric' ? <a className="sm-btn go" href={FARM}>Free trial</a>
     : (here === 'ag' || here === 'construction' || here === 'containers') ? <a className="sm-btn go" href="#talk">Talk to us</a> : null
-  const tab = (here === 'construction' || here === 'samana' || here === 'quote') ? 'construction' : (here === 'ag' || here === 'farmmetric') ? 'farms' : here === 'containers' ? 'products' : undefined
+  const tab = here === 'samana' ? 'samana' : (here === 'construction' || here === 'quote') ? 'construction' : (here === 'ag' || here === 'farmmetric') ? 'farms' : here === 'containers' ? 'products' : undefined
   return <SiteHeader here={tab} cta={cta} />
 }
 export function SamanaFoot() {
@@ -120,7 +121,7 @@ const PIECES = [
 ]
 
 export default function Samana() {
-  useEffect(() => { document.title = 'Samana: takeoffs, quotes and work orders for contractors' }, [])
+  useEffect(() => { document.title = 'Samana: lean operations software for businesses that build, grow and make things' }, [])
   return (
     <div className="sm">
       <SamanaNav here="samana" />
@@ -128,8 +129,8 @@ export default function Samana() {
       <header className="sm-hero sm-grid">
         <div className="sm-wrap">
           <div>
-            <h1>Draw the job. Samana prices every stud.</h1>
-            <p className="lede">Samana, from Sattva Technologies, is your own general contractor setup: the takeoff, the drawings, the customer's quote, the crew's work order and the cash, all from one drawing. Built by a licensed Massachusetts construction supervisor, for contractors who do the work.</p>
+            <h1 className="sm-h1-long">Lean operations software for businesses that build, grow and make things.</h1>
+            <p className="lede">Samana takes a job from the first measurement to the last dollar. Takeoff counts every piece and prices it. Lean turns it into steps with dates, crews and materials, and tells you when to order. Flow shows the cash by month. We built it to run our own construction and farm work. It runs any operation that has steps, people and materials.</p>
             <div className="acts"><a className="sm-btn go" href={APP}>Start with a free sample job</a><a className="sm-btn ghost" href="#sheets">See it work</a></div>
             <small>Sign in with Google or your email. Your first company comes with a sample 3-floor job to take apart.</small>
           </div>
@@ -149,9 +150,17 @@ export default function Samana() {
           <p className="sm-sub">Change a wall and the price, the work order and the cash flow change with it. No copying numbers between spreadsheets.</p>
           <div className="row">
             <div className="sm-arm"><h3>Takeoff</h3><p className="what">Builds the job.</p><ul><li>Plans, levels and pieces of work</li><li>Every material, hour and price</li><li>Quote, drawings and work order</li></ul></div>
-            <div className="sm-arm"><h3>Lean</h3><p className="what">Plans the work.</p><ul><li>Steps in order, with the people each needs</li><li>Monday to Friday, unless you record an actual</li><li>For farms: the season from seed to sale</li></ul></div>
+            <div className="sm-arm"><h3>Lean</h3><p className="what">Plans the work.</p><ul><li>Steps in order, with the people each needs</li><li>Monday to Friday, unless you record an actual</li><li>A build, a season or a production run, stage by stage</li></ul></div>
             <div className="sm-arm"><h3>Flow</h3><p className="what">Follows the cash.</p><ul><li>What comes in and goes out, by month</li><li>Every rev and how it moved the money</li><li>Cost codes on every dollar</li></ul></div>
           </div>
+        </div>
+      </section>
+
+      <section className="sm-arms" aria-labelledby="proof" style={{ paddingTop: 0 }}>
+        <div className="sm-wrap">
+          <h2 className="sm-h2" id="proof">One platform, three kinds of work.</h2>
+          <p className="sm-sub">Construction and farms are where we built it and proved it. A production run reads the same way: the same three views, whatever the job is.</p>
+          <Proof />
         </div>
       </section>
 

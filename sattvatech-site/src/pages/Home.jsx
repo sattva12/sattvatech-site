@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { SiteHeader, SiteFoot, APP, FARM, TEL, TEL_HREF, MAIL } from '../Chrome.jsx'
 import ContactForm from './ContactForm.jsx'
 import { PlanBasement, PlanDeck, PlanFarm, PlanContainer, PlanSoftware, PhoneFarmmetric } from '../drawings.jsx'
+import Proof from '../Proof.jsx'
 import '../samana.css'
 import '../site.css'
 
@@ -26,18 +27,18 @@ const LEVELS = [
     kpis: [['Fence', '1,000 ft'], ['Rows', '20'], ['Cameras', '14']],
     rows: [['Camera poles', '6, at 16 ft'], ['Power', '400 A, 330 ft line'], ['Containers', 'Power, drying, lab'], ['The season', 'Planned in Lean']],
     to: '#farms', cta: 'See farms' },
+  { id: 'samana', tab: 'Samana', sub: 'Lean operations software', Drawing: PlanSoftware,
+    tb: ['Samana: Takeoff, Lean, Flow', 'Farmmetric in the field', 'One job, one set of numbers'],
+    big: 'Samana', cap: 'Lean operations software for businesses that build, grow and make things.',
+    kpis: [['Takeoff', 'Build'], ['Lean', 'Run'], ['Flow', 'Cash']],
+    rows: [['Takeoff', 'Counts and prices every piece'], ['Lean', 'Steps, crews, dates, orders'], ['Flow', 'Cash by month'], ['Farmmetric', 'The crew\u2019s phone']],
+    to: '#samana', cta: 'See Samana' },
   { id: 'products', tab: 'Products', sub: 'Container rooms, built to order', Drawing: PlanContainer,
     tb: ['Drying room in a 40 ft container', '2 AC units', '2 dehumidifiers', '2 fans'],
     big: '40 ft', cap: 'A working room built inside a container, in our shop or on your site.',
     kpis: [['AC', '2 units'], ['Dehumidifiers', '2'], ['Fans', '3,500 CFM']],
     rows: [['Rooms', 'Drying, lab, grow, storage'], ['Also', 'Site office, power room'], ['Ways to buy', 'Shipped, built, or the design'], ['Flyer', 'One page, PDF']],
     to: '#products', cta: 'See products' },
-  { id: 'software', tab: 'Software', sub: 'Samana and Farmmetric', Drawing: PlanSoftware,
-    tb: ['Samana: Takeoff, Lean, Flow', 'Farmmetric in the field', 'One job, one set of numbers'],
-    big: 'Samana', cap: 'Our own software. Every job we build is drawn, priced and scheduled in it.',
-    kpis: [['Takeoff', 'Build'], ['Lean', 'Run'], ['Flow', 'Cash']],
-    rows: [['Takeoff', 'Drawings and every quantity'], ['Lean', 'The plan, the crew, the dates'], ['Flow', 'Cash by month'], ['Farmmetric', 'The crew’s phone']],
-    to: '/samana', cta: 'See Samana' },
 ]
 
 function Opening() {
@@ -58,7 +59,7 @@ function Opening() {
         <div className="st-head">
           <h1 id="st-h1">Making things work.</h1>
           <div>
-            <p className="st-lede">Sattva Technologies builds homes, farms and container rooms, and writes the software that draws, prices and schedules every one of them.</p>
+            <p className="st-lede"><b>We do the work, and we built the software that runs it.</b> Homes, farms and container rooms, each one drawn, priced and scheduled in Samana, our lean operations platform.</p>
             <div className="st-acts">
               <a className="st-btn primary" href="#construction">See the work</a>
               <a className="st-btn" href="#talk">Talk about a project</a>
@@ -76,7 +77,7 @@ function Opening() {
                 </button>
               ))}
             </div>
-            <p className="st-note">One company. Pick a line of work to put it on the sheet.</p>
+            <p className="st-note">One company. Pick a level to put it on the sheet.</p>
           </div>
 
           <div className="st-sheet" role="tabpanel" aria-label={L.tab}>
@@ -272,12 +273,12 @@ const ROOMS = [
 
 export default function Home() {
   const [here, setHere] = useState(null)
-  useEffect(() => { document.title = 'Sattva Technologies: making things work' }, [])
+  useEffect(() => { document.title = 'Sattva Technologies: we do the work, and we built the software that runs it' }, [])
   useEffect(() => {
     if (window.location.hash) { const el = document.getElementById(window.location.hash.slice(1)); if (el) el.scrollIntoView() }
     if (!('IntersectionObserver' in window)) return undefined
     const io = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) setHere(e.target.id) }) }, { rootMargin: '-45% 0px -50% 0px' })
-    ;['top', 'construction', 'farms', 'products', 'talk'].forEach((id) => { const el = document.getElementById(id); if (el) io.observe(el) })
+    ;['top', 'construction', 'farms', 'samana', 'products', 'talk'].forEach((id) => { const el = document.getElementById(id); if (el) io.observe(el) })
     return () => io.disconnect()
   }, [])
 
@@ -317,9 +318,10 @@ export default function Home() {
             <p className="st-sub">Every job exists twice: as the thing we built and as its drawing. Flip any project between the two.</p>
             <div className="st-cards">{BUILDS.map((p) => <ProjectSheet key={p.name} p={p} />)}</div>
 
-            <h3 className="st-h3" id="platform">The platform: Samana</h3>
-            <p className="st-sub">We plan and price our own jobs in Samana. Here is the sample house going through it, start to finish.</p>
-            <Platform />
+            <div className="st-bridge">
+              <p><b>Drawn, priced and scheduled in Samana.</b> We run our construction work on our own software, from the first measurement to the last payment.</p>
+              <a className="st-btn" href="#samana">See the platform</a>
+            </div>
           </div>
         </section>
 
@@ -362,6 +364,39 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="st-sec" id="samana" aria-labelledby="h-sam">
+          <div className="st-wrap">
+            <div className="st-head2">
+              <h2 className="st-h2" id="h-sam">Samana</h2>
+              <p className="st-lede">Lean operations software for businesses that build, grow and make things.</p>
+            </div>
+            <div className="st-two st-wide">
+              <div className="st-sheet">
+                <div className="st-sheet-top"><span className="st-lvl">Platform</span><b>Takeoff, Lean, Flow</b></div>
+                <div className="st-stage"><PlanSoftware still /></div>
+                <div className="st-tb"><b>Samana</b><span>Every item has a date and a cost code</span><span>One job, one set of numbers</span></div>
+              </div>
+              <div className="st-panel">
+                <div className="st-panel-h"><h2>From the first measurement to the last dollar</h2></div>
+                <div className="st-total"><h4>We built it to run our own construction and farm work.</h4><p>It runs any operation that has steps, people and materials: plan the work, price every piece, schedule it, hand it to the crew, check it was done, and see the money by month.</p></div>
+                <div className="st-rows st-rtop st-rooms">
+                  {[['Takeoff', 'Counts every piece and prices it'], ['Lean', 'Turns it into steps with dates, crews and materials, and tells you when to order'], ['Flow', 'Shows the cash by month'], ['Farmmetric', 'The crew works from a phone, and what they log becomes the real numbers']]
+                    .map(([k, v]) => <div className="st-row" key={k}><span>{k}</span><b>{v}</b></div>)}
+                </div>
+                <div className="st-panel-f"><a className="st-btn primary" href={APP}>Start with a free sample job</a><Link className="st-btn" to="/samana">What Samana does</Link></div>
+              </div>
+            </div>
+
+            <h3 className="st-h3">One platform, three kinds of work</h3>
+            <p className="st-sub">Construction and farms are where we built it and proved it. A production run reads the same way: the same three views, whatever the job is.</p>
+            <Proof />
+
+            <h3 className="st-h3" id="platform">See it run</h3>
+            <p className="st-sub">The sample house going through Samana, recorded in the real app.</p>
+            <Platform />
+          </div>
+        </section>
+
         <section className="st-sec" id="products" aria-labelledby="h-prod">
           <div className="st-wrap">
             <div className="st-head2">
@@ -386,8 +421,8 @@ export default function Home() {
             <p className="st-sub">It works for us. See if it works for you.</p>
             <div className="st-cards st-apps">
               <div className="st-panel st-prod">
-                <div className="st-band">Samana<small>For contractors</small></div>
-                <p>Takeoff, drawings, the customer quote, the crew's work order and the cash flow, from one drawing.</p>
+                <div className="st-band">Samana<small>For any operation</small></div>
+                <p>Lean operations software: the takeoff, the plan, the crew and the cash, for any business that runs on steps, people and materials.</p>
                 <div className="st-price">From $10<small>a month</small></div>
                 <div className="st-panel-f"><a className="st-btn primary" href={APP}>Start with a free sample job</a><Link className="st-btn" to="/samana">What it does</Link></div>
               </div>
