@@ -18,7 +18,7 @@ const LEVELS = [
     photo: '/media/work/com-roof.jpg', alt: 'Rooftop air units set on a steel frame on a commercial building', ptb: ['Commercial fit-out', 'Rooftop air units on a steel frame'],
     tb: ['A finished basement, as drawn', '876 SF', '2 bedrooms, 1 bath', 'Ceiling 7′ 6″'],
     big: 'Homes and commercial', cap: 'Quality work, planned step by step and checked as it is built.',
-    m: [['Licensed', 'in Massachusetts'], ['Every step', 'checked with photos'], ['Every change', 'written up first']],
+    m: [['Licensed', 'in Massachusetts'], ['Permits', 'city, state and fire marshal'], ['Every step', 'checked with photos']],
     kpis: [['Construction Supervisor', 'CS-122574'], ['Home Improvement', 'HIC 218120'], ['Experience', '25+ years']],
     rows: [['Homes', 'Basements, bathrooms, decks, floors, windows'], ['Commercial', 'Fit-outs, planned around your opening date'], ['Quality', 'Each step checked before the next starts'], ['License', 'MA CS-122574, HIC 218120']],
     to: '#construction', cta: 'See construction' },
@@ -165,14 +165,55 @@ function ProjectSheet({ p }) {
 
 const BUILDS = [
   { name: 'Commercial fit-out', place: '2019 to 2020', kind: 'Commercial', photo: '/media/work/com-room.jpg', alt: 'A finished white room with a washable floor, a steel sink and capped services',
-    facts: [['Rooms', 'Washable walls and floors'], ['Services', 'Power, water and air to every room']] },
+    facts: [['By', 'Sattva Technologies'], ['Scope', 'Design, permits, power and rooms']] },
   { name: 'Power for the building', place: '2019 to 2020', kind: 'Commercial', photo: '/media/work/com-generator.jpg', alt: 'A standby generator being lifted into place by crane behind a new retaining wall',
-    facts: [['Standby', 'Generator set by crane'], ['Service', 'New transformer and switchgear']] },
+    facts: [['By', 'Sattva Technologies'], ['Power', 'New service, switchgear and generator']] },
   { name: 'Basement finish', place: 'Richmond, Rhode Island', kind: 'Home', Drawing: PlanBasement, note: 'The finished basement',
     facts: [['Area', '876 SF'], ['Rooms', '2 bed, 1 bath'], ['Ceiling', '7′ 6″']] },
   { name: 'Bathroom remodel', place: 'Narragansett, Rhode Island', kind: 'Home', note: 'The finished bathroom',
     facts: [['Scope', 'Full bathroom'], ['From', 'The studs out']] },
 ]
+
+/* a commercial job carried end to end: an old mill building, before, during and after */
+const MILL = [
+  ['Before', 'mill-before', 'The building as we found it', 'A derelict brick mill building with broken windows and debris in the yard'],
+  ['Inside, before', 'mill-before-inside', 'Bare timber and a worn floor', 'The empty upper floor before work: old timber posts and a worn floor'],
+  ['During', 'mill-during', 'New floor, new steel framing', 'A new sealed floor with steel wall framing going up between the columns'],
+  ['Inside, after', 'mill-after-inside', 'Finished rooms, lit and sprinklered', 'A finished white room with a sealed floor, new lighting and sprinklers'],
+  ['After', 'mill-after-yard', 'The same wing, rebuilt', 'The same brick wing rebuilt: new windows, new doors and a finished yard'],
+]
+const CARRY = [
+  ['Design', 'Mechanical, electrical and plumbing, and the production rooms and labs'],
+  ['Pricing', 'Every trade quoted and compared'],
+  ['Hiring', 'The contractors and trades for the job'],
+  ['Permits', 'The city and the state'],
+  ['Fire marshal', 'Reviews, inspections and sign-off'],
+  ['Power', 'The electric company: new service and transformers'],
+  ['On site', 'Project manager and builder, from start to finish'],
+]
+function Rebuild() {
+  const [i, setI] = useState(0)
+  const [k, f, cap, alt] = MILL[i]
+  return (
+    <div className="st-two st-wide">
+      <div className="st-sheet">
+        <div className="st-sheet-top st-lvlrow">
+          <span className="st-lvl">Rebuild</span>
+          <span className="st-seg" role="group" aria-label="Stage of the job">
+            {MILL.map(([n], x) => <button key={n} type="button" aria-pressed={x === i} onClick={() => setI(x)}>{n}</button>)}
+          </span>
+        </div>
+        <div className="st-stage st-shot"><img key={f} src={'/media/work/' + f + '.jpg'} alt={alt} loading="lazy" /></div>
+        <div className="st-tb"><b>{k}: {cap}</b><span>An old mill building, Maryland</span><span>2017 to 2018</span><span>Owner's representative</span></div>
+      </div>
+      <div className="st-panel">
+        <div className="st-panel-h"><h2>Commercial work, carried end to end</h2></div>
+        <div className="st-total"><h4>Owner's representative, engineer, project manager and builder, in one.</h4><p>On a commercial job we take the whole thing, from the first drawing to the final sign-off, and deal with everyone it takes to get there.</p></div>
+        <div className="st-rows st-rtop st-rooms">{CARRY.map(([a, b]) => <div className="st-row" key={a}><span>{a}</span><b>{b}</b></div>)}</div>
+      </div>
+    </div>
+  )
+}
 
 /* the farm build, in the order it happened */
 const FARM_PHOTOS = [
@@ -289,6 +330,10 @@ export default function Home() {
               </div>
             </div>
 
+            <h3 className="st-h3">Commercial</h3>
+            <p className="st-sub">Design, permits, power and the build, with one person answerable for all of it.</p>
+            <Rebuild />
+
             <h3 className="st-h3" id="work">Examples</h3>
             <p className="st-sub">The finished work first. Flip any project to see its drawing.</p>
             <div className="st-cards">{BUILDS.map((p) => <ProjectSheet key={p.name} p={p} />)}</div>
@@ -309,7 +354,7 @@ export default function Home() {
             <FarmSite />
 
             <h3 className="st-h3">On the ground</h3>
-            <p className="st-sub">One farm site, from woods to a working field.</p>
+            <p className="st-sub">One farm site in Rhode Island, from woods to a working field. Built by Sattva Technologies.</p>
             <div className="st-cards st-photos">
               {FARM_PHOTOS.map(([f, k, v, alt]) => (
                 <div className="st-sheet" key={f}><div className="st-stage"><img src={'/media/work/' + f + '.jpg'} alt={alt} loading="lazy" /></div><div className="st-tb"><b>{k}</b><span>{v}</span></div></div>
