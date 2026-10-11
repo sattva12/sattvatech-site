@@ -76,7 +76,7 @@ export default function Gov() {
             {/* Company info */}
             <div style={{ flex: 1 }}>
               <h1 style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', fontWeight: 400, color: CREAM, margin: '0 0 6px' }}>Sattva Technologies LLC</h1>
-              <p style={{ fontSize: 13, color: '#aaa', fontFamily: 'sans-serif', margin: '0 0 12px' }}>Seekonk, MA 02771 · (508) 343-0101 · <a href="mailto:apatel@sattvatech.com" style={{ color: RED, textDecoration: 'none' }}>apatel@sattvatech.com</a> · <a href="https://sattvatech.com" style={{ color: RED, textDecoration: 'none' }}>sattvatech.com</a></p>
+              <p style={{ fontSize: 13, color: '#aaa', fontFamily: 'sans-serif', margin: '0 0 12px' }}>Seekonk, MA 02771 · (508) 916-8447 · <a href="mailto:apatel@sattvatech.com" style={{ color: RED, textDecoration: 'none' }}>apatel@sattvatech.com</a> · <a href="https://sattvatech.com" style={{ color: RED, textDecoration: 'none' }}>sattvatech.com</a></p>
               <p style={{ fontSize: 13, color: '#ccc', fontFamily: 'sans-serif', lineHeight: 1.7, maxWidth: 660, margin: '0 0 20px', fontWeight: 300 }}>
                 Sattva Technologies LLC is a small business providing MEP coordination, construction management, and owner's representation services. With 25+ years spanning aerospace, semiconductor, and construction sectors, we bring manufacturing-grade process engineering to federal and commercial construction projects. SAM.gov registered and actively pursuing government contracting opportunities with DOD, USACE, and VA agencies.
               </p>
@@ -216,7 +216,7 @@ export default function Gov() {
                   <div style={{ fontSize: 10, color: MUTED, letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: 10 }}>Primary Contact</div>
                   <div style={{ fontSize: 16, color: CHARCOAL, marginBottom: 4 }}>Atul Patel</div>
                   <div style={{ fontSize: 12, color: FAINT, fontFamily: 'sans-serif', marginBottom: 10 }}>CEO & Owner/Operator</div>
-                  <a href="tel:5083430101" style={{ display: 'block', fontSize: 14, color: RED, fontFamily: 'sans-serif', marginBottom: 4, textDecoration: 'none' }}>(508) 343-0101</a>
+                  <a href="tel:5089168447" style={{ display: 'block', fontSize: 14, color: RED, fontFamily: 'sans-serif', marginBottom: 4, textDecoration: 'none' }}>(508) 916-8447</a>
                   <a href="mailto:apatel@sattvatech.com" style={{ display: 'block', fontSize: 13, color: RED, fontFamily: 'sans-serif', textDecoration: 'none' }}>apatel@sattvatech.com</a>
                 </div>
                 <div style={{ marginBottom: 28 }}>
