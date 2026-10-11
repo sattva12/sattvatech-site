@@ -63,6 +63,14 @@ export default function Landing() {
             style={{ background: 'none', border: 'none', color: '#aaa', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif', transition: 'color 0.2s' }}
             onMouseEnter={e => e.target.style.color = RED} onMouseLeave={e => e.target.style.color = '#aaa'}
           >04 Software</button>
+          <button onClick={() => navigate('/containers')}
+            style={{ background: 'none', border: 'none', color: '#aaa', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.target.style.color = RED} onMouseLeave={e => e.target.style.color = '#aaa'}
+          >Containers</button>
+          <button onClick={() => navigate('/apps')}
+            style={{ background: 'none', border: 'none', color: '#fff', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.target.style.color = RED} onMouseLeave={e => e.target.style.color = '#fff'}
+          >Sign in</button>
           <a href="mailto:apatel@sattvatech.com"
             style={{ fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: 'sans-serif', color: RED, border: `1px solid ${RED}`, padding: '7px 16px', textDecoration: 'none' }}
             onMouseEnter={e => { e.target.style.background = RED; e.target.style.color = '#fff'; }}

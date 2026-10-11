@@ -26,7 +26,7 @@
 .sm-btn.ghost { border-color: rgba(234,242,252,.55); color: var(--line); background: transparent; }
 .sm-btn.ghost:hover { border-color: var(--line); }
 .sm-nav .sm-btn { height: 38px; font-size: 15px; padding: 0 16px; }
-@media (max-width: 860px) { .sm-nav a.sm-l { display: none; } }
+@media (max-width: 860px) { .sm-nav a.sm-l { display: none; } .sm-nav a.sm-l.keep { display: inline; margin-left: auto; } .sm-nav .sm-wrap { gap: 14px; } }
 
 /* hero: the takeoff drawing itself */
 .sm-hero { padding: 64px 0 0; overflow: hidden; }
@@ -179,3 +179,15 @@
 .sm.fm .sm-form input:focus-visible, .sm.fm .sm-form textarea:focus-visible { border-color: #23613f; }
 .sm-err { color: #a3261b; font-size: 15px; margin-left: 12px; }
 @media (max-width: 640px) { .sm-form { grid-template-columns: 1fr; } }
+
+/* sign in: one card for each app */
+.sm-apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.sm-app { border: 2px solid #16212c; border-radius: 10px; padding: 22px 22px 20px; background: #fff; display: flex; flex-direction: column; gap: 10px; }
+.sm-app h2 { margin: 0; font: 600 34px/1 'IBM Plex Sans Condensed', 'Arial Narrow', sans-serif; }
+.sm-app p { margin: 0; font-size: 16px; line-height: 1.5; color: #3b4652; flex: 1; }
+.sm-app .who { font-size: 14px; color: #5a6878; }
+.sm-app .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.sm-app.fmc { border-color: #23613f; }
+.sm-flyer { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: center; }
+.sm-flyer img { width: 100%; height: auto; border: 1px solid #c9d3df; border-radius: 4px; box-shadow: 0 10px 24px -14px rgba(0,0,0,.45); }
+@media (max-width: 640px) { .sm-flyer { grid-template-columns: 1fr; } .sm-flyer img { max-width: 260px; } }

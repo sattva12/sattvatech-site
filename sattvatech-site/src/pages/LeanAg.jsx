@@ -59,7 +59,7 @@ export default function LeanAg() {
       <section className="sm-arms" aria-labelledby="us">
         <div className="sm-wrap">
           <h2 className="sm-h2" id="us">It works for us. See if it works for you.</h2>
-          <p className="sm-sub">We run our own farm work on these tools. Farmmetric starts with a 30-day free trial; Samana starts with a sample job you can take apart.</p>
+          <p className="sm-sub">We run our own farm work on <Link to="/farmmetric" style={{ color: 'inherit' }}>Farmmetric</Link>, our app for growers, with Samana's Lean and Flow behind it. Farmmetric starts with a 30-day free trial.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
             <a className="sm-btn go" href={FARM}>Try Farmmetric free for 30 days</a>
             <Link className="sm-btn" style={{ border: '2px solid #16212c', color: '#16212c' }} to="/samana">See Samana</Link>

@@ -46,10 +46,21 @@ export default function Construction() {
         </div>
       </section>
 
+      <section className="sm-arms" aria-labelledby="box">
+        <div className="sm-wrap sm-flyer">
+          <a href="/sattva-container-flyer.pdf"><img src="/media/container-flyer.jpg" alt="The container flyer" loading="lazy" /></a>
+          <div>
+            <h2 className="sm-h2" id="box">Containers, built in our shop and shipped anywhere.</h2>
+            <p className="sm-sub">Drying and extraction rooms in 40 ft containers: shipped ready to set, built on site by our crew, or the full design for your builder.</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}><Link className="sm-btn go" to="/containers">See the containers</Link><a className="sm-btn" style={{ border: '2px solid #16212c', color: '#16212c' }} href="/sattva-container-flyer.pdf">Flyer (PDF)</a></div>
+          </div>
+        </div>
+      </section>
+
       <section className="sm-arms" aria-labelledby="us">
         <div className="sm-wrap">
           <h2 className="sm-h2" id="us">It works for us. See if it works for you.</h2>
-          <p className="sm-sub">Every job we run is planned, priced and tracked in Samana. Contractors can use the same app, starting with a free sample job.</p>
+          <p className="sm-sub">Every job we run is planned, priced and tracked in <Link to="/samana" style={{ color: 'inherit' }}>Samana</Link>, our app. Contractors can use the same app, starting with a free sample job.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
             <a className="sm-btn go" href={APP}>Try Samana free</a>
             <Link className="sm-btn" style={{ border: '2px solid #16212c', color: '#16212c' }} to="/quote">Have us write your quote</Link>

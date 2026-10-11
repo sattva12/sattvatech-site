@@ -77,18 +77,21 @@ function Clip({ name, label }) {
 
 export const FARM = 'https://www.myfarmmetric.com'
 export function SamanaNav({ here }) {
-  const signIn = here === 'farmmetric' ? FARM : APP
+  /* the company first: two divisions, the containers, the quote service; the apps live under their divisions and sign in from one place */
+  const cta = here === 'quote' ? <a className="sm-btn go" href="tel:5089168447">Call or text</a>
+    : here === 'samana' ? <a className="sm-btn go" href={APP}>Start free</a>
+    : here === 'farmmetric' ? <a className="sm-btn go" href={FARM}>Free trial</a>
+    : (here === 'ag' || here === 'construction' || here === 'containers') ? <a className="sm-btn go" href="#talk">Talk to us</a> : null
   return (
     <nav className="sm-nav" aria-label="Sattva Technologies">
       <div className="sm-wrap">
         <Link to="/" className="sm-brand"><b>SATTVA</b><span>Technologies</span></Link>
-        <Link className="sm-l" to="/">Services</Link>
-        <Link className="sm-l" to="/construction" aria-current={here === 'construction' ? 'page' : undefined}>Construction</Link>
-        <Link className="sm-l" to="/lean-ag" aria-current={here === 'ag' ? 'page' : undefined}>Lean ag</Link>
-        <Link className="sm-l" to="/samana" aria-current={here === 'samana' ? 'page' : undefined}>Samana</Link>
-        <Link className="sm-l" to="/farmmetric" aria-current={here === 'farmmetric' ? 'page' : undefined}>Farmmetric</Link>
+        <Link className="sm-l" to="/construction" aria-current={here === 'construction' || here === 'samana' ? 'page' : undefined}>Construction</Link>
+        <Link className="sm-l" to="/lean-ag" aria-current={here === 'ag' || here === 'farmmetric' ? 'page' : undefined}>Lean ag</Link>
+        <Link className="sm-l" to="/containers" aria-current={here === 'containers' ? 'page' : undefined}>Containers</Link>
         <Link className="sm-l" to="/quote" aria-current={here === 'quote' ? 'page' : undefined}>Quote service</Link>
-        {here === 'quote' ? <a className="sm-btn go" href="tel:5089168447">Call or text</a> : (here === 'ag' || here === 'construction') ? <a className="sm-btn go" href="#talk">Talk to us</a> : <a className="sm-btn go" href={signIn}>{here === 'farmmetric' ? 'Farmmetric sign in' : 'Samana sign in'}</a>}
+        <Link className="sm-l keep" to="/apps" aria-current={here === 'apps' ? 'page' : undefined}>Sign in</Link>
+        {cta}
       </div>
     </nav>
   )

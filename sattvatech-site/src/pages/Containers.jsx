@@ -7,15 +7,15 @@ import '../samana.css'
 export default function Containers() {
   useEffect(() => { document.title = 'Drying and extraction containers: Sattva Technologies' }, [])
   return (
-    <div className="sm fm">
-      <SamanaNav here="ag" />
+    <div className="sm">
+      <SamanaNav here="containers" />
       <header className="sq-hero sm-grid">
         <div className="sm-wrap">
           <h1>Drying and extraction rooms, built in a container and shipped anywhere.</h1>
           <p>We design and build 40 ft containers set up for drying or for cold ethanol extraction: insulated, wired, cooled and dehumidified, ready to set on a pad and connect. We ship them, build them on your site, or sell you the design.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
             <a className="sm-btn go" href="#talk">Price a container</a>
-            <Link className="sm-btn ghost" to="/lean-ag">How we plan a farm</Link>
+            <a className="sm-btn ghost" href="/sattva-container-flyer.pdf">Get the flyer (PDF)</a>
           </div>
         </div>
       </header>
@@ -53,6 +53,17 @@ export default function Containers() {
             <li><h3>We build it</h3><p>In our shop or on your site, checked off step by step with photos.</p></li>
             <li><h3>Set and running</h3><p>Shipped or finished in place, connected, tested and handed over with its drawings.</p></li>
           </ol>
+        </div>
+      </section>
+
+      <section className="sm-arms" aria-labelledby="fly">
+        <div className="sm-wrap sm-flyer">
+          <a href="/sattva-container-flyer.pdf"><img src="/media/container-flyer.jpg" alt="The container flyer: drying and extraction rooms built in a container, three ways to buy, what goes inside, how it works" loading="lazy" /></a>
+          <div>
+            <h2 className="sm-h2" id="fly">The flyer.</h2>
+            <p className="sm-sub">One page to hand a grower or send by email: the three ways to buy, what goes in each container, and how a job goes. Part of our construction work; we plan the farm around it on the Lean agriculture side.</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}><a className="sm-btn go" href="/sattva-container-flyer.pdf">Download the PDF</a><Link className="sm-btn" style={{ border: '2px solid #16212c', color: '#16212c' }} to="/lean-ag">Lean agriculture</Link></div>
+          </div>
         </div>
       </section>
 
