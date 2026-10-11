@@ -89,3 +89,43 @@ export function FarmmetricPhone() {
     </div>
   )
 }
+
+/* ---------- Sai, the helper inside the app ---------- */
+const SAI = [
+  ['Tell it what you learned', 'A quote, a count, a rate or a time. Sai proposes the change and shows what it does to the price and the days.'],
+  ['You approve every change', 'Apply, undo or skip. Sai never changes a number on its own and never makes one up.'],
+  ['Ask it about the job', 'It answers from the job\u2019s own numbers.'],
+  ['Give it your photos', 'It says what each one shows, asks where it belongs, and files it under the right step.'],
+  ['Ask it where things are', 'It knows the app, and opens the page for you.'],
+  ['On a farm job', 'It walks you through the open questions and files your answers.'],
+]
+export function Sai() {
+  return (
+    <div className="st-two st-wide">
+      <div className="st-sheet">
+        <div className="st-sheet-top"><span className="st-lvl">Example</span><b>Sai</b></div>
+        <div className="st-stage">
+          <div className="st-sai" role="img" aria-label="An example: the builder tells Sai the electrician's quote came in at $9,800. Sai finds the electrical rough-in line and proposes changing it from $8,400 to $9,800, which adds $1,400 to the price and leaves the days as they are, with Apply and Skip buttons. Then the builder sends three photos, and Sai says the first shows the panel wired and asks whether it belongs to the electrical rough-in step.">
+            <div className="st-sai-h"><b>Sai</b><span>Sample house</span></div>
+            <p className="me">The electrician’s quote came in at $9,800.</p>
+            <p className="it">That is the Electrical rough-in line. Here is the change.</p>
+            <div className="st-sai-c">
+              <div><b>Electrical rough-in</b><span>$8,400 to $9,800</span></div>
+              <dl><div><dt>Price</dt><dd>+$1,400</dd></div><div><dt>Days</dt><dd>No change</dd></div></dl>
+              <div className="bt"><i className="go">Apply</i><i>Skip</i></div>
+            </div>
+            <p className="me">Here are 3 photos from today.</p>
+            <p className="it">The first shows the panel wired. Does it go under Electrical rough-in?</p>
+            <div className="st-sai-c"><div className="bt"><i className="go">File it</i><i>Pick another step</i></div></div>
+          </div>
+        </div>
+        <div className="st-tb"><b>Sai proposes. You decide.</b><span>An example, not a real job</span></div>
+      </div>
+      <div className="st-panel">
+        <div className="st-panel-h"><h2>What Sai does</h2></div>
+        <div className="st-total"><h4>An AI helper that knows the job and the app.</h4><p>Talk to it the way you would talk to a good assistant on site. It does the typing and keeps the project book in order.</p></div>
+        <div className="st-rows st-rtop st-rooms">{SAI.map(([a, b]) => <div className="st-row" key={a}><span>{a}</span><b>{b}</b></div>)}</div>
+      </div>
+    </div>
+  )
+}

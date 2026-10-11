@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SiteHeader, SiteFoot, APP, FARM } from '../Chrome.jsx'
 import Proof from '../Proof.jsx'
-import { Platform } from '../Walkthrough.jsx'
+import { Platform, Sai } from '../Walkthrough.jsx'
 import '../samana.css'
 
 export { APP, FARM }
@@ -123,6 +123,7 @@ const PIECES = [
 
 export default function Samana() {
   useEffect(() => { document.title = 'Samana: lean operations software for businesses that build, grow and make things' }, [])
+  useEffect(() => { if (window.location.hash) { const el = document.getElementById(window.location.hash.slice(1)); if (el) el.scrollIntoView() } }, [])
   return (
     <div className="sm">
       <SamanaNav here="samana" />
@@ -170,6 +171,14 @@ export default function Samana() {
           <h2 className="sm-h2" id="run-h">See it run.</h2>
           <p className="sm-sub">Recorded in the real app: the sample house through Takeoff and Flow, and a sample farm through Lean and Farmmetric.</p>
           <div className="st st-embed"><Platform /></div>
+        </div>
+      </section>
+
+      <section className="sm-arms" id="sai" aria-labelledby="sai-h" style={{ paddingTop: 0 }}>
+        <div className="sm-wrap">
+          <h2 className="sm-h2" id="sai-h">Sai, the helper that guides you through it.</h2>
+          <p className="sm-sub">Sai is the AI helper built into Samana. Tell it what changed on the job, or hand it your photos, and it works out where that goes. Sai is new: we are using it on our own jobs first, and it is not in the public sign-in yet.</p>
+          <div className="st st-embed"><Sai /></div>
         </div>
       </section>
 

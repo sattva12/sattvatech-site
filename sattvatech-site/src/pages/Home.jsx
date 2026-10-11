@@ -23,7 +23,7 @@ const LEVELS = [
     rows: [['Homes', 'Basements, bathrooms, decks, floors, windows'], ['Commercial', 'Fit-outs, planned around your opening date'], ['Quality', 'Each step checked before the next starts'], ['License', 'MA CS-122574, HIC 218120']],
     to: '#construction', cta: 'See construction' },
   { id: 'farms', tab: 'Farms', sub: 'Set up, and made to work', Drawing: PlanFarm,
-    photo: '/media/work/farm-after.jpg', alt: 'A farm site from above: the cleared and graded field, the yard, the storm pond and the access road', ptb: ['A farm site we built, from above', 'Rhode Island', 'Cleared, graded, fenced and serviced'],
+    photo: '/media/work/farm-after.jpg', alt: 'A farm site from above, part way through the build: the graded field, the yard, the storm pond and the access road', ptb: ['A farm site we built, from above', 'Rhode Island', 'Part way through: the field graded and fenced'],
     tb: ['Farm site, 5.02 acres', 'Fence 1,000 ft', '20 rows of 272 ft', '400 A service'],
     big: 'From bare land to a working farm', cap: 'We set the farm up, then build it into a business with a plan and a budget.',
     m: [['Set up', 'clearing, fence, power, water'], ['A plan', 'for every stage of the season'], ['A budget', 'by month']],
@@ -180,7 +180,7 @@ const MILL = [
   ['Inside, before', 'mill-before-inside', 'Bare timber and a worn floor', 'The empty upper floor before work: old timber posts and a worn floor'],
   ['During', 'mill-during', 'New floor, new steel framing', 'A new sealed floor with steel wall framing going up between the columns'],
   ['Inside, after', 'mill-after-inside', 'Finished rooms, lit and sprinklered', 'A finished white room with a sealed floor, new lighting and sprinklers'],
-  ['After', 'mill-after-yard', 'The same wing, rebuilt', 'The same brick wing rebuilt: new windows, new doors and a finished yard'],
+  ['After', 'mill-after', 'The finished building', 'The finished building from the street: new windows, new doors, painted walls and planted edges'],
 ]
 const CARRY = [
   ['Design', 'Mechanical, electrical and plumbing, and the production rooms and labs'],
@@ -219,10 +219,10 @@ function Rebuild() {
 const FARM_PHOTOS = [
   ['farm-before', 'Before', 'Woods, marked out', 'The site from above before the build: woods, with the first clearing and access roads cut in'],
   ['farm-clearing', 'Clearing', 'Trees down and chipped', 'An excavator with a mulching head clearing trees'],
-  ['farm-field', 'The field', 'Graded and fenced', 'The graded field with its fence line, ready for planting'],
+  ['farm-after', 'Graded', 'The field and the yard take shape', 'The site from above part way through: the field graded and fenced, the yard and the storm pond in'],
   ['farm-containers', 'Containers', 'Set on a gravel pad', 'Two shipping containers set on a gravel pad'],
   ['farm-water', 'Water', 'Well pumps and controls', 'The well room: pumps, pressure tank and controls on the wall'],
-  ['farm-after', 'After', 'A working site', 'The finished site from above: the field, the yard, the storm pond and the road'],
+  ['farm-road', 'After', 'Paved, fenced and working', 'The finished site from above: the paved road and yard, the fence, and the buildings in place'],
 ]
 
 /* ---------- the farm site, with its layers ---------- */
@@ -403,7 +403,7 @@ export default function Home() {
             <div className="st-cards st-apps">
               <div className="st-panel st-prod">
                 <div className="st-band">Samana<small>Takeoff, Lean, Flow</small></div>
-                <p>The app our own jobs run on. Takeoff draws and prices the job, Lean plans the steps and the crew, and Flow shows the budget and the cash by month.</p>
+                <p>The app our own jobs run on. Takeoff draws and prices the job, Lean plans the steps and the crew, and Flow shows the budget and the cash by month. Sai, its AI helper, guides you through it.</p>
                 <div className="st-price">From $10<small>a month</small></div>
                 <div className="st-panel-f"><a className="st-btn primary" href={APP}>Start with a free sample job</a><Link className="st-btn" to="/samana">See it work</Link></div>
               </div>
@@ -419,6 +419,11 @@ export default function Home() {
                 <div className="st-price">Free<small>for your first quote</small></div>
                 <div className="st-panel-f"><a className="st-btn primary" href={TEL_HREF}>Call or text {TEL}</a><Link className="st-btn" to="/quote">How it works</Link></div>
               </div>
+            </div>
+
+            <div className="st-bridge" id="sai">
+              <p><b>Sai guides you through it.</b> The AI helper inside Samana takes a quote, a count or a photo, works out where it goes, and waits for your OK before anything changes.</p>
+              <Link className="st-btn" to="/samana#sai">Meet Sai</Link>
             </div>
           </div>
         </section>
