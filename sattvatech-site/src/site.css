@@ -88,6 +88,10 @@
 .st-lvl { font: 500 11.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .09em; opacity: .75; }
 .st-stage { flex: 1; display: flex; align-items: center; justify-content: center; padding: 6px 10px 10px; }
 .st-stage img { display: block; width: 100%; aspect-ratio: 720 / 470; object-fit: cover; border-radius: 4px; }
+.st-rcol .st-shot { padding: 6px 10px 10px; }
+.st-rcol .st-shot img { aspect-ratio: auto; height: max(300px, calc(100vh - 480px)); }
+.st-view { margin-left: auto; flex: none; }
+@media (max-width: 560px) { .st-view { display: none; } }
 .st-tb { display: flex; flex-wrap: wrap; gap: 2px 18px; padding: 8px 12px 10px; border-top: 1px solid rgba(255,255,255,.25); font: 500 14px/1.3 var(--cond); }
 .st-tb b { font-weight: 600; margin-right: auto; }
 .st-rev { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-top: 1px solid rgba(255,255,255,.25); }
@@ -261,6 +265,7 @@
 
 /* farms */
 .st-photos .st-sheet-top { display: none; }
+@media (min-width: 900px) { .st-photos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .st-photos .st-stage { padding-top: 10px; }
 .st-season { overflow: hidden; }
 .st-gantt { padding: 6px 16px 16px; }

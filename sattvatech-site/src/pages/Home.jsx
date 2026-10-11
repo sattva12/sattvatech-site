@@ -15,6 +15,7 @@ function Go({ to, className, children, ...rest }) {
 /* ---------- the opening: the work we do, three lines of it ---------- */
 const LEVELS = [
   { id: 'construction', tab: 'Construction', sub: 'Homes and commercial', Drawing: PlanBasement,
+    photo: '/media/work/com-roof.jpg', alt: 'Rooftop air units set on a steel frame on a commercial building', ptb: ['Commercial fit-out', 'Rooftop air units on a steel frame'],
     tb: ['A finished basement, as drawn', '876 SF', '2 bedrooms, 1 bath', 'Ceiling 7′ 6″'],
     big: 'Homes and commercial', cap: 'Quality work, planned step by step and checked as it is built.',
     m: [['Licensed', 'in Massachusetts'], ['Every step', 'checked with photos'], ['Every change', 'written up first']],
@@ -22,6 +23,7 @@ const LEVELS = [
     rows: [['Homes', 'Basements, bathrooms, decks, floors, windows'], ['Commercial', 'Fit-outs, planned around your opening date'], ['Quality', 'Each step checked before the next starts'], ['License', 'MA CS-122574, HIC 218120']],
     to: '#construction', cta: 'See construction' },
   { id: 'farms', tab: 'Farms', sub: 'Set up, and made to work', Drawing: PlanFarm,
+    photo: '/media/work/farm-after.jpg', alt: 'A farm site from above: the cleared and graded field, the yard, the storm pond and the access road', ptb: ['A farm site we built, from above', 'Rhode Island', 'Cleared, graded, fenced and serviced'],
     tb: ['Farm site, 5.02 acres', 'Fence 1,000 ft', '20 rows of 272 ft', '400 A service'],
     big: 'From bare land to a working farm', cap: 'We set the farm up, then build it into a business with a plan and a budget.',
     m: [['Set up', 'clearing, fence, power, water'], ['A plan', 'for every stage of the season'], ['A budget', 'by month']],
@@ -50,8 +52,10 @@ function Opening() {
     const id = setTimeout(() => setI((n) => (n + 1) % LEVELS.length), 7000)
     return () => clearTimeout(id)
   }, [i, auto, hold])
+  const [draw, setDraw] = useState(false)
   const pick = (n) => { setAuto(false); setI((n + LEVELS.length) % LEVELS.length) }
   const L = LEVELS[i]
+  const photo = L.photo && !draw
   return (
     <section className="st-open" id="top" aria-labelledby="st-h1">
       <div className="st-wrap">
@@ -106,9 +110,15 @@ function Opening() {
                 <span className="st-seg" role="group" aria-label="Line of work">
                   {LEVELS.map((l, n) => <button key={l.id} type="button" aria-pressed={n === i} onClick={() => pick(n)}>{l.tab}</button>)}
                 </span>
+                {L.photo && (
+                  <span className="st-seg st-view" role="group" aria-label="Show as">
+                    <button type="button" aria-pressed={!draw} onClick={() => { setAuto(false); setDraw(false) }}>Photo</button>
+                    <button type="button" aria-pressed={draw} onClick={() => { setAuto(false); setDraw(true) }}>Drawing</button>
+                  </span>
+                )}
               </div>
-              <div className="st-stage"><L.Drawing key={L.id} /></div>
-              <div className="st-tb"><b>{L.tb[0]}</b>{L.tb.slice(1).map((x) => <span key={x}>{x}</span>)}</div>
+              <div className={'st-stage' + (photo ? ' st-shot' : '')}>{photo ? <img key={L.photo} src={L.photo} alt={L.alt} /> : <L.Drawing key={L.id} />}</div>
+              <div className="st-tb">{(photo ? L.ptb : L.tb).map((x, n) => n === 0 ? <b key={x}>{x}</b> : <span key={x}>{x}</span>)}</div>
             </div>
           </div>
         </div>
@@ -154,12 +164,24 @@ function ProjectSheet({ p }) {
 }
 
 const BUILDS = [
+  { name: 'Commercial fit-out', place: '2019 to 2020', kind: 'Commercial', photo: '/media/work/com-room.jpg', alt: 'A finished white room with a washable floor, a steel sink and capped services',
+    facts: [['Rooms', 'Washable walls and floors'], ['Services', 'Power, water and air to every room']] },
+  { name: 'Power for the building', place: '2019 to 2020', kind: 'Commercial', photo: '/media/work/com-generator.jpg', alt: 'A standby generator being lifted into place by crane behind a new retaining wall',
+    facts: [['Standby', 'Generator set by crane'], ['Service', 'New transformer and switchgear']] },
   { name: 'Basement finish', place: 'Richmond, Rhode Island', kind: 'Home', Drawing: PlanBasement, note: 'The finished basement',
     facts: [['Area', '876 SF'], ['Rooms', '2 bed, 1 bath'], ['Ceiling', '7′ 6″']] },
   { name: 'Bathroom remodel', place: 'Narragansett, Rhode Island', kind: 'Home', note: 'The finished bathroom',
     facts: [['Scope', 'Full bathroom'], ['From', 'The studs out']] },
-  { name: 'Commercial project', place: 'Photos to come', kind: 'Commercial', note: 'A commercial job',
-    facts: [['Scope', 'Fit-out'], ['Planned around', 'The opening date']] },
+]
+
+/* the farm build, in the order it happened */
+const FARM_PHOTOS = [
+  ['farm-before', 'Before', 'Woods, marked out', 'The site from above before the build: woods, with the first clearing and access roads cut in'],
+  ['farm-clearing', 'Clearing', 'Trees down and chipped', 'An excavator with a mulching head clearing trees'],
+  ['farm-field', 'The field', 'Graded and fenced', 'The graded field with its fence line, ready for planting'],
+  ['farm-containers', 'Containers', 'Set on a gravel pad', 'Two shipping containers set on a gravel pad'],
+  ['farm-water', 'Water', 'Well pumps and controls', 'The well room: pumps, pressure tank and controls on the wall'],
+  ['farm-after', 'After', 'A working site', 'The finished site from above: the field, the yard, the storm pond and the road'],
 ]
 
 /* ---------- the farm site, with its layers ---------- */
@@ -287,11 +309,11 @@ export default function Home() {
             <FarmSite />
 
             <h3 className="st-h3">On the ground</h3>
-            <p className="st-sub">Photos from our farm builds.</p>
+            <p className="st-sub">One farm site, from woods to a working field.</p>
             <div className="st-cards st-photos">
-              <div className="st-sheet"><div className="st-stage"><PhotoSlot note="The field and its rows" /></div><div className="st-tb"><b>Field</b><span>Rows and irrigation</span></div></div>
-              <div className="st-sheet"><div className="st-stage"><PhotoSlot note="Fence, gates and camera poles" /></div><div className="st-tb"><b>Fence</b><span>Gates and camera poles</span></div></div>
-              <div className="st-sheet"><div className="st-stage"><PhotoSlot note="The drying rooms" /></div><div className="st-tb"><b>Drying rooms</b><span>Built in containers</span></div></div>
+              {FARM_PHOTOS.map(([f, k, v, alt]) => (
+                <div className="st-sheet" key={f}><div className="st-stage"><img src={'/media/work/' + f + '.jpg'} alt={alt} loading="lazy" /></div><div className="st-tb"><b>{k}</b><span>{v}</span></div></div>
+              ))}
             </div>
 
             <h3 className="st-h3">A plan and a budget</h3>
