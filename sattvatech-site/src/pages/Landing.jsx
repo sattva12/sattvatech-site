@@ -11,20 +11,20 @@ const DIVISIONS = [
     tags: ['SAM.gov Active', 'CAGE: 19CM8', 'Small Business', 'MBE In Progress'],
   },
   {
-    path: '/trades',
+    path: '/construction',
     number: '02',
-    title: 'Construction Supervision',
-    sub: 'Licensed GC Umbrella',
-    description: 'Connecting skilled tradespeople with bigger, permitted jobs. Our unrestricted MA Construction Supervisor license and insurance umbrella opens doors for qualified handymen and contractors.',
-    tags: ['CS-122574 Licensed', 'Insured & Bonded', 'MA Unrestricted', 'Inspection Ready'],
+    title: 'Construction',
+    sub: 'Residential & Commercial',
+    description: 'Data and quality, so the job hits its date. Every step planned with its material, labor and time, checked as it is done, and measured against the deadline. Licensed GC umbrella for skilled tradespeople.',
+    tags: ['CS-122574 Licensed', 'MA Unrestricted', 'Residential', 'Commercial'],
   },
   {
-    path: '/agtech',
+    path: '/lean-ag',
     number: '03',
-    title: 'AgTech & Farmetric',
-    sub: 'Controlled Environment Ag',
-    description: 'Engineering meets agriculture. Process-driven MEP design for controlled-environment facilities, plus the Farmetric platform for farm operations management.',
-    tags: ['Farmetric App', 'CEA Design', 'Process Engineering', 'MEP Integration'],
+    title: 'Lean Agriculture',
+    sub: 'Licensed Farms',
+    description: 'Lean production for licensed farms: build it, plan the season, run it on data and follow the cash. We build drying and extraction containers and ship them anywhere, and we run our own farm work on Farmmetric.',
+    tags: ['Farm Builds', 'Containers Shipped', 'Season Planning', 'Farmmetric'],
   },
 ]
 
@@ -59,6 +59,18 @@ export default function Landing() {
               onMouseEnter={e => e.target.style.color = RED} onMouseLeave={e => e.target.style.color = '#aaa'}
             >{`0${i + 1} ${d.title.split(' ')[0]}`}</button>
           ))}
+          <button onClick={() => document.getElementById('software')?.scrollIntoView({ behavior: 'smooth' })}
+            style={{ background: 'none', border: 'none', color: '#aaa', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.target.style.color = RED} onMouseLeave={e => e.target.style.color = '#aaa'}
+          >04 Software</button>
+          <button onClick={() => navigate('/containers')}
+            style={{ background: 'none', border: 'none', color: '#aaa', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.target.style.color = RED} onMouseLeave={e => e.target.style.color = '#aaa'}
+          >Containers</button>
+          <button onClick={() => navigate('/apps')}
+            style={{ background: 'none', border: 'none', color: '#fff', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.target.style.color = RED} onMouseLeave={e => e.target.style.color = '#fff'}
+          >Sign in</button>
           <a href="mailto:apatel@sattvatech.com"
             style={{ fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: 'sans-serif', color: RED, border: `1px solid ${RED}`, padding: '7px 16px', textDecoration: 'none' }}
             onMouseEnter={e => { e.target.style.background = RED; e.target.style.color = '#fff'; }}
@@ -73,11 +85,11 @@ export default function Landing() {
           <div style={{ maxWidth: 900, margin: '0 auto' }}>
             <div style={{ fontSize: 10, letterSpacing: '0.3em', color: RED, textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: 18 }}>Engineering · Construction · Technology</div>
             <h1 style={{ fontSize: 'clamp(2.6rem, 5.5vw, 4.4rem)', fontWeight: 400, lineHeight: 1.08, color: CHARCOAL, margin: '0 0 10px' }}>
-              One firm.<br /><span style={{ color: RED }}>Three platforms.</span>
+              Three services.<br /><span style={{ color: RED }}>Run on our own software.</span>
             </h1>
             <div style={{ width: 48, height: 3, background: RED, margin: '20px 0' }} />
             <p style={{ fontSize: '1rem', color: MUTED, lineHeight: 1.78, maxWidth: 520, fontFamily: 'sans-serif', fontWeight: 300, margin: 0 }}>
-              Sattva Technologies brings 25+ years of engineering and construction expertise across government contracting, licensed trade supervision, and agricultural technology.
+              Sattva Technologies brings 25+ years of engineering and construction expertise across government contracting, residential and commercial construction, and lean production on licensed farms. We plan and track every job in our own apps, and we sell them.
             </p>
           </div>
         </div>
@@ -111,6 +123,29 @@ export default function Landing() {
           ))}
         </div>
 
+        {/* SOFTWARE: the two apps, built from the work */}
+        <div id="software" style={{ background: CREAM, borderBottom: `1px solid ${BORDER}`, padding: '56px 2.5rem' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <div style={{ fontSize: 10, letterSpacing: '0.3em', color: RED, textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: 14 }}>Division 04 · Software</div>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 3.4vw, 2.6rem)', fontWeight: 400, lineHeight: 1.12, color: CHARCOAL, margin: '0 0 10px', maxWidth: 760 }}>It works for us. See if it works for you.</h2>
+            <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.7, maxWidth: 640, fontFamily: 'sans-serif', fontWeight: 300, margin: '0 0 28px' }}>We run our own construction jobs on Samana and our own farm work on Farmmetric. Each works on its own, and they connect: the plan and the money in Samana, the plants and the compliance in Farmmetric.</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 18 }}>
+              {[
+                { to: '/samana', name: 'Samana', for: 'For contractors', bg: '#1d4f91', d: 'Draw the job and every stud is priced: takeoff, drawings, the customer quote, the crew work order and the cash flow, from one drawing.', cta: 'Try it free with a sample job' },
+                { to: '/farmmetric', name: 'Farmmetric', for: 'For licensed growers', bg: '#23613f', d: 'Crop compliance from your phone: tag scans, moves, harvests and kills to Metrc, with inspections, feed and inventory logged.', cta: 'Try it free for 30 days' },
+              ].map((s) => (
+                <div key={s.to} onClick={() => navigate(s.to)} role="link" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') navigate(s.to) }}
+                  style={{ cursor: 'pointer', backgroundColor: s.bg, backgroundImage: 'linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px)', backgroundSize: '24px 24px', color: '#eaf2fc', padding: '28px 28px 26px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  <div style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, opacity: .8 }}>{s.for}</div>
+                  <div style={{ fontFamily: "'IBM Plex Sans Condensed', 'Arial Narrow', sans-serif", fontWeight: 600, fontSize: 40, lineHeight: 1, color: '#fff' }}>{s.name}</div>
+                  <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 16, lineHeight: 1.5, margin: 0, flex: 1 }}>{s.d}</p>
+                  <span style={{ alignSelf: 'flex-start', background: '#ffb454', color: '#2a1a02', fontFamily: "'IBM Plex Sans', sans-serif", fontWeight: 600, fontSize: 15, padding: '10px 18px', borderRadius: 6 }}>{s.cta}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* STATS STRIP */}
         <div style={{ background: CHARCOAL, padding: '28px 2.5rem', display: 'flex', justifyContent: 'center', gap: 60, alignItems: 'center', flexWrap: 'wrap' }}>
           {[['25+', 'Years Experience'], ['500K SF', 'Largest Project'], ['6', 'Industry Sectors'], ['MA CS', 'Licensed GC'], ['SAM.gov', 'Active']].map(([v, l], i, arr) => (
@@ -128,7 +163,7 @@ export default function Landing() {
         <div style={{ background: CREAM2, borderTop: `1px solid ${BORDER}`, padding: '18px 2.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
           <span style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif' }}>© 2025 Sattva Technologies LLC · Seekonk, MA · SAM.gov Active · CAGE 19CM8</span>
           <div style={{ display: 'flex', gap: 20 }}>
-            <a href="tel:5083430101" style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif', textDecoration: 'none' }}>(508) 343-0101</a>
+            <a href="tel:5089168447" style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif', textDecoration: 'none' }}>(508) 916-8447</a>
             <a href="mailto:apatel@sattvatech.com" style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif', textDecoration: 'none' }}>apatel@sattvatech.com</a>
           </div>
         </div>
