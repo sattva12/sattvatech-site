@@ -41,19 +41,16 @@ export default function Construction() {
             <tr><th scope="row">Construction management</th><td>Takeoffs, schedules, the trades lined up, inspections passed, and the owner kept current on every change.</td><td>Residential and commercial</td></tr>
             <tr><th scope="row">GC for tradespeople</th><td>Skilled handymen and small crews take on permitted jobs under our license and insurance, with the job planned and supervised.</td><td>The licensed umbrella</td></tr>
             <tr><th scope="row">Quote service</th><td>We write the quote, materials list and work order for contractors who would rather be on the tools.</td><td><Link to="/quote" style={{ color: '#eaf2fc' }}>Quote service</Link></td></tr>
-            <tr><th scope="row">Farm and facility builds</th><td>Fence, cameras, power, containers, drying and wells for licensed farms, priced and sequenced with the season.</td><td><Link to="/lean-ag" style={{ color: '#eaf2fc' }}>Lean agriculture</Link></td></tr>
+            <tr><th scope="row">Farm and facility builds</th><td>Fence, cameras, power, containers, drying and wells for farms, priced and sequenced with the season.</td><td><Link to="/lean-ag" style={{ color: '#eaf2fc' }}>Lean agriculture</Link></td></tr>
           </tbody></table>
         </div>
       </section>
 
       <section className="sm-arms" aria-labelledby="box">
-        <div className="sm-wrap sm-flyer">
-          <a href="/sattva-container-flyer.pdf"><img src="/media/container-flyer.jpg" alt="The container flyer" loading="lazy" /></a>
-          <div>
-            <h2 className="sm-h2" id="box">Containers, built in our shop and shipped anywhere.</h2>
-            <p className="sm-sub">Drying rooms, extraction labs, grow rooms, storage and site offices in 40 ft containers: shipped ready to set, built on site by our crew, or the full design for your builder.</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}><Link className="sm-btn go" to="/containers">See the containers</Link><a className="sm-btn" style={{ border: '2px solid #16212c', color: '#16212c' }} href="/sattva-container-flyer.pdf">Flyer (PDF)</a></div>
-          </div>
+        <div className="sm-wrap">
+          <h2 className="sm-h2" id="box">Working rooms, built in a container.</h2>
+          <p className="sm-sub">Drying rooms and power and storage rooms in insulated 40 ft containers: shipped ready to set, built on site by our crew, or the full design for your builder.</p>
+          <Link className="sm-btn go" to="/containers">See the containers</Link>
         </div>
       </section>
 

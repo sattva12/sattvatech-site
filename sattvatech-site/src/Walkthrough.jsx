@@ -84,7 +84,7 @@ export function FarmmetricPhone() {
           {[['My work', 'The jobs released to each person, with timers'], ['Spray and feed', 'Each mix, with product and rate'], ['What to order', 'Before it runs out'], ['Harvest', 'Weights by row and lot'], ['Inspections', 'With photos'], ['Unplanned jobs', 'Reported from the field'], ['Field map', 'Weather and daylight with it']]
             .map(([k, v]) => <div className="st-row" key={k}><span>{k}</span><b>{v}</b></div>)}
         </div>
-        <div className="st-panel-f"><a className="st-btn primary" href={FARM}>Try Farmmetric free for 30 days</a></div>
+        <div className="st-panel-f"><a className="st-btn primary" href={FARM}>Use Farmmetric free</a></div>
       </div>
     </div>
   )

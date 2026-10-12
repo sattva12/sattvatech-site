@@ -14,10 +14,10 @@ function Go({ to, className, children, ...rest }) {
 
 /* ---------- the opening: the work we do, three lines of it ---------- */
 const LEVELS = [
-  { id: 'construction', tab: 'Construction', sub: 'Homes and commercial', Drawing: PlanBasement,
+  { id: 'construction', tab: 'Construction', sub: 'Commercial and homes', Drawing: PlanBasement,
     photo: '/media/work/com-roof.jpg', alt: 'Rooftop air units set on a steel frame on a commercial building', ptb: ['Commercial fit-out', 'Rooftop air units on a steel frame'],
     tb: ['A finished basement, as drawn', '876 SF', '2 bedrooms, 1 bath', 'Ceiling 7′ 6″'],
-    big: 'Homes and commercial', cap: 'Quality work, planned step by step and checked as it is built.',
+    big: 'Commercial and homes', cap: 'Quality work, planned step by step and checked as it is built.',
     m: [['Licensed', 'in Massachusetts'], ['Permits', 'city, state and fire marshal'], ['Every step', 'checked with photos']],
     kpis: [['Construction Supervisor', 'CS-122574'], ['Home Improvement', 'HIC 218120'], ['Experience', '25+ years']],
     rows: [['Homes', 'Basements, bathrooms, decks, floors, windows'], ['Commercial', 'Fit-outs, planned around your opening date'], ['Quality', 'Each step checked before the next starts'], ['License', 'MA CS-122574, HIC 218120']],
@@ -33,9 +33,9 @@ const LEVELS = [
   { id: 'products', tab: 'Products', sub: 'Containers and apps', Drawing: PlanContainer,
     tb: ['Drying room in a 40 ft container', '2 AC units', '2 dehumidifiers', '2 fans'],
     big: 'Things we make', cap: 'Working rooms built inside a container, and the apps we run our own work on.',
-    m: [['6', 'kinds of room'], ['3', 'ways to buy'], ['2', 'apps you can sign in to']],
-    kpis: [['Containers', 'Built to order'], ['Samana', 'Takeoff, Lean, Flow'], ['Farmmetric', 'For the crew']],
-    rows: [['Container rooms', 'Drying, lab, grow, storage, office, power'], ['Ways to buy', 'Shipped, built on site, or the design'], ['Apps', 'Samana and Farmmetric'], ['Quote service', 'For handymen and small crews']],
+    m: [['2', 'container rooms'], ['3', 'ways to buy'], ['2', 'apps you can sign in to']],
+    kpis: [['Containers', 'Built to order'], ['Samana', 'Takeoff, Lean, Flow'], ['Farmmetric', 'Free']],
+    rows: [['Container rooms', 'Drying, and power and storage'], ['Ways to buy', 'Shipped, built on site, or the design'], ['Apps', 'Samana and Farmmetric'], ['Quote service', 'For handymen and small crews']],
     to: '#products', cta: 'See products' },
 ]
 
@@ -62,7 +62,7 @@ function Opening() {
         <div className="st-head">
           <h1 id="st-h1">Making things work.</h1>
           <div>
-            <p className="st-lede"><b>We do the work.</b> Quality homes and commercial construction. Farms set up and built into businesses that work, with a plan and a budget. And products of our own: container rooms and apps.</p>
+            <p className="st-lede"><b>We do the work.</b> Commercial construction and quality homes. Farms set up and built into businesses that work, with a plan and a budget. And products of our own: container rooms and apps.</p>
             <div className="st-acts">
               <a className="st-btn primary" href="#construction">See the work</a>
               <a className="st-btn" href="#talk">Talk about a project</a>
@@ -170,8 +170,8 @@ const BUILDS = [
     facts: [['By', 'Sattva Technologies'], ['Power', 'New service, switchgear and generator']] },
   { name: 'Basement finish', place: 'Richmond, Rhode Island', kind: 'Home', Drawing: PlanBasement, note: 'The finished basement',
     facts: [['Area', '876 SF'], ['Rooms', '2 bed, 1 bath'], ['Ceiling', '7′ 6″']] },
-  { name: 'Bathroom remodel', place: 'Narragansett, Rhode Island', kind: 'Home', note: 'The finished bathroom',
-    facts: [['Scope', 'Full bathroom'], ['From', 'The studs out']] },
+  { name: 'Kitchen remodel', place: '2015', kind: 'Home', photo: '/media/work/home-kitchen.jpg', alt: 'A finished kitchen with cherry cabinets, stone counters, an island, wall ovens and a range hood',
+    facts: [['Scope', 'Cabinets, stone counters and an island'], ['With', 'Wall ovens, hood and lighting']] },
 ]
 
 /* a commercial job carried end to end: an old mill building, before, during and after */
@@ -282,12 +282,10 @@ function Season() {
 
 /* ---------- products ---------- */
 const ROOMS = [
-  ['Drying room', 'AC, dehumidifiers, fans and hang lines, sized to the wet weight'],
-  ['Lab', 'Benches, ventilation, power and storage, laid out for your engineer to approve'],
-  ['Grow room', 'Lights, air, irrigation and controls, bench by bench'],
-  ['Storage', 'Shelving, locks, lighting and climate control'],
-  ['Site office', 'Finished, conditioned, wired and networked'],
-  ['Power room', 'Panels, the camera recorder and backup power in one box'],
+  ['Drying room', 'Insulated, with AC, dehumidifiers, fans and hang lines, sized to the wet weight'],
+  ['Power and storage', 'Insulated, with the panels, the camera recorder, backup power and shelving'],
+  ['Option: lab air flow', 'Supply and exhaust air laid out for a lab. The room, not the equipment'],
+  ['Option: plug locations', 'Outlets and circuits placed where your equipment will stand'],
 ]
 
 export default function Home() {
@@ -311,7 +309,7 @@ export default function Home() {
           <div className="st-wrap">
             <div className="st-head2">
               <h2 className="st-h2" id="h-con">Construction</h2>
-              <p className="st-lede"><b>Quality homes and commercial work.</b> Every step is planned with its material, labor and time, and checked before the next one starts.</p>
+              <p className="st-lede"><b>Commercial work and quality homes.</b> Every step is planned with its material, labor and time, and checked before the next one starts.</p>
             </div>
             <div className="st-two">
               <div className="st-panel">
@@ -395,9 +393,10 @@ export default function Home() {
               </div>
               <div className="st-panel">
                 <div className="st-panel-h"><h2>Container rooms</h2></div>
+                <div className="st-total"><h4>Two rooms right now, both insulated.</h4><p>Built in a 40 ft container, wired and conditioned. Buy it built, or buy the design: the schematic and a work order for putting it together.</p></div>
                 <div className="st-rows st-rooms">{ROOMS.map(([k, v]) => <div className="st-row" key={k}><span>{k}</span><b>{v}</b></div>)}</div>
                 <dl className="st-kpis"><div><dt>Built</dt><dd>and shipped</dd></div><div><dt>Built</dt><dd>on your site</dd></div><div><dt>Or just</dt><dd>the design</dd></div></dl>
-                <div className="st-panel-f"><Link className="st-btn primary" to="/containers">See the containers</Link><a className="st-btn" href="/sattva-container-flyer.pdf">Flyer (PDF)</a></div>
+                <div className="st-panel-f"><Link className="st-btn primary" to="/containers">See the containers</Link></div>
               </div>
             </div>
 
@@ -411,10 +410,10 @@ export default function Home() {
                 <div className="st-panel-f"><a className="st-btn primary" href={APP}>Start with a free sample job</a><Link className="st-btn" to="/samana">See it work</Link></div>
               </div>
               <div className="st-panel st-prod st-green">
-                <div className="st-band">Farmmetric<small>For growers</small></div>
-                <p>The crew's jobs, logs, inspections and records from a phone, with the season plan behind it.</p>
-                <div className="st-price">Free<small>for 30 days</small></div>
-                <div className="st-panel-f"><a className="st-btn primary" href={FARM}>Start the free trial</a><Link className="st-btn" to="/farmmetric">What it does</Link></div>
+                <div className="st-band">Farmmetric<small>Farm compliance and records</small></div>
+                <p>A simple way to enter the farm's data from a phone: jobs, logs, inspections and compliance records. Live API connectors are coming soon.</p>
+                <div className="st-price">Free<small>Google Play soon</small></div>
+                <div className="st-panel-f"><a className="st-btn primary" href={FARM}>Use it free</a><Link className="st-btn" to="/farmmetric">What it does</Link></div>
               </div>
               <div className="st-panel st-prod st-ink">
                 <div className="st-band">Quote service<small>For handymen and small crews</small></div>

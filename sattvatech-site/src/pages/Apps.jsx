@@ -20,13 +20,13 @@ export default function Apps() {
               <div className="acts"><a className="sm-btn go" href={APP + '/login'}>Sign in to Samana</a><Link className="sm-btn" style={{ border: '2px solid #16212c', color: '#16212c' }} to="/samana">What it does</Link></div>
             </div>
             <div className="sm-app fmc">
-              <span className="who">For licensed growers, from Lean agriculture</span>
+              <span className="who">For farms and their crews</span>
               <h2>Farmmetric</h2>
-              <p>Crop compliance from your phone: tags, moves, harvests and kills to Metrc, with inspections, feed and inventory.</p>
+              <p>Farm compliance and records from your phone: tags, moves, harvests and losses, with inspections, feed and inventory. Free.</p>
               <div className="acts"><a className="sm-btn go" href={FARM}>Sign in to Farmmetric</a><Link className="sm-btn" style={{ border: '2px solid #23613f', color: '#23613f' }} to="/farmmetric">What it does</Link></div>
             </div>
           </div>
-          <p className="sm-sub" style={{ marginTop: 22 }}>New to either one? Samana starts with a free sample job; Farmmetric starts with a 30-day free trial.</p>
+          <p className="sm-sub" style={{ marginTop: 22 }}>New to either one? Samana starts with a free sample job; Farmmetric is free.</p>
         </div>
       </section>
       <SamanaFoot />
