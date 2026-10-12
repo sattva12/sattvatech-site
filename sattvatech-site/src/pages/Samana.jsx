@@ -241,14 +241,16 @@ export default function Samana() {
       <section className="sm-plans" aria-labelledby="plans">
         <div className="sm-wrap">
           <h2 className="sm-h2" id="plans">Plans.</h2>
-          <p className="sm-sub">Start free with one job. Each plan is named for the part of Samana it opens. You put in your own labor rates; we never see your customers or your prices unless you share them.</p>
+          <p className="sm-sub">Start free with one job, so you see your own numbers before you pay anything. When it pays for itself, pick a plan; each is named for the part of Samana it opens. You put in your own labor rates; we never see your customers or your prices unless you share them.</p>
           <div className="sm-ptwo">
             <div className="sm-plan"><h3>Samana, monthly</h3><p>Every plan has the sample job to compare with.</p><dl>
               <div><dt>Free<small>Takeoff for one job, and Farmmetric</small></dt><dd>$0</dd></div>
               <div><dt>Takeoff<small>Drawn and priced quotes, 5 jobs</small></dt><dd>$10<small>a month</small></dd></div>
               <div><dt>Flow<small>Adds the materials list, work orders, Flow and the team portal for 5 people; 5 jobs</small></dt><dd>$20<small>a month</small></dd></div>
               <div><dt>Lean<small>Everything: Lean and all of Flow, 10 jobs, one business unit</small></dt><dd>$30<small>a month</small></dd></div>
-            </dl><p style={{ margin: '10px 0 0', fontSize: 14 }}>More business units are $10 a month each. Past 10 jobs, $5 a job.</p></div>
+            </dl><p style={{ margin: '10px 0 0', fontSize: 14 }}>More business units are $10 a month each. Past 10 jobs, $5 a job.</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 16 }}><a className="sm-btn go" href={APP}>Start free</a><a className="sm-btn" style={{ border: '2px solid #16212c', color: '#16212c' }} href={APP + '/settings'}>Buy a plan</a></div>
+            <p style={{ margin: '8px 0 0', fontSize: 13.5 }}>Buying is inside the app: sign in, or start free, then pick the plan in Settings. You pay by card through Stripe and can cancel any time.</p></div>
             <div className="sm-plan"><h3>Reviewed by a licensed GC</h3><p>Our time, on top of a plan.</p><dl>
               <div><dt>Review<small>A construction supervisor checks the job before it goes out</small></dt><dd>$25<small>a job</small></dd></div>
               <div><dt>Full job write-up<small>Proposal, drawings, materials list and a work order for your crew</small></dt><dd>$100<small>a job</small></dd></div>

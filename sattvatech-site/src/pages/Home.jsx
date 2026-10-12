@@ -281,6 +281,13 @@ function Season() {
 }
 
 /* ---------- products ---------- */
+/* Why: Atul's reasons, 2026-10-12 */
+const WHY = [
+  ['What we have seen', 'We have been in production a long time. We have seen good companies make money, barely survive, and fail, often for want of the right numbers at the right time.'],
+  ['What we want', 'Every company making the best decision for itself, and whole industries working tighter, the way a GMP shop runs: clear steps, checked work, records kept, and the information reaching the people who decide, early in the pipeline.'],
+  ['What we focus on', 'We are process, production and design people. Our focus is the customer, the quality of the final product, and the bottom line. At the end of the day that makes more money for everyone.'],
+]
+
 const ROOMS = [
   ['Drying room', 'Insulated, with AC, dehumidifiers, fans and hang lines, sized to the wet weight'],
   ['Power and storage', 'Insulated, with the 200 A panel, the camera recorder and shelving'],
@@ -406,8 +413,8 @@ export default function Home() {
               <div className="st-panel st-prod">
                 <div className="st-band">Samana<small>Takeoff, Lean, Flow</small></div>
                 <p>The app our own jobs run on. Takeoff draws and prices the job, Lean plans the steps and the crew, and Flow shows the budget and the cash by month. Sai, its AI helper, guides you through it.</p>
-                <div className="st-price">Free<small>to start, one job</small></div>
-                <div className="st-panel-f"><a className="st-btn primary" href={APP}>Start with a free sample job</a><Link className="st-btn" to="/samana">See it work</Link></div>
+                <div className="st-price">Free<small>to start, then $10, $20 or $30 a month</small></div>
+                <div className="st-panel-f"><a className="st-btn primary" href={APP}>Start free</a><Link className="st-btn" to="/samana#plans">See the plans</Link><Link className="st-btn" to="/samana">See it work</Link></div>
               </div>
               <div className="st-panel st-prod st-green">
                 <div className="st-band">Farmmetric<small>Free farm app</small></div>
@@ -426,6 +433,23 @@ export default function Home() {
             <div className="st-bridge" id="sai">
               <p><b>Sai guides you through it.</b> The AI helper inside Samana takes a quote, a count or a photo, works out where it goes, and waits for your OK before anything changes.</p>
               <Link className="st-btn" to="/samana#sai">Meet Sai</Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="st-sec st-why" id="why" aria-labelledby="h-why">
+          <div className="st-wrap">
+            <div className="st-head2">
+              <h2 className="st-h2" id="h-why">Why we do this</h2>
+              <p className="st-lede"><b>Lift the floor for everyone.</b> Better information, better decisions, and a better place to work.</p>
+            </div>
+            <div className="st-cards st-whys">
+              {WHY.map(([h, p]) => <div className="st-panel" key={h}><div className="st-panel-h"><h2>{h}</h2></div><p>{p}</p></div>)}
+            </div>
+            <div className="st-bridge">
+              <p><b>Why some of it is free.</b> Farmmetric is free, and so is Samana for your first job, so you see your own numbers before you pay anything. When it pays for itself and you need more, the plans are $10, $20 and $30 a month. Win-win means you are working with winners.</p>
+              <a className="st-btn" href={APP}>Start free</a>
+              <Link className="st-btn" to="/samana#plans">See the plans</Link>
             </div>
           </div>
         </section>

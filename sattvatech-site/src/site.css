@@ -385,3 +385,6 @@
 .st-sai-c .bt { display: flex; flex-wrap: wrap; gap: 8px; padding: 9px 11px; background: var(--field); }
 .st-sai-c i { font-style: normal; font-weight: 500; font-size: 13.5px; padding: 6px 11px; border: 1px solid var(--rule); border-radius: 6px; background: var(--panel); }
 .st-sai-c i.go { background: var(--deep); border-color: var(--deep); color: #fff; }
+
+/* Why we do this */
+.st-whys .st-panel p { padding: 14px 16px 16px; color: var(--muted); font-size: 15.5px; line-height: 1.5; margin: 0; }
