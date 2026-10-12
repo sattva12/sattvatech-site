@@ -65,7 +65,7 @@ export default function Farmmetric() {
       <section className="sm-plans" aria-labelledby="plans">
         <div className="sm-wrap">
           <h2 className="sm-h2" id="plans">Free.</h2>
-          <p className="sm-sub">Farmmetric is free to use, with one plan for everyone. Sign up and the farm is yours to set up.</p>
+          <p className="sm-sub">Farmmetric is free to use, with one plan for everyone. A leaner farm is everyone's bottom line, the owner's, the crew's and the buyer's, so the first step costs nothing. Sign up and the farm is yours to set up.</p>
           <div className="sm-ptwo">
             <div className="sm-plan"><dl>
               <div><dt>On the web<small>Sign in from a phone, a tablet or a desktop</small></dt><dd>Free</dd></div>

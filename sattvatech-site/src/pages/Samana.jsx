@@ -241,7 +241,7 @@ export default function Samana() {
       <section className="sm-plans" aria-labelledby="plans">
         <div className="sm-wrap">
           <h2 className="sm-h2" id="plans">Plans.</h2>
-          <p className="sm-sub">Start free with one job, so you see your own numbers before you pay anything. When it pays for itself, pick a plan; each is named for the part of Samana it opens. You put in your own labor rates; we never see your customers or your prices unless you share them.</p>
+          <p className="sm-sub">Some of the simplest ways to make money are saving it: less waste, less waiting, nothing done twice. A leaner process is everyone's bottom line, so start free with one job and see your own numbers before you pay anything. When it pays for itself, pick a plan; each is named for the part of Samana it opens. You put in your own labor rates; we never see your customers or your prices unless you share them.</p>
           <div className="sm-ptwo">
             <div className="sm-plan"><h3>Samana, monthly</h3><p>Every plan has the sample job to compare with.</p><dl>
               <div><dt>Free<small>Takeoff for one job, and Farmmetric</small></dt><dd>$0</dd></div>
