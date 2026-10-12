@@ -283,7 +283,7 @@ function Season() {
 /* ---------- products ---------- */
 const ROOMS = [
   ['Drying room', 'Insulated, with AC, dehumidifiers, fans and hang lines, sized to the wet weight'],
-  ['Power and storage', 'Insulated, with the panels, the camera recorder, backup power and shelving'],
+  ['Power and storage', 'Insulated, with the 200 A panel, the camera recorder and shelving'],
   ['Option: lab air flow', 'Supply and exhaust air laid out for a lab. The room, not the equipment'],
   ['Option: plug locations', 'Outlets and circuits placed where your equipment will stand'],
 ]

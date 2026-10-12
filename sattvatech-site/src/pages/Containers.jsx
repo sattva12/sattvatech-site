@@ -27,7 +27,7 @@ export default function Containers() {
           <table className="sm-ptab"><tbody>
             <tr><th scope="row">Built and shipped</th><td>We build the container in our shop, test it, and ship it to your site ready to set and connect.</td><td>Anywhere a truck can reach</td></tr>
             <tr><th scope="row">Built on your site</th><td>Our crew builds it where it will stand, with the pad and power planned with the rest of the site.</td><td>Our crew, your site</td></tr>
-            <tr><th scope="row">The design</th><td>The schematic, the equipment list with quantities, the wiring and air flow layout, and a work order your own builder can follow to put it together.</td><td>Build it yourself</td></tr>
+            <tr><th scope="row">The design</th><td>A drawing set for the drying container and its power supply: equipment, air and water, power layout, site runs and circuits, the one-line, the panel schedule, the material list with quantities, and a work order your own builder can follow to put it together.</td><td>Build it yourself</td></tr>
           </tbody></table>
         </div>
       </section>
@@ -38,7 +38,7 @@ export default function Containers() {
           <p className="sm-sub">Every piece is sized to the work the room has to do, and priced before anything is ordered.</p>
           <table className="sm-rtab"><tbody>
             <tr><th scope="row">Drying container</th><td>Insulation, air conditioning and dehumidifiers sized to the wet weight, racks or hang lines, air flow, wiring, panels and controls. Lots move through on a schedule so the harvest never waits for space.</td></tr>
-            <tr><th scope="row">Power and storage container</th><td>Insulated, with the panels, the camera recorder and backup power, and shelving, locks and lighting for supplies and equipment: the site's power and its stores in one box.</td></tr>
+            <tr><th scope="row">Power and storage container</th><td>Insulated, with the 200 A panel that feeds the drying containers, the camera recorder, and shelving, locks and lighting for supplies and equipment: the site's power and its stores in one box.</td></tr>
           </tbody></table>
         </div>
       </section>

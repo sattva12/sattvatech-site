@@ -145,7 +145,7 @@ export function PlanFarm({ still, off = {} }) {
 /* Products: a 40 ft container set up as a drying room, side view and plan */
 export function PlanContainer({ still }) {
   return (
-    <Sheet still={still} label="A 40 ft container drawn in side view and plan: fans at the doors, hang lines, two dehumidifiers and two AC units at the back wall">
+    <Sheet still={still} label="A 40 ft container drawn in side view and plan: floor fans, hang lines, two dehumidifiers and two AC units">
       {/* side */}
       <P t={0} d={R(80, 64, 560, 126)} />
       <P c="t" t={0.4} d={Array.from({ length: 39 }, (_, k) => `M${94 + k * 14} 70v114`).join('')} />
@@ -159,15 +159,14 @@ export function PlanContainer({ still }) {
       <path className="dash fade" style={{ '--d': '1.3s' }} d="M28 250A52 52 0 0 0 80 302M28 362A52 52 0 0 1 80 310" />
       <P c="i" t={1.0} d={C(122, 281, 15) + C(122, 331, 15) + 'M111 270l22 22M133 270l-22 22M111 320l22 22M133 320l-22 22'} />
       <P c="t" t={1.0} d={[268, 287, 306, 325, 344].map((y) => `M156 ${y}H548`).join('')} />
-      <P c="i" t={1.1} d={R(566, 262, 38, 30) + R(566, 320, 38, 30) + R(620, 268, 10, 30) + R(620, 314, 10, 30) + R(644, 264, 26, 38) + R(644, 310, 26, 38) + C(657, 283, 9) + C(657, 329, 9) + R(300, 250, 44, 8)} />
+      <P c="i" t={1.1} d={R(566, 262, 38, 30) + R(566, 320, 38, 30) + R(620, 268, 10, 30) + R(620, 314, 10, 30) + R(644, 264, 26, 38) + R(644, 310, 26, 38) + C(657, 283, 9) + C(657, 329, 9)} />
       <P c="a" t={1.4} d="M170 277.5H520M508 271.5l12 6l-12 6M170 334.5H520M508 328.5l12 6l-12 6" />
       <T x={66} y={310} c="sm" a="end">Plan</T>
       <T x={585} y={281} c="sm" t={1.3}>D</T><T x={585} y={339} c="sm" t={1.3}>D</T>
-      <T x={122} y={392} c="sm">Fans, 3,500 CFM</T>
+      <T x={122} y={392} c="sm">Floor fans</T>
       <T x={352} y={392} c="sm">Hang lines, air front to back</T>
       <T x={585} y={392} c="sm">Dehumidifiers</T>
       <T x={657} y={392} c="sm">AC</T>
-      <T x={322} y={244} c="sm">Panel</T>
       <DimH x1={80} x2={640} y={40} label="40 ft" />
       <DimV y1={250} y2={362} x={700} label="8 ft" />
     </Sheet>
