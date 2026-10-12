@@ -22,11 +22,11 @@ export default function Apps() {
             <div className="sm-app fmc">
               <span className="who">For farms and their crews</span>
               <h2>Farmmetric</h2>
-              <p>Farm compliance and records from your phone: tags, moves, harvests and losses, with inspections, feed and inventory. Free.</p>
+              <p>The farm's jobs, sprays, harvest and drying, logged from a phone. Free.</p>
               <div className="acts"><a className="sm-btn go" href={FARM}>Sign in to Farmmetric</a><Link className="sm-btn" style={{ border: '2px solid #23613f', color: '#23613f' }} to="/farmmetric">What it does</Link></div>
             </div>
           </div>
-          <p className="sm-sub" style={{ marginTop: 22 }}>New to either one? Samana starts with a free sample job; Farmmetric is free.</p>
+          <p className="sm-sub" style={{ marginTop: 22 }}>New to either one? Samana starts free with one job; Farmmetric is free.</p>
         </div>
       </section>
       <SamanaFoot />

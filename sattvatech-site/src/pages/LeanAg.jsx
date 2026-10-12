@@ -51,7 +51,7 @@ export default function LeanAg() {
       <section className="sm-arms" aria-labelledby="box">
         <div className="sm-wrap">
           <h2 className="sm-h2" id="box">Drying, power and storage containers.</h2>
-          <p className="sm-sub">We build drying rooms and power and storage rooms in insulated 40 ft containers, ship them to your site or build them there, and sell the full design if you would rather build it yourself.</p>
+          <p className="sm-sub">We build drying rooms and power and storage rooms in insulated 40 ft containers on your site, and sell the full design if you would rather build it yourself.</p>
           <Link className="sm-btn go" to="/containers">See the containers</Link>
         </div>
       </section>

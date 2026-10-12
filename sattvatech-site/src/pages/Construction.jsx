@@ -49,7 +49,7 @@ export default function Construction() {
       <section className="sm-arms" aria-labelledby="box">
         <div className="sm-wrap">
           <h2 className="sm-h2" id="box">Working rooms, built in a container.</h2>
-          <p className="sm-sub">Drying rooms and power and storage rooms in insulated 40 ft containers: shipped ready to set, built on site by our crew, or the full design for your builder.</p>
+          <p className="sm-sub">Drying rooms and power and storage rooms in insulated 40 ft containers: built on site by our crew, or the full design for your builder.</p>
           <Link className="sm-btn go" to="/containers">See the containers</Link>
         </div>
       </section>

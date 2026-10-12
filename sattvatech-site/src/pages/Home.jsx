@@ -33,9 +33,9 @@ const LEVELS = [
   { id: 'products', tab: 'Products', sub: 'Containers and apps', Drawing: PlanContainer,
     tb: ['Drying room in a 40 ft container', '2 AC units', '2 dehumidifiers', '2 fans'],
     big: 'Things we make', cap: 'Working rooms built inside a container, and the apps we run our own work on.',
-    m: [['2', 'container rooms'], ['3', 'ways to buy'], ['2', 'apps you can sign in to']],
+    m: [['2', 'container rooms'], ['2', 'ways to buy'], ['2', 'apps you can sign in to']],
     kpis: [['Containers', 'Built to order'], ['Samana', 'Takeoff, Lean, Flow'], ['Farmmetric', 'Free']],
-    rows: [['Container rooms', 'Drying, and power and storage'], ['Ways to buy', 'Shipped, built on site, or the design'], ['Apps', 'Samana and Farmmetric'], ['Quote service', 'For handymen and small crews']],
+    rows: [['Container rooms', 'Drying, and power and storage'], ['Ways to buy', 'Built on your site, or the design'], ['Apps', 'Samana and Farmmetric'], ['Quote service', 'For handymen and small crews']],
     to: '#products', cta: 'See products' },
 ]
 
@@ -170,7 +170,7 @@ const BUILDS = [
     facts: [['By', 'Sattva Technologies'], ['Power', 'New service, switchgear and generator']] },
   { name: 'Basement finish', place: 'Richmond, Rhode Island', kind: 'Home', Drawing: PlanBasement, note: 'The finished basement',
     facts: [['Area', '876 SF'], ['Rooms', '2 bed, 1 bath'], ['Ceiling', '7′ 6″']] },
-  { name: 'Kitchen remodel', place: '2015', kind: 'Home', photo: '/media/work/home-kitchen.jpg', alt: 'A finished kitchen with cherry cabinets, stone counters, an island, wall ovens and a range hood',
+  { name: 'Kitchen remodel', place: 'Massachusetts', kind: 'Home', photo: '/media/work/home-kitchen.jpg', alt: 'A finished kitchen with cherry cabinets, stone counters, an island, wall ovens and a range hood',
     facts: [['Scope', 'Cabinets, stone counters and an island'], ['With', 'Wall ovens, hood and lighting']] },
 ]
 
@@ -393,9 +393,9 @@ export default function Home() {
               </div>
               <div className="st-panel">
                 <div className="st-panel-h"><h2>Container rooms</h2></div>
-                <div className="st-total"><h4>Two rooms right now, both insulated.</h4><p>Built in a 40 ft container, wired and conditioned. Buy it built, or buy the design: the schematic and a work order for putting it together.</p></div>
+                <div className="st-total"><h4>Two rooms right now, both insulated.</h4><p>Built in a 40 ft container, wired and conditioned. We build it on your site, or you buy the design: the drawing set and a work order for putting it together.</p></div>
                 <div className="st-rows st-rooms">{ROOMS.map(([k, v]) => <div className="st-row" key={k}><span>{k}</span><b>{v}</b></div>)}</div>
-                <dl className="st-kpis"><div><dt>Built</dt><dd>and shipped</dd></div><div><dt>Built</dt><dd>on your site</dd></div><div><dt>Or just</dt><dd>the design</dd></div></dl>
+                <dl className="st-kpis"><div><dt>Recommended</dt><dd>Built on site</dd></div><div><dt>Or just</dt><dd>the design</dd></div><div><dt>Both rooms</dt><dd>insulated</dd></div></dl>
                 <div className="st-panel-f"><Link className="st-btn primary" to="/containers">See the containers</Link></div>
               </div>
             </div>
@@ -406,12 +406,12 @@ export default function Home() {
               <div className="st-panel st-prod">
                 <div className="st-band">Samana<small>Takeoff, Lean, Flow</small></div>
                 <p>The app our own jobs run on. Takeoff draws and prices the job, Lean plans the steps and the crew, and Flow shows the budget and the cash by month. Sai, its AI helper, guides you through it.</p>
-                <div className="st-price">From $10<small>a month</small></div>
+                <div className="st-price">Free<small>to start, one job</small></div>
                 <div className="st-panel-f"><a className="st-btn primary" href={APP}>Start with a free sample job</a><Link className="st-btn" to="/samana">See it work</Link></div>
               </div>
               <div className="st-panel st-prod st-green">
-                <div className="st-band">Farmmetric<small>Farm compliance and records</small></div>
-                <p>A simple way to enter the farm's data from a phone: jobs, logs, inspections and compliance records. Live API connectors are coming soon.</p>
+                <div className="st-band">Farmmetric<small>Free farm app</small></div>
+                <p>The farm's jobs, sprays, harvest and drying, logged from a phone, with the records kept as you go. Live API connectors are coming soon.</p>
                 <div className="st-price">Free<small>Google Play soon</small></div>
                 <div className="st-panel-f"><a className="st-btn primary" href={FARM}>Use it free</a><Link className="st-btn" to="/farmmetric">What it does</Link></div>
               </div>

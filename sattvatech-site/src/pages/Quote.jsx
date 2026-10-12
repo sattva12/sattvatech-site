@@ -37,10 +37,10 @@ export default function Quote() {
           <h2 className="sm-h2" id="menu">Pick what you need.</h2>
           <div className="sm-ptwo">
             <div className="sm-plan"><h3>Do it yourself in Samana</h3><p>The app, monthly. You put in your own labor rates.</p><dl>
-              <div><dt>Quotes<small>A clear quote for your customer, in your name</small></dt><dd>$10<small>a month</small></dd></div>
-              <div><dt>Quotes and materials list<small>Every item and quantity, ready to order</small></dt><dd>$20<small>a month</small></dd></div>
-              <div><dt>Quotes, materials and work orders<small>Step by step for your crew; review recommended</small></dt><dd>$30<small>a month</small></dd></div>
-            </dl></div>
+              <div><dt>Free<small>One job, drawn and priced</small></dt><dd>$0</dd></div>
+              <div><dt>Takeoff<small>A clear quote for your customer, in your name; 5 jobs</small></dt><dd>$10<small>a month</small></dd></div>
+              <div><dt>Flow<small>Adds the materials list and work orders for your crew; review recommended</small></dt><dd>$20<small>a month</small></dd></div>
+            </dl><p style={{ margin: '10px 0 0', fontSize: 14 }}><a href="/samana#plans" style={{ color: 'inherit' }}>All Samana plans</a></p></div>
             <div className="sm-plan"><h3>Have a licensed GC do it</h3><p>Our time, on top of a plan.</p><dl>
               <div><dt>Review<small>A construction supervisor checks the job before it goes out</small></dt><dd>$25<small>a job</small></dd></div>
               <div><dt>Full job write-up<small>Proposal, drawings, materials list and a work order</small></dt><dd>$100<small>a job</small></dd></div>

@@ -11,8 +11,8 @@ export default function Containers() {
       <SamanaNav here="containers" />
       <header className="sq-hero sm-grid">
         <div className="sm-wrap">
-          <h1>Working rooms, built in a container and shipped anywhere.</h1>
-          <p>We design and build insulated 40 ft containers set up as drying rooms and as power and storage rooms: wired and conditioned, ready to set on a pad and connect. We ship them, build them on your site, or sell you the design.</p>
+          <h1>Working rooms, built in a container.</h1>
+          <p>We design and build insulated 40 ft containers set up as drying rooms and as power and storage rooms: wired and conditioned, ready to set on a pad and connect. We build them on your site, or sell you the design so your own builder can.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
             <a className="sm-btn go" href="#talk">Price a container</a>
             <a className="sm-btn ghost" href="#what">What goes inside</a>
@@ -22,11 +22,10 @@ export default function Containers() {
 
       <section className="sm-pieces sm-grid" aria-labelledby="ways">
         <div className="sm-wrap">
-          <h2 className="sm-h2" id="ways">Three ways to buy.</h2>
+          <h2 className="sm-h2" id="ways">Two ways to buy.</h2>
           <p className="sm-sub">The same design behind each one, sized to what the room has to do.</p>
           <table className="sm-ptab"><tbody>
-            <tr><th scope="row">Built and shipped</th><td>We build the container in our shop, test it, and ship it to your site ready to set and connect.</td><td>Anywhere a truck can reach</td></tr>
-            <tr><th scope="row">Built on your site</th><td>Our crew builds it where it will stand, with the pad and power planned with the rest of the site.</td><td>Our crew, your site</td></tr>
+            <tr><th scope="row">Built on your site</th><td>Our crew builds it where it will stand, with the pad and power planned with the rest of the site.</td><td>Recommended</td></tr>
             <tr><th scope="row">The design</th><td>A drawing set for the drying container and its power supply: equipment, air and water, power layout, site runs and circuits, the one-line, the panel schedule, the material list with quantities, and a work order your own builder can follow to put it together.</td><td>Build it yourself</td></tr>
           </tbody></table>
         </div>
@@ -60,8 +59,8 @@ export default function Containers() {
           <ol>
             <li><h3>Tell us the room</h3><p>What it is for, how much it has to dry or hold, and where it is going.</p></li>
             <li><h3>We size and price it</h3><p>Every piece, its labor and its date, in a quote you can check line by line.</p></li>
-            <li><h3>We build it</h3><p>In our shop or on your site, checked off step by step with photos.</p></li>
-            <li><h3>Set and running</h3><p>Shipped or finished in place, connected, tested and handed over with its drawings.</p></li>
+            <li><h3>We build it</h3><p>On your site, checked off step by step with photos. Or your builder does, from the design.</p></li>
+            <li><h3>Set and running</h3><p>Finished in place, connected, tested and handed over with its drawings.</p></li>
           </ol>
         </div>
       </section>
