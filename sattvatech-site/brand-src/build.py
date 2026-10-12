@@ -66,6 +66,51 @@ for stem, kind in (('sattva-mark', 'mark'), ('sattva-logo', 'stacked'), ('sattva
     write(stem + '.svg', svg(kind, 'light')); write(stem + '-dark.svg', svg(kind, 'dark'))
     write(stem + '-mono.svg', svg(kind, INK)); write(stem + '-mono-white.svg', svg(kind, '#ffffff'))
 
+# ---- Samana (Atul, 2026-10-12): two logos, not three. Samana has no mark of its own; it is the Sattva mark with
+# SAMANA beside it and BY SATTVA under, "Samana by Sattva". Takeoff, Lean and Flow are words only, never marks.
+# SAMANA is set like SATTVA (Montserrat bold, the same height); BY SATTVA like TECHNOLOGIES (semi-bold, four tenths
+# the height, the same letter spacing), set from the left rather than stretched.
+_t0 = Wd.word(SEMI, 'TECHNOLOGIES', 0, 0, TECH_CAP); TECH_TRACK = (NAME_W - (_t0.bounds[2] - _t0.bounds[0])) / 11
+def _at00(g): return affinity.translate(g, -g.bounds[0], -g.bounds[1])
+SAM = _at00(Wd.word(BOLD, 'SAMANA', 0, 0, 100.0).simplify(0.15)); SAM_W = SAM.bounds[2]
+BYS = _at00(Wd.word(SEMI, 'BY SATTVA', TECH_TRACK, 0, TECH_CAP).simplify(0.1))
+
+def lock_samana(kind):
+    """As lock(), for the Samana lockup: SAMANA, BY SATTVA or None, width, height. The mark sits at 0,0."""
+    if kind == 'stacked':
+        k = H / SAM_W; y0 = H + STACK_GAP
+        return place(SAM, k, 0, y0), place(BYS, k, 0, y0 + (100 + LEAD) * k), H, y0 + BLOCK * k
+    if kind == 'wide':
+        k = WIDE_K; x0 = H + WIDE_GAP; y0 = (H - BLOCK * k) / 2
+        return place(SAM, k, x0, y0), place(BYS, k, x0, y0 + (100 + LEAD) * k), x0 + SAM_W * k, H
+    if kind == 'small':                           # app top bars, about 40 px tall: BY SATTVA would be too small to read
+        k = SMALL_K; x0 = H + WIDE_GAP; y0 = (H - 100 * k) / 2
+        return place(SAM, k, x0, y0), None, x0 + SAM_W * k, H
+
+def svg_samana(kind, tone, title='Samana by Sattva'):
+    sam, bys, w, h = lock_samana(kind)
+    P = lambda g, fill: f'<path fill="{fill}" fill-rule="evenodd" d="{M.path_d(g)}"/>' if g is not None else ''
+    if tone in TONES:
+        grid, line, c1, c2 = TONES[tone]; body = M.colour_svg_body(grid=grid, line_fill=line) + P(sam, c1) + P(bys, c2)
+    else:
+        body = P(M.mono(), tone) + P(sam, tone) + P(bys, tone)
+    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.1f} {h:.1f}" role="img" aria-label="{title}"><title>{title}</title>{body}</svg>'
+
+SAMANA_FILES = []
+for stem, kind in (('samana-logo', 'stacked'), ('samana-logo-wide', 'wide'), ('samana-logo-small', 'small')):
+    for end, tone in (('', 'light'), ('-dark', 'dark'), ('-mono', INK), ('-mono-white', '#ffffff')):
+        write(stem + end + '.svg', svg_samana(kind, tone)); SAMANA_FILES.append((stem + end, kind))
+
+# PNGs with a clear background for the Samana files: side by side 1800 wide, stacked 1900 tall (as the Sattva PNGs).
+try:
+    import cairosvg
+    for stem, kind in SAMANA_FILES:
+        size = {'output_height': 1900} if kind == 'stacked' else {'output_width': 1800}
+        cairosvg.svg2png(url=os.path.join(OUT, stem + '.svg'), write_to=os.path.join(OUT, stem + '.png'), **size)
+    print('Samana PNGs written')
+except ImportError:
+    print('cairosvg not installed: Samana PNGs not written')
+
 # The browser-tab icon and the phone icon: the dark-background mark on navy.
 # At 32 the squares are 6 wide, the gaps 3 and the line 2, so every edge lands on a whole pixel.
 old = (M.SQ, M.GAP, M.RAD, M.LINE, M.TURN, M.SIZE, M.PITCH); M.SQ, M.GAP, M.RAD, M.LINE, M.TURN, M.SIZE, M.PITCH = 6.0, 3.0, 0.9, 2.0, 0.0, 24.0, 9.0

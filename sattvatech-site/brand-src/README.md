@@ -21,6 +21,21 @@ The files in `public/brand/`:
 | `.svg` and `.png` | Every one comes as both. The PNGs have a clear background. |
 | `sattva-share.jpg` | The picture shown when a link to the site is shared. |
 
+## Samana: "Samana by Sattva" (Atul, 2026-10-12)
+
+Two logos, not three. Samana has no mark of its own: it is the Sattva mark with SAMANA beside it and BY SATTVA under.
+SAMANA is set like SATTVA (Montserrat bold, the same height); BY SATTVA like TECHNOLOGIES (semi-bold, four tenths the
+height, the same letter spacing), from the left. Takeoff, Lean and Flow are parts of Samana: words only, never marks.
+`build.py` writes these beside the Sattva files, with the same colours and endings (none, `-dark`, `-mono`, `-mono-white`):
+
+| File | Use |
+|---|---|
+| `samana-logo` | The mark over SAMANA / BY SATTVA, the name as wide as the mark. Splash screens, covers. |
+| `samana-logo-wide` | The mark beside SAMANA / BY SATTVA. App and document headers, 40 px tall and up. |
+| `samana-logo-small` | The mark beside SAMANA alone, for app top bars about 40 px tall (BY SATTVA would be too small to read there). |
+
+Farmmetric is not here: it keeps its own tractor, stands alone, and its files live in the farmmetrc repo, `store/brand/`.
+
 ## The logo colours (set by Atul, 2026-10-11)
 
 The white-line logo on navy (the files ending `-dark`) is the main version. The same list is in `public/brand/sattva-colours.json`, and as a picture in `public/brand/sattva-colours.png`.
