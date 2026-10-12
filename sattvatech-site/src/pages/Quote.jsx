@@ -14,7 +14,7 @@ export default function Quote() {
           <p>For handymen, carpenters, painters and small crews in Massachusetts. Send us the job; we send back a clear quote in your name, with every material, hour and step priced so your profit is in it. Your first quote is free.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
             <a className="sm-btn go" href="tel:5089168447">Call or text 508-916-8447</a>
-            <a className="sm-btn ghost" href="mailto:apatel@sattvatech.com?subject=Quote%20for%20a%20job">Email the job</a>
+            <a className="sm-btn ghost" href="mailto:info@sattvatech.com?subject=Quote%20for%20a%20job">Email the job</a>
           </div>
         </div>
       </header>

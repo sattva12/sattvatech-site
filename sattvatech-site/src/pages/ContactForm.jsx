@@ -18,7 +18,7 @@ export default function ContactForm({ topic, prompt }) {
       <label>Email<input name="email" type="email" required autoComplete="email" /></label>
       <label className="wide">{prompt}<textarea name="message" rows="4" required /></label>
       <div className="wide"><button className="sm-btn go" type="submit" disabled={state === 'sending'}>{state === 'sending' ? 'Sending' : 'Send'}</button>
-        {state === 'error' && <span className="sm-err" role="alert"> That did not send. Email apatel@sattvatech.com instead.</span>}</div>
+        {state === 'error' && <span className="sm-err" role="alert"> That did not send. Email info@sattvatech.com instead.</span>}</div>
     </form>
   )
 }

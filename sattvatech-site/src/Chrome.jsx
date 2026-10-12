@@ -6,7 +6,7 @@ export const APP = 'https://app.sattvatech.com'
 export const FARM = 'https://www.myfarmmetric.com'
 export const TEL = '508-916-8447'
 export const TEL_HREF = 'tel:5089168447'
-export const MAIL = 'apatel@sattvatech.com'
+export const MAIL = 'info@sattvatech.com'
 
 /* The app's own top bar, used across the site: the name, the lines of work as tabs, sign in on the right. */
 const TABS = [
