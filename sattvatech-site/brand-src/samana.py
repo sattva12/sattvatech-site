@@ -2,7 +2,8 @@
 Needs shapely, fonttools (with brotli) and cairosvg (for the PNGs).
 
 The Samana mark (Atul, 2026-10-12, 22:07): four rounded squares in Sattva's colours, from the same family as the
-nine-square Sattva mark: E on blue, lowercase m on red, lowercase c with a yellow 2 on green, RP in navy on yellow (22:09), set at the same font size as the E. No equals signs, no
+nine-square Sattva mark: capital E on blue, capital M on red, capital C with a yellow 2 on green, RP in navy on yellow
+(final, Atul 22:13: "this is the one"). No equals signs, no
 integral ("its too much"). The lockup reads SAMANA / EMCRP SOFTWARE. EMCRP is just the tagline: nothing explains it.
 This replaces the earlier "Samana by Sattva" lockup (the Sattva mark with SAMANA beside it)."""
 import os, sys
@@ -39,11 +40,10 @@ def glyphs():
     c0, c1 = SQ / 2, SQ + HG + SQ / 2; r0, r1 = SQ / 2, SQ + VG + SQ / 2
     L = lambda ch, cap: Wd.word(BOLD, ch, 0, 0, cap).simplify(0.1)
     E = at(L('E', 74), cx=c0, cy=r0)
-    base = lambda g, cx, line: at(g, cx=cx, y=line - (g.bounds[3] - g.bounds[1]))   # sit on the E's baseline
-    M = base(L('m', 74), c1, E.bounds[3])
-    C = base(L('c', 74), c0 - 8, r1 + 37)
-    two = at(L('2', 30), x=C.bounds[2] + 3, y=C.bounds[1] - 14)
-    RP = base(Wd.word(BOLD, 'RP', 2, 0, 58).simplify(0.1), c1, r1 + 37)
+    M = at(L('M', 74), cx=c1, cy=r0)
+    C = at(L('C', 74), cx=c0 - 8, cy=r1)
+    two = at(L('2', 34), x=C.bounds[2] + 3, y=SQ + VG + 22)
+    RP = at(Wd.word(BOLD, 'RP', 2, 0, 52).simplify(0.1), cx=c1, cy=r1)
     return {'E': E, 'M': M, 'C': C, 'two': two, 'RP': RP}
 
 G = glyphs()
