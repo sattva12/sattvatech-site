@@ -35,12 +35,13 @@ export function Page({ here, title, children, className = '' }) {
 
 /* the dark opening of an inner page: the headline, a line or two, the buttons, an optional picture,
    and an optional title block of facts under it */
-export function Hero({ title, lede, acts, aside, tb, c }) {
+export function Hero({ title, lede, acts, aside, tb, c, kicker }) {
   return (
     <section className={'sx-open sx-ihero' + (c ? ' sx-c-' + c : '')} id="top">
       <div className="sx-wrap">
         <div className={'sx-ihero-in' + (aside ? ' has-aside' : '')}>
           <div>
+            {kicker && <p className="sx-kicker">{kicker}</p>}
             <h1>{c && <i aria-hidden="true" />}{title}</h1>
             <p className="sx-ihero-lede">{lede}</p>
             <Acts acts={acts} />

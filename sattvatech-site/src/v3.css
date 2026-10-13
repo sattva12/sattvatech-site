@@ -460,3 +460,4 @@
 .sx-sheet-farm { --sheet: #23613f; }
 .sx-band { border-left-color: var(--ink); }
 .sx .sm-tally { border-radius: 0; }
+.sx-kicker { margin-bottom: 14px; font: 600 clamp(18px, 1.6vw, 22px)/1 var(--cond); color: var(--fog); }

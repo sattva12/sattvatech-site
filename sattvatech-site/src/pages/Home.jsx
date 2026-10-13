@@ -246,7 +246,7 @@ const ROOMS = [
   ['Option: plug locations', 'Outlets and circuits placed where your equipment will stand'],
 ]
 const APPS = [
-  { id: 'samana', name: 'Samana', sub: 'Takeoff, Lean, Flow', text: 'The app our own jobs run on. Takeoff draws and prices the job, Lean plans the steps and the crew, and Flow shows the budget and the cash by month.',
+  { id: 'samana', name: 'Samana', sub: 'Business, Production and Buildout Coordination Software', text: 'The app our own jobs run on. Takeoff draws and prices the job, Lean plans the steps and the crew, and Flow shows the budget and the cash by month.',
     price: 'Free to start', small: 'Then $10, $20 or $30 a month', go: [APP, 'Start free'], more: ['/samana', 'See it work'] },
   { id: 'farmmetric', name: 'Farmmetric', sub: 'Free farm app', text: 'The farm’s jobs, sprays, harvest and drying, logged from a phone, with the records kept as you go. Live API connectors are coming soon.',
     price: 'Free', small: 'Google Play soon', go: [FARM, 'Use it free'], more: ['/farmmetric', 'What it does'] },
