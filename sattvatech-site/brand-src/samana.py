@@ -1,14 +1,9 @@
 """Writes every Samana logo file. Run from this folder:  python3 samana.py ../public/brand
 Needs shapely, fonttools (with brotli) and cairosvg (for the PNGs).
 
-The Samana mark (Atul, 2026-10-12, 21:44 to 22:01): four rounded squares in Sattva's colours, read as one formula,
-    E = mc^2 = integral of RP
-- blue square: capital E; an equals sign in the gap; red square: lowercase m
-- green square: lowercase c with a yellow 2; a second equals sign in the gap; yellow square: an integral sign
-  with R at the top and P at the bottom, the integral from R to P
-  (R drawn on top for readability, Atul 22:01). The mark is not explained anywhere; EMC2RP Software is just the tagline (22:03).
-Meaning: resource planning, from beginning to end, equals the energy of combining manufacturing and construction.
-EMC2RP: Enterprise, Manufacturing and Construction Resource Planning. The lockup reads SAMANA / EMC2RP SOFTWARE.
+The Samana mark (Atul, 2026-10-12, 22:07): four rounded squares in Sattva's colours, from the same family as the
+nine-square Sattva mark: E on blue, lowercase m on red, lowercase c with a yellow 2 on green, RP in navy on yellow (22:09), set at the same font size as the E. No equals signs, no
+integral ("its too much"). The lockup reads SAMANA / EMCRP SOFTWARE. EMCRP is just the tagline: nothing explains it.
 This replaces the earlier "Samana by Sattva" lockup (the Sattva mark with SAMANA beside it)."""
 import os, sys
 from shapely.geometry import box, LineString
@@ -23,8 +18,8 @@ BOLD = os.path.join(HERE, 'montserrat-latin-700-normal.woff2')
 SEMI = os.path.join(HERE, 'montserrat-latin-600-normal.woff2')
 
 SQ, RAD = 144.0, 18.0             # a square and its corner rounding (as the Sattva squares)
-HG, VG = 60.0, 20.0               # the gap across (holds the equals signs) and the gap down
-W, H = 2 * SQ + HG, 2 * SQ + VG   # the mark: 348 by 308
+HG, VG = 22.0, 22.0               # the gaps between the squares
+W, H = 2 * SQ + HG, 2 * SQ + VG   # the mark: 310 square
 BLUE, DARK_BLUE, RED, GREEN, YELLOW = '#134e89', '#3d7fd0', '#e44936', '#3ea059', '#f6b70a'
 NAVY, INK, TEXT_GREY, PALE = '#0d2747', '#16212c', '#2f3033', '#dfe6ee'
 
@@ -40,30 +35,19 @@ def at(g, cx=None, cy=None, x=None, y=None):
     return affinity.translate(g, dx, dy)
 
 def glyphs():
-    """The letters and signs, placed on the mark. Returns {name: shape}."""
-    s = SQ; c0, c1 = s / 2, SQ + HG + s / 2; r0, r1 = s / 2, SQ + VG + s / 2
-    E = at(Wd.word(BOLD, 'E', 0, 0, 74).simplify(0.1), cx=c0, cy=r0)
-    m = Wd.word(BOLD, 'm', 0, 0, 88).simplify(0.1); m = at(m, cx=c1, cy=r0)
-    c = Wd.word(BOLD, 'c', 0, 0, 92).simplify(0.1); c = at(c, cx=c0 - 6, cy=r1 + 4)
-    two = Wd.word(BOLD, '2', 0, 0, 40).simplify(0.1); two = at(two, x=c.bounds[2] + 4, y=SQ + VG + 20)
-    # the integral: one stroke, a hook at the top right, a long gentle lean down, a hook at the bottom left
-    def bez(p0, p1, p2, p3, n=24):
-        return [((1-t)**3*p0[0] + 3*(1-t)**2*t*p1[0] + 3*(1-t)*t*t*p2[0] + t**3*p3[0],
-                 (1-t)**3*p0[1] + 3*(1-t)**2*t*p1[1] + 3*(1-t)*t*t*p2[1] + t**3*p3[1]) for t in [i / n for i in range(n + 1)]]
-    pts = bez((84, 30), (82, 20), (70, 16), (64, 26)) + bez((64, 26), (60, 34), (58, 60), (56, 72))[1:] \
-        + bez((56, 72), (54, 86), (52, 112), (48, 120))[1:] + bez((48, 120), (42, 130), (30, 128), (28, 118))[1:]
-    integ = LineString(pts).buffer(6.0, cap_style=1, join_style=1, quad_segs=8).simplify(0.1)
-    integ = affinity.translate(integ, SQ + HG - 8, SQ + VG)
-    R = at(Wd.word(BOLD, 'R', 0, 0, 30).simplify(0.1), x=SQ + HG + 94, y=SQ + VG + 18)
-    P = at(Wd.word(BOLD, 'P', 0, 0, 30).simplify(0.1), x=SQ + HG + 94, y=SQ + VG + SQ - 18 - 30)
-    def eq(cy):
-        bw, bh, gap = 32.0, 10.0, 11.0; cx = SQ + HG / 2
-        return unary_union([box(cx - bw / 2, cy - gap / 2 - bh, cx + bw / 2, cy - gap / 2).buffer(2.5, join_style=1),
-                            box(cx - bw / 2, cy + gap / 2, cx + bw / 2, cy + gap / 2 + bh).buffer(2.5, join_style=1)])
-    return {'E': E, 'm': m, 'c': c, 'two': two, 'int': integ, 'R': R, 'P': P, 'eq1': eq(r0), 'eq2': eq(r1)}
+    """The letters, placed on the mark. Returns {name: shape}."""
+    c0, c1 = SQ / 2, SQ + HG + SQ / 2; r0, r1 = SQ / 2, SQ + VG + SQ / 2
+    L = lambda ch, cap: Wd.word(BOLD, ch, 0, 0, cap).simplify(0.1)
+    E = at(L('E', 74), cx=c0, cy=r0)
+    base = lambda g, cx, line: at(g, cx=cx, y=line - (g.bounds[3] - g.bounds[1]))   # sit on the E's baseline
+    M = base(L('m', 74), c1, E.bounds[3])
+    C = base(L('c', 74), c0 - 8, r1 + 37)
+    two = at(L('2', 30), x=C.bounds[2] + 3, y=C.bounds[1] - 14)
+    RP = base(Wd.word(BOLD, 'RP', 2, 0, 58).simplify(0.1), c1, r1 + 37)
+    return {'E': E, 'M': M, 'C': C, 'two': two, 'RP': RP}
 
 G = glyphs()
-SMALL_DROP = ('R', 'P')            # under about 64 px the limits would be a smudge: the small mark leaves them off
+SMALL_DROP = ()
 
 def path_d(g, sx=1.0, ox=0.0, oy=0.0, nd=1):
     polys = list(g.geoms) if g.geom_type in ('MultiPolygon', 'GeometryCollection') else [g]
@@ -81,16 +65,12 @@ def mark_body(tone, sx=1.0, ox=0.0, oy=0.0, small=False, nd=1):
     keys = [k for k in G if not (small and k in SMALL_DROP)]
     if tone in ('dark', 'light'):
         blue = DARK_BLUE if tone == 'dark' else BLUE
-        signs = '#ffffff' if tone == 'dark' else TEXT_GREY
         out = P(sq(0, 0), blue) + P(sq(1, 0), RED) + P(sq(0, 1), GREEN) + P(sq(1, 1), YELLOW)
-        out += P(unary_union([G['E'], G['m'], G['c']]), '#ffffff') + P(G['two'], YELLOW)
-        out += P(unary_union([G[k] for k in ('int', 'R', 'P') if k in keys]), NAVY)
-        out += P(unary_union([G['eq1'], G['eq2']]), signs)
+        out += P(unary_union([G['E'], G['M'], G['C']]), '#ffffff') + P(G['two'], YELLOW) + P(G['RP'], NAVY)
         return out
-    # one colour: the squares with the letters cut out of them, and the equals signs
-    cut = unary_union([G[k] for k in keys if not k.startswith('eq')])
-    squares = unary_union([sq(0, 0), sq(1, 0), sq(0, 1), sq(1, 1)]).difference(cut)
-    return P(unary_union([squares, G['eq1'], G['eq2']]), tone)
+    # one colour: the squares with the letters cut out of them
+    cut = unary_union([G[k] for k in keys])
+    return P(unary_union([sq(0, 0), sq(1, 0), sq(0, 1), sq(1, 1)]).difference(cut), tone)
 
 def fitted(font, text, cap, width):
     w0 = Wd.word(font, text, 0, 0, cap); t = (width - (w0.bounds[2] - w0.bounds[0])) / max(1, len(text) - 1)
