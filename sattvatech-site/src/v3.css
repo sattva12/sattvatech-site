@@ -356,3 +356,12 @@
 .sx-db-box input:focus-visible + * , .sx-db-box:focus-within { outline: 2px solid var(--amber); outline-offset: 3px; }
 .sx-db figcaption { margin-top: 12px; color: var(--fog); font-size: 15px; }
 .sx-db figcaption b { color: var(--line); font-weight: 600; }
+/* the split lives inside the opening sheet (20:47) */
+.sx-dwg-sheet { padding: 0; }
+.sx-dwg .sx-db-box { width: 100%; aspect-ratio: 1200 / 560; border: 0; }
+.sx-dwg-sheet { display: flex; align-items: center; min-width: 0; overflow: hidden; }
+.sx-dwg .sx-db-dw .st-dw { padding: 2% 1.5%; }
+@media (min-width: 1001px) {
+  .sx-dwg-sheet { align-items: stretch; }
+  .sx-dwg .sx-db-box { aspect-ratio: auto; min-height: 540px; }
+}

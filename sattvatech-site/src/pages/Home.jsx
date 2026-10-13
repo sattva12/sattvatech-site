@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { APP, FARM, TEL, TEL_HREF, MAIL } from '../Chrome.jsx'
 import { Top, Foot } from '../Shell.jsx'
 import ContactForm from './ContactForm.jsx'
-import { PlanFarm, PlanContainer, PlanRetail, MauTrace } from '../drawings.jsx'
+import { PlanFarm, PlanContainer, PlanFitout } from '../drawings.jsx'
 import { Logo } from '../brand.jsx'
 import '../site.css'
 import '../v3.css'
@@ -19,21 +19,30 @@ const LINES = [
   { id: 'products', name: 'Products', sub: 'Container rooms built to order, and the software we run our work on.' },
 ]
 
-/* drawn, then built: the drawing traced over the photo of the same roof; drag the seam (Atul, 20:20: "split the pic to show beginning to end") */
+/* The opening sheet: two pictures on one sheet, the plan and the finished work (Atul, 20:47: "the drawing should be something
+   Samana can do, like a commercial build... no CAD files of HVAC... the design shows the install of it... so just the 2 pics").
+   The plan inks in, then the seam glides once to show the make-up air units installed; drag to compare. */
 function DrawnBuilt() {
-  const [p, setP] = useState(50)
+  const [p, setP] = useState(100)
+  useEffect(() => {
+    const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (still) { setP(58); return undefined }
+    let raf, t0
+    const id = setTimeout(() => {
+      const step = (t) => { if (!t0) t0 = t; const k = Math.min(1, (t - t0) / 1100); const e = 1 - Math.pow(1 - k, 3); setP(100 - 42 * e); if (k < 1) raf = requestAnimationFrame(step) }
+      raf = requestAnimationFrame(step)
+    }, 2600)
+    return () => { clearTimeout(id); cancelAnimationFrame(raf) }
+  }, [])
   return (
-    <figure className="sx-db">
-      <div className="sx-db-box" style={{ '--p': p + '%' }}>
-        <img src="/media/work/com-roof.jpg" alt="Two make-up air units installed on a galvanized steel frame on a commercial roof" />
-        <div className="sx-db-dw" aria-hidden="true"><MauTrace still /></div>
-        <span className="sx-db-seam" aria-hidden="true"><i /></span>
-        <span className="sx-db-tag sx-db-l" aria-hidden="true">Drawn</span>
-        <span className="sx-db-tag sx-db-r" aria-hidden="true">Built</span>
-        <input type="range" min="0" max="100" value={p} onChange={(e) => setP(+e.target.value)} aria-label="Slide between the drawing and the finished roof" />
-      </div>
-      <figcaption><b>Make-up air units, drawn and then set on their steel frame.</b> A commercial fit-out by Sattva Technologies, 2019 to 2020. Drag across to go from the drawing to the roof.</figcaption>
-    </figure>
+    <div className="sx-db-box" style={{ '--p': p + '%' }}>
+      <img src="/media/work/com-roof.jpg" alt="Make-up air units installed on a galvanized steel frame on a commercial roof" />
+      <div className="sx-db-dw"><PlanFitout /></div>
+      <span className="sx-db-seam" aria-hidden="true"><i /></span>
+      <span className="sx-db-tag sx-db-l" aria-hidden="true">Drawn</span>
+      <span className="sx-db-tag sx-db-r" aria-hidden="true">Built</span>
+      <input type="range" min="0" max="100" value={Math.round(p)} onChange={(e) => setP(+e.target.value)} aria-label="Slide between the floor plan and the finished make-up air units" />
+    </div>
   )
 }
 
@@ -53,10 +62,10 @@ function Opening() {
         </div>
 
         <div className="sx-dwg">
-          <div className="sx-dwg-sheet"><PlanRetail /></div>
+          <div className="sx-dwg-sheet"><DrawnBuilt /></div>
           <dl className="sx-dwg-tb">
             <div className="sx-dwg-logo"><Logo size={30} tone="dark" /></div>
-            <div><dt>Drawing</dt><dd>Retail pad site, floor and MEP plan</dd></div>
+            <div><dt>Drawing</dt><dd>Commercial fit-out, plan and built</dd></div>
             <div><dt>Engineering and construction</dt><dd>25+ years</dd></div>
             <div><dt>MA Construction Supervisor</dt><dd>CS-122574</dd></div>
             <div><dt>Home Improvement Contractor</dt><dd>HIC 218120</dd></div>
@@ -66,7 +75,6 @@ function Opening() {
           </dl>
         </div>
 
-        <DrawnBuilt />
 
         <nav className="sx-lines" aria-label="What we do">
           {LINES.map((l) => (
