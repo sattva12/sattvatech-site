@@ -245,61 +245,116 @@ export function PhoneFarmmetric({ still }) {
   )
 }
 
-/* The opening of the site (v3, 2026-10-12, Atul: "the first thing you see is a drawing... technical but construction").
-   A commercial fit-out floor plan on a structural grid: five bays by two, walls, doors, rooms, sprinklers,
-   the electrical service, dimensions, a section mark and north. A typical plan, not one customer's job. */
-export function PlanFitout({ still }) {
-  const xs = [120, 312, 504, 696, 888, 1080], ys = [110, 290, 470], L = 'ABCDEF'
-  const x0 = 120, x1 = 1080, y0 = 110, y1 = 470, cy = 290
-  const grid = xs.map((x) => `M${x} 74V${y1 + 22}`).join('') + ys.map((y) => `M74 ${y}H${x1 + 22}`).join('')
-  const cols = xs.flatMap((x) => ys.map((y) => R(x - 6, y - 6, 12, 12))).join('')
-  const door = (x, y, up, w = 34) => `M${x} ${y}v${up ? -w : w}M${x} ${y + (up ? -w : w)}A${w} ${w} 0 0 ${up ? 1 : 0} ${x + w} ${y}`
-  const heads = []
-  for (let gx = 0; gx < 5; gx++) for (let gy = 0; gy < 2; gy++) heads.push([548 + gx * 64, 338 + gy * 72])
+/* The opening of the site (v3, 2026-10-12). Atul, 20:08: "the first thing you see is a drawing... technical but construction";
+   20:20: "fit it out like it was just going to be a big retail pad site... some plugs, hvac in the dwg... a little more complicated".
+   A typical retail pad: the building on its structural grid with storefront, back of house, the electrical service and panels,
+   receptacles, rooftop units, the make-up air unit, supply ducts and diffusers, the parking field, a legend and a schedule.
+   Not one customer's job. */
+const REC = (x, y, v) => C(x, y, 5) + (v ? `M${x - 2} ${y - 9}v18M${x + 2} ${y - 9}v18` : `M${x - 9} ${y - 2}h18M${x - 9} ${y + 2}h18`)
+const DIF = (x, y, s = 7) => R(x - s, y - s, 2 * s, 2 * s) + `M${x - s} ${y - s}l${2 * s} ${2 * s}M${x + s} ${y - s}l${-2 * s} ${2 * s}`
+export function PlanRetail({ still }) {
+  const bx0 = 140, bx1 = 740, by0 = 110, by1 = 390, boh = 190
+  const gx = [140, 260, 380, 500, 620, 740], gy = [110, 250, 390], L = 'ABCDEF'
+  const grid = gx.map((x) => `M${x} 88V${by1 + 14}`).join('') + gy.map((y) => `M118 ${y}H${bx1 + 14}`).join('')
+  const cols = gx.flatMap((x) => gy.map((y) => R(x - 5, y - 5, 10, 10))).join('')
+  const difs = []; for (const x of [200, 320, 440, 560, 680]) for (const y of [238, 342]) difs.push([x, y])
+  const recs = [[149, 240, 1], [149, 330, 1], [731, 240, 1], [731, 330, 1], [190, 199, 0], [290, 199, 0], [400, 199, 0], [470, 199, 0], [690, 199, 0], [180, 119, 0], [400, 119, 0], [480, 119, 0]]
+  const stalls = (y, h) => Array.from({ length: 17 }, (_, k) => `M${140 + k * 36} ${y}v${h}`).join('')
+  const sched = [['RTU-1', 'Rooftop unit, 12.5 ton'], ['RTU-2', 'Rooftop unit, 12.5 ton'], ['MAU-1', 'Make-up air, 3,200 CFM'], ['EF-1, 2', 'Exhaust fans, toilet rooms'], ['MDP', '800 A, 480/277 V, 3 phase'], ['LP-1, RP-1', 'Lighting and receptacle panels']]
+  const leg = [['rec', 'Duplex receptacle'], ['dif', 'Supply diffuser'], ['duct', 'Supply duct'], ['unit', 'Rooftop equipment, above'], ['svc', 'Electrical service'], ['pole', 'Site light pole']]
   return (
-    <Sheet still={still} box="0 0 1200 560" label="Floor plan of a commercial fit-out on a structural grid of five bays: rooms, a corridor, production space, an electrical room with the service coming in, sprinklers, doors and overall dimensions of 160 by 75 feet">
-      {/* the structural grid and its bubbles */}
-      <path className="dash fade" style={{ '--d': '0s' }} d={grid} />
+    <Sheet still={still} box="0 0 1200 690" label="Floor and MEP plan of a retail pad site: a 150 by 70 foot building on a structural grid with storefront, back of house, electrical room and service, receptacles, two rooftop units and a make-up air unit with supply ducts and diffusers, exhaust fans, a parking field with site lights, a legend and an equipment schedule">
+      {/* property line */}
+      <path className="pl fade" style={{ '--d': '0s' }} d={R(60, 34, 732, 640)} />
+      <T x={66} y={28} c="sm" a="start" t={0.2}>Property line</T>
+      {/* structural grid */}
+      <path className="dash fade" style={{ '--d': '.05s' }} d={grid} />
       <g className="fade" style={{ '--d': '.15s' }}>
-        {xs.map((x, n) => <g key={'c' + n}><circle className="bub" cx={x} cy={52} r={15} /><text className="tx bubt" x={x} y={57} textAnchor="middle">{L[n]}</text></g>)}
-        {ys.map((y, n) => <g key={'r' + n}><circle className="bub" cx={52} cy={y} r={15} /><text className="tx bubt" x={52} y={y + 5} textAnchor="middle">{n + 1}</text></g>)}
+        {gx.map((x, n) => <g key={'c' + n}><circle className="bub" cx={x} cy={74} r={13} /><text className="tx bubt" x={x} y={79} textAnchor="middle">{L[n]}</text></g>)}
+        {gy.map((y, n) => <g key={'r' + n}><circle className="bub" cx={104} cy={y} r={13} /><text className="tx bubt" x={104} y={y + 5} textAnchor="middle">{n + 1}</text></g>)}
       </g>
-      {/* the shell: exterior wall drawn double, columns on the grid */}
-      <P t={0.3} d={R(x0, y0, x1 - x0, y1 - y0)} />
-      <P c="i" t={0.45} d={R(x0 + 9, y0 + 9, x1 - x0 - 18, y1 - y0 - 18)} />
-      <path className="col fade" style={{ '--d': '.7s' }} d={cols} />
-      {/* interior walls: a corridor along grid 2, rooms either side */}
-      <P c="i" t={0.8} d={`M${x0 + 9} ${cy - 20}H888M${x0 + 9} ${cy + 20}H504M696 ${cy + 20}H888M888 ${y0 + 9}V${y1 - 9}`} />
-      <P c="i" t={0.95} d={`M312 ${y0 + 9}V${cy - 20}M504 ${y0 + 9}V${cy - 20}M696 ${y0 + 9}V${cy - 20}M312 ${cy + 20}V${y1 - 9}M504 ${cy + 20}V${y1 - 9}`} />
-      <P c="t" t={1.25} d={[door(250, cy - 20, true), door(442, cy - 20, true), door(634, cy - 20, true), door(820, cy - 20, true), door(250, cy + 20, false), door(442, cy + 20, false), door(1020, y1 - 9, true, 40)].join('')} />
-      {/* fire: sprinkler heads over the production floor */}
-      <g className="fade" style={{ '--d': '1.5s' }}>{heads.map(([a, b]) => <circle key={a + '-' + b} className="spr" cx={a} cy={b} r={4} />)}</g>
-      <path className="dash fade" style={{ '--d': '1.5s' }} d={`M548 338H804M548 410H804M548 338V410`} />
-      {/* power: the service in from the street to the electrical room */}
-      <path className="dash amb fade" style={{ '--d': '1.6s' }} d={`M14 420H${x0}M${x0 + 9} 420H186`} />
-      <P c="a" t={1.6} d={R(186, 400, 30, 40) + R(232, 404, 20, 32)} />
-      <T x={20} y={410} c="lv" a="start" t={1.8}>800 A service</T>
+      {/* shell, storefront, columns */}
+      <P t={0.3} d={`M${bx0} ${by0}H${bx1}V${by1}H620M260 ${by1}H${bx0}Z`} />
+      <P c="i" t={0.45} d={`M${bx0 + 8} ${by0 + 8}H${bx1 - 8}V${by1 - 8}H620M260 ${by1 - 8}H${bx0 + 8}Z`} />
+      <P c="t" t={0.55} d={`M260 ${by1}H620M260 ${by1 - 4}H620` + Array.from({ length: 9 }, (_, k) => `M${260 + k * 45} ${by1 - 6}v8`).join('')} />
+      <path className="col fade" style={{ '--d': '.65s' }} d={cols} />
+      {/* back of house: stock, office, toilet rooms, electrical */}
+      <P c="i" t={0.75} d={`M${bx0 + 8} ${boh}H${bx1 - 8}M440 ${by0 + 8}V${boh}M530 ${by0 + 8}V${boh}M590 ${by0 + 8}V${boh}M650 ${by0 + 8}V${boh}`} />
+      <P c="t" t={1.1} d={`M300 ${by0}v-30M300 ${by0 - 30}A30 30 0 0 1 330 ${by0}M420 ${boh}v-24M420 ${boh - 24}A24 24 0 0 0 396 ${boh}M510 ${boh}v-20M510 ${boh - 20}A20 20 0 0 0 490 ${boh}M570 ${boh}v-20M570 ${boh - 20}A20 20 0 0 0 550 ${boh}M630 ${boh}v-20M630 ${boh - 20}A20 20 0 0 0 610 ${boh}M700 ${boh}v-22M700 ${boh - 22}A22 22 0 0 0 678 ${boh}M410 ${by1}v-30M410 ${by1 - 30}A30 30 0 0 1 440 ${by1}M470 ${by1}v-30M470 ${by1 - 30}A30 30 0 0 0 440 ${by1}`} />
+      {/* power: transformer pad to the main panel, panels, receptacles */}
+      <path className="dash amb fade" style={{ '--d': '1.3s' }} d={`M812 70H700V${by0}M700 ${by0 + 8}V132`} />
+      <P c="a" t={1.3} d={R(812, 52, 40, 36) + R(664, 132, 60, 14) + R(664, 154, 26, 10) + R(698, 154, 26, 10)} />
+      <T x={860} y={58} c="lv" a="start" t={1.5}>Transformer pad</T>
+      <T x={860} y={74} c="sm" a="start" t={1.5}>Utility, 480/277 V</T>
+      <path className="rec fade" style={{ '--d': '1.4s' }} d={recs.map(([x, y, v]) => REC(x, y, v)).join('')} />
+      {/* HVAC: supply mains from the rooftop units, branches to diffusers; MAU over the stockroom; toilet exhaust */}
+      <path className="duct fade" style={{ '--d': '1.5s' }} d={`M200 286H680M200 294H680` + [200, 320, 440, 560, 680].map((x) => `M${x - 4} 286V246M${x + 4} 286V246M${x - 4} 294V334M${x + 4} 294V334`).join('') + `M340 150H436M340 158H436`} />
+      <path className="unit fade" style={{ '--d': '1.6s' }} d={R(236, 270, 72, 40) + R(536, 270, 72, 40) + R(292, 134, 48, 40) + `M236 270l72 40M308 270l-72 40M536 270l72 40M608 270l-72 40M292 134l48 40M340 134l-48 40`} />
+      <path className="dif fade" style={{ '--d': '1.7s' }} d={difs.map(([x, y]) => DIF(x, y)).join('')} />
+      <path className="unit fade" style={{ '--d': '1.7s' }} d={C(560, 150, 9) + C(620, 150, 9)} />
+      <T x={272} y={324} c="lv sm halo" t={1.8}>RTU-1</T>
+      <T x={572} y={324} c="lv sm halo" t={1.8}>RTU-2</T>
+      <T x={316} y={128} c="lv sm" t={1.8}>MAU-1</T>
+      <T x={590} y={176} c="lv sm halo" t={1.8}>EF-1, 2</T>
       {/* rooms */}
-      <T x={216} y={196} t={1.2}>Office</T><T x={216} y={213} c="sm" t={1.25}>1,200 SF</T>
-      <T x={408} y={196} t={1.2}>Conference</T><T x={408} y={213} c="sm" t={1.25}>1,200 SF</T>
-      <T x={600} y={196} t={1.2}>Lab</T><T x={600} y={213} c="sm" t={1.25}>1,200 SF</T>
-      <T x={792} y={196} t={1.2}>Quality</T><T x={792} y={213} c="sm" t={1.25}>1,200 SF</T>
-      <T x={600} y={cy + 5} c="sm" t={1.3}>Corridor</T>
-      <T x={216} y={378} t={1.2}>Electrical</T><T x={216} y={395} c="sm" t={1.25}>1,050 SF</T>
-      <T x={408} y={378} t={1.2}>Locker rooms</T><T x={408} y={395} c="sm" t={1.25}>1,050 SF</T>
-      <T x={696} y={370} c="halo" t={1.2}>Production</T><T x={696} y={388} c="sm halo" t={1.25}>3,200 SF, washable finishes</T>
-      <T x={984} y={250} t={1.2}>Shipping</T><T x={984} y={267} c="sm" t={1.25}>2,250 SF</T>
-      <T x={1046} y={y1 - 20} c="sm" a="end" t={1.4}>Overhead door</T>
+      <T x={214} y={156} t={1.2}>Stockroom</T><T x={214} y={172} c="sm" t={1.25}>1,800 SF</T>
+      <T x={485} y={154} c="sm" t={1.2}>Office</T>
+      <T x={620} y={132} c="sm" t={1.2}>Toilets</T>
+      <T x={694} y={182} c="sm" t={1.2}>Elec.</T>
+      <T x={290} y={370} t={1.2}>Sales floor, 7,000 SF</T>
+      <T x={440} y={by1 + 14} c="sm" t={1.3}>Storefront and entry</T>
+      <T x={336} y={by0 - 12} c="sm" a="start" t={1.3}>Service door</T>
+      {/* site: sidewalk, two rows of stalls, drive aisle, accessible stalls, lights, islands */}
+      <P c="t" t={0.9} d={`M120 410H760M140 410v72M140 ${578}v72` + stalls(410, 72) + stalls(578, 72) + `M140 482H752M140 578H752`} />
+      <path className="hatch fade" style={{ '--d': '1.2s' }} d={Array.from({ length: 8 }, (_, k) => `M${428 + k * 9} 482l9 -72`).join('')} />
+      <path className="pole fade" style={{ '--d': '1.4s' }} d={C(122, 530, 5) + C(600, 530, 5) + C(770, 530, 5)} />
+      <path className="tree fade" style={{ '--d': '1.2s' }} d={C(100, 446, 16) + C(100, 614, 16) + C(776, 446, 12) + C(776, 614, 12)} />
+      <T x={440} y={536} c="sm" t={1.3}>Drive aisle, 24′</T>
+      <T x={464} y={498} c="sm" t={1.35}>Accessible</T>
+      <path className="dash fade" style={{ '--d': '1.3s' }} d="M60 520H96M60 540H96" />
+      <T x={66} y={566} c="sm" a="start" t={1.4}>Curb cut</T>
       {/* dimensions */}
-      <DimH x1={x0} x2={x1} y={530} label={'160′-0″'} t={1.8} />
-      {xs.slice(0, -1).map((x, n) => <DimH key={'d' + n} x1={x} x2={xs[n + 1]} y={506} label={'32′-0″'} t={1.9} />)}
-      <DimV y1={y0} y2={y1} x={1128} label={'75′-0″'} t={1.8} />
-      {/* section mark and north */}
-      <g className="fade" style={{ '--d': '2s' }}>
-        <path className="cut" d={`M600 92V128M600 478V492`} />
-        <circle className="bub" cx={600} cy={92} r={13} /><text className="tx bubt sm" x={600} y={96} textAnchor="middle">A</text>
-        <circle className="bub" cx={1150} cy={48} r={16} /><path className="ltd" d="M1150 30l7 22h-14z" /><text className="tx bubt sm" x={1150} y={84} textAnchor="middle">N</text>
+      <DimH x1={bx0} x2={bx1} y={664} label={'150′-0″'} t={1.9} />
+      <DimV y1={by0} y2={by1} x={762} label={'70′-0″'} t={1.9} />
+      {/* legend and schedule */}
+      <g className="fade" style={{ '--d': '1.6s' }}>
+        <path className="frame" d={R(824, 110, 344, 520) + 'M824 146H1168M824 352H1168M824 388H1168'} />
+        <text className="tx hd2" x={840} y={134}>Legend</text>
+        {leg.map(([k, n], i) => {
+          const y = 170 + i * 30, x = 852
+          const sym = k === 'rec' ? <path className="rec" d={REC(x, y, 0)} /> : k === 'dif' ? <path className="dif" d={DIF(x, y)} /> : k === 'duct' ? <path className="duct" d={`M${x - 14} ${y - 4}h28M${x - 14} ${y + 4}h28`} /> : k === 'unit' ? <path className="unit" d={R(x - 14, y - 9, 28, 18) + `M${x - 14} ${y - 9}l28 18M${x + 14} ${y - 9}l-28 18`} /> : k === 'svc' ? <path className="dash amb" d={`M${x - 14} ${y}h28`} /> : <path className="pole" d={C(x, y, 5)} />
+          return <g key={k}>{sym}<text className="tx sm st" x={878} y={y + 4}>{n}</text></g>
+        })}
+        <text className="tx hd2" x={840} y={376}>Equipment schedule</text>
+        {sched.map(([t, d], i) => <g key={t}><text className="tx lv sm st" x={840} y={414 + i * 34}>{t}</text><text className="tx sm st" x={940} y={414 + i * 34}>{d}</text></g>)}
+        <text className="tx sm st" x={840} y={618}>Building 10,500 SF. Parking 34 stalls.</text>
       </g>
+      <g className="fade" style={{ '--d': '2s' }}>
+        <circle className="bub" cx={1140} cy={664} r={15} /><path className="ltd" d="M1140 647l7 21h-14z" /><text className="tx bubt sm" x={1112} y={669} textAnchor="middle">N</text>
+      </g>
+    </Sheet>
+  )
+}
+
+/* The make-up air units on their steel frame, traced over the photo of the same roof (public/media/work/com-roof.jpg, 1600 by 721),
+   so the drawing and the photo line up in the split on the home page. */
+export function MauTrace({ still }) {
+  return (
+    <Sheet still={still} box="0 0 1600 721" label="Drawing of two make-up air units with hoods and condensing sections on roof curbs, set on a galvanized steel frame with legs on pads">
+      <P t={0} d="M140 478L1040 538L1310 440M140 530L1040 595L1310 492M140 478V530M1040 538V595M1310 440V492" />
+      <P c="i" t={0.25} d="M150 478V555M165 482V555M1018 540V670M1050 542V670M1300 444V486" />
+      <P c="t" t={0.4} d="M300 486L860 470M420 470L880 520M760 462L1180 452M600 500L1000 448" />
+      <P t={0.5} d="M320 432H750V490H320ZM880 405H1245V475H880Z" />
+      <P t={0.7} d="M290 215H705V432H290ZM860 150H1270V405H860Z" />
+      <P c="i" t={0.9} d="M190 270L290 225V315L190 285ZM190 270V285M790 240L860 175V295L790 245ZM230 360H395V440H230Z" />
+      <P c="i" t={1.0} d="M460 280H748V432H460ZM540 322H746V430H540ZM1150 190L1270 225V400L1150 400Z" />
+      <P c="t" t={1.2} d={Array.from({ length: 10 }, (_, k) => `M${545 + k * 20} 324V428`).join('') + Array.from({ length: 6 }, (_, k) => `M${1160 + k * 18} ${196 + k * 5}V398`).join('')} />
+      <P c="a" t={1.4} d="M985 655H1085V672H985Z" />
+      <T x={498} y={200} c="lv" t={1.5}>MAU-1</T>
+      <T x={1064} y={136} c="lv" t={1.5}>MAU-2</T>
+      <T x={560} y={630} c="halo" t={1.6}>Steel frame, galvanized</T>
+      <T x={1120} y={700} c="sm" t={1.6}>Leg on pad</T>
+      <T x={535} y={512} c="sm" t={1.6}>Roof curb</T>
     </Sheet>
   )
 }

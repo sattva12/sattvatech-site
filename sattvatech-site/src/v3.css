@@ -336,3 +336,23 @@
   .sx-dwg-tb > div:nth-child(even) { border-right: 1px solid rgba(234, 242, 252, .22); }
   .sx-dwg-tb dd { font-size: 15px; }
 }
+
+/* drawn, then built */
+.sx-db { margin-top: 28px; }
+.sx-db-box { position: relative; aspect-ratio: 1600 / 721; overflow: hidden; background: var(--abyss); border: 1px solid rgba(234, 242, 252, .32); user-select: none; }
+.sx-db-box img, .sx-db-dw { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sx-db-box img { object-fit: cover; }
+.sx-db-dw { background: var(--sheet); background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 24px 24px; clip-path: inset(0 calc(100% - var(--p)) 0 0); }
+.sx-db-dw .st-dw { width: 100%; height: 100%; }
+.sx-db-seam { position: absolute; top: 0; bottom: 0; left: var(--p); width: 2px; margin-left: -1px; background: var(--line); pointer-events: none; }
+.sx-db-seam i { position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 2px solid var(--line); border-radius: 50%; background: rgba(8, 26, 49, .7); }
+.sx-db-seam i::before, .sx-db-seam i::after { content: ''; position: absolute; top: 50%; width: 0; height: 0; margin-top: -5px; border: 5px solid transparent; }
+.sx-db-seam i::before { left: 5px; border-right-color: var(--line); }
+.sx-db-seam i::after { right: 5px; border-left-color: var(--line); }
+.sx-db-tag { position: absolute; top: 14px; padding: 6px 10px; background: rgba(8, 26, 49, .78); font: 600 14px/1 var(--cond); pointer-events: none; }
+.sx-db-l { left: 14px; }
+.sx-db-r { right: 14px; }
+.sx-db-box input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.sx-db-box input:focus-visible + * , .sx-db-box:focus-within { outline: 2px solid var(--amber); outline-offset: 3px; }
+.sx-db figcaption { margin-top: 12px; color: var(--fog); font-size: 15px; }
+.sx-db figcaption b { color: var(--line); font-weight: 600; }
