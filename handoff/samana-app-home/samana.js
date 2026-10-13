@@ -19,3 +19,15 @@ if (still || !('IntersectionObserver' in window)) {
   }, { threshold: 0.3 });
   clips.forEach(function (v) { io.observe(v); });
 }
+
+/* the opening tour: the label above it follows the screen on show */
+var tour = document.getElementById('tour'), tourLabel = document.getElementById('tour-label');
+if (tour && tourLabel) {
+  var marks = [[0, "Takeoff · tabbing the levels"], [1.99, "Takeoff · the drawing set, layer by layer"], [4.1, "Takeoff · up into 3D"], [5.85, "Takeoff · 3D, finished or framing"], [7.6, "Takeoff · the customer packet"], [9.7, "Revisions · Rev A against Rev B"], [11.57, "Team portal · the crew's work order"], [13.32, "Flow · the dashboard"], [15.54, "Flow · every dollar by cost code"], [17.64, "Lean · steps on the calendar"], [19.74, "Lean · team hours by week"], [21.73, "Lean · planned rate against actual"], [23.71, "Lean · what to order, and when"], [25.46, "Farmmetric portal · the crew's day"]];
+  tour.addEventListener('timeupdate', function () {
+    var t = tour.currentTime, m = marks[0][1];
+    for (var i = 0; i < marks.length; i++) if (t >= marks[i][0]) m = marks[i][1];
+    var txt = 'Samana · ' + m;
+    if (tourLabel.textContent !== txt) tourLabel.textContent = txt;
+  });
+}
