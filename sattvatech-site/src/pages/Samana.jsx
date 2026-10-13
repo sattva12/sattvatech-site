@@ -123,8 +123,8 @@ const PIECES = [
 
 export default function Samana() {
   return (
-    <Page here="products" title="Samana: Business, Production and Buildout Coordination Software, by Sattva Technologies">
-      <Hero kicker="Samana by Sattva" title="Business, Production and Buildout Coordination Software."
+    <Page here="products" title="Samana: EMCRP Software, by Sattva Technologies">
+      <Hero kicker={<img className="sx-kicker-logo" src="/brand/samana-logo-wide-dark.svg" alt="Samana, EMCRP Software" />} title="Business, Production and Buildout Coordination Software."
         lede="For businesses that build, grow and make things. Samana takes a job from the first measurement to the last dollar. Takeoff counts every piece and prices it. Lean turns it into steps with dates, crews and materials, and tells you when to order. Flow shows the cash by month. We built it to run our own construction and farm work. It runs any operation that has steps, people and materials."
         acts={[[APP, 'Start with a free sample job', 'go'], ['#sheets', 'See it work']]}
         aside={<HeroDrawing />}

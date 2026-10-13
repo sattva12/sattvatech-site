@@ -246,7 +246,7 @@ const ROOMS = [
   ['Option: plug locations', 'Outlets and circuits placed where your equipment will stand'],
 ]
 const APPS = [
-  { id: 'samana', name: 'Samana', sub: 'Business, Production and Buildout Coordination Software', text: 'The app our own jobs run on. Takeoff draws and prices the job, Lean plans the steps and the crew, and Flow shows the budget and the cash by month.',
+  { id: 'samana', logo: '/brand/samana-mark.svg', name: 'Samana', sub: 'EMCRP Software', text: 'The app our own jobs run on. Takeoff draws and prices the job, Lean plans the steps and the crew, and Flow shows the budget and the cash by month.',
     price: 'Free to start', small: 'Then $10, $20 or $30 a month', go: [APP, 'Start free'], more: ['/samana', 'See it work'] },
   { id: 'farmmetric', name: 'Farmmetric', sub: 'Free farm app', text: 'The farm’s jobs, sprays, harvest and drying, logged from a phone, with the records kept as you go. Live API connectors are coming soon.',
     price: 'Free', small: 'Google Play soon', go: [FARM, 'Use it free'], more: ['/farmmetric', 'What it does'] },
@@ -373,7 +373,8 @@ export default function Home() {
             <div className="sx-apps">
               {APPS.map((a) => (
                 <article key={a.id} className={'sx-app sx-app-' + a.id}>
-                  <h4>{a.name}<span>{a.sub}</span></h4>
+                  {a.logo && <img className="sx-app-mark" src={a.logo} alt="" />}
+                  <h4 className={a.logo ? 'has-logo' : undefined}>{a.name}<span>{a.sub}</span></h4>
                   <p>{a.text}</p>
                   <div className="sx-price"><b>{a.price}</b><span>{a.small}</span></div>
                   <div className="sx-acts"><Go to={a.go[0]} className="sx-btn sx-btn-ink">{a.go[1]}</Go><Go to={a.more[0]} className="sx-btn sx-btn-line">{a.more[1]}</Go></div>

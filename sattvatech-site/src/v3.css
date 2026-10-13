@@ -461,3 +461,7 @@
 .sx-band { border-left-color: var(--ink); }
 .sx .sm-tally { border-radius: 0; }
 .sx-kicker { margin-bottom: 14px; font: 600 clamp(18px, 1.6vw, 22px)/1 var(--cond); color: var(--fog); }
+.sx-kicker-logo { display: block; height: clamp(72px, 7vw, 104px); width: auto; margin-bottom: 18px; }
+.sx-app-logo { display: block; height: 56px; width: auto; margin-bottom: 18px; }
+.sx-app-mark { display: block; width: 104px; height: auto; margin-bottom: 20px; }
+.sx-app h4.has-logo::before { display: none; }
