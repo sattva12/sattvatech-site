@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { APP, FARM, TEL, TEL_HREF, MAIL } from '../Chrome.jsx'
 import { Top, Foot } from '../Shell.jsx'
 import ContactForm from './ContactForm.jsx'
-import { PlanFarm, PlanContainer } from '../drawings.jsx'
+import { PlanFarm, PlanContainer, PlanFitout } from '../drawings.jsx'
+import { Logo } from '../brand.jsx'
 import '../site.css'
 import '../v3.css'
 
@@ -11,59 +12,50 @@ import '../v3.css'
    because we are a tech company. The app is sick, so the site has to follow."
    Same order and the same words he approved; a new look. Leads with the work: Construction, Farms, Products. */
 
-/* ---------- the opening: three plates, one for each line of work ---------- */
-const PLATES = [
-  { id: 'construction', name: 'Construction', sub: 'Commercial and homes', photo: '/media/work/mill-during.jpg',
-    alt: 'A new sealed floor in an old mill building, with steel wall framing going up between the columns',
-    specs: [['Rebuild', 'An old mill, Maryland'], ['Carried', 'Design to sign-off']] },
-  { id: 'farms', name: 'Farms', sub: 'Set up, and made to work', photo: '/media/work/farm-hoops.jpg',
-    alt: 'Rows of steel hoop house frames standing over a whole field, from the air',
-    specs: [['Site build', 'Woods to a working farm'], ['Then', 'A plan and a budget']] },
-  { id: 'products', name: 'Products', sub: 'Containers and software', drawing: true,
-    specs: [['Container rooms', 'Drying, power and storage'], ['Software', 'Samana and Farmmetric']] },
+/* ---------- the opening: a drawing first (Atul, 20:08: "the first thing you see is a drawing... technical but construction") ---------- */
+const LINES = [
+  { id: 'construction', name: 'Construction', sub: 'Commercial work and quality homes, planned step by step and checked as built.' },
+  { id: 'farms', name: 'Farms', sub: 'Land set up into a working farm, then run on a plan and a budget.' },
+  { id: 'products', name: 'Products', sub: 'Container rooms built to order, and the software we run our work on.' },
 ]
 
 function Opening() {
-  const [on, setOn] = useState(0)
   return (
     <section className="sx-open" id="top" aria-labelledby="sx-h1">
       <div className="sx-wrap">
         <div className="sx-open-head">
           <h1 id="sx-h1">Making things work.</h1>
           <div className="sx-open-r">
-            <p>We do the work. Commercial construction and quality homes. Farms set up and built into businesses, with a plan and a budget. And the things we make: container rooms, and the software we run it all on.</p>
+            <p>We do the work, and we draw it first. Commercial construction and quality homes, farms set up and built into businesses, and the things we make: container rooms, and the software we run it all on.</p>
             <div className="sx-acts">
               <a className="sx-btn sx-btn-go" href="#construction">See the work</a>
               <a className="sx-btn sx-btn-line" href="#talk">Talk about a project</a>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="sx-plates" onMouseLeave={() => setOn(0)}>
-        {PLATES.map((p, n) => (
-          <a key={p.id} href={'#' + p.id} className={'sx-plate sx-c-' + p.id + (on === n ? ' on' : '')}
-            onMouseEnter={() => setOn(n)} onFocus={() => setOn(n)}>
-            <div className="sx-plate-img">
-              {p.drawing ? <div className="sx-plate-dw"><PlanContainer /></div> : <img src={p.photo} alt={p.alt} />}
-            </div>
-            <div className="sx-plate-cap">
-              <div className="sx-plate-name"><i aria-hidden="true" /><b>{p.name}</b><span>{p.sub}</span></div>
-              <dl>{p.specs.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-            </div>
-          </a>
-        ))}
-      </div>
+        <div className="sx-dwg">
+          <div className="sx-dwg-sheet"><PlanFitout /></div>
+          <dl className="sx-dwg-tb">
+            <div className="sx-dwg-logo"><Logo size={30} tone="dark" /></div>
+            <div><dt>Drawing</dt><dd>Commercial fit-out, floor plan</dd></div>
+            <div><dt>Engineering and construction</dt><dd>25+ years</dd></div>
+            <div><dt>MA Construction Supervisor</dt><dd>CS-122574</dd></div>
+            <div><dt>Home Improvement Contractor</dt><dd>HIC 218120</dd></div>
+            <div><dt>Based in</dt><dd>Massachusetts</dd></div>
+            <div><dt>Call or text</dt><dd><a href={TEL_HREF}>{TEL}</a></dd></div>
+            <div className="sx-dwg-no"><dt>Sheet</dt><dd>A-101</dd></div>
+          </dl>
+        </div>
 
-      <div className="sx-wrap">
-        <dl className="sx-title">
-          <div><dt>Company</dt><dd>Sattva Technologies LLC</dd></div>
-          <div><dt>Based in</dt><dd>Seekonk, Massachusetts</dd></div>
-          <div><dt>Engineering and construction</dt><dd>25+ years</dd></div>
-          <div><dt>MA Construction Supervisor</dt><dd>CS-122574</dd></div>
-          <div><dt>Home Improvement Contractor</dt><dd>HIC 218120</dd></div>
-          <div><dt>Call or text</dt><dd><a href={TEL_HREF}>{TEL}</a></dd></div>
-        </dl>
+        <nav className="sx-lines" aria-label="What we do">
+          {LINES.map((l) => (
+            <a key={l.id} href={'#' + l.id} className={'sx-c-' + l.id}>
+              <b><i aria-hidden="true" />{l.name}</b>
+              <span>{l.sub}</span>
+            </a>
+          ))}
+        </nav>
       </div>
     </section>
   )
@@ -127,7 +119,7 @@ function Rebuild() {
               <li key={n}><button type="button" aria-pressed={x === i} onClick={() => setI(x)}><span>{x + 1}</span>{n}</button></li>
             ))}
           </ol>
-          <p><b>{k}.</b> {cap}. An old mill building in Maryland, 2017 to 2018, as owner's representative.</p>
+          <p><b>{k}.</b> {cap}. An old mill building, 2017 to 2018, as owner's representative.</p>
         </figcaption>
       </figure>
       <div className="sx-rebuild-t">
@@ -172,7 +164,7 @@ function FarmSite() {
           {LAYERS.map(([k, n]) => <button key={k} type="button" aria-pressed={!off[k]} onClick={() => setOff({ ...off, [k]: !off[k] })}>{n}</button>)}
         </div>
         <div className="sx-sheet-dw"><PlanFarm still off={off} /></div>
-        <div className="sx-sheet-tb"><b>Farm site, 5.02 acres</b><span>Minnesota</span><span>Fence 200 by 300 ft</span><span>Rows run front to back</span></div>
+        <div className="sx-sheet-tb"><b>Farm site, 5.02 acres</b><span>Fence 200 by 300 ft</span><span>Rows run front to back</span></div>
       </div>
       <div className="sx-site-t">
         <p className="sx-figure"><b>1,000 ft</b> of fence around the field, and everything inside it counted.</p>
@@ -188,7 +180,7 @@ function Strip() {
   return (
     <div className="sx-strip">
       <div className="sx-strip-bar">
-        <p>One farm site in Rhode Island, from woods to a working site. Built by Sattva Technologies.</p>
+        <p>One farm site in Massachusetts, from woods to a working site. Built by Sattva Technologies.</p>
         <span><button type="button" onClick={() => step(-1)} aria-label="Earlier photos">‹</button><button type="button" onClick={() => step(1)} aria-label="Later photos">›</button></span>
       </div>
       <ol className="sx-strip-row" ref={ref} tabIndex={0} aria-label="The farm build, in order">

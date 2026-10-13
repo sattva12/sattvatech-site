@@ -244,3 +244,62 @@ export function PhoneFarmmetric({ still }) {
     </Sheet>
   )
 }
+
+/* The opening of the site (v3, 2026-10-12, Atul: "the first thing you see is a drawing... technical but construction").
+   A commercial fit-out floor plan on a structural grid: five bays by two, walls, doors, rooms, sprinklers,
+   the electrical service, dimensions, a section mark and north. A typical plan, not one customer's job. */
+export function PlanFitout({ still }) {
+  const xs = [120, 312, 504, 696, 888, 1080], ys = [110, 290, 470], L = 'ABCDEF'
+  const x0 = 120, x1 = 1080, y0 = 110, y1 = 470, cy = 290
+  const grid = xs.map((x) => `M${x} 74V${y1 + 22}`).join('') + ys.map((y) => `M74 ${y}H${x1 + 22}`).join('')
+  const cols = xs.flatMap((x) => ys.map((y) => R(x - 6, y - 6, 12, 12))).join('')
+  const door = (x, y, up, w = 34) => `M${x} ${y}v${up ? -w : w}M${x} ${y + (up ? -w : w)}A${w} ${w} 0 0 ${up ? 1 : 0} ${x + w} ${y}`
+  const heads = []
+  for (let gx = 0; gx < 5; gx++) for (let gy = 0; gy < 2; gy++) heads.push([548 + gx * 64, 338 + gy * 72])
+  return (
+    <Sheet still={still} box="0 0 1200 560" label="Floor plan of a commercial fit-out on a structural grid of five bays: rooms, a corridor, production space, an electrical room with the service coming in, sprinklers, doors and overall dimensions of 160 by 75 feet">
+      {/* the structural grid and its bubbles */}
+      <path className="dash fade" style={{ '--d': '0s' }} d={grid} />
+      <g className="fade" style={{ '--d': '.15s' }}>
+        {xs.map((x, n) => <g key={'c' + n}><circle className="bub" cx={x} cy={52} r={15} /><text className="tx bubt" x={x} y={57} textAnchor="middle">{L[n]}</text></g>)}
+        {ys.map((y, n) => <g key={'r' + n}><circle className="bub" cx={52} cy={y} r={15} /><text className="tx bubt" x={52} y={y + 5} textAnchor="middle">{n + 1}</text></g>)}
+      </g>
+      {/* the shell: exterior wall drawn double, columns on the grid */}
+      <P t={0.3} d={R(x0, y0, x1 - x0, y1 - y0)} />
+      <P c="i" t={0.45} d={R(x0 + 9, y0 + 9, x1 - x0 - 18, y1 - y0 - 18)} />
+      <path className="col fade" style={{ '--d': '.7s' }} d={cols} />
+      {/* interior walls: a corridor along grid 2, rooms either side */}
+      <P c="i" t={0.8} d={`M${x0 + 9} ${cy - 20}H888M${x0 + 9} ${cy + 20}H504M696 ${cy + 20}H888M888 ${y0 + 9}V${y1 - 9}`} />
+      <P c="i" t={0.95} d={`M312 ${y0 + 9}V${cy - 20}M504 ${y0 + 9}V${cy - 20}M696 ${y0 + 9}V${cy - 20}M312 ${cy + 20}V${y1 - 9}M504 ${cy + 20}V${y1 - 9}`} />
+      <P c="t" t={1.25} d={[door(250, cy - 20, true), door(442, cy - 20, true), door(634, cy - 20, true), door(820, cy - 20, true), door(250, cy + 20, false), door(442, cy + 20, false), door(1020, y1 - 9, true, 40)].join('')} />
+      {/* fire: sprinkler heads over the production floor */}
+      <g className="fade" style={{ '--d': '1.5s' }}>{heads.map(([a, b]) => <circle key={a + '-' + b} className="spr" cx={a} cy={b} r={4} />)}</g>
+      <path className="dash fade" style={{ '--d': '1.5s' }} d={`M548 338H804M548 410H804M548 338V410`} />
+      {/* power: the service in from the street to the electrical room */}
+      <path className="dash amb fade" style={{ '--d': '1.6s' }} d={`M14 420H${x0}M${x0 + 9} 420H186`} />
+      <P c="a" t={1.6} d={R(186, 400, 30, 40) + R(232, 404, 20, 32)} />
+      <T x={20} y={410} c="lv" a="start" t={1.8}>800 A service</T>
+      {/* rooms */}
+      <T x={216} y={196} t={1.2}>Office</T><T x={216} y={213} c="sm" t={1.25}>1,200 SF</T>
+      <T x={408} y={196} t={1.2}>Conference</T><T x={408} y={213} c="sm" t={1.25}>1,200 SF</T>
+      <T x={600} y={196} t={1.2}>Lab</T><T x={600} y={213} c="sm" t={1.25}>1,200 SF</T>
+      <T x={792} y={196} t={1.2}>Quality</T><T x={792} y={213} c="sm" t={1.25}>1,200 SF</T>
+      <T x={600} y={cy + 5} c="sm" t={1.3}>Corridor</T>
+      <T x={216} y={378} t={1.2}>Electrical</T><T x={216} y={395} c="sm" t={1.25}>1,050 SF</T>
+      <T x={408} y={378} t={1.2}>Locker rooms</T><T x={408} y={395} c="sm" t={1.25}>1,050 SF</T>
+      <T x={696} y={370} c="halo" t={1.2}>Production</T><T x={696} y={388} c="sm halo" t={1.25}>3,200 SF, washable finishes</T>
+      <T x={984} y={250} t={1.2}>Shipping</T><T x={984} y={267} c="sm" t={1.25}>2,250 SF</T>
+      <T x={1046} y={y1 - 20} c="sm" a="end" t={1.4}>Overhead door</T>
+      {/* dimensions */}
+      <DimH x1={x0} x2={x1} y={530} label={'160′-0″'} t={1.8} />
+      {xs.slice(0, -1).map((x, n) => <DimH key={'d' + n} x1={x} x2={xs[n + 1]} y={506} label={'32′-0″'} t={1.9} />)}
+      <DimV y1={y0} y2={y1} x={1128} label={'75′-0″'} t={1.8} />
+      {/* section mark and north */}
+      <g className="fade" style={{ '--d': '2s' }}>
+        <path className="cut" d={`M600 92V128M600 478V492`} />
+        <circle className="bub" cx={600} cy={92} r={13} /><text className="tx bubt sm" x={600} y={96} textAnchor="middle">A</text>
+        <circle className="bub" cx={1150} cy={48} r={16} /><path className="ltd" d="M1150 30l7 22h-14z" /><text className="tx bubt sm" x={1150} y={84} textAnchor="middle">N</text>
+      </g>
+    </Sheet>
+  )
+}

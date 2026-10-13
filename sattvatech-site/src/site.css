@@ -388,3 +388,11 @@
 
 /* Why we do this */
 .st-whys .st-panel p { padding: 14px 16px 16px; color: var(--muted); font-size: 15.5px; line-height: 1.5; margin: 0; }
+/* v3 opening drawing: grid bubbles, columns, sprinklers, section cut */
+.st-dw .bub { fill: none; stroke: var(--line); stroke-width: 1.2; stroke-opacity: .8; }
+.st-dw .tx.bubt { font: 600 14px var(--cond); fill: var(--line); opacity: 1; animation: none; }
+.st-dw .tx.bubt.sm { font-size: 12px; }
+.st-dw .col { fill: var(--line); }
+.st-dw .spr { fill: none; stroke: #9fd0ff; stroke-width: 1.2; }
+.st-dw .cut { fill: none; stroke: var(--line); stroke-width: 2.4; stroke-dasharray: 14 4 3 4; }
+.st-dw .tx.sm.halo { font-size: 12.5px; font-weight: 500; stroke-width: 6px; }
