@@ -4,12 +4,13 @@ Built by the website chat, Oct 12, 2026 (Atul, 22:25 to 22:36: "you make the web
 Preview: https://claude.ai/artifact/41ifDGNrF5r1z1vXv6LXCy
 
 ## What is here
-- `index.html`: one self-contained page (its CSS and a few lines of script inside). Fonts: IBM Plex from Google Fonts.
+- Five pages (Atul, 23:47: "each one is their own pages"): `index.html` (the front page: four doors E, M, C, RP, suggestions, plans), `enterprise.html` (the Flow dashboard), `manufacturing.html` (Lean production, lean farming quick), `construction.html` (agile design-build, the drawing set rising into 3D, cost into Flow), `resource-planning.html` (see, plan, track, year after year).
+- `samana.css` and `samana.js`, shared by all five. Fonts: IBM Plex from Google Fonts.
 - `assets/`: the clips (`.mp4`, with `.jpg` posters) recorded in the app, and the Samana logos and icons. About 10 MB.
 
 ## How to load it
-1. Copy `index.html` and `assets/` into the app's static files so that **https://samana.tech/** (and www) serves this page, and the app keeps running at **app.samana.tech** (Atul, 22:34). For the app's own signed-out screen, either send signed-out visitors to samana.tech, or serve this file at `/` when nobody is signed in.
-2. The app's address is set in ONE place, the `APP` line at the bottom of `index.html` (today `https://app.sattvatech.com`). Change it to `https://app.samana.tech` once sign-in works there (item 10). Every Sign in, Start free and Choose plan link follows it; the plan buttons go to `APP + /settings`.
+1. Copy the five pages, `samana.css`, `samana.js` and `assets/` into the app's static files so that **https://samana.tech/** (and www) serves this page, and the app keeps running at **app.samana.tech** (Atul, 22:34). For the app's own signed-out screen, either send signed-out visitors to samana.tech, or serve this file at `/` when nobody is signed in.
+2. The app's address is set in ONE place, the `APP` line at the top of `samana.js` (today `https://app.sattvatech.com`). Change it to `https://app.samana.tech` once sign-in works there (item 10). Every Sign in, Start free and Choose plan link follows it; the plan buttons go to `APP + /settings`.
 3. Keep paths relative (`assets/...`), or move `assets/` and change the paths.
 
 ## Rules kept on the page

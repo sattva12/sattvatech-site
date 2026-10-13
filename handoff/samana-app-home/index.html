@@ -19,254 +19,19 @@
   Built by the website chat, Oct 12, 2026. Load notes: README.md beside this file.
   Every link into the app goes through data-app; the script at the bottom sets the address in ONE place (APP).
 -->
-<style>
-:root {
-  --night: #0d2747; --abyss: #081a31; --deep: #153d72; --paper: #f3f5f7; --white: #fff; --ink: #0f1a25;
-  --steel: #566676; --rule: #d5dce3; --line: #eaf2fc; --fog: rgba(234,242,252,.66); --hair: rgba(234,242,252,.16);
-  --amber: #ffb454; --blue: #3d7fd0; --red: #e44936; --green: #3ea059; --yellow: #f6b70a;
-  --grid: rgba(255,255,255,.055);
-  --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --cond: 'IBM Plex Sans Condensed', 'Arial Narrow', system-ui, sans-serif;
-  --gut: clamp(16px, 4vw, 56px);
-}
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.55 var(--sans); -webkit-font-smoothing: antialiased; font-feature-settings: 'tnum' 1; overflow-x: hidden; }
-h1, h2, h3, h4, p, ul, ol, figure { margin: 0; padding: 0; }
-ul, ol { list-style: none; }
-a { color: inherit; }
-img, video { display: block; max-width: 100%; }
-:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
-.wrap { max-width: 1320px; margin: 0 auto; padding: 0 var(--gut); }
-section[id] { scroll-margin-top: 72px; }
-
-/* top bar: logo, a few links, sign-in small */
-.top { position: fixed; inset: 0 0 auto; z-index: 50; color: var(--line); border-bottom: 1px solid transparent; transition: background-color .3s, border-color .3s; }
-.top.solid { background: rgba(8,26,49,.94); backdrop-filter: blur(10px); border-bottom-color: var(--hair); }
-.top-in { display: flex; align-items: center; gap: 28px; height: 64px; max-width: 1320px; margin: 0 auto; padding: 0 var(--gut); }
-.top .brand img { height: 34px; width: auto; }
-.top nav { display: flex; gap: 2px; }
-.top nav a { padding: 8px 12px; font: 500 15px/1 var(--sans); color: var(--fog); text-decoration: none; }
-.top nav a:hover { color: var(--line); }
-.top-r { display: flex; align-items: center; gap: 14px; margin-left: auto; }
-.signin { font: 500 14px/1 var(--sans); color: var(--fog); text-decoration: none; padding: 8px 4px; }
-.signin:hover { color: var(--line); text-decoration: underline; text-underline-offset: 4px; }
-
-/* buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 22px; border: 1px solid transparent; font: 500 15px/1 var(--sans); text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color .15s, border-color .15s; }
-.btn-go { background: var(--line); color: var(--night); }
-.btn-go:hover { background: var(--white); }
-.btn-line { border-color: currentColor; color: inherit; }
-.btn-line:hover { background: rgba(127,140,155,.1); }
-.btn-ink { background: var(--night); color: var(--line); }
-.btn-ink:hover { background: var(--deep); }
-.btn-sm { min-height: 38px; padding: 0 16px; font-size: 14px; }
-.acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-
-/* opening */
-.open { position: relative; padding: 120px 0 0; background: var(--night); color: var(--line); overflow: hidden; }
-.open::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 48px 48px; -webkit-mask-image: linear-gradient(180deg, #000, transparent 75%); mask-image: linear-gradient(180deg, #000, transparent 75%); pointer-events: none; }
-.open-head { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center; }
-.lockup { width: min(100%, 520px); height: auto; }
-.open h1 { margin-top: 40px; font: 600 clamp(40px, 5.4vw, 80px)/.95 var(--cond); letter-spacing: -.02em; }
-.open h1 em { font-style: normal; color: var(--amber); }
-.lede { margin-top: 22px; max-width: 34em; color: var(--fog); font-size: clamp(17px, 1.35vw, 19px); }
-.for { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 26px; font: 500 14px/1.2 var(--sans); color: var(--fog); }
-.for span { display: inline-flex; align-items: center; gap: 8px; }
-.for i { width: 10px; height: 10px; border-radius: 2px; }
-.screen { position: relative; border: 1px solid var(--hair); background: var(--abyss); box-shadow: 0 30px 80px rgba(0,0,0,.35); }
-.screen-bar { display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border-bottom: 1px solid var(--hair); font: 500 12px/1 var(--sans); color: var(--fog); }
-.screen-bar b { width: 9px; height: 9px; border-radius: 50%; background: var(--hair); }
-.screen-bar span { margin-left: 8px; }
-.screen video { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; background: #fff; }
-.open-strip { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 72px; border-top: 1px solid var(--hair); }
-.open-strip div { padding: 22px 22px 26px 0; }
-.open-strip div + div { padding-left: 22px; border-left: 1px solid var(--hair); }
-.open-strip b { display: block; font: 600 clamp(26px, 2.6vw, 36px)/1 var(--cond); }
-.open-strip span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.4; color: var(--fog); }
-
-/* sections */
-.sec { padding: clamp(72px, 9vw, 128px) 0; }
-.sec.alt { background: var(--white); }
-.sec.dark { background: var(--night); color: var(--line); }
-.kicker { display: inline-flex; align-items: center; gap: 10px; font: 600 13px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--steel); }
-.dark .kicker { color: var(--fog); }
-.kicker i { width: 12px; height: 12px; border-radius: 2px; }
-.sec h2 { margin-top: 18px; max-width: 18em; font: 600 clamp(34px, 4.2vw, 60px)/1 var(--cond); letter-spacing: -.015em; }
-.sub { margin-top: 18px; max-width: 42em; color: var(--steel); font-size: clamp(17px, 1.3vw, 19px); }
-.dark .sub { color: var(--fog); }
-
-/* manufacturing: the pitch, then the four things it does on the floor */
-.pains { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 48px; border-top: 2px solid var(--ink); }
-.pains div { padding: 22px 24px 4px 0; }
-.pains div + div { padding-left: 24px; border-left: 1px solid var(--rule); }
-.pains b { display: block; font: 600 20px/1.2 var(--cond); }
-.pains p { margin-top: 8px; color: var(--steel); font-size: 16px; }
-.feat { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: center; margin-top: clamp(56px, 7vw, 96px); }
-.feat.flip > :first-child { order: 2; }
-.feat h3 { font: 600 clamp(26px, 2.6vw, 36px)/1.05 var(--cond); }
-.feat p { margin-top: 14px; color: var(--steel); }
-.feat ul { margin-top: 18px; border-top: 1px solid var(--rule); }
-.feat li { padding: 11px 0 11px 22px; border-bottom: 1px solid var(--rule); position: relative; font-size: 16px; }
-.feat li::before { content: ''; position: absolute; left: 2px; top: 19px; width: 9px; height: 2px; background: var(--red); }
-.feat .tag { display: inline-block; margin-bottom: 14px; padding: 5px 9px; background: var(--paper); border: 1px solid var(--rule); font: 600 12px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--steel); }
-.alt .feat .tag { background: var(--paper); }
-.shot { border: 1px solid var(--rule); background: #fff; box-shadow: 0 18px 50px rgba(13,39,71,.12); }
-.shot video { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
-.shot figcaption { padding: 10px 14px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--steel); }
-
-/* the whole line: four arms in a row */
-.arms { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: 48px; border: 1px solid var(--hair); }
-.arms > div { padding: 26px 24px 28px; }
-.arms > div + div { border-left: 1px solid var(--hair); }
-.arms h3 { display: flex; align-items: center; gap: 10px; font: 600 26px/1 var(--cond); }
-.arms h3 i { width: 12px; height: 12px; border-radius: 2px; }
-.arms .what { margin-top: 8px; font-size: 14px; color: var(--fog); }
-.arms ul { margin-top: 16px; }
-.arms li { padding: 7px 0; border-top: 1px solid var(--hair); font-size: 15px; line-height: 1.4; }
-
-/* buildout: four clips in a grid */
-.grid4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 48px; }
-.grid4 .shot video { aspect-ratio: 16 / 9; }
-.grid4 h3 { margin-top: 16px; font: 600 22px/1.15 var(--cond); }
-.grid4 p { margin-top: 6px; font-size: 15px; color: var(--steel); }
-
-/* farms, quick */
-.farm { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
-.phones { display: grid; grid-template-columns: minmax(0, .5fr) minmax(0, 1.5fr); gap: 18px; align-items: center; }
-.phones .tall video { aspect-ratio: 1 / 2; object-fit: cover; }
-.phones .wide video { aspect-ratio: 16 / 10; }
-
-/* roles */
-.roles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 44px; border-top: 2px solid var(--ink); }
-.roles div { padding: 18px 22px 18px 0; border-bottom: 1px solid var(--rule); }
-.roles div:not(:nth-child(3n+1)) { padding-left: 22px; border-left: 1px solid var(--rule); }
-.roles b { display: block; font: 600 19px/1.2 var(--cond); }
-.roles p { margin-top: 6px; font-size: 15px; color: var(--steel); }
-
-/* plans */
-.plans { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 48px; }
-.plan { display: flex; flex-direction: column; padding: 26px 22px 22px; background: var(--white); border: 1px solid var(--rule); }
-.plan.best { border: 2px solid var(--night); }
-.plan h3 { font: 600 24px/1 var(--cond); }
-.plan .p { margin-top: 18px; font: 600 46px/1 var(--cond); }
-.plan .p small { font: 400 15px/1 var(--sans); color: var(--steel); margin-left: 4px; }
-.plan .d { margin-top: 12px; font-size: 15px; color: var(--steel); }
-.plan ul { margin: 18px 0 22px; border-top: 1px solid var(--rule); }
-.plan li { padding: 8px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
-.plan .btn { margin-top: auto; }
-.plans-note { margin-top: 22px; max-width: 60em; font-size: 15px; color: var(--steel); }
-
-/* end and foot */
-.end { padding: clamp(80px, 10vw, 140px) 0; background: var(--night); color: var(--line); text-align: center; position: relative; overflow: hidden; }
-.end::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 48px 48px; -webkit-mask-image: radial-gradient(closest-side, #000, transparent); mask-image: radial-gradient(closest-side, #000, transparent); }
-.end > * { position: relative; }
-.end img { width: 96px; height: auto; margin: 0 auto; }
-.end h2 { margin: 28px auto 0; max-width: 16em; font: 600 clamp(34px, 4.4vw, 62px)/1 var(--cond); }
-.end p { margin: 18px auto 0; max-width: 34em; color: var(--fog); }
-.end .acts { justify-content: center; }
-.foot { padding: 40px 0 48px; background: var(--abyss); color: var(--fog); font-size: 14px; }
-.foot-in { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 36px; }
-.foot img { height: 28px; width: auto; }
-.foot a { color: var(--fog); text-decoration: none; }
-.foot a:hover { color: var(--line); text-decoration: underline; }
-.foot .r { margin-left: auto; display: flex; flex-wrap: wrap; gap: 8px 22px; }
-.foot small { display: block; width: 100%; margin-top: 4px; font-size: 13px; opacity: .8; }
-
-/* E, M, C, RP: the four lines of work, each opened by its square from the logo */
-.emc { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 72px; border-top: 1px solid var(--hair); }
-.emc a { display: flex; gap: 16px; align-items: flex-start; padding: 24px 20px 28px 0; text-decoration: none; color: var(--fog); font-size: 14px; line-height: 1.4; transition: color .15s; }
-.emc a + a { padding-left: 20px; border-left: 1px solid var(--hair); }
-.emc a:hover { color: var(--line); }
-.emc img { width: 52px; height: 52px; flex: none; }
-.emc b { display: block; margin-bottom: 4px; font: 600 22px/1.1 var(--cond); color: var(--line); }
-.letter { border-top: 6px solid var(--k); }
-.lhead { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 3.5vw, 48px); align-items: start; }
-.bigsq { width: clamp(96px, 11vw, 168px); height: auto; }
-.lhead h2 { margin-top: 14px; }
-.letter .kicker { color: var(--ink); font-size: 14px; }
-.letter.dark .kicker { color: var(--line); }
-.letter .feat li::before { background: var(--k); }
-.dark .feat p, .dark .feat li { color: var(--fog); }
-.dark .feat h3 { color: var(--line); }
-.dark .feat ul, .dark .feat li { border-color: var(--hair); }
-.dark .feat .tag { background: transparent; border-color: var(--hair); color: var(--fog); }
-.dark .shot { border-color: var(--hair); }
-.farmrow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .42fr) minmax(0, 1.2fr); gap: 20px; align-items: center; margin-top: clamp(56px, 7vw, 96px); padding-top: 40px; border-top: 1px solid var(--rule); }
-.farmrow h3 { font: 600 clamp(24px, 2.2vw, 30px)/1.1 var(--cond); }
-.farmrow p { margin-top: 12px; color: var(--steel); font-size: 16px; }
-.farmrow .tag { display: inline-block; margin-bottom: 12px; padding: 5px 9px; background: var(--paper); border: 1px solid var(--rule); font: 600 12px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--steel); }
-.farmrow .more { display: inline-block; margin-top: 14px; font-weight: 500; }
-.farmrow .tall video { aspect-ratio: 1 / 2; object-fit: cover; }
-.farmrow .wide video { aspect-ratio: 16 / 10; }
-.chain { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: clamp(48px, 6vw, 80px); counter-reset: c; }
-.chain li { position: relative; padding: 18px 28px 18px 18px; background: var(--white); border: 1px solid var(--rule); counter-increment: c; }
-.chain li + li { border-left: 0; }
-.chain li::after { content: ''; position: absolute; right: -9px; top: 50%; z-index: 1; width: 16px; height: 16px; background: var(--white); border-top: 1px solid var(--rule); border-right: 1px solid var(--rule); transform: translateY(-50%) rotate(45deg); }
-.chain li:last-child::after { display: none; }
-.chain li:last-child { background: var(--night); border-color: var(--night); color: var(--line); }
-.chain b { display: block; font: 600 20px/1.1 var(--cond); }
-.chain b::before { content: counter(c, decimal-leading-zero) '  '; color: var(--green); }
-.chain span { display: block; margin-top: 6px; font-size: 14px; line-height: 1.4; color: var(--steel); }
-.chain li:last-child span { color: var(--fog); }
-.dark .roles { border-top-color: var(--line); }
-.dark .roles div { border-color: var(--hair); }
-.dark .roles p { color: var(--fog); }
-
-/* phones and small tablets */
-@media (max-width: 980px) {
-  .emc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .emc a:nth-child(3) { padding-left: 0; border-left: 0; }
-  .emc a:nth-child(n+3) { border-top: 1px solid var(--hair); }
-  .farmrow { grid-template-columns: minmax(0, .4fr) minmax(0, 1fr); }
-  .farmrow > div { grid-column: 1 / -1; }
-  .chain { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .chain li:nth-child(3) { border-left: 1px solid var(--rule); }
-  .chain li:nth-child(2)::after { display: none; }
-  .open-head, .feat, .farm { grid-template-columns: minmax(0, 1fr); }
-  .feat.flip > :first-child { order: 0; }
-  .arms, .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .arms > div:nth-child(3) { border-left: 0; }
-  .arms > div:nth-child(n+3) { border-top: 1px solid var(--hair); }
-  .roles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .roles div:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; }
-  .roles div:nth-child(2n) { padding-left: 22px; border-left: 1px solid var(--rule); }
-}
-@media (max-width: 720px) {
-  .emc { grid-template-columns: minmax(0, 1fr); }
-  .emc a, .emc a + a { padding-left: 0; border-left: 0; }
-  .emc a + a { border-top: 1px solid var(--hair); }
-  .lhead { grid-template-columns: minmax(0, 1fr); }
-  .bigsq { width: 88px; }
-  .chain { grid-template-columns: minmax(0, 1fr); }
-  .chain li + li { border-left: 1px solid var(--rule); border-top: 0; }
-  .chain li::after { display: none; }
-  .top nav { display: none; }
-  .top .brand img { height: 28px; }
-  .open { padding-top: 96px; }
-  .open-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .open-strip div:nth-child(3) { padding-left: 0; border-left: 0; }
-  .open-strip div:nth-child(n+3) { border-top: 1px solid var(--hair); }
-  .pains, .grid4, .roles, .arms, .plans { grid-template-columns: minmax(0, 1fr); }
-  .pains div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); }
-  .arms > div + div { border-left: 0; border-top: 1px solid var(--hair); }
-  .roles div:nth-child(2n) { padding-left: 0; border-left: 0; }
-  .foot .r { margin-left: 0; }
-}
-</style>
+<link rel="stylesheet" href="samana.css">
 </head>
-<body>
+<body class="">
 
 <header class="top" id="top">
   <div class="top-in">
-    <a class="brand" href="#" aria-label="Samana, home"><img src="assets/samana-logo-small-dark.svg" alt="Samana" width="133" height="34"></a>
+    <a class="brand" href="index.html" aria-label="Samana, home"><img src="assets/samana-logo-small-dark.svg" alt="Samana" width="133" height="34"></a>
     <nav aria-label="On this page">
-      <a href="#e">Enterprise</a>
-      <a href="#m">Manufacturing</a>
-      <a href="#c">Construction</a>
-      <a href="#rp">Resources</a>
-      <a href="#plans">Plans</a>
+      <a href="enterprise.html">Enterprise</a>
+      <a href="manufacturing.html">Manufacturing</a>
+      <a href="construction.html">Construction</a>
+      <a href="resource-planning.html">Resources</a>
+      <a href="index.html#plans">Plans</a>
     </nav>
     <div class="top-r">
       <a class="signin" data-app="" href="https://app.sattvatech.com">Sign in</a>
@@ -285,7 +50,7 @@ section[id] { scroll-margin-top: 72px; }
           <p class="lede">Samana runs the business, the floor and the build from the same plan. Lay out the work once. Samana puts the people on it, tells you what to order and when, tracks the rate you planned against the rate you got, prices every change, and shows the cash by month.</p>
           <div class="acts">
             <a class="btn btn-go" data-app="" href="https://app.sattvatech.com">Start free</a>
-            <a class="btn btn-line" href="#e">See it run</a>
+            <a class="btn btn-line" href="enterprise.html">See it run</a>
           </div>
         </div>
         <figure class="screen">
@@ -294,179 +59,40 @@ section[id] { scroll-margin-top: 72px; }
         </figure>
       </div>
       <nav class="emc" aria-label="What Samana runs">
-        <a href="#e"><img src="assets/sq-e-dark.svg" alt=""><span><b>Enterprise</b>The whole business and its cash, in Flow</span></a>
-        <a href="#m"><img src="assets/sq-m-dark.svg" alt=""><span><b>Manufacturing</b>Lean production, and lean farming</span></a>
-        <a href="#c"><img src="assets/sq-c-dark.svg" alt=""><span><b>Construction</b>Design-build: drawn, priced, costed</span></a>
-        <a href="#rp"><img src="assets/sq-rp-dark.svg" alt=""><span><b>Resource planning</b>People, partners and parts</span></a>
+        <a href="enterprise.html"><img src="assets/sq-e-dark.svg" alt=""><span><b>Enterprise</b>The whole business and its cash, in Flow<i>Open →</i></span></a>
+        <a href="manufacturing.html"><img src="assets/sq-m-dark.svg" alt=""><span><b>Manufacturing</b>Lean production, and lean farming<i>Open →</i></span></a>
+        <a href="construction.html"><img src="assets/sq-c-dark.svg" alt=""><span><b>Construction</b>Design-build: drawn, priced, costed<i>Open →</i></span></a>
+        <a href="resource-planning.html"><img src="assets/sq-rp-dark.svg" alt=""><span><b>Resource planning</b>See, plan and track, year after year<i>Open →</i></span></a>
       </nav>
     </div>
   </section>
 
-  <section class="sec dark letter" id="e" style="--k: var(--blue)">
+  <section class="sec doors-sec" id="parts">
     <div class="wrap">
-      <div class="lhead">
-        <img class="bigsq" src="assets/sq-e-dark.svg" alt="E">
-        <div>
-          <span class="kicker">Enterprise</span>
-          <h2>The whole business, on one page.</h2>
-          <p class="sub">Every job, run and season your company has, rolled into one picture of the money. Flow takes what the plan says will happen and lays it out by month: what comes in, what goes out, when the most cash is needed and what is left. Each business unit on its own, or all of them together.</p>
-        </div>
-      </div>
-      <div class="feat">
-        <figure class="shot">
-          <video data-clip src="assets/flow.mp4" poster="assets/flow.jpg" muted loop playsinline preload="metadata" aria-label="Flow: what is due and when, cash by month, and every line with its cost code."></video>
-          <figcaption>Recorded in the app. Flow, with a cost code on every line.</figcaption>
-        </figure>
-        <div>
-          <span class="tag">Flow</span>
-          <h3>The cash, by month, before you spend it.</h3>
-          <p>Flow follows every change, so you see a job get bigger or smaller and when the money moves. Material and labor are split on every line, and every dollar carries a cost code that goes straight to the books.</p>
-          <ul>
-            <li>Cash by month, and the most cash you will need</li>
-            <li>Every revision and how far it moved the money</li>
-            <li>Business units side by side, or added up</li>
-            <li>The owner's view: margins, the profit view, who has access</li>
-          </ul>
-        </div>
+      <span class="kicker">Four parts, one plan</span>
+      <h2>Pick where you start.</h2>
+      <div class="doors">
+        <a class="door" href="enterprise.html" style="--k: var(--blue)"><img class="sq" src="assets/sq-e.svg" alt=""><div><b>Enterprise</b><span>The whole business on one page: the Flow dashboard, cash by month, every change and what it cost.</span><i>See Enterprise →</i></div><img class="pv" src="assets/flow-dash.jpg" alt="" loading="lazy"></a>
+        <a class="door" href="manufacturing.html" style="--k: var(--red)"><img class="sq" src="assets/sq-m.svg" alt=""><div><b>Manufacturing</b><span>Lean production: steps, people and rates on one plan, actuals against plan. Lean farming too.</span><i>See Manufacturing →</i></div><img class="pv" src="assets/lean-plan.jpg" alt="" loading="lazy"></a>
+        <a class="door" href="construction.html" style="--k: var(--green)"><img class="sq" src="assets/sq-c.svg" alt=""><div><b>Construction</b><span>Agile design-build: draw it, see it in 3D, price every line, and watch the cost add up in Flow.</span><i>See Construction →</i></div><img class="pv" src="assets/layers.jpg" alt="" loading="lazy"></a>
+        <a class="door" href="resource-planning.html" style="--k: var(--yellow)"><img class="sq" src="assets/sq-rp.svg" alt=""><div><b>Resource planning</b><span>See, plan and track your people, parts and money, and set next year's budget from this year's numbers.</span><i>See Resource planning →</i></div><img class="pv" src="assets/lean-order.jpg" alt="" loading="lazy"></a>
       </div>
     </div>
   </section>
 
-  <section class="sec alt letter" id="m" style="--k: var(--red)">
-    <div class="wrap">
-      <div class="lhead">
-        <img class="bigsq" src="assets/sq-m.svg" alt="M">
-        <div>
-          <span class="kicker">Manufacturing</span>
-          <h2>Lean production, from a plan, not a whiteboard.</h2>
-          <p class="sub">Most shops run the floor on spreadsheets, a whiteboard and somebody's memory. Lean puts the run on one plan: every step in order, the people it needs, the rate it should hit and the parts it uses. When the floor falls behind, you see it the same day, not at the end of the month. The same Lean runs a farm's season.</p>
+  <section class="sec evolve" id="ideas">
+    <div class="wrap evolve-in">
+      <div>
+        <span class="kicker">Built with the people who use it</span>
+        <h2>The software evolves with you.</h2>
+        <p class="sub">Samana started as the tool we needed for our own builds, farms and production. Every part of it came from a real job. If something gets in your way, or you need something it does not do yet, tell us. Good ideas go into the next version, for everyone.</p>
+      </div>
+      <div class="idea">
+        <h3>Send a suggestion</h3>
+        <p>Coming to the app: a suggestion button that records the last few places you clicked, so we see exactly where it happened, and sends it to us with your note. Until then, email us.</p>
+        <div class="acts">
+          <a class="btn btn-ink" href="mailto:info@samana.tech?subject=Samana%20suggestion">Email a suggestion</a>
         </div>
-      </div>
-      <div class="pains">
-        <div><b>Less waiting.</b><p>Each step starts when the one before it is done and the people are free. Samana flags the day two steps want the same person.</p></div>
-        <div><b>Less waste.</b><p>Order what the plan uses, when it uses it. No rush freight, no shelf of parts nobody needed.</p></div>
-        <div><b>Nothing done twice.</b><p>Every change is a revision. The floor works from the issued plan and taps Got it when they have seen it.</p></div>
-      </div>
-
-      <div class="feat">
-        <figure class="shot">
-          <video data-clip src="assets/lean-plan.mp4" poster="assets/lean-plan.jpg" muted loop playsinline preload="metadata" aria-label="Steps on the calendar with crew sizes, a people-each-day chart and the plan table with start, finish, crew, rate and cost."></video>
-          <figcaption>Recorded in the app. Steps, crew per day, and the busiest day called out.</figcaption>
-        </figure>
-        <div>
-          <span class="tag">Lean · the plan</span>
-          <h3>Steps, people and dates, worked out for you.</h3>
-          <p>Put in the steps of a run and how many people each takes. Lean lays them on the calendar Monday to Friday, keeps them inside the window the run has to finish in, and moves everything after a step when that step moves.</p>
-          <ul>
-            <li>Drag a start and the steps after it follow</li>
-            <li>People each day, with the busiest day and who is double-booked</li>
-            <li>Go puts a step on the crew's list; Verify closes it once it is checked</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="feat flip">
-        <figure class="shot">
-          <video data-clip src="assets/lean-order.mp4" poster="assets/lean-order.jpg" muted loop playsinline preload="metadata" aria-label="Hours by week against the limit, and each step's planned rate with the actual rate under it, green at or above plan and red below."></video>
-          <figcaption>Recorded in the app. Planned rate against actual, step by step.</figcaption>
-        </figure>
-        <div>
-          <span class="tag">Lean · rates and hours</span>
-          <h3>Planned rate against real rate, on every step.</h3>
-          <p>Each step carries the rate it should run at: units an hour, pieces a person-hour. Log what the floor really did and Samana draws it under the plan, green at or above, red below. Hours by week sit against the limit, so overtime shows up before it is paid.</p>
-          <ul>
-            <li>Rates in the step's own units</li>
-            <li>Actuals against plan, as soon as days are logged</li>
-            <li>Hours by week with the line you set</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="farmrow">
-        <div>
-          <span class="tag">Lean farming</span>
-          <h3>The same plan runs a growing season.</h3>
-          <p>Field prep, planting, harvest and drying are steps like any other. Lean hands them to the crew's phones in Farmmetric, our compliance app for licensed growers, and the crew checks them off in the field.</p>
-          <a class="more" href="https://www.myfarmmetric.com">About Farmmetric</a>
-        </div>
-        <figure class="shot tall"><video data-clip src="assets/farmmetric-phone.mp4" poster="assets/farmmetric-phone.jpg" muted loop playsinline preload="metadata" aria-label="Farmmetric on a phone: the day's work for one grower."></video></figure>
-        <figure class="shot wide"><video data-clip src="assets/farmmetric-crew.mp4" poster="assets/farmmetric-crew.jpg" muted loop playsinline preload="metadata" aria-label="Farmmetric: the crew's steps handed out from Lean."></video></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec letter" id="c" style="--k: var(--green)">
-    <div class="wrap">
-      <div class="lhead">
-        <img class="bigsq" src="assets/sq-c.svg" alt="C">
-        <div>
-          <span class="kicker">Construction</span>
-          <h2>Agile design-build. Draw it, price it, start it.</h2>
-          <p class="sub">A fit-out, a new line, a renovation or a whole building. Put in the sizes the way you measure them and Samana draws it to scale and builds the takeoff behind it: every piece with material, labor and time. Change the design and the price changes with it, so you can go from first sketch to a priced, scheduled start without redrawing anything. Recorded on the sample job every account starts with.</p>
-        </div>
-      </div>
-      <div class="grid4">
-        <figure>
-          <div class="shot"><video data-clip src="assets/takeoff.mp4" poster="assets/takeoff.jpg" muted loop playsinline preload="metadata" aria-label="Changing a size and moving between levels; the price and every division follow."></video></div>
-          <h3>Takeoff</h3><p>Each level on its own tab, priced by division the way you hire: framing, electrical, plumbing, HVAC.</p>
-        </figure>
-        <figure>
-          <div class="shot"><video data-clip src="assets/layers.mp4" poster="assets/layers.jpg" muted loop playsinline preload="metadata" aria-label="The drawing set full screen, turning on electrical, HVAC, plumbing and framing layers."></video></div>
-          <h3>The drawing set</h3><p>Open the plan full screen and turn the trades on and off. Pin a note where the work is.</p>
-        </figure>
-        <figure>
-          <div class="shot"><video data-clip src="assets/threed.mp4" poster="assets/threed.jpg" muted loop playsinline preload="metadata" aria-label="The plan in 3D, turned with the mouse."></video></div>
-          <h3>3D</h3><p>The same plan in 3D, finished for the customer or as framing for the crew.</p>
-        </figure>
-        <figure>
-          <div class="shot"><video data-clip src="assets/customer.mp4" poster="assets/customer.jpg" muted loop playsinline preload="metadata" aria-label="Scrolling the customer quote: work by trade, options, payment schedule and terms."></video></div>
-          <h3>The customer packet</h3><p>One click turns the takeoff into a proposal in your name, with options, a payment schedule and terms.</p>
-        </figure>
-      </div>
-
-      <ol class="chain" aria-label="How the cost adds up">
-        <li><b>Drawn</b><span>Rooms, walls, equipment, to scale</span></li>
-        <li><b>Counted</b><span>Every piece, hour and price in the takeoff</span></li>
-        <li><b>Coded</b><span>Material and labor, by division and cost code</span></li>
-        <li><b>In Flow</b><span>Deposits in, materials and labor out, by month</span></li>
-      </ol>
-
-      <div class="feat">
-        <figure class="shot">
-          <video data-clip src="assets/revs.mp4" poster="assets/revs.jpg" muted loop playsinline preload="metadata" aria-label="Publishing revision A, changing the job, publishing revision B, the compare table, then the team portal on the issued revision."></video>
-          <figcaption>Recorded in the app. Rev A, a design change, Rev B, and the team portal.</figcaption>
-        </figure>
-        <div>
-          <span class="tag">Design changes</span>
-          <h3>Change the design. See what it costs, right away.</h3>
-          <p>Publish a revision and it is kept exactly as sent, costs frozen. Change the design and Samana shows both side by side, division by division, up or down, and Flow moves the cash to match. The crew opens the issued revision, not your half-finished edits.</p>
-          <ul>
-            <li>Rev A, B, C, with what changed and what it cost</li>
-            <li>Every rev carried into Flow</li>
-            <li>Step-by-step work orders with check-offs from the field</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec dark letter" id="rp" style="--k: var(--yellow)">
-    <div class="wrap">
-      <div class="lhead">
-        <img class="bigsq" src="assets/sq-rp-dark.svg" alt="RP">
-        <div>
-          <span class="kicker">Resource planning</span>
-          <h2>The right people and parts, at the right step.</h2>
-          <p class="sub">Every step knows who it needs and what it uses. Samana finds each person's part, lines up the partners and trades around them, and tells you what to order before you run short. Each company's work is private to that company; the owner sets what everyone can see.</p>
-        </div>
-      </div>
-      <div class="roles">
-        <div><b>Owner</b><p>Everything: plans, prices, the profit view, who has access.</p></div>
-        <div><b>Office</b><p>Builds and edits plans, publishes revisions, sends quotes.</p></div>
-        <div><b>Floor and crew</b><p>The issued plan on their phone: steps, materials, check-offs, notes, Got it on every change.</p></div>
-        <div><b>Partners and trades</b><p>Their own steps and the finished product they are building toward. Never your prices.</p></div>
-        <div><b>Materials</b><p>What each step uses, added up into an order list with when to buy it.</p></div>
-        <div><b>Sai</b><p>The helper built in. Tell it what changed, or hand it photos, and it works out where that goes.</p></div>
       </div>
     </div>
   </section>
@@ -528,28 +154,6 @@ section[id] { scroll-margin-top: 72px; }
   </div>
 </footer>
 
-<script>
-/* ONE place for the app's address. Change to 'https://app.samana.tech' once sign-in works there. */
-var APP = 'https://app.sattvatech.com';
-document.querySelectorAll('[data-app]').forEach(function (a) { a.href = APP + (a.getAttribute('data-app') || ''); });
-document.getElementById('yr').textContent = new Date().getFullYear();
-
-/* solid top bar once the page scrolls */
-var topBar = document.getElementById('top');
-function bar() { topBar.classList.toggle('solid', window.scrollY > 24); }
-bar(); window.addEventListener('scroll', bar, { passive: true });
-
-/* clips play only while on screen; with motion turned off they stay still and get controls */
-var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var clips = document.querySelectorAll('video[data-clip]');
-if (still || !('IntersectionObserver' in window)) {
-  clips.forEach(function (v) { v.controls = true; });
-} else {
-  var io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) { if (e.isIntersecting) { e.target.play().catch(function () {}); } else { e.target.pause(); } });
-  }, { threshold: 0.3 });
-  clips.forEach(function (v) { io.observe(v); });
-}
-</script>
+<script src="samana.js"></script>
 </body>
 </html>

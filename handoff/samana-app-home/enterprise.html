@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samana Enterprise</title>
+<meta name="description" content="Samana, EMCRP Software. Enterprise: the whole business in Flow.">
+<meta name="theme-color" content="#0d2747">
+<meta property="og:title" content="Samana: EMCRP Software">
+<meta property="og:description" content="Plan the work, the people, the materials and the money in one place. Start free.">
+<meta property="og:image" content="assets/samana-icon-180.png">
+<link rel="icon" href="assets/samana-favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/samana-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<!--
+  Samana's front page (samana.tech, and the app's signed-out home).
+  Built by the website chat, Oct 12, 2026. Load notes: README.md beside this file.
+  Every link into the app goes through data-app; the script at the bottom sets the address in ONE place (APP).
+-->
+<link rel="stylesheet" href="samana.css">
+</head>
+<body class="page-letter">
+
+<header class="top" id="top">
+  <div class="top-in">
+    <a class="brand" href="index.html" aria-label="Samana, home"><img src="assets/samana-logo-small-dark.svg" alt="Samana" width="133" height="34"></a>
+    <nav aria-label="On this page">
+      <a href="enterprise.html" aria-current="page">Enterprise</a>
+      <a href="manufacturing.html">Manufacturing</a>
+      <a href="construction.html">Construction</a>
+      <a href="resource-planning.html">Resources</a>
+      <a href="index.html#plans">Plans</a>
+    </nav>
+    <div class="top-r">
+      <a class="signin" data-app="" href="https://app.sattvatech.com">Sign in</a>
+      <a class="btn btn-go btn-sm" data-app="" href="https://app.sattvatech.com">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="sec dark letter" id="e" style="--k: var(--blue)">
+    <div class="wrap">
+      <div class="lhead">
+        <img class="bigsq" src="assets/sq-e-dark.svg" alt="E">
+        <div>
+          <span class="kicker">Enterprise</span>
+          <h1 class="h2">The whole business, on one page.</h1>
+          <p class="sub">Every job, run and season your company has, rolled into one picture of the money. Flow takes what the plan says will happen and lays it out by month: what comes in, what goes out, when the most cash is needed and what is left. Each business unit on its own, or all of them together.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <figure class="shot">
+          <video data-clip src="assets/flow-dash.mp4" poster="assets/flow-dash.jpg" muted loop playsinline preload="metadata" aria-label="The Flow dashboard: quote total, materials, labor and what is left; what is due and when; changes over time; cost by cost code."></video>
+          <figcaption>Recorded in the app. The Flow dashboard: totals, what is due and when, changes over time, and every line by cost code.</figcaption>
+        </figure>
+        <div>
+          <span class="tag">Flow</span>
+          <h3>The cash, by month, before you spend it.</h3>
+          <p>Flow follows every change, so you see a job get bigger or smaller and when the money moves. Material and labor are split on every line, and every dollar carries a cost code that goes straight to the books.</p>
+          <ul>
+            <li>Cash by month, and the most cash you will need</li>
+            <li>Every revision and how far it moved the money</li>
+            <li>Business units side by side, or added up</li>
+            <li>The owner's view: margins, the profit view, who has access</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nextp">
+    <div class="wrap nextp-in">
+      <a class="back" href="index.html">← All of Samana</a>
+      <a class="go" href="manufacturing.html"><img src="assets/sq-m.svg" alt=""><span>Next<b>Manufacturing</b></span></a>
+    </div>
+  </section>
+
+  <section class="end">
+    <div class="wrap">
+      <img src="assets/samana-mark-dark.svg" alt="" width="96" height="96">
+      <h2>Put your next run on one plan.</h2>
+      <p>Start free with the sample job, then lay out your own. Questions: <a href="mailto:info@samana.tech" style="color:var(--line)">info@samana.tech</a>.</p>
+      <div class="acts">
+        <a class="btn btn-go" data-app="" href="https://app.sattvatech.com">Start free</a>
+        <a class="btn btn-line" data-app="" href="https://app.sattvatech.com">Sign in</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <img src="assets/samana-logo-small-dark.svg" alt="Samana" width="110" height="28">
+    <span>By <a href="https://sattvatech.com">Sattva Technologies LLC</a>, Massachusetts</span>
+    <div class="r">
+      <a href="mailto:info@samana.tech">info@samana.tech</a>
+      <a href="https://www.myfarmmetric.com">Farmmetric</a>
+      <a href="https://sattvatech.com">sattvatech.com</a>
+      <a data-app="" href="https://app.sattvatech.com">Sign in</a>
+    </div>
+    <small>© <span id="yr">2026</span> Sattva Technologies LLC. Samana and EMCRP Software are names of Sattva Technologies LLC.</small>
+  </div>
+</footer>
+
+<script src="samana.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samana Manufacturing</title>
+<meta name="description" content="Samana, EMCRP Software. Manufacturing: lean production and lean farming.">
+<meta name="theme-color" content="#0d2747">
+<meta property="og:title" content="Samana: EMCRP Software">
+<meta property="og:description" content="Plan the work, the people, the materials and the money in one place. Start free.">
+<meta property="og:image" content="assets/samana-icon-180.png">
+<link rel="icon" href="assets/samana-favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/samana-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<!--
+  Samana's front page (samana.tech, and the app's signed-out home).
+  Built by the website chat, Oct 12, 2026. Load notes: README.md beside this file.
+  Every link into the app goes through data-app; the script at the bottom sets the address in ONE place (APP).
+-->
+<link rel="stylesheet" href="samana.css">
+</head>
+<body class="page-letter">
+
+<header class="top" id="top">
+  <div class="top-in">
+    <a class="brand" href="index.html" aria-label="Samana, home"><img src="assets/samana-logo-small-dark.svg" alt="Samana" width="133" height="34"></a>
+    <nav aria-label="On this page">
+      <a href="enterprise.html">Enterprise</a>
+      <a href="manufacturing.html" aria-current="page">Manufacturing</a>
+      <a href="construction.html">Construction</a>
+      <a href="resource-planning.html">Resources</a>
+      <a href="index.html#plans">Plans</a>
+    </nav>
+    <div class="top-r">
+      <a class="signin" data-app="" href="https://app.sattvatech.com">Sign in</a>
+      <a class="btn btn-go btn-sm" data-app="" href="https://app.sattvatech.com">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="sec alt letter" id="m" style="--k: var(--red)">
+    <div class="wrap">
+      <div class="lhead">
+        <img class="bigsq" src="assets/sq-m.svg" alt="M">
+        <div>
+          <span class="kicker">Manufacturing</span>
+          <h1 class="h2">Lean production, from a plan, not a whiteboard.</h1>
+          <p class="sub">Most shops run the floor on spreadsheets, a whiteboard and somebody's memory. Lean puts the run on one plan: every step in order, the people it needs, the rate it should hit and the parts it uses. When the floor falls behind, you see it the same day, not at the end of the month. The same Lean runs a farm's season.</p>
+        </div>
+      </div>
+      <div class="pains">
+        <div><b>Less waiting.</b><p>Each step starts when the one before it is done and the people are free. Samana flags the day two steps want the same person.</p></div>
+        <div><b>Less waste.</b><p>Order what the plan uses, when it uses it. No rush freight, no shelf of parts nobody needed.</p></div>
+        <div><b>Nothing done twice.</b><p>Every change is a revision. The floor works from the issued plan and taps Got it when they have seen it.</p></div>
+      </div>
+
+      <div class="feat">
+        <figure class="shot">
+          <video data-clip src="assets/lean-plan.mp4" poster="assets/lean-plan.jpg" muted loop playsinline preload="metadata" aria-label="Steps on the calendar with crew sizes, a people-each-day chart and the plan table with start, finish, crew, rate and cost."></video>
+          <figcaption>Recorded in the app. Steps, crew per day, and the busiest day called out.</figcaption>
+        </figure>
+        <div>
+          <span class="tag">Lean · the plan</span>
+          <h3>Steps, people and dates, worked out for you.</h3>
+          <p>Put in the steps of a run and how many people each takes. Lean lays them on the calendar Monday to Friday, keeps them inside the window the run has to finish in, and moves everything after a step when that step moves.</p>
+          <ul>
+            <li>Drag a start and the steps after it follow</li>
+            <li>People each day, with the busiest day and who is double-booked</li>
+            <li>Go puts a step on the crew's list; Verify closes it once it is checked</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feat flip">
+        <figure class="shot">
+          <video data-clip src="assets/lean-order.mp4" poster="assets/lean-order.jpg" muted loop playsinline preload="metadata" aria-label="Hours by week against the limit, and each step's planned rate with the actual rate under it, green at or above plan and red below."></video>
+          <figcaption>Recorded in the app. Planned rate against actual, step by step.</figcaption>
+        </figure>
+        <div>
+          <span class="tag">Lean · rates and hours</span>
+          <h3>Planned rate against real rate, on every step.</h3>
+          <p>Each step carries the rate it should run at: units an hour, pieces a person-hour. Log what the floor really did and Samana draws it under the plan, green at or above, red below. Hours by week sit against the limit, so overtime shows up before it is paid.</p>
+          <ul>
+            <li>Rates in the step's own units</li>
+            <li>Actuals against plan, as soon as days are logged</li>
+            <li>Hours by week with the line you set</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="farmrow">
+        <div>
+          <span class="tag">Lean farming</span>
+          <h3>The same plan runs a growing season.</h3>
+          <p>Field prep, planting, harvest and drying are steps like any other. Lean hands them to the crew's phones in Farmmetric, our compliance app for licensed growers, and the crew checks them off in the field.</p>
+          <a class="more" href="https://www.myfarmmetric.com">About Farmmetric</a>
+        </div>
+        <figure class="shot tall"><video data-clip src="assets/farmmetric-phone.mp4" poster="assets/farmmetric-phone.jpg" muted loop playsinline preload="metadata" aria-label="Farmmetric on a phone: the day's work for one grower."></video></figure>
+        <figure class="shot wide"><video data-clip src="assets/farmmetric-crew.mp4" poster="assets/farmmetric-crew.jpg" muted loop playsinline preload="metadata" aria-label="Farmmetric: the crew's steps handed out from Lean."></video></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="nextp">
+    <div class="wrap nextp-in">
+      <a class="back" href="index.html">← All of Samana</a>
+      <a class="go" href="construction.html"><img src="assets/sq-c.svg" alt=""><span>Next<b>Construction</b></span></a>
+    </div>
+  </section>
+
+  <section class="end">
+    <div class="wrap">
+      <img src="assets/samana-mark-dark.svg" alt="" width="96" height="96">
+      <h2>Put your next run on one plan.</h2>
+      <p>Start free with the sample job, then lay out your own. Questions: <a href="mailto:info@samana.tech" style="color:var(--line)">info@samana.tech</a>.</p>
+      <div class="acts">
+        <a class="btn btn-go" data-app="" href="https://app.sattvatech.com">Start free</a>
+        <a class="btn btn-line" data-app="" href="https://app.sattvatech.com">Sign in</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <img src="assets/samana-logo-small-dark.svg" alt="Samana" width="110" height="28">
+    <span>By <a href="https://sattvatech.com">Sattva Technologies LLC</a>, Massachusetts</span>
+    <div class="r">
+      <a href="mailto:info@samana.tech">info@samana.tech</a>
+      <a href="https://www.myfarmmetric.com">Farmmetric</a>
+      <a href="https://sattvatech.com">sattvatech.com</a>
+      <a data-app="" href="https://app.sattvatech.com">Sign in</a>
+    </div>
+    <small>© <span id="yr">2026</span> Sattva Technologies LLC. Samana and EMCRP Software are names of Sattva Technologies LLC.</small>
+  </div>
+</footer>
+
+<script src="samana.js"></script>
+</body>
+</html>
