@@ -1,8 +1,6 @@
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { SamanaNav, SamanaFoot, FARM } from './Samana.jsx'
+import { Page, Hero, Sec, Spec, Prices, End } from '../Kit.jsx'
+import { FARM } from '../Chrome.jsx'
 import { FarmmetricPhone } from '../Walkthrough.jsx'
-import '../samana.css'
 
 const FEATURES = [
   ['My work', "Today's and this week's jobs, each with the mix or the instructions, where it is, the crew and a timer."],
@@ -16,78 +14,42 @@ const FEATURES = [
   ['Records and roll-ups', 'Hours by kind of work, planned against actual, and every job, spray and harvest kept as you go, ready when you have to show it.'],
 ]
 
+/* v3 (2026-10-12): same words as before, the drawing-set look. */
 export default function Farmmetric() {
-  useEffect(() => { document.title = 'Farmmetric: farm compliance and records, free, by Sattva Technologies' }, [])
   return (
-    <div className="sm fm">
-      <SamanaNav here="farmmetric" />
-      <header className="sq-hero sm-grid">
-        <div className="sm-wrap">
-          <h1>Farm compliance, and a simple way to enter your data.</h1>
-          <p>Farmmetric is a free farm app for the people doing the work. Every job goes on a phone: what to do, where, who is on it and how long it took. Sprays, harvest and drying are logged as they happen, so the records are there when you have to show them. Live API connectors are coming soon.</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-            <a className="sm-btn go" href={FARM + '/signup'}>Start free</a>
-            <a className="sm-btn ghost" href="#samana">How it works with Samana</a>
-          </div>
-        </div>
-      </header>
+    <Page here="products" title="Farmmetric: farm compliance and records, free, by Sattva Technologies">
+      <Hero c="farms" title="Farm compliance, and a simple way to enter your data."
+        lede="Farmmetric is a free farm app for the people doing the work. Every job goes on a phone: what to do, where, who is on it and how long it took. Sprays, harvest and drying are logged as they happen, so the records are there when you have to show them. Live API connectors are coming soon."
+        acts={[[FARM + '/signup', 'Start free', 'go'], ['#samana', 'How it works with Samana']]}
+        tb={[['Price', 'Free'], ['On the web', 'Phone, tablet, desktop'], ['Google Play', 'Coming soon'], ['With Samana', 'Linked through Lean']]} />
 
-      <section className="sm-arms" aria-labelledby="phone-h">
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="phone-h">The crew's day, on a phone.</h2>
-          <p className="sm-sub">Recorded in the real app on a sample farm.</p>
-          <div className="st st-embed"><FarmmetricPhone /></div>
-        </div>
-      </section>
+      <Sec id="phone" title="The crew's day, on a phone." sub="Recorded in the real app on a sample farm.">
+        <div className="st st-embed"><FarmmetricPhone /></div>
+      </Sec>
 
-      <section className="sm-arms" aria-labelledby="what">
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="what">What you enter, and what you get back.</h2>
-          <p className="sm-sub">Phones, tablets and desktops, with access set by role. Weights convert between grams, ounces, pounds and kilograms on their own.</p>
-          <table className="sm-rtab"><tbody>{FEATURES.map(([a, b]) => <tr key={a}><th scope="row">{a}</th><td>{b}</td></tr>)}</tbody></table>
-        </div>
-      </section>
+      <Sec id="what" tone="alt" title="What you enter, and what you get back." sub="Phones, tablets and desktops, with access set by role. Weights convert between grams, ounces, pounds and kilograms on their own.">
+        <Spec rows={FEATURES} />
+      </Sec>
 
-      <section className="sm-pieces sm-grid" id="samana" aria-labelledby="link">
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="link">On its own, or connected to Samana.</h2>
-          <p className="sm-sub">Farmmetric works by itself for any farm. Farms that plan in Samana's Lean link the two at no extra cost: the plan comes to the crew's phones, and what they do goes back to the plan.</p>
-          <table className="sm-ptab"><tbody>
-            <tr><th scope="row">Samana builds the farm</th><td>Fields and rows on the real lot line, fence, cameras, power, drying and the budget, priced in Takeoff.</td><td>Construction and capital</td></tr>
-            <tr><th scope="row">Lean plans the season</th><td>Planting to sale: lots, harvest and drying dates, with the people each step needs.</td><td>The plan</td></tr>
-            <tr><th scope="row">Farmmetric runs it</th><td>Every batch tagged and moved, every harvest weighed, every input and inspection logged, and the compliance records kept current.</td><td>The actuals</td></tr>
-            <tr><th scope="row">Flow follows the money</th><td>Harvest weights and actual dates come back to the plan, so the cash by month is real.</td><td>Back to the books</td></tr>
-          </tbody></table>
-          <p className="sm-sub" style={{ marginTop: 24, marginBottom: 0 }}>The connection is in the works: one sign-in and one record for the farm, from the first fence post to the last harvest.</p>
-        </div>
-      </section>
+      <Sec id="samana" tone="farmtone" title="On its own, or connected to Samana." sub="Farmmetric works by itself for any farm. Farms that plan in Samana's Lean link the two at no extra cost: the plan comes to the crew's phones, and what they do goes back to the plan.">
+        <Spec rows={[
+          ['Samana builds the farm', 'Fields and rows on the real lot line, fence, cameras, power, drying and the budget, priced in Takeoff.', 'Construction and capital'],
+          ['Lean plans the season', 'Planting to sale: lots, harvest and drying dates, with the people each step needs.', 'The plan'],
+          ['Farmmetric runs it', 'Every batch tagged and moved, every harvest weighed, every input and inspection logged, and the compliance records kept current.', 'The actuals'],
+          ['Flow follows the money', 'Harvest weights and actual dates come back to the plan, so the cash by month is real.', 'Back to the books'],
+        ]} />
+        <p className="sx-note">The connection is in the works: one sign-in and one record for the farm, from the first fence post to the last harvest.</p>
+      </Sec>
 
-      <section className="sm-plans" aria-labelledby="plans">
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="plans">Free.</h2>
-          <p className="sm-sub">Farmmetric is free to use, with one plan for everyone. A leaner farm is everyone's bottom line, the owner's, the crew's and the buyer's, so the first step costs nothing. Sign up and the farm is yours to set up.</p>
-          <div className="sm-ptwo">
-            <div className="sm-plan"><dl>
-              <div><dt>On the web<small>Sign in from a phone, a tablet or a desktop</small></dt><dd>Free</dd></div>
-              <div><dt>On Google Play<small>The app for Android phones</small></dt><dd style={{ fontSize: 18 }}>Coming soon</dd></div>
-            </dl></div>
-            <div className="sm-plan"><dl>
-              <div><dt>Linked to Samana<small>For farms on Samana's Lean plan</small></dt><dd style={{ fontSize: 18 }}>Included</dd></div>
-              <div><dt>Live API connectors<small>Your records sent on to the systems you report to, without the upload</small></dt><dd style={{ fontSize: 18 }}>Coming soon</dd></div>
-            </dl></div>
-          </div>
-          <p className="note">Farmmetric is built by Sattva Technologies and offered through JMAKN.</p>
+      <Sec id="plans" title="Free." sub="Farmmetric is free to use, with one plan for everyone. A leaner farm is everyone's bottom line, the owner's, the crew's and the buyer's, so the first step costs nothing. Sign up and the farm is yours to set up.">
+        <div className="sx-two">
+          <Prices rows={[['On the web', 'Sign in from a phone, a tablet or a desktop', 'Free'], ['On Google Play', 'The app for Android phones', 'Coming soon']]} />
+          <Prices rows={[['Linked to Samana', "For farms on Samana's Lean plan", 'Included'], ['Live API connectors', 'Your records sent on to the systems you report to, without the upload', 'Coming soon']]} />
         </div>
-      </section>
+        <p className="sx-note">Farmmetric is built by Sattva Technologies.</p>
+      </Sec>
 
-      <section className="sm-end sm-grid" aria-labelledby="end">
-        <div className="sm-wrap">
-          <h2 id="end">Built by people who build farms.</h2>
-          <p>Sattva Technologies sets farms up, builds them and makes the process lean. Farmmetric is the tool we wanted on site, and we use it ourselves. See if it works for you.</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}><a className="sm-btn go" href={FARM}>Go to Farmmetric</a><Link className="sm-btn ghost" to="/lean-ag">Lean farming</Link></div>
-        </div>
-      </section>
-      <SamanaFoot />
-    </div>
+      <End title="Built by people who build farms." acts={[[FARM, 'Go to Farmmetric', 'ink'], ['/lean-ag', 'Lean farming']]}>Sattva Technologies sets farms up, builds them and makes the process lean. Farmmetric is the tool we wanted on site, and we use it ourselves. See if it works for you.</End>
+    </Page>
   )
 }

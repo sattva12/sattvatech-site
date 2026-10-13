@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { SiteHeader, SiteFoot, APP, FARM } from '../Chrome.jsx'
 import Proof from '../Proof.jsx'
 import { Platform, Sai } from '../Walkthrough.jsx'
 import '../samana.css'
+import { Page, Hero, Sec, Spec, Prices, End } from '../Kit.jsx'
 
 export { APP, FARM }
 
@@ -122,153 +122,94 @@ const PIECES = [
 ]
 
 export default function Samana() {
-  useEffect(() => { document.title = 'Samana: lean operations software for businesses that build, grow and make things' }, [])
-  useEffect(() => { if (window.location.hash) { const el = document.getElementById(window.location.hash.slice(1)); if (el) el.scrollIntoView() } }, [])
   return (
-    <div className="sm">
-      <SamanaNav here="samana" />
+    <Page here="products" title="Samana: lean operations software for businesses that build, grow and make things">
+      <Hero title="Lean operations software for businesses that build, grow and make things."
+        lede="Samana takes a job from the first measurement to the last dollar. Takeoff counts every piece and prices it. Lean turns it into steps with dates, crews and materials, and tells you when to order. Flow shows the cash by month. We built it to run our own construction and farm work. It runs any operation that has steps, people and materials."
+        acts={[[APP, 'Start with a free sample job', 'go'], ['#sheets', 'See it work']]}
+        aside={<HeroDrawing />}
+        tb={[['Project', 'Sample job: 3-floor house'], ['Levels', 'Basement, 1st, 2nd, outside'], ['Lines priced', '100'], ['Time on site', '56 working days']]} />
 
-      <header className="sm-hero sm-grid">
-        <div className="sm-wrap">
-          <div>
-            <h1 className="sm-h1-long">Lean operations software for businesses that build, grow and make things.</h1>
-            <p className="lede">Samana takes a job from the first measurement to the last dollar. Takeoff counts every piece and prices it. Lean turns it into steps with dates, crews and materials, and tells you when to order. Flow shows the cash by month. We built it to run our own construction and farm work. It runs any operation that has steps, people and materials.</p>
-            <div className="acts"><a className="sm-btn go" href={APP}>Start with a free sample job</a><a className="sm-btn ghost" href="#sheets">See it work</a></div>
-            <small>Sign in with Google or your email. Your first company comes with a sample 3-floor job to take apart.</small>
-          </div>
-          <HeroDrawing />
+      <Sec id="arms" title="One drawing feeds three arms." sub="Change a wall and the price, the work order and the cash flow change with it. No copying numbers between spreadsheets.">
+        <div className="sx-arms3">
+          <div><h3>Takeoff</h3><p className="what">Buildout.</p><ul><li>Plans, levels and pieces of work</li><li>Every material, hour and price</li><li>Quote, drawings and work order</li></ul></div>
+          <div><h3>Lean</h3><p className="what">Lean manufacturing.</p><ul><li>Steps in order, with the people each needs</li><li>Monday to Friday, unless you record an actual</li><li>A build, a season or a production run, stage by stage</li></ul></div>
+          <div><h3>Flow</h3><p className="what">Cost analysis and budgeting.</p><ul><li>What comes in and goes out, by month</li><li>Every rev and how it moved the money</li><li>Cost codes on every dollar</li></ul></div>
         </div>
-        <div className="sm-tb"><div className="sm-wrap">
-          <div>Project<b>Sample job: 3-floor house</b></div>
-          <div>Levels<b>Basement, 1st, 2nd, outside</b></div>
-          <div>Lines priced<b>100</b></div>
-          <div>Time on site<b>56 working days</b></div>
-        </div></div>
-      </header>
+      </Sec>
 
-      <section className="sm-arms" aria-labelledby="arms">
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="arms">One drawing feeds three arms.</h2>
-          <p className="sm-sub">Change a wall and the price, the work order and the cash flow change with it. No copying numbers between spreadsheets.</p>
-          <div className="row">
-            <div className="sm-arm"><h3>Takeoff</h3><p className="what">Buildout.</p><ul><li>Plans, levels and pieces of work</li><li>Every material, hour and price</li><li>Quote, drawings and work order</li></ul></div>
-            <div className="sm-arm"><h3>Lean</h3><p className="what">Lean manufacturing.</p><ul><li>Steps in order, with the people each needs</li><li>Monday to Friday, unless you record an actual</li><li>A build, a season or a production run, stage by stage</li></ul></div>
-            <div className="sm-arm"><h3>Flow</h3><p className="what">Cost analysis and budgeting.</p><ul><li>What comes in and goes out, by month</li><li>Every rev and how it moved the money</li><li>Cost codes on every dollar</li></ul></div>
-          </div>
-        </div>
-      </section>
+      <Sec id="proof" tone="alt" title="One platform, three kinds of work." sub="Construction and farms are where we built it and proved it. A production run reads the same way: the same three views, whatever the job is.">
+        <div className="st st-embed"><Proof /></div>
+      </Sec>
 
-      <section className="sm-arms" aria-labelledby="proof" style={{ paddingTop: 0 }}>
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="proof">One platform, three kinds of work.</h2>
-          <p className="sm-sub">Construction and farms are where we built it and proved it. A production run reads the same way: the same three views, whatever the job is.</p>
-          <Proof />
-        </div>
-      </section>
+      <Sec id="run" title="See it run." sub="Recorded in the real app: the sample house through Takeoff and Flow, and a sample farm through Lean and Farmmetric.">
+        <div className="st st-embed"><Platform /></div>
+      </Sec>
 
-      <section className="sm-arms" id="run" aria-labelledby="run-h" style={{ paddingTop: 0 }}>
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="run-h">See it run.</h2>
-          <p className="sm-sub">Recorded in the real app: the sample house through Takeoff and Flow, and a sample farm through Lean and Farmmetric.</p>
-          <div className="st st-embed"><Platform /></div>
-        </div>
-      </section>
+      <Sec id="sai" tone="alt" title="Sai, the helper that guides you through it." sub="Sai is the AI helper built into Samana. Tell it what changed on the job, or hand it your photos, and it works out where that goes. Sai is new: we are using it on our own jobs first, and it is not in the public sign-in yet.">
+        <div className="st st-embed"><Sai /></div>
+      </Sec>
 
-      <section className="sm-arms" id="sai" aria-labelledby="sai-h" style={{ paddingTop: 0 }}>
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="sai-h">Sai, the helper that guides you through it.</h2>
-          <p className="sm-sub">Sai is the AI helper built into Samana. Tell it what changed on the job, or hand it your photos, and it works out where that goes. Sai is new: we are using it on our own jobs first, and it is not in the public sign-in yet.</p>
-          <div className="st st-embed"><Sai /></div>
-        </div>
-      </section>
-
-      <section className="sm-sheets" id="sheets" aria-label="What Samana does">
-        <div className="sm-wrap">
-          <h2 className="sm-h2">The drawing set.</h2>
-          <p className="sm-sub">Recorded in the real app on the sample job. Nothing here is a mockup.</p>
-          {SHEETS.map((s, i) => (
-            <article className={'sm-sheet' + (i % 2 ? ' flip' : '')} key={s.no} aria-labelledby={'sh-' + s.no}>
-              <div className="vid"><Clip name={s.name} label={s.clip} /></div>
-              <div className="txt">
-                <div className="body"><h3 id={'sh-' + s.no}>{s.title}</h3><p>{s.p}</p><ul>{s.li.map((x) => <li key={x}>{x}</li>)}</ul></div>
-                <div className="block"><div>Samana, sample 3-floor job<b>{['Takeoff', 'Drawing set and layers', '3D', 'Customer packet', 'Revisions and team portal', 'Flow'][i]}</b></div><div className="no">Sheet<b>{s.no}</b></div></div>
+      <Sec id="sheets" title="The drawing set." sub="Recorded in the real app on the sample job. Nothing here is a mockup.">
+        <div className="sx-sheets">
+          {SHEETS.map((x, i) => (
+            <article className={'sx-shot' + (i % 2 ? ' flip' : '')} key={x.no} aria-labelledby={'sh-' + x.no}>
+              <div className="sx-vid"><Clip name={x.name} label={x.clip} /></div>
+              <div>
+                <h3 id={'sh-' + x.no}>{x.title}</h3>
+                <p>{x.p}</p>
+                <ul>{x.li.map((y) => <li key={y}>{y}</li>)}</ul>
+                <div className="sx-shot-tb"><div>Samana, sample 3-floor job<b>{['Takeoff', 'Drawing set and layers', '3D', 'Customer packet', 'Revisions and team portal', 'Flow'][i]}</b></div><div>Sheet<b>{x.no}</b></div></div>
               </div>
             </article>
           ))}
         </div>
-      </section>
+      </Sec>
 
-      <section className="sm-pieces sm-grid" aria-labelledby="pieces">
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="pieces">Every part of a job is its own piece.</h2>
-          <p className="sm-sub">Two floors and a deck are three pieces on one job, one customer packet, one work order. Mark any piece an option and it is priced on its own.</p>
-          <table className="sm-ptab"><tbody>{PIECES.map(([a, b, c]) => <tr key={a}><th scope="row">{a}</th><td>{b}</td><td>{c}</td></tr>)}</tbody></table>
-        </div>
-      </section>
+      <Sec id="pieces" tone="alt" title="Every part of a job is its own piece." sub="Two floors and a deck are three pieces on one job, one customer packet, one work order. Mark any piece an option and it is priced on its own.">
+        <Spec rows={PIECES} />
+      </Sec>
 
-      <section className="sm-roles" aria-labelledby="roles">
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="roles">Everyone sees their part. Nobody sees yours.</h2>
-          <p className="sm-sub">Each company's jobs are private to that company. The owner invites people and sets what each one can do.</p>
-          <table className="sm-rtab">
-            <thead><tr><th scope="col">Level</th><th scope="col">What they do in Samana</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Owner</th><td>Everything: jobs, prices, the profit view, who has access.</td></tr>
-              <tr><th scope="row">Office</th><td>Builds and edits jobs, publishes revs, sends quotes.</td></tr>
-              <tr><th scope="row">Crew</th><td>The team portal on the issued rev: steps, materials, check-offs, notes, Got it on every change.</td></tr>
-              <tr><th scope="row">Sub</th><td>Their own trade's steps. Never your prices.</td></tr>
-              <tr><th scope="row">Customer</th><td>Their published quote, and a way to ask a question.</td></tr>
-              <tr><th scope="row">Reviewer</th><td>The specifications, without the customer's name or your prices.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+      <Sec id="roles" title="Everyone sees their part. Nobody sees yours." sub="Each company's jobs are private to that company. The owner invites people and sets what each one can do.">
+        <Spec rows={[
+          ['Owner', 'Everything: jobs, prices, the profit view, who has access.'],
+          ['Office', 'Builds and edits jobs, publishes revs, sends quotes.'],
+          ['Crew', 'The team portal on the issued rev: steps, materials, check-offs, notes, Got it on every change.'],
+          ['Sub', "Their own trade's steps. Never your prices."],
+          ['Customer', 'Their published quote, and a way to ask a question.'],
+          ['Reviewer', "The specifications, without the customer's name or your prices."],
+        ]} />
+      </Sec>
 
-      <section className="sm-next" aria-labelledby="next">
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="next">What we are building next.</h2>
-          <p className="sm-sub">In this order. Contractors using Samana now get each one as it lands.</p>
-          <ol>
-            <li><span className="tag">Next</span><h3>Step-by-step new job</h3><p>Answer one question at a time and finish on a priced takeoff.</p></li>
-            <li><span className="tag">Then</span><h3>As-built drawings</h3><p>Each step the crew checks off becomes the as-built, with actual dates and field changes.</p></li>
-            <li><span className="tag">Then</span><h3>Photos on the plan</h3><p>Pin a photo where it was taken. Lay the drawing over a photo of the wall.</p></li>
-            <li><span className="tag">Then</span><h3>X-ray view on Android</h3><p>Point the phone at a wall and see the ducts, pipes and wires that are in the drawing.</p></li>
-            <li><span className="tag">Then</span><h3>Takeoff from a print</h3><p>Drop in an engineered PDF set and get the quantities to confirm.</p></li>
-          </ol>
-        </div>
-      </section>
+      <Sec id="next" tone="alt" title="What we are building next." sub="In this order. Contractors using Samana now get each one as it lands.">
+        <ol className="sx-next">
+          {[['Next', 'Step-by-step new job', 'Answer one question at a time and finish on a priced takeoff.'],
+            ['Then', 'As-built drawings', 'Each step the crew checks off becomes the as-built, with actual dates and field changes.'],
+            ['Then', 'Photos on the plan', 'Pin a photo where it was taken. Lay the drawing over a photo of the wall.'],
+            ['Then', 'X-ray view on Android', 'Point the phone at a wall and see the ducts, pipes and wires that are in the drawing.'],
+            ['Then', 'Takeoff from a print', 'Drop in an engineered PDF set and get the quantities to confirm.']].map(([t, h, p]) => <li key={h}><span>{t}</span><b>{h}</b><p>{p}</p></li>)}
+        </ol>
+      </Sec>
 
-      <section className="sm-plans" aria-labelledby="plans">
-        <div className="sm-wrap">
-          <h2 className="sm-h2" id="plans">Plans.</h2>
-          <p className="sm-sub">Some of the simplest ways to make money are saving it: less waste, less waiting, nothing done twice. A leaner process is everyone's bottom line, so start free with one job and see your own numbers before you pay anything. When it pays for itself, pick a plan; each is named for the part of Samana it opens. You put in your own labor rates; we never see your customers or your prices unless you share them.</p>
-          <div className="sm-ptwo">
-            <div className="sm-plan"><h3>Samana, monthly</h3><p>Every plan has the sample job to compare with.</p><dl>
-              <div><dt>Free<small>Takeoff for one job, and Farmmetric</small></dt><dd>$0</dd></div>
-              <div><dt>Takeoff<small>Drawn and priced quotes, 5 jobs</small></dt><dd>$10<small>a month</small></dd></div>
-              <div><dt>Flow<small>Adds the materials list, work orders, Flow and the team portal for 5 people; 5 jobs</small></dt><dd>$20<small>a month</small></dd></div>
-              <div><dt>Lean<small>Everything: Lean and all of Flow, 10 jobs, one business unit</small></dt><dd>$30<small>a month</small></dd></div>
-            </dl><p style={{ margin: '10px 0 0', fontSize: 14 }}>More business units are $10 a month each. Past 10 jobs, $5 a job.</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 16 }}><a className="sm-btn go" href={APP}>Start free</a><a className="sm-btn" style={{ border: '2px solid #16212c', color: '#16212c' }} href={APP + '/settings'}>Buy a plan</a></div>
-            <p style={{ margin: '8px 0 0', fontSize: 13.5 }}>Buying is inside the app: sign in, or start free, then pick the plan in Settings. You pay by card through Stripe and can cancel any time.</p></div>
-            <div className="sm-plan"><h3>Reviewed by a licensed GC</h3><p>Our time, on top of a plan.</p><dl>
-              <div><dt>Review<small>A construction supervisor checks the job before it goes out</small></dt><dd>$25<small>a job</small></dd></div>
-              <div><dt>Full job write-up<small>Proposal, drawings, materials list and a work order for your crew</small></dt><dd>$100<small>a job</small></dd></div>
-              <div><dt>GC service<small>Permits, supervision and project management, Massachusetts only</small></dt><dd>Estimate</dd></div>
-            </dl></div>
-          </div>
-          <p className="note">Commercial work, three-families and anything beyond an unrestricted construction supervisor license always get a review. Every number is a recommendation the contractor checks; the work order says where it came from.</p>
+      <Sec id="plans" title="Plans." sub="Some of the simplest ways to make money are saving it: less waste, less waiting, nothing done twice. A leaner process is everyone's bottom line, so start free with one job and see your own numbers before you pay anything. When it pays for itself, pick a plan; each is named for the part of Samana it opens. You put in your own labor rates; we never see your customers or your prices unless you share them.">
+        <div className="sx-two">
+          <Prices title="Samana, monthly" sub="Every plan has the sample job to compare with." rows={[
+            ['Free', 'Takeoff for one job, and Farmmetric', '$0'],
+            ['Takeoff', 'Drawn and priced quotes, 5 jobs', '$10', 'a month'],
+            ['Flow', 'Adds the materials list, work orders, Flow and the team portal for 5 people; 5 jobs', '$20', 'a month'],
+            ['Lean', 'Everything: Lean and all of Flow, 10 jobs, one business unit', '$30', 'a month'],
+          ]} foot="More business units are $10 a month each. Past 10 jobs, $5 a job. Buying is inside the app: sign in, or start free, then pick the plan in Settings. You pay by card through Stripe and can cancel any time."
+            acts={[[APP, 'Start free', 'ink'], [APP + '/settings', 'Buy a plan']]} />
+          <Prices title="Reviewed by a licensed GC" sub="Our time, on top of a plan." rows={[
+            ['Review', 'A construction supervisor checks the job before it goes out', '$25', 'a job'],
+            ['Full job write-up', 'Proposal, drawings, materials list and a work order for your crew', '$100', 'a job'],
+            ['GC service', 'Permits, supervision and project management, Massachusetts only', 'Estimate'],
+          ]} />
         </div>
-      </section>
+        <p className="sx-note">Commercial work, three-families and anything beyond an unrestricted construction supervisor license always get a review. Every number is a recommendation the contractor checks; the work order says where it came from.</p>
+      </Sec>
 
-      <section className="sm-end sm-grid" aria-labelledby="end">
-        <div className="sm-wrap">
-          <h2 id="end">Take the sample job apart. Then price your next one.</h2>
-          <p>Sign in, and your company starts with a 3-floor sample: basement, two floors and a deck, already priced.</p>
-          <div className="acts" style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}><a className="sm-btn go" href={APP}>Start free</a><Link className="sm-btn ghost" to="/quote">Or have us write your quote</Link></div>
-        </div>
-      </section>
-      <SamanaFoot />
-    </div>
+      <End title="Take the sample job apart. Then price your next one." acts={[[APP, 'Start free', 'ink'], ['/quote', 'Or have us write your quote']]}>Sign in, and your company starts with a 3-floor sample: basement, two floors and a deck, already priced.</End>
+    </Page>
   )
 }
