@@ -465,3 +465,7 @@
 .sx-app-logo { display: block; height: 56px; width: auto; margin-bottom: 18px; }
 .sx-app-mark { display: block; width: 104px; height: auto; margin-bottom: 20px; }
 .sx-app h4.has-logo::before { display: none; }
+/* Samana's logo with its name, side by side and centred in its card (Atul, 22:26) */
+.sx-app h4.sx-app-lockup { display: flex; justify-content: center; align-items: center; min-height: 132px; padding: 8px 0 4px; }
+.sx-app h4.sx-app-lockup::before { display: none; }
+.sx-app h4.sx-app-lockup img { display: block; width: 100%; max-width: 360px; height: auto; }

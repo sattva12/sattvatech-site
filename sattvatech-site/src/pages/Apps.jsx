@@ -19,8 +19,7 @@ export default function Apps() {
       <Sec>
         <div className="sx-apps sx-apps2">
           <article className="sx-app sx-app-samana">
-            <img className="sx-app-mark" src="/brand/samana-mark.svg" alt="" />
-            <h4 className="has-logo">Samana<span>EMCRP Software</span></h4>
+            <h4 className="sx-app-lockup"><img src="/brand/samana-logo-wide.svg" alt="Samana, EMCRP Software" /></h4>
             <p>Takeoff, drawings, quotes, work orders, the team app and cash flow, from one drawing.</p>
             <div className="sx-price"><b>Free to start</b><span>One job, then $10, $20 or $30 a month</span></div>
             <div className="sx-acts"><a className="sx-btn sx-btn-ink" href={APP + '/login'}>Sign in to Samana</a><Link className="sx-btn sx-btn-line" to="/samana">What it does</Link></div>
