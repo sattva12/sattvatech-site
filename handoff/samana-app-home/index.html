@@ -174,8 +174,56 @@ section[id] { scroll-margin-top: 72px; }
 .foot .r { margin-left: auto; display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .foot small { display: block; width: 100%; margin-top: 4px; font-size: 13px; opacity: .8; }
 
+/* E, M, C, RP: the four lines of work, each opened by its square from the logo */
+.emc { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 72px; border-top: 1px solid var(--hair); }
+.emc a { display: flex; gap: 16px; align-items: flex-start; padding: 24px 20px 28px 0; text-decoration: none; color: var(--fog); font-size: 14px; line-height: 1.4; transition: color .15s; }
+.emc a + a { padding-left: 20px; border-left: 1px solid var(--hair); }
+.emc a:hover { color: var(--line); }
+.emc img { width: 52px; height: 52px; flex: none; }
+.emc b { display: block; margin-bottom: 4px; font: 600 22px/1.1 var(--cond); color: var(--line); }
+.letter { border-top: 6px solid var(--k); }
+.lhead { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 3.5vw, 48px); align-items: start; }
+.bigsq { width: clamp(96px, 11vw, 168px); height: auto; }
+.lhead h2 { margin-top: 14px; }
+.letter .kicker { color: var(--ink); font-size: 14px; }
+.letter.dark .kicker { color: var(--line); }
+.letter .feat li::before { background: var(--k); }
+.dark .feat p, .dark .feat li { color: var(--fog); }
+.dark .feat h3 { color: var(--line); }
+.dark .feat ul, .dark .feat li { border-color: var(--hair); }
+.dark .feat .tag { background: transparent; border-color: var(--hair); color: var(--fog); }
+.dark .shot { border-color: var(--hair); }
+.farmrow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .42fr) minmax(0, 1.2fr); gap: 20px; align-items: center; margin-top: clamp(56px, 7vw, 96px); padding-top: 40px; border-top: 1px solid var(--rule); }
+.farmrow h3 { font: 600 clamp(24px, 2.2vw, 30px)/1.1 var(--cond); }
+.farmrow p { margin-top: 12px; color: var(--steel); font-size: 16px; }
+.farmrow .tag { display: inline-block; margin-bottom: 12px; padding: 5px 9px; background: var(--paper); border: 1px solid var(--rule); font: 600 12px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--steel); }
+.farmrow .more { display: inline-block; margin-top: 14px; font-weight: 500; }
+.farmrow .tall video { aspect-ratio: 1 / 2; object-fit: cover; }
+.farmrow .wide video { aspect-ratio: 16 / 10; }
+.chain { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: clamp(48px, 6vw, 80px); counter-reset: c; }
+.chain li { position: relative; padding: 18px 28px 18px 18px; background: var(--white); border: 1px solid var(--rule); counter-increment: c; }
+.chain li + li { border-left: 0; }
+.chain li::after { content: ''; position: absolute; right: -9px; top: 50%; z-index: 1; width: 16px; height: 16px; background: var(--white); border-top: 1px solid var(--rule); border-right: 1px solid var(--rule); transform: translateY(-50%) rotate(45deg); }
+.chain li:last-child::after { display: none; }
+.chain li:last-child { background: var(--night); border-color: var(--night); color: var(--line); }
+.chain b { display: block; font: 600 20px/1.1 var(--cond); }
+.chain b::before { content: counter(c, decimal-leading-zero) '  '; color: var(--green); }
+.chain span { display: block; margin-top: 6px; font-size: 14px; line-height: 1.4; color: var(--steel); }
+.chain li:last-child span { color: var(--fog); }
+.dark .roles { border-top-color: var(--line); }
+.dark .roles div { border-color: var(--hair); }
+.dark .roles p { color: var(--fog); }
+
 /* phones and small tablets */
 @media (max-width: 980px) {
+  .emc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .emc a:nth-child(3) { padding-left: 0; border-left: 0; }
+  .emc a:nth-child(n+3) { border-top: 1px solid var(--hair); }
+  .farmrow { grid-template-columns: minmax(0, .4fr) minmax(0, 1fr); }
+  .farmrow > div { grid-column: 1 / -1; }
+  .chain { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chain li:nth-child(3) { border-left: 1px solid var(--rule); }
+  .chain li:nth-child(2)::after { display: none; }
   .open-head, .feat, .farm { grid-template-columns: minmax(0, 1fr); }
   .feat.flip > :first-child { order: 0; }
   .arms, .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -186,6 +234,14 @@ section[id] { scroll-margin-top: 72px; }
   .roles div:nth-child(2n) { padding-left: 22px; border-left: 1px solid var(--rule); }
 }
 @media (max-width: 720px) {
+  .emc { grid-template-columns: minmax(0, 1fr); }
+  .emc a, .emc a + a { padding-left: 0; border-left: 0; }
+  .emc a + a { border-top: 1px solid var(--hair); }
+  .lhead { grid-template-columns: minmax(0, 1fr); }
+  .bigsq { width: 88px; }
+  .chain { grid-template-columns: minmax(0, 1fr); }
+  .chain li + li { border-left: 1px solid var(--rule); border-top: 0; }
+  .chain li::after { display: none; }
   .top nav { display: none; }
   .top .brand img { height: 28px; }
   .open { padding-top: 96px; }
@@ -206,9 +262,10 @@ section[id] { scroll-margin-top: 72px; }
   <div class="top-in">
     <a class="brand" href="#" aria-label="Samana, home"><img src="assets/samana-logo-small-dark.svg" alt="Samana" width="133" height="34"></a>
     <nav aria-label="On this page">
-      <a href="#manufacturing">Manufacturing</a>
-      <a href="#buildout">Buildout</a>
-      <a href="#farms">Farms</a>
+      <a href="#e">Enterprise</a>
+      <a href="#m">Manufacturing</a>
+      <a href="#c">Construction</a>
+      <a href="#rp">Resources</a>
       <a href="#plans">Plans</a>
     </nav>
     <div class="top-r">
@@ -225,36 +282,66 @@ section[id] { scroll-margin-top: 72px; }
         <div>
           <img class="lockup" src="assets/samana-logo-wide-dark.svg" alt="Samana, EMCRP Software" width="520" height="138">
           <h1>Every step, person, part and dollar. <em>One plan.</em></h1>
-          <p class="lede">Samana plans the work for businesses that make, build and grow things. Lay out the steps once. Samana puts the people on them, tells you what to order and when, tracks the rate you planned against the rate you got, and shows the cash by month.</p>
+          <p class="lede">Samana runs the business, the floor and the build from the same plan. Lay out the work once. Samana puts the people on it, tells you what to order and when, tracks the rate you planned against the rate you got, prices every change, and shows the cash by month.</p>
           <div class="acts">
             <a class="btn btn-go" data-app="" href="https://app.sattvatech.com">Start free</a>
-            <a class="btn btn-line" href="#manufacturing">See it run</a>
+            <a class="btn btn-line" href="#e">See it run</a>
           </div>
-          <p class="for" aria-label="Who it is for">
-            <span><i style="background:var(--red)"></i>Manufacturing</span>
-            <span><i style="background:var(--blue)"></i>Construction and buildout</span>
-            <span><i style="background:var(--green)"></i>Farms</span>
-          </p>
         </div>
         <figure class="screen">
           <div class="screen-bar" aria-hidden="true"><b></b><b></b><b></b><span>Samana · Lean · steps on the calendar</span></div>
           <video data-clip src="assets/lean-plan.mp4" poster="assets/lean-plan.jpg" muted loop playsinline preload="metadata" aria-label="Lean in the app: steps laid out on a calendar with the people each needs, and the busiest day flagged."></video>
         </figure>
       </div>
-      <div class="open-strip">
-        <div><b>Steps</b><span>In order, with the people, hours and materials each one needs</span></div>
-        <div><b>Rates</b><span>The rate you planned against the rate the floor really did</span></div>
-        <div><b>Orders</b><span>What to buy and when, before the line runs short</span></div>
-        <div><b>Cash</b><span>Money in and out by month, with a cost code on every dollar</span></div>
+      <nav class="emc" aria-label="What Samana runs">
+        <a href="#e"><img src="assets/sq-e-dark.svg" alt=""><span><b>Enterprise</b>The whole business and its cash, in Flow</span></a>
+        <a href="#m"><img src="assets/sq-m-dark.svg" alt=""><span><b>Manufacturing</b>Lean production, and lean farming</span></a>
+        <a href="#c"><img src="assets/sq-c-dark.svg" alt=""><span><b>Construction</b>Design-build: drawn, priced, costed</span></a>
+        <a href="#rp"><img src="assets/sq-rp-dark.svg" alt=""><span><b>Resource planning</b>People, partners and parts</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec dark letter" id="e" style="--k: var(--blue)">
+    <div class="wrap">
+      <div class="lhead">
+        <img class="bigsq" src="assets/sq-e-dark.svg" alt="E">
+        <div>
+          <span class="kicker">Enterprise</span>
+          <h2>The whole business, on one page.</h2>
+          <p class="sub">Every job, run and season your company has, rolled into one picture of the money. Flow takes what the plan says will happen and lays it out by month: what comes in, what goes out, when the most cash is needed and what is left. Each business unit on its own, or all of them together.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <figure class="shot">
+          <video data-clip src="assets/flow.mp4" poster="assets/flow.jpg" muted loop playsinline preload="metadata" aria-label="Flow: what is due and when, cash by month, and every line with its cost code."></video>
+          <figcaption>Recorded in the app. Flow, with a cost code on every line.</figcaption>
+        </figure>
+        <div>
+          <span class="tag">Flow</span>
+          <h3>The cash, by month, before you spend it.</h3>
+          <p>Flow follows every change, so you see a job get bigger or smaller and when the money moves. Material and labor are split on every line, and every dollar carries a cost code that goes straight to the books.</p>
+          <ul>
+            <li>Cash by month, and the most cash you will need</li>
+            <li>Every revision and how far it moved the money</li>
+            <li>Business units side by side, or added up</li>
+            <li>The owner's view: margins, the profit view, who has access</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="sec alt" id="manufacturing">
+  <section class="sec alt letter" id="m" style="--k: var(--red)">
     <div class="wrap">
-      <span class="kicker"><i style="background:var(--red)"></i>For manufacturers</span>
-      <h2>Run the floor from a plan, not a whiteboard.</h2>
-      <p class="sub">Most shops run production on spreadsheets, a whiteboard and somebody's memory. Samana's Lean puts the run on one plan: every step in order, the people it needs, the rate it should hit, and the parts it uses. When the floor falls behind, you see it the same day, not at the end of the month.</p>
+      <div class="lhead">
+        <img class="bigsq" src="assets/sq-m.svg" alt="M">
+        <div>
+          <span class="kicker">Manufacturing</span>
+          <h2>Lean production, from a plan, not a whiteboard.</h2>
+          <p class="sub">Most shops run the floor on spreadsheets, a whiteboard and somebody's memory. Lean puts the run on one plan: every step in order, the people it needs, the rate it should hit and the parts it uses. When the floor falls behind, you see it the same day, not at the end of the month. The same Lean runs a farm's season.</p>
+        </div>
+      </div>
       <div class="pains">
         <div><b>Less waiting.</b><p>Each step starts when the one before it is done and the people are free. Samana flags the day two steps want the same person.</p></div>
         <div><b>Less waste.</b><p>Order what the plan uses, when it uses it. No rush freight, no shelf of parts nobody needed.</p></div>
@@ -274,7 +361,6 @@ section[id] { scroll-margin-top: 72px; }
             <li>Drag a start and the steps after it follow</li>
             <li>People each day, with the busiest day and who is double-booked</li>
             <li>Go puts a step on the crew's list; Verify closes it once it is checked</li>
-            <li>A production run, a build or a season, stage by stage</li>
           </ul>
         </div>
       </div>
@@ -296,61 +382,29 @@ section[id] { scroll-margin-top: 72px; }
         </div>
       </div>
 
-      <div class="feat">
-        <figure class="shot">
-          <video data-clip src="assets/revs.mp4" poster="assets/revs.jpg" muted loop playsinline preload="metadata" aria-label="Publishing revision A, changing the job, publishing revision B, the compare table, then the team portal on the issued revision."></video>
-          <figcaption>Recorded in the app. Rev A, a change, Rev B, and the team portal.</figcaption>
-        </figure>
+      <div class="farmrow">
         <div>
-          <span class="tag">Revisions and the team portal</span>
-          <h3>Every change is a rev. Everyone is told.</h3>
-          <p>Publish a revision and it is kept exactly as sent, costs frozen. Change the plan and Samana shows both side by side, up or down. The floor opens the issued revision on their phone, not your half-finished edits, and you see who has seen the change and who is still on the old one.</p>
-          <ul>
-            <li>Rev A, B, C, with what changed and what it cost</li>
-            <li>Step-by-step work orders with check-offs and notes from the floor</li>
-            <li>Partners and vendors see their part, never your prices</li>
-          </ul>
+          <span class="tag">Lean farming</span>
+          <h3>The same plan runs a growing season.</h3>
+          <p>Field prep, planting, harvest and drying are steps like any other. Lean hands them to the crew's phones in Farmmetric, our compliance app for licensed growers, and the crew checks them off in the field.</p>
+          <a class="more" href="https://www.myfarmmetric.com">About Farmmetric</a>
         </div>
-      </div>
-
-      <div class="feat flip">
-        <figure class="shot">
-          <video data-clip src="assets/flow.mp4" poster="assets/flow.jpg" muted loop playsinline preload="metadata" aria-label="Flow: what is due and when, cash by month, and every line with its cost code."></video>
-          <figcaption>Recorded in the app. Flow, with a cost code on every line.</figcaption>
-        </figure>
-        <div>
-          <span class="tag">Flow · the money</span>
-          <h3>The cash, by month, before you spend it.</h3>
-          <p>Flow turns the plan into a calendar of money: deposits in, materials out, labor out, what is left. It follows every revision, so you see the job get bigger or smaller and when the most cash goes out.</p>
-          <ul>
-            <li>Cash by month and the most cash you will need</li>
-            <li>Material and labor split on every line</li>
-            <li>Cost codes ready for the books</li>
-          </ul>
-        </div>
+        <figure class="shot tall"><video data-clip src="assets/farmmetric-phone.mp4" poster="assets/farmmetric-phone.jpg" muted loop playsinline preload="metadata" aria-label="Farmmetric on a phone: the day's work for one grower."></video></figure>
+        <figure class="shot wide"><video data-clip src="assets/farmmetric-crew.mp4" poster="assets/farmmetric-crew.jpg" muted loop playsinline preload="metadata" aria-label="Farmmetric: the crew's steps handed out from Lean."></video></figure>
       </div>
     </div>
   </section>
 
-  <section class="sec dark" id="line">
+  <section class="sec letter" id="c" style="--k: var(--green)">
     <div class="wrap">
-      <span class="kicker">One app, four parts</span>
-      <h2>One plan feeds everything else.</h2>
-      <p class="sub">Change a step and the people, the order list, the work order and the cash change with it. No copying numbers between spreadsheets.</p>
-      <div class="arms">
-        <div><h3><i style="background:var(--red)"></i>Lean</h3><p class="what">Production and lean planning</p><ul><li>Steps in order, with people and rates</li><li>Planned against actual</li><li>When to order, and how much</li></ul></div>
-        <div><h3><i style="background:var(--blue)"></i>Takeoff</h3><p class="what">Buildout and estimating</p><ul><li>Draw it once; every line is priced</li><li>Drawing set with the trades on layers</li><li>A quote the customer reads</li></ul></div>
-        <div><h3><i style="background:var(--yellow)"></i>Flow</h3><p class="what">Cost and cash</p><ul><li>Cash by month</li><li>Every revision and how it moved the money</li><li>Cost codes on every dollar</li></ul></div>
-        <div><h3><i style="background:var(--green)"></i>Team</h3><p class="what">People and partners</p><ul><li>Each person sees their part</li><li>Check-offs, notes and Got it</li><li>Partners kept in the loop</li></ul></div>
+      <div class="lhead">
+        <img class="bigsq" src="assets/sq-c.svg" alt="C">
+        <div>
+          <span class="kicker">Construction</span>
+          <h2>Agile design-build. Draw it, price it, start it.</h2>
+          <p class="sub">A fit-out, a new line, a renovation or a whole building. Put in the sizes the way you measure them and Samana draws it to scale and builds the takeoff behind it: every piece with material, labor and time. Change the design and the price changes with it, so you can go from first sketch to a priced, scheduled start without redrawing anything. Recorded on the sample job every account starts with.</p>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section class="sec" id="buildout">
-    <div class="wrap">
-      <span class="kicker"><i style="background:var(--blue)"></i>Construction and buildout</span>
-      <h2>Draw it once. Every line is priced.</h2>
-      <p class="sub">A new line, a fit-out, a renovation or a whole building: put in the sizes the way you measure them. Samana draws it to scale and builds the takeoff behind it, every piece with material, labor and time. Recorded on the sample job every account starts with.</p>
       <div class="grid4">
         <figure>
           <div class="shot"><video data-clip src="assets/takeoff.mp4" poster="assets/takeoff.jpg" muted loop playsinline preload="metadata" aria-label="Changing a size and moving between levels; the price and every division follow."></video></div>
@@ -369,40 +423,53 @@ section[id] { scroll-margin-top: 72px; }
           <h3>The customer packet</h3><p>One click turns the takeoff into a proposal in your name, with options, a payment schedule and terms.</p>
         </figure>
       </div>
+
+      <ol class="chain" aria-label="How the cost adds up">
+        <li><b>Drawn</b><span>Rooms, walls, equipment, to scale</span></li>
+        <li><b>Counted</b><span>Every piece, hour and price in the takeoff</span></li>
+        <li><b>Coded</b><span>Material and labor, by division and cost code</span></li>
+        <li><b>In Flow</b><span>Deposits in, materials and labor out, by month</span></li>
+      </ol>
+
+      <div class="feat">
+        <figure class="shot">
+          <video data-clip src="assets/revs.mp4" poster="assets/revs.jpg" muted loop playsinline preload="metadata" aria-label="Publishing revision A, changing the job, publishing revision B, the compare table, then the team portal on the issued revision."></video>
+          <figcaption>Recorded in the app. Rev A, a design change, Rev B, and the team portal.</figcaption>
+        </figure>
+        <div>
+          <span class="tag">Design changes</span>
+          <h3>Change the design. See what it costs, right away.</h3>
+          <p>Publish a revision and it is kept exactly as sent, costs frozen. Change the design and Samana shows both side by side, division by division, up or down, and Flow moves the cash to match. The crew opens the issued revision, not your half-finished edits.</p>
+          <ul>
+            <li>Rev A, B, C, with what changed and what it cost</li>
+            <li>Every rev carried into Flow</li>
+            <li>Step-by-step work orders with check-offs from the field</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="sec alt" id="farms">
-    <div class="wrap farm">
-      <div>
-        <span class="kicker"><i style="background:var(--green)"></i>Farms</span>
-        <h2>Growers too.</h2>
-        <p class="sub">The same plan runs a season: field prep, planting, harvest and drying, with the crew's day on their phone in Farmmetric, our compliance app for licensed growers. Steps go out from Lean; the crew checks them off in the field.</p>
-        <div class="acts"><a class="btn btn-line" href="https://www.myfarmmetric.com">About Farmmetric</a></div>
-      </div>
-      <div class="phones">
-        <figure class="shot tall"><video data-clip src="assets/farmmetric-phone.mp4" poster="assets/farmmetric-phone.jpg" muted loop playsinline preload="metadata" aria-label="Farmmetric on a phone: the day's work for one grower."></video></figure>
-        <figure class="shot wide"><video data-clip src="assets/farmmetric-crew.mp4" poster="assets/farmmetric-crew.jpg" muted loop playsinline preload="metadata" aria-label="Farmmetric on a phone: the crew's steps handed out from Lean."></video></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="team">
+  <section class="sec dark letter" id="rp" style="--k: var(--yellow)">
     <div class="wrap">
-      <span class="kicker">People</span>
-      <h2>Everyone sees their part. Nobody sees yours.</h2>
-      <p class="sub">Each company's work is private to that company. The owner invites people and sets what each one can do.</p>
+      <div class="lhead">
+        <img class="bigsq" src="assets/sq-rp-dark.svg" alt="RP">
+        <div>
+          <span class="kicker">Resource planning</span>
+          <h2>The right people and parts, at the right step.</h2>
+          <p class="sub">Every step knows who it needs and what it uses. Samana finds each person's part, lines up the partners and trades around them, and tells you what to order before you run short. Each company's work is private to that company; the owner sets what everyone can see.</p>
+        </div>
+      </div>
       <div class="roles">
         <div><b>Owner</b><p>Everything: plans, prices, the profit view, who has access.</p></div>
         <div><b>Office</b><p>Builds and edits plans, publishes revisions, sends quotes.</p></div>
         <div><b>Floor and crew</b><p>The issued plan on their phone: steps, materials, check-offs, notes, Got it on every change.</p></div>
-        <div><b>Partners and subs</b><p>Their own steps. Never your prices.</p></div>
-        <div><b>Customer</b><p>Their published quote, and a way to ask a question.</p></div>
+        <div><b>Partners and trades</b><p>Their own steps and the finished product they are building toward. Never your prices.</p></div>
+        <div><b>Materials</b><p>What each step uses, added up into an order list with when to buy it.</p></div>
         <div><b>Sai</b><p>The helper built in. Tell it what changed, or hand it photos, and it works out where that goes.</p></div>
       </div>
     </div>
   </section>
-
   <section class="sec alt" id="plans">
     <div class="wrap">
       <span class="kicker">Plans</span>
