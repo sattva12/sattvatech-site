@@ -16,7 +16,7 @@ Preview: https://claude.ai/artifact/41ifDGNrF5r1z1vXv6LXCy
 ## Rules kept on the page
 - Manufacturing first, the farm part quick (Atul, 22:36). Plans and prices from the `plans` table: Free, Takeoff $10, Flow $20, Lean $30; extra business units $10; past 10 jobs $5 a job.
 - No customer, partner or place names; Massachusetts only. Contact: info@samana.tech.
-- The logo's letters are never explained; the tagline is EMCRP SOFTWARE.
+- The four parts are named on the pages in the logo's order (Atul, 23:43): E Enterprise, M Manufacturing, C Construction, RP Resource planning, each with its square cut from the logo (`assets/sq-*.svg`). The tagline stays EMCRP SOFTWARE.
 
 ## Still to come from the website chat
 Fresh clips recorded on the sample job (a production run for the manufacturing part). Same file names, so a swap of `assets/` is all it takes.
