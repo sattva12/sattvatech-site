@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { APP, FARM, TEL, TEL_HREF, MAIL } from '../Chrome.jsx'
 import { Top, Foot } from '../Shell.jsx'
 import ContactForm from './ContactForm.jsx'
+import { TeamBuild } from '../Kit.jsx'
 import { PlanFarm, PlanContainer, PlanFitout } from '../drawings.jsx'
 import { Logo } from '../brand.jsx'
 import '../site.css'
@@ -320,6 +321,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <TeamBuild />
 
         <section className="sx-sec sx-farm" id="farms" aria-labelledby="h-farm">
           <div className="sx-wrap">

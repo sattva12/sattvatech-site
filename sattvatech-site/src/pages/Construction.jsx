@@ -1,4 +1,4 @@
-import { Page, Hero, Sec, Spec, Steps, Band, Talk } from '../Kit.jsx'
+import { Page, Hero, Sec, Spec, Steps, Band, Talk, TeamBuild } from '../Kit.jsx'
 import { APP } from '../Chrome.jsx'
 import { PlanBasement } from '../drawings.jsx'
 
@@ -21,7 +21,9 @@ export default function Construction() {
         ]} />
       </Sec>
 
-      <Sec id="what" tone="alt" title="What we do." sub="Residential and commercial, in Massachusetts.">
+      <TeamBuild tone="alt" />
+
+      <Sec id="what" title="What we do." sub="Residential and commercial, in Massachusetts.">
         <Spec rows={[
           ['Construction management', 'Takeoffs, schedules, the trades lined up, inspections passed, and the owner kept current on every change.', 'Residential and commercial'],
           ['GC for tradespeople', 'Skilled handymen and small crews take on permitted jobs under our license and insurance, with the job planned and supervised.', 'The licensed umbrella'],

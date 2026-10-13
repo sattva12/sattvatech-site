@@ -134,3 +134,36 @@ export function End({ title, children, acts }) {
     </section>
   )
 }
+
+/* How we build a team (Atul, 2026-10-12, 21:19): we can do the work, and we partner well with the other trades
+   through project management, communication and a finished product to aim at (the production process brought
+   to construction); every process defined and labelled, improved every time; a job for everyone, matched to
+   their skills; across Takeoff and Lean. */
+const TEAM = [
+  ['The finished product first', 'We bring the production side to construction. Before the first wall goes up, every trade knows what the finished building has to do, so the whole team is aiming at the same thing.'],
+  ['Every process defined', 'Each step is named, written down and labelled with who does it, what it needs and how it is checked. Every time we run it, we make it better.'],
+  ['A job for everyone', "We find each person's skill set and give everyone a clear job, on our crew and on the partner trades alike."],
+  ['Partners, kept in the loop', 'We do the work ourselves, and we partner well with other trades. Project management and plain communication: the same plan, the same changes and the same dates for everyone, so nobody waits on a phone call.'],
+]
+const TEAM_APP = [
+  ['Takeoff', 'Every piece of work defined, priced and tagged with the trade that does it.'],
+  ['Lean', 'Every step in order, with who is on it, what it needs and when, checked off as it is done.'],
+  ['Portals', 'The crew, subs and partner trades each get their own page with their part of the job, and never your prices.'],
+]
+export function TeamBuild({ id = 'team', tone = 'alt' }) {
+  return (
+    <Sec id={id} tone={tone} title="How we build a team." sub="We can do the work, and we partner well with the other trades. Good project management, clear communication and a finished product to aim at give the whole team the same target.">
+      <div className="sx-two">
+        <div>
+          <h3 className="sx-h3">How we run it</h3>
+          <Spec rows={TEAM} />
+        </div>
+        <div>
+          <h3 className="sx-h3">Across Takeoff and Lean</h3>
+          <Spec rows={TEAM_APP} />
+          <p className="sx-note">The same way of working runs a construction job, a farm season or a production run.</p>
+        </div>
+      </div>
+    </Sec>
+  )
+}
