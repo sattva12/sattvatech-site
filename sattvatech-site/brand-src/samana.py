@@ -97,7 +97,7 @@ def fitted(font, text, cap, width):
     g = Wd.word(font, text, t, 0, cap).simplify(0.1); return at(g, x=0, y=0)
 
 NAME = at(Wd.word(BOLD, 'SAMANA', 0, 0, 100).simplify(0.15), x=0, y=0); NAME_W = NAME.bounds[2]
-SUB = at(Wd.word(SEMI, 'EMC²RP SOFTWARE', 7.0, 0, 34).simplify(0.1), x=0, y=0)   # the tagline, lightly spaced
+SUB = at(Wd.word(SEMI, 'EMCRP SOFTWARE', 7.0, 0, 34).simplify(0.1), x=0, y=0)   # the tagline, lightly spaced
 LEAD = 30.0; BLOCK = 100 + LEAD + 34
 
 def lock(kind):
@@ -115,7 +115,7 @@ def lock(kind):
 
 def place(g, k, dx, dy): return affinity.translate(affinity.scale(g, k, k, origin=(0, 0)), dx, dy)
 
-def svg(kind, tone, title='Samana, EMC²RP software'):
+def svg(kind, tone, title='Samana, EMCRP software'):
     name, sub, mx, my, w, h = lock(kind)
     c1 = '#ffffff' if tone == 'dark' else (TEXT_GREY if tone == 'light' else tone)
     c2 = PALE if tone == 'dark' else (TEXT_GREY if tone == 'light' else tone)
