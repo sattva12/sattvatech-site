@@ -14,8 +14,9 @@ Preview: https://claude.ai/artifact/41ifDGNrF5r1z1vXv6LXCy
 3. Keep paths relative (`assets/...`), or move `assets/` and change the paths.
 
 ## Rules kept on the page
-- Manufacturing is Lean's main market; the farm part quick (Atul, 22:36 and 23:58). Plans as Atul set them (Oct 13, 00:03 to 00:17; `claude/inbox-samana-app.md` items 13 and 16): Free $0, 1 user, 1 active job, $5 each crew member on the Takeoff portal; Takeoff $10, the owner plus 1 crew member on the Takeoff portal, 5 active jobs, $5 each extra portal crew member; Flow $20, 1 business unit, 5 users, $5 each extra; Lean $30, 1 business unit, 5 users, $5 each extra, $20 each extra unit with 5 more users. The app must charge the same before this page goes live.
+- Manufacturing is Lean's main market; the farm part quick (Atul, 22:36 and 23:58). Plans as Atul set them (Oct 13, 00:03 to 00:17; `claude/inbox-samana-app.md` items 13 and 16): Free $0, 1 user, 1 active job, $5 each crew member on the Takeoff portal; Takeoff $10, the owner plus 1 crew member on the Takeoff portal, 5 active jobs, $5 each extra portal crew member; Flow $20, 1 business unit, 5 users, $5 each extra; Lean $30, 1 business unit, 5 users, $5 each extra, $20 each extra unit with 5 more users. The app must charge the same before this page goes live: the plans section stays a preview until the plan security check (app item 16) and Atul's Stripe yes. Until then, load the page with the plans section as it is but do not take payments from it (its buttons only open the app).
 - No customer, partner or place names; Massachusetts only. Contact: info@samana.tech.
+- Samana's tagline on the page is **From input to output** (Phase 6, Oct 14); the message: "we take a piece of land and create a running business", we build and run, not build and leave. "Making things work" stays Sattva's.
 - The four parts are named on the pages in the logo's order (Atul, 23:43): E Enterprise, M Manufacturing, C Construction, RP Resource planning, each with its square cut from the logo (`assets/sq-*.svg`). The tagline stays EMCRP SOFTWARE.
 
 ## Still to come from the website chat
