@@ -25,7 +25,7 @@ export default function Apps() {
             <div className="sx-acts"><a className="sx-btn sx-btn-ink" href={APP + '/login'}>Sign in to Samana</a><a className="sx-btn sx-btn-line" href="https://samana.tech">What it does</a></div>
           </article>
           <article className="sx-app sx-app-farmmetric">
-            <h4>Farmmetric<span>For farms and their crews</span></h4>
+            <h4 className="sx-app-lockup sx-fm-lockup"><span className="sx-fm-tile"><img src="/brand/farmmetric-logo-wide.svg" alt="Farmmetric, for farms and their crews" /></span></h4>
             <p>The farm's jobs, sprays, harvest and drying, logged from a phone.</p>
             <div className="sx-price"><b>Free</b><span>On the web now, Google Play soon</span></div>
             <div className="sx-acts"><a className="sx-btn sx-btn-ink" href={FARM}>Sign in to Farmmetric</a><Link className="sx-btn sx-btn-line" to="/farmmetric">What it does</Link></div>
