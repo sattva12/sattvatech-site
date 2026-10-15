@@ -1,5 +1,5 @@
 /* ONE place for the app's address. Change to 'https://app.samana.tech' once sign-in works there. */
-var APP = 'https://app.sattvatech.com';
+var APP = 'https://app.samana.tech';
 document.querySelectorAll('[data-app]').forEach(function (a) { a.href = APP + (a.getAttribute('data-app') || ''); });
 document.getElementById('yr').textContent = new Date().getFullYear();
 

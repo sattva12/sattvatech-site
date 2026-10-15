@@ -10,7 +10,7 @@ Preview: https://claude.ai/artifact/41ifDGNrF5r1z1vXv6LXCy
 
 ## How to load it
 1. Copy `index.html`, `samana.css`, `samana.js` and `assets/` into the app's static files so that **https://samana.tech/** (and www) serves this page, and the app keeps running at **app.samana.tech** (Atul, 22:34). For the app's own signed-out screen, either send signed-out visitors to samana.tech, or serve this file at `/` when nobody is signed in.
-2. The app's address is set in ONE place, the `APP` line at the top of `samana.js` (today `https://app.sattvatech.com`). Change it to `https://app.samana.tech` once sign-in works there (item 10). Every Sign in, Start free and Choose plan link follows it; the plan buttons go to `APP + /settings`.
+2. The app's address is set in ONE place, the `APP` line at the top of `samana.js` (now `https://app.samana.tech`; sign-in works there since Oct 15). Every Sign in, Start free and Choose plan link follows it; the plan buttons go to `APP + /settings`.
 3. Keep paths relative (`assets/...`), or move `assets/` and change the paths.
 
 ## Rules kept on the page
