@@ -31,6 +31,7 @@
       <a href="#m">Manufacturing</a>
       <a href="#c">Construction</a>
       <a href="#rp">Resources</a>
+      <a href="#contact">Contact us</a>
       <a href="#plans">Plans</a>
     </nav>
     <div class="top-r">
@@ -266,20 +267,40 @@
     </div>
   </section>
 
-  <section class="sec evolve" id="ideas">
+  <section class="sec evolve" id="contact">
     <div class="wrap evolve-in">
       <div>
-        <span class="kicker">Built with the people who use it</span>
+        <span class="kicker">Contact us</span>
         <h2>The software evolves with you.</h2>
-        <p class="sub">Samana started as the tool we needed for our own builds, farms and production. Every part of it came from a real job. If something gets in your way, or you need something it does not do yet, tell us. Good ideas go into the next version, for everyone.</p>
+        <p class="sub">Samana started as the tool we needed for our own builds, farms and production. Every part of it came from a real job. Have a question, an idea, or something that got in your way? Think it through and tell us what happened and what you need. Good ideas go into the next version, for everyone.</p>
+        <p class="sub">Or email <a href="mailto:info@samana.tech">info@samana.tech</a>.</p>
       </div>
-      <div class="idea">
-        <h3>Send a suggestion</h3>
-        <p>Coming to the app: a suggestion button that records the last few places you clicked, so we see exactly where it happened, and sends it to us with your note. Until then, email us.</p>
-        <div class="acts">
-          <a class="btn btn-ink" href="mailto:info@samana.tech?subject=Samana%20suggestion">Email a suggestion</a>
-        </div>
-      </div>
+      <form class="idea cform" id="contact-form">
+        <h3>Contact us</h3>
+        <input type="hidden" name="_subject" value="samana.tech: Contact us">
+        <input type="hidden" name="site" value="samana.tech">
+        <label>What is it about?
+          <select name="about" required>
+            <option value="">Choose one</option>
+            <option>A question</option>
+            <option>An idea or suggestion</option>
+            <option>Something is not working</option>
+            <option>Plans and pricing</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label>What happened, or what is the idea?
+          <textarea name="message" rows="5" required placeholder="Where you were in Samana, what you did, what you expected, and what you need."></textarea>
+        </label>
+        <label>Your email
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label>Your name (optional)
+          <input type="text" name="name" autocomplete="name">
+        </label>
+        <div class="acts"><button class="btn btn-ink" type="submit">Send</button></div>
+        <p class="cform-msg" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
   <section class="sec alt" id="plans">
@@ -331,6 +352,7 @@
     <img src="assets/samana-logo-small-dark.svg" alt="Samana" width="110" height="28">
     <span>By <a href="https://sattvatech.com">Sattva Technologies LLC</a>, Massachusetts</span>
     <div class="r">
+      <a href="#contact">Contact us</a>
       <a href="mailto:info@samana.tech">info@samana.tech</a>
       <a href="https://www.myfarmmetric.com">Farmmetric</a>
       <a href="https://sattvatech.com">sattvatech.com</a>

@@ -4,7 +4,7 @@ Built by the website chat, Oct 12, 2026 (Atul, 22:25 to 22:36: "you make the web
 Preview: https://claude.ai/artifact/41ifDGNrF5r1z1vXv6LXCy
 
 ## What is here
-- `index.html`: ONE page you scroll through, like the app (Atul, 00:23: "i like when you can just scroll through it all"): the opening, four doors (E, M, C, RP), then each part in order (E Enterprise with the Flow dashboard, M Manufacturing with lean farming quick, C Construction with the drawing set rising into 3D and cost into Flow, RP Resource planning: see, plan, track, year after year), suggestions, plans, Start free. The doors and the top bar jump down the page.
+- `index.html`: ONE page you scroll through, like the app (Atul, 00:23: "i like when you can just scroll through it all"): the opening, four doors (E, M, C, RP), then each part in order (E Enterprise with the Flow dashboard, M Manufacturing with lean farming quick, C Construction with the drawing set rising into 3D and cost into Flow, RP Resource planning: see, plan, track, year after year), Contact us (a form sent through Formspree; the form address is one line, `CONTACT_FORM`, in `samana.js`), plans, Start free. No suggestion button in the app (Atul, Oct 15, 09:58). The doors and the top bar jump down the page.
 - `samana.css` and `samana.js` (kept as their own files). Fonts: IBM Plex from Google Fonts.
 - `assets/`: the clips (`.mp4`, with `.jpg` posters) recorded in the app, and the Samana logos and icons. About 10 MB.
 

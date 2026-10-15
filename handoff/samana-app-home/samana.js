@@ -31,3 +31,19 @@ if (tour && tourLabel) {
     if (tourLabel.textContent !== txt) tourLabel.textContent = txt;
   });
 }
+
+/* Contact us: sent through Formspree. ONE place for the form address. */
+var CONTACT_FORM = 'https://formspree.io/f/mbdpkqyj';
+var cf = document.getElementById('contact-form');
+if (cf) cf.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var msg = cf.querySelector('.cform-msg'), btn = cf.querySelector('button');
+  btn.disabled = true; msg.className = 'cform-msg'; msg.textContent = 'Sending...';
+  fetch(CONTACT_FORM, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(cf) })
+    .then(function (r) {
+      if (!r.ok) throw new Error();
+      cf.reset(); msg.className = 'cform-msg ok'; msg.textContent = 'Sent. Thank you, we will get back to you.';
+    })
+    .catch(function () { msg.className = 'cform-msg err'; msg.textContent = 'That did not send. Please email info@samana.tech.'; })
+    .then(function () { btn.disabled = false; });
+});
