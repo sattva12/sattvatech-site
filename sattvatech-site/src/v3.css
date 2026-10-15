@@ -208,7 +208,7 @@
 .sx-app h4::before { content: ''; width: 12px; height: 12px; margin-bottom: 14px; border-radius: 2px; background: var(--c); }
 .sx-app h4 span { font: 400 15px/1.3 var(--sans); letter-spacing: 0; color: var(--steel); }
 .sx-app-samana { --c: var(--c-software); }
-.sx-app-farmmetric { --c: #a1cb28; }
+.sx-app-farmmetric { --c: #3ea059; }
 .sx-app-quote { --c: var(--ink); }
 .sx-app > p { margin: 18px 0 24px; color: var(--steel); }
 .sx-price { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--rule); }
@@ -471,5 +471,5 @@
 .sx-app h4.sx-app-lockup img { display: block; width: 100%; max-width: 360px; height: auto; }
 
 /* Farmmetric's logo on its own dark green, as the app shows it (Atul, Oct 15) */
-.sx-app h4.sx-fm-lockup span.sx-fm-tile { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 360px; padding: 26px 30px; background: #11341e; border-radius: 6px; }
+.sx-app h4.sx-fm-lockup span.sx-fm-tile { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 360px; padding: 26px 30px; background: #3ea059; border-radius: 6px; }
 .sx-app h4.sx-fm-lockup span.sx-fm-tile img { max-width: 260px; }
