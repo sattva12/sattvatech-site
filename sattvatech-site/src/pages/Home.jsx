@@ -246,8 +246,8 @@ const ROOMS = [
   ['Option: plug locations', 'Outlets and circuits placed where your equipment will stand'],
 ]
 const APPS = [
-  { id: 'samana', logo: '/brand/samana-logo-wide.svg', name: 'Samana', sub: 'EMCRP Software', text: 'The app our own jobs run on. Takeoff draws and prices the job, Lean plans the steps and the crew, and Flow shows the budget and the cash by month.',
-    price: 'Free to start', small: 'Then $10, $20 or $30 a month', go: [APP, 'Start free'], more: ['/samana', 'See it work'] },
+  { id: 'samana', logo: '/brand/samana-logo-wide.svg', name: 'Samana', sub: 'From input to output', text: 'The app our own jobs run on. Takeoff draws and prices the job, Lean plans the steps and the crew, and Flow shows the budget and the cash by month.',
+    price: 'Free to start', small: 'Then $10, $20 or $30 a month', go: [APP, 'Start free'], more: ['https://samana.tech', 'See it on samana.tech'] },
   { id: 'farmmetric', name: 'Farmmetric', sub: 'Free farm app', text: 'The farm’s jobs, sprays, harvest and drying, logged from a phone, with the records kept as you go. Live API connectors are coming soon.',
     price: 'Free', small: 'Google Play soon', go: [FARM, 'Use it free'], more: ['/farmmetric', 'What it does'] },
   { id: 'quote', name: 'Quote service', sub: 'For handymen and small crews', text: 'Send us the job. We send back a clear quote in your name, with every material, hour and step priced.',
@@ -285,7 +285,7 @@ export default function Home() {
             <dl className="sx-why-cols">{WHY.map(([h, p]) => <div key={h}><dt>{h}</dt><dd>{p}</dd></div>)}</dl>
             <div className="sx-free">
               <p><b>Why some of it is free.</b> Some of the simplest ways to make money are saving it: less waste, less waiting, nothing done twice. So Farmmetric is free, and Samana is free for your first job. You see your own numbers before you pay. Win-win means you are working with winners.</p>
-              <div className="sx-acts"><a className="sx-btn sx-btn-go" href={APP}>Start free</a><Link className="sx-btn sx-btn-line" to="/samana#plans">See the plans</Link></div>
+              <div className="sx-acts"><a className="sx-btn sx-btn-go" href={APP}>Start free</a><a className="sx-btn sx-btn-line" href="https://samana.tech/#plans">See the plans</a></div>
             </div>
           </div>
         </section>
