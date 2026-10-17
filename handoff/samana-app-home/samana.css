@@ -125,6 +125,7 @@ section[id] { scroll-margin-top: 72px; }
 
 /* plans */
 .plans { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 48px; }
+.plans.p3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .plan { display: flex; flex-direction: column; padding: 26px 22px 22px; background: var(--white); border: 1px solid var(--rule); }
 .plan.best { border: 2px solid var(--night); }
 .plan h3 { font: 600 24px/1 var(--cond); }
@@ -228,7 +229,7 @@ section[id] { scroll-margin-top: 72px; }
   .chain li:nth-child(2)::after { display: none; }
   .open-head, .feat, .farm { grid-template-columns: minmax(0, 1fr); }
   .feat.flip > :first-child { order: 0; }
-  .arms, .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .arms, .plans, .plans.p3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .arms > div:nth-child(3) { border-left: 0; }
   .arms > div:nth-child(n+3) { border-top: 1px solid var(--hair); }
   .roles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -253,7 +254,7 @@ section[id] { scroll-margin-top: 72px; }
   .open-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .open-strip div:nth-child(3) { padding-left: 0; border-left: 0; }
   .open-strip div:nth-child(n+3) { border-top: 1px solid var(--hair); }
-  .pains, .grid4, .roles, .arms, .plans { grid-template-columns: minmax(0, 1fr); }
+  .pains, .grid4, .roles, .arms, .plans, .plans.p3 { grid-template-columns: minmax(0, 1fr); }
   .pains div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); }
   .arms > div + div { border-left: 0; border-top: 1px solid var(--hair); }
   .roles div:nth-child(2n) { padding-left: 0; border-left: 0; }
