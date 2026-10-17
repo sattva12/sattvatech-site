@@ -194,11 +194,10 @@ export default function Samana() {
       <Sec id="plans" title="Plans." sub="Some of the simplest ways to make money are saving it: less waste, less waiting, nothing done twice. A leaner process is everyone's bottom line, so start free with one job and see your own numbers before you pay anything. When it pays for itself, pick a plan; each is named for the part of Samana it opens. You put in your own labor rates; we never see your customers or your prices unless you share them.">
         <div className="sx-two">
           <Prices title="Samana, monthly" sub="Every plan has the sample job to compare with." rows={[
-            ['Free', 'Takeoff for one job, and Farmmetric', '$0'],
-            ['Takeoff', 'Drawn and priced quotes, 5 jobs', '$10', 'a month'],
-            ['Flow', 'Adds the materials list, work orders, Flow and the team portal for 5 people; 5 jobs', '$20', 'a month'],
-            ['Lean', 'Everything: Lean and all of Flow, 10 jobs, one business unit', '$30', 'a month'],
-          ]} foot="More business units are $10 a month each. Past 10 jobs, $5 a job. Buying is inside the app: sign in, or start free, then pick the plan in Settings. You pay by card through Stripe and can cancel any time."
+            ['Free', 'The owner and 1 active job, a taste of Sai, and Farmmetric; $5 a month each person on the Takeoff portal', '$0'],
+            ['Takeoff', 'Drawn and priced quotes, with Flow: the owner plus 1 person on the Takeoff portal, 5 active jobs; $5 a month each extra portal person', '$20', 'a month'],
+            ['Lean', 'Everything: Lean, Takeoff, Flow and the portals; one business unit, 5 people besides the owner, no job limit', '$30', 'a month'],
+          ]} foot="On Lean, $5 a month each extra person and $20 a month each extra business unit, with 5 more people. Flow comes with Takeoff and Lean. The owner is never counted. Buying is inside the app: sign in, or start free, then pick the plan in Settings. You pay by card through Stripe and can cancel any time."
             acts={[[APP, 'Start free', 'ink'], [APP + '/settings', 'Buy a plan']]} />
           <Prices title="Reviewed by a licensed GC" sub="Our time, on top of a plan." rows={[
             ['Review', 'A construction supervisor checks the job before it goes out', '$25', 'a job'],

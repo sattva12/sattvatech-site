@@ -22,9 +22,8 @@ export default function Quote() {
       <Sec id="menu" tone="alt" title="Pick what you need.">
         <div className="sx-two">
           <Prices title="Do it yourself in Samana" sub="The app, monthly. You put in your own labor rates." rows={[
-            ['Free', 'One job, drawn and priced', '$0'],
-            ['Takeoff', 'A clear quote for your customer, in your name; 5 jobs', '$10', 'a month'],
-            ['Flow', 'Adds the materials list and work orders for your crew; review recommended', '$20', 'a month'],
+            ['Free', 'One active job, drawn and priced', '$0'],
+            ['Takeoff', 'A clear quote for your customer, in your name, with Flow: the materials list and work orders for your crew; 5 active jobs', '$20', 'a month'],
           ]} foot={<a href="/samana#plans">All Samana plans</a>} />
           <Prices title="Have a licensed GC do it" sub="Our time, on top of a plan." rows={[
             ['Review', 'A construction supervisor checks the job before it goes out', '$25', 'a job'],
