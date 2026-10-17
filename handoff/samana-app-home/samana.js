@@ -33,7 +33,7 @@ if (tour && tourLabel) {
 }
 
 /* Contact us: sent through Formspree. ONE place for the form address. */
-var CONTACT_FORM = 'https://formspree.io/f/mbdpkqyj';
+var CONTACT_FORM = 'https://formspree.io/f/mvkzlyzy';
 var cf = document.getElementById('contact-form');
 if (cf) cf.addEventListener('submit', function (e) {
   e.preventDefault();
