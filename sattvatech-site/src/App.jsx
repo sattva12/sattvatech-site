@@ -8,6 +8,8 @@ import Samana from './pages/Samana.jsx'
 import Quote from './pages/Quote.jsx'
 import Farmmetric from './pages/Farmmetric.jsx'
 
+function Go({ to }) { if (typeof window !== 'undefined') window.location.replace(to); return null }
+
 export default function App() {
   return (
     <Routes>
@@ -22,6 +24,8 @@ export default function App() {
       <Route path="/samana" element={<Samana />} />
       <Route path="/quote" element={<Quote />} />
       <Route path="/farmmetric" element={<Farmmetric />} />
+      <Route path="/farms" element={<Go to="/#farms" />} />
+      <Route path="/contact" element={<Go to="/#talk" />} />
       <Route path="*" element={<Home />} />
     </Routes>
   )

@@ -38,7 +38,7 @@ export default function Farmmetric() {
           ['Farmmetric runs it', 'Every batch tagged and moved, every harvest weighed, every input and inspection logged, and the compliance records kept current.', 'The actuals'],
           ['Flow follows the money', 'Harvest weights and actual dates come back to the plan, so the cash by month is real.', 'Back to the books'],
         ]} />
-        <p className="sx-note">The connection is in the works: one sign-in and one record for the farm, from the first fence post to the last harvest.</p>
+        <p className="sx-note">The link is live: a farm on Lean gets its Farmmetric farm made and linked from Samana, so the plan and the field share one record, from the first fence post to the last harvest.</p>
       </Sec>
 
       <Sec id="plans" title="Free." sub="Farmmetric is free to use, with one plan for everyone. A leaner farm is everyone's bottom line, the owner's, the crew's and the buyer's, so the first step costs nothing. Sign up and the farm is yours to set up.">
