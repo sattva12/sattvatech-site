@@ -50,7 +50,7 @@ export function SiteFoot() {
       <div className="st-wrap">
         <div>
           <Logo className="st-foot-logo" size={52} tone="dark" />
-          <p>Sattva Technologies LLC, Seekonk, Massachusetts.<br />Construction Supervisor CS-122574, HIC 218120.</p>
+          <p>Sattva Technologies LLC, 179 Highland Ave #1003, Seekonk, MA 02771.<br />Construction Supervisor CS-122574, HIC 218120.</p>
         </div>
         <nav aria-label="Pages">
           <Link to="/construction">Construction</Link>

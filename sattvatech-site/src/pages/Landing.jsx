@@ -162,7 +162,7 @@ export default function Landing() {
 
         {/* FOOTER */}
         <div style={{ background: CREAM2, borderTop: `1px solid ${BORDER}`, padding: '18px 2.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-          <span style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif' }}>© 2025 Sattva Technologies LLC · Seekonk, MA · SAM.gov Active · CAGE 19CM8</span>
+          <span style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif' }}>© 2025 Sattva Technologies LLC · 179 Highland Ave #1003, Seekonk, MA 02771 · SAM.gov Active · CAGE 19CM8</span>
           <div style={{ display: 'flex', gap: 20 }}>
             <span style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif' }}><Phone /></span>
             <a href="mailto:apatel@sattvatech.com" style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif', textDecoration: 'none' }}>apatel@sattvatech.com</a>

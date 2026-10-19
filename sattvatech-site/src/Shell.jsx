@@ -46,7 +46,7 @@ export function Foot() {
       <div className="sx-wrap sx-foot-in">
         <div className="sx-foot-id">
           <Logo size={46} tone="dark" />
-          <p>Sattva Technologies LLC<br />Massachusetts</p>
+          <p>Sattva Technologies LLC<br />179 Highland Ave #1003<br />Seekonk, MA 02771</p>
         </div>
         <nav aria-label="Work">
           <h2>Work</h2>

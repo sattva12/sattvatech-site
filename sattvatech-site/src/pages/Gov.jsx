@@ -77,7 +77,7 @@ export default function Gov() {
             {/* Company info */}
             <div style={{ flex: 1 }}>
               <h1 style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', fontWeight: 400, color: CREAM, margin: '0 0 6px' }}>Sattva Technologies LLC</h1>
-              <p style={{ fontSize: 13, color: '#aaa', fontFamily: 'sans-serif', margin: '0 0 12px' }}>Massachusetts · <Phone /> · <a href="mailto:apatel@sattvatech.com" style={{ color: RED, textDecoration: 'none' }}>apatel@sattvatech.com</a> · <a href="https://sattvatech.com" style={{ color: RED, textDecoration: 'none' }}>sattvatech.com</a></p>
+              <p style={{ fontSize: 13, color: '#aaa', fontFamily: 'sans-serif', margin: '0 0 12px' }}>179 Highland Ave #1003, Seekonk, MA 02771 · <Phone /> · <a href="mailto:apatel@sattvatech.com" style={{ color: RED, textDecoration: 'none' }}>apatel@sattvatech.com</a> · <a href="https://sattvatech.com" style={{ color: RED, textDecoration: 'none' }}>sattvatech.com</a></p>
               <p style={{ fontSize: 13, color: '#ccc', fontFamily: 'sans-serif', lineHeight: 1.7, maxWidth: 660, margin: '0 0 20px', fontWeight: 300 }}>
                 Sattva Technologies LLC is a small business providing MEP coordination, construction management, and owner's representation services. With 25+ years spanning aerospace, semiconductor, and construction sectors, we bring manufacturing-grade process engineering to federal and commercial construction projects. SAM.gov registered and actively pursuing government contracting opportunities with DOD, USACE, and VA agencies.
               </p>
@@ -222,7 +222,7 @@ export default function Gov() {
                 </div>
                 <div style={{ marginBottom: 28 }}>
                   <div style={{ fontSize: 10, color: MUTED, letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: 8 }}>Address</div>
-                  <div style={{ fontSize: 13, color: FAINT, fontFamily: 'sans-serif', lineHeight: 1.7 }}>Seekonk, MA 02771<br />Greater Boston / Providence Area</div>
+                  <div style={{ fontSize: 13, color: FAINT, fontFamily: 'sans-serif', lineHeight: 1.7 }}>179 Highland Ave #1003<br />Seekonk, MA 02771<br />Greater Boston / Providence Area</div>
                 </div>
                 <a href="/capability-statement.pdf" download style={{ display: 'inline-block', background: RED, color: '#fff', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '11px 20px', textDecoration: 'none', fontFamily: 'sans-serif', fontWeight: 600 }}>↓ Capability Statement</a>
               </div>
