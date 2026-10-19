@@ -1,4 +1,10 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+
+/* old addresses for the contractor page (CQS): keep any #part or ?query (Atul, Oct 19 11:51) */
+function ToContractors() {
+  const { search, hash } = useLocation()
+  return <Navigate to={'/contractors' + search + hash} replace />
+}
 import Home from './pages/Home.jsx'
 import Construction from './pages/Construction.jsx'
 import LeanAg from './pages/LeanAg.jsx'
@@ -22,9 +28,9 @@ export default function App() {
       <Route path="/apps" element={<Apps />} />
       <Route path="/sign-in" element={<Apps />} />
       <Route path="/samana" element={<Samana />} />
-      <Route path="/quote" element={<Quote />} />
       <Route path="/contractors" element={<Quote />} />
-      <Route path="/handyman" element={<Quote />} />
+      <Route path="/quote" element={<ToContractors />} />
+      <Route path="/handyman" element={<ToContractors />} />
       <Route path="/farmmetric" element={<Farmmetric />} />
       <Route path="/farms" element={<Go to="/#farms" />} />
       <Route path="/contact" element={<Go to="/#talk" />} />

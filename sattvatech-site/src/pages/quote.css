@@ -1,4 +1,4 @@
-/* the handyman intake form (2026-10-19) */
+/* the CQS contractor intake form (2026-10-19) */
 .qx-form { display: grid; gap: 40px; max-width: 980px; }
 .qx-form section { background: var(--white); border: 1px solid var(--rule); padding: clamp(20px, 3vw, 36px); }
 .qx-form h3 { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; font: 600 clamp(26px, 2.6vw, 34px)/1 var(--cond); }

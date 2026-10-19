@@ -49,7 +49,7 @@ export function SiteFoot() {
           <Link to="/containers">Containers</Link>
           <Link to="/samana">Samana</Link>
           <Link to="/farmmetric">Farmmetric</Link>
-          <Link to="/quote">Quote service</Link>
+          <Link to="/contractors">Quote service</Link>
           <Link to="/sign-in">Sign in</Link>
         </nav>
         <div className="st-foot-c">

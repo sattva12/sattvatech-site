@@ -208,7 +208,7 @@ export default function Samana() {
         <p className="sx-note">Commercial work, three-families and anything beyond an unrestricted construction supervisor license always get a review. Every number is a recommendation the contractor checks; the work order says where it came from.</p>
       </Sec>
 
-      <End title="Take the sample job apart. Then price your next one." acts={[[APP, 'Start free', 'ink'], ['/quote', 'Or have us write your quote']]}>Sign in, and your company starts with a 3-floor sample: basement, two floors and a deck, already priced.</End>
+      <End title="Take the sample job apart. Then price your next one." acts={[[APP, 'Start free', 'ink'], ['/contractors', 'Or have us write your quote']]}>Sign in, and your company starts with a 3-floor sample: basement, two floors and a deck, already priced.</End>
     </Page>
   )
 }

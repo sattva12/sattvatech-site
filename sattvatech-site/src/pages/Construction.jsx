@@ -26,7 +26,7 @@ export default function Construction() {
       <Sec id="what" title="What we do." sub="Residential and commercial, in Massachusetts.">
         <Spec rows={[
           ['Construction management', 'Takeoffs, schedules, the trades lined up, inspections passed, and the owner kept current on every change.', 'Residential and commercial'],
-          ['GC for tradespeople', 'Skilled handymen and small crews take on permitted jobs under our license and insurance, with the job planned and supervised.', 'The licensed umbrella'],
+          ['GC for tradespeople', 'Contractors of any size take on permitted jobs under our license and insurance, with the job planned and supervised.', 'The licensed umbrella'],
           ['Quote service', 'We write the quote, materials list and work order for contractors who would rather be on the tools.', <a href="/quote">Quote service</a>],
           ['Farm and facility builds', 'Fence, cameras, power, containers, drying and wells for farms, priced and sequenced with the season.', <a href="/lean-ag">Lean agriculture</a>],
         ]} />
@@ -35,7 +35,7 @@ export default function Construction() {
       <Sec id="box">
         <Band acts={[['/containers', 'See the containers', 'ink']]}><b>Working rooms, built in a container.</b> Drying rooms and power and storage rooms in insulated 40 ft containers: built on site by our crew, or the full design for your builder.</Band>
         <div style={{ height: 20 }} />
-        <Band acts={[[APP, 'Try Samana free', 'ink'], ['/quote', 'Have us write your quote']]}><b>It works for us. See if it works for you.</b> Every job we run is planned, priced and tracked in Samana, our app. Contractors can use the same app, starting with a free sample job.</Band>
+        <Band acts={[[APP, 'Try Samana free', 'ink'], ['/contractors', 'Have us write your quote']]}><b>It works for us. See if it works for you.</b> Every job we run is planned, priced and tracked in Samana, our app. Contractors can use the same app, starting with a free sample job.</Band>
       </Sec>
 
       <Talk topic="Construction" prompt="Where it is, what it is, and when it needs to be done" />

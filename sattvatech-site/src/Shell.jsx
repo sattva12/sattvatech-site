@@ -58,7 +58,7 @@ export function Foot() {
           <h2>Software</h2>
           <Link to="/samana">Samana</Link>
           <a href={FARM}>Farmmetric</a>
-          <Link to="/quote">Quote service</Link>
+          <Link to="/contractors">Quote service</Link>
           <a href={APP}>Sign in to Samana</a>
         </nav>
         <div className="sx-foot-c">

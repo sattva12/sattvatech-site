@@ -120,7 +120,7 @@ const TAKE_ON = [
   ['Bathrooms', 'From the studs out'],
   ['Decks and outside work', 'Footings, framing, stairs, rails'],
   ['Floors, doors and windows', 'Supplied and installed'],
-  ['GC for small crews', 'Permitted jobs under our license'],
+  ['GC for contractors', 'Permitted jobs under our license'],
 ]
 const RUN = [
   ['Measure and price', 'Every material, hour and price from the drawing, with the guesses marked until they are measured.'],
@@ -250,8 +250,8 @@ const APPS = [
     price: 'Free to start', small: 'Then $20 or $30 a month', go: [APP, 'Start free'], more: ['https://samana.tech', 'See it on samana.tech'] },
   { id: 'farmmetric', logo: '/brand/farmmetric-lockup.svg', name: 'Farmmetric', sub: 'Free farm app', text: 'The farm’s jobs, sprays, harvest and drying, logged from a phone, with the records kept as you go. Live API connectors are coming soon.',
     price: 'Free', small: 'Google Play soon', go: [FARM, 'Use it free'], more: ['/farmmetric', 'What it does'] },
-  { id: 'quote', name: 'Quote service', sub: 'For handymen and small crews', text: 'Send us the job. We send back a clear quote in your name, with every material, hour and step priced.',
-    price: 'First quote free', small: 'Then $25 a review, $100 a full write-up', go: [TEL_HREF, 'Call or text ' + TEL], more: ['/quote', 'How it works'] },
+  { id: 'quote', name: 'Quote service', sub: 'For contractors, small, medium and large', text: 'Send us the job. We send back a clear quote in your name, with every material, hour and step priced.',
+    price: 'First quote free', small: 'Then $25 a review, $100 a full write-up', go: [TEL_HREF, 'Call or text ' + TEL], more: ['/contractors', 'How it works'] },
 ]
 
 function Go({ to, className, children }) {
@@ -302,7 +302,7 @@ export default function Home() {
               <div>
                 <h3 className="sx-h3">What we take on</h3>
                 <dl className="sx-spec">{TAKE_ON.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-                <div className="sx-acts"><Link className="sx-btn sx-btn-ink" to="/construction">More on construction</Link><Link className="sx-btn sx-btn-line" to="/quote">Quote service for small crews</Link></div>
+                <div className="sx-acts"><Link className="sx-btn sx-btn-ink" to="/construction">More on construction</Link><Link className="sx-btn sx-btn-line" to="/contractors">Quote service for contractors</Link></div>
               </div>
               <div>
                 <h3 className="sx-h3">How a job runs</h3>

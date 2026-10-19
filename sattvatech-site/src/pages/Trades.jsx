@@ -17,7 +17,7 @@ const HOW_IT_WORKS = [
 ]
 
 const WHO_ITS_FOR = [
-  { trade: 'Handymen & General Tradespeople', desc: 'Skilled workers who hit the ceiling on job size without a GC license.' },
+  { trade: 'Independent Contractors & Tradespeople', desc: 'Skilled workers who hit the ceiling on job size without a GC license.' },
   { trade: 'Specialty Contractors', desc: 'Plumbers, electricians, HVAC techs who need a GC to coordinate permitted projects.' },
   { trade: 'Small Crews & Partnerships', desc: 'Teams doing great residential work who want to move into commercial.' },
   { trade: 'Experienced Supers Without a License', desc: 'Field-proven professionals who supervise well but aren\'t licensed yet.' },
@@ -63,7 +63,7 @@ export default function Trades() {
             Bigger jobs.
           </h1>
           <p style={{ fontSize: '1.1rem', color: T.text4, lineHeight: 1.75, maxWidth: 560, margin: '0 0 16px', fontFamily: 'sans-serif', fontWeight: 300 }}>
-            Sattva Technologies holds an unrestricted Massachusetts Construction Supervisor License. We partner with skilled tradespeople and handymen to unlock permitted, inspected, insured work that was previously out of reach.
+            Sattva Technologies holds an unrestricted Massachusetts Construction Supervisor License. We partner with contractors and tradespeople of every size to unlock permitted, inspected, insured work that was previously out of reach.
           </p>
           <p style={{ fontSize: '0.95rem', color: T.text5, lineHeight: 1.7, maxWidth: 560, margin: '0 0 44px', fontFamily: 'sans-serif', fontWeight: 300 }}>
             Think of it as a professional network — not just a referral list. We vet, insure, supervise, and grow together.

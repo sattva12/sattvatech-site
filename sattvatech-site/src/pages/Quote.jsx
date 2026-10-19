@@ -4,7 +4,7 @@ import './quote.css'
 
 /* Emails here are sattvatech.com: this is GC work, not app work (Atul, Oct 19 11:45). Only the Samana sign-in is samana.tech.
    CQS, the contractor quoting system (internal name, Atul Oct 19 11:50; "conquo"): the contractor intake page (2026-10-19, Handyman email chat). The trifold's QR code opens it at /contractors;
-   /quote and /handyman show the same page. Atul, Oct 19 11:49: never say "handyman" to customers (it reads as
+   /quote and /handyman redirect here (App.jsx). Atul, Oct 19 11:49: never say "handyman" to customers (it reads as
    a put-down); say contractors, small, medium and large. Our look on top (who we are, the service, the menu), the Contractor Quote
    Questionnaire at the bottom. "Join forces" means the contractor owns the job and we help; it is not joining
    our crew. Each submission goes to Formspree, which emails it on. Later it lands in Samana as a quote request. */
