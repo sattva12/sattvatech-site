@@ -474,3 +474,11 @@
 .sx-app h4.sx-fm-lockup span.sx-fm-tile { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 360px; padding: 26px 30px; background: #3ea059; border-radius: 6px; }
 .sx-app h4.sx-fm-lockup span.sx-fm-tile img { max-width: 260px; }
 .sx-app h4.sx-app-lockup img[src*="farmmetric-lockup"] { width: 100%; max-width: 330px; }
+
+/* Contractors block near the top (Oct 19) and the free box as its own section at the bottom */
+.sx-crews { padding-top: 40px; padding-bottom: 8px; }
+.sx-crew-box { margin-top: 0; border-left-color: var(--c-construction); }
+.sx-crew-box h2 { font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; margin: 0 0 10px; color: var(--ink); }
+.sx-crew-box .sx-btn-go { white-space: nowrap; }
+.sx-freesec { padding-top: 24px; }
+.sx-freesec .sx-free { margin-top: 0; }

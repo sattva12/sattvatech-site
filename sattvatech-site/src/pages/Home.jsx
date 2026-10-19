@@ -276,6 +276,18 @@ export default function Home() {
       <main>
         <Opening />
 
+        <section className="sx-sec sx-crews" id="contractors" aria-labelledby="h-crews">
+          <div className="sx-wrap">
+            <div className="sx-free sx-crew-box">
+              <div>
+                <h2 id="h-crews">We back up contractors and small crews.</h2>
+                <p>Send us the job and we send back a quote your customer can say yes to: drawn, priced and checked by a licensed GC. <b>Your first quote is free.</b> You keep the job and the customer; we stay behind you.</p>
+              </div>
+              <div className="sx-acts"><Link className="sx-btn sx-btn-go" to="/contractors">Contractors, click here</Link></div>
+            </div>
+          </div>
+        </section>
+
         <section className="sx-sec sx-why" id="why" aria-labelledby="h-why">
           <div className="sx-wrap sx-why-in">
             <div className="sx-why-h">
@@ -283,10 +295,6 @@ export default function Home() {
               <p>A more efficient process is not only our bottom line. It is everyone’s: the owner’s, the crew’s and the customer’s.</p>
             </div>
             <dl className="sx-why-cols">{WHY.map(([h, p]) => <div key={h}><dt>{h}</dt><dd>{p}</dd></div>)}</dl>
-            <div className="sx-free">
-              <p><b>Why some of it is free.</b> Some of the simplest ways to make money are saving it: less waste, less waiting, nothing done twice. So Farmmetric is free, and Samana is free for your first job. You see your own numbers before you pay. Win-win means you are working with winners.</p>
-              <div className="sx-acts"><a className="sx-btn sx-btn-go" href={APP}>Start free</a><a className="sx-btn sx-btn-line" href="https://samana.tech/#plans">See the plans</a></div>
-            </div>
           </div>
         </section>
 
@@ -397,6 +405,15 @@ export default function Home() {
               <a className="sx-talk-mail" href={'mailto:' + MAIL}>{MAIL}</a>
             </div>
             <div className="sx-form"><ContactForm topic="Home page" prompt="Where it is, what it is, and when it needs to be done" /></div>
+          </div>
+        </section>
+
+        <section className="sx-sec sx-freesec" id="free" aria-labelledby="h-free">
+          <div className="sx-wrap">
+            <div className="sx-free">
+              <p><b id="h-free">Why some of it is free.</b> Some of the simplest ways to make money are saving it: less waste, less waiting, nothing done twice. So Farmmetric is free, and Samana is free for your first job. You see your own numbers before you pay. Win-win means you are working with winners.</p>
+              <div className="sx-acts"><a className="sx-btn sx-btn-go" href={APP}>Start free</a><a className="sx-btn sx-btn-line" href="https://samana.tech/#plans">See the plans</a></div>
+            </div>
           </div>
         </section>
       </main>
