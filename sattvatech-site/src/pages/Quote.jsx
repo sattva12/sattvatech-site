@@ -9,6 +9,9 @@ import './quote.css'
 
 const FORM = 'https://formspree.io/f/mbdpkqyj'
 const TEL = '508-916-8447'
+/* flip to true when a handyman can sign in to Samana and land on the quote request (Samana app chat) */
+const APP_READY = false
+const APP_LOGIN = 'https://app.sattvatech.com/login'
 
 /* the kinds of work, and the questions each one asks: [label, type, options, required] */
 const FLOORS = ['Basement', '1st floor', '2nd floor', '3rd floor', 'Garage', 'Attic']
@@ -243,6 +246,18 @@ export default function Quote() {
       </Sec>
 
       <Sec id="form" tone="alt" title="Send us a job." sub="About ten minutes. Never the customer's name, address or budget, and never your prices.">
+        <div className="qx-ways">
+          <div>
+            <b>Have a Samana login?</b>
+            <p>Sign in and send the job from the app. Your answers and photos stay with the job.</p>
+            {APP_READY ? <a className="qx-way-go" href={APP_LOGIN}>Sign in to Samana</a> : <span className="qx-soon">Coming soon</span>}
+          </div>
+          <div>
+            <b>Rather use paper?</b>
+            <p>Print the questionnaire, fill it out on site, then text us a photo of each page.</p>
+            <a className="qx-way-go" href="/handyman-questionnaire.pdf">Print the questionnaire (PDF)</a>
+          </div>
+        </div>
         <Intake />
       </Sec>
 

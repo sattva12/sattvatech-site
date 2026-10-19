@@ -28,3 +28,11 @@
 .qx-done h3 { margin: 0 0 14px; font: 600 30px/1.1 var(--cond); }
 .qx-done p { margin: 0 0 10px; }
 @media (max-width: 640px) { .qx-grid { grid-template-columns: 1fr; } .qx-job { padding: 16px 12px; } }
+.qx-ways { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 980px; margin-bottom: 32px; }
+.qx-ways > div { background: var(--white); border: 1px solid var(--rule); padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.qx-ways b { font: 600 20px/1.1 var(--cond); }
+.qx-ways p { margin: 0; color: var(--steel); }
+.qx-way-go { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; margin-top: 4px; border: 1px solid var(--night); color: var(--night); font: 500 15px/1 var(--sans); text-decoration: none; }
+.qx-way-go:hover { background: var(--night); color: var(--line); }
+.qx-soon { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; margin-top: 4px; background: var(--paper); border: 1px dashed var(--steel); color: var(--steel); font: 500 14px/1 var(--sans); }
+@media (max-width: 640px) { .qx-ways { grid-template-columns: 1fr; } }
