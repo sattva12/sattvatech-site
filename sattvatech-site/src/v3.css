@@ -482,3 +482,6 @@
 .sx-crew-box .sx-btn-go { white-space: nowrap; }
 .sx-freesec { padding-top: 24px; }
 .sx-freesec .sx-free { margin-top: 0; }
+
+.sx-sheet-img { padding: 0; }
+.sx-sheet-img img { display: block; width: 100%; height: auto; }

@@ -16,7 +16,7 @@ import '../v3.css'
 /* ---------- the opening: a drawing first (Atul, 20:08: "the first thing you see is a drawing... technical but construction") ---------- */
 const LINES = [
   { id: 'construction', name: 'Construction', sub: 'Commercial work and quality homes, planned step by step and checked as built.' },
-  { id: 'farms', name: 'Farms', sub: 'Land set up into a working farm, then run on a plan and a budget.' },
+  { id: 'farms', name: 'Ag', sub: 'Land set up into a working farm, then run on a plan and a budget.' },
   { id: 'products', name: 'Products', sub: 'Container rooms built to order, and the software we run our work on.' },
 ]
 
@@ -335,7 +335,7 @@ export default function Home() {
         <section className="sx-sec sx-farm" id="farms" aria-labelledby="h-farm">
           <div className="sx-wrap">
             <header className="sx-sec-h sx-c-farms">
-              <h2 id="h-farm"><i aria-hidden="true" />Farms</h2>
+              <h2 id="h-farm"><i aria-hidden="true" />Ag</h2>
               <p>We set the farm up, then build it into a business that works. Clearing, roads, fence, power, water and buildings first. Then a plan for the season and a budget for the money.</p>
             </header>
             <FarmSite />
@@ -345,7 +345,7 @@ export default function Home() {
             <div className="sx-split sx-plan">
               <div>
                 <h3 className="sx-h3">A plan and a budget</h3>
-                <p className="sx-p">A farm is a business. Each stage is broken into its steps, with the people, materials and hours each one needs, and every dollar has a month. That is lean farming.</p>
+                <p className="sx-p">A farm is a business. Each stage is broken into its steps, with the people, materials and hours each one needs, and every dollar has a month. That is lean ag.</p>
                 <dl className="sx-spec sx-spec-dark">{BUDGET.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
                 <div className="sx-acts"><Link className="sx-btn sx-btn-go" to="/lean-ag">How we build a farm</Link></div>
               </div>

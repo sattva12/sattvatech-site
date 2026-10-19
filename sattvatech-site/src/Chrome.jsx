@@ -12,7 +12,7 @@ export const MAIL = 'info@sattvatech.com'
 /* The app's own top bar, used across the site: the name, the lines of work as tabs, sign in on the right. */
 const TABS = [
   { id: 'construction', name: 'Construction', sub: 'Commercial and homes', href: '/#construction' },
-  { id: 'farms', name: 'Farms', sub: 'Set up and run', href: '/#farms' },
+  { id: 'farms', name: 'Ag', sub: 'Set up and run', href: '/#farms' },
   { id: 'products', name: 'Products', sub: 'Containers and apps', href: '/#products' },
 ]
 
@@ -45,7 +45,7 @@ export function SiteFoot() {
         </div>
         <nav aria-label="Pages">
           <Link to="/construction">Construction</Link>
-          <Link to="/lean-ag">Lean farming</Link>
+          <Link to="/lean-ag">Lean ag</Link>
           <Link to="/containers">Containers</Link>
           <Link to="/samana">Samana</Link>
           <Link to="/farmmetric">Farmmetric</Link>

@@ -8,7 +8,7 @@ import './v3.css'
    It sits clear over the dark opening and turns solid once the page scrolls. */
 const NAV = [
   ['construction', 'Construction', '/#construction'],
-  ['farms', 'Farms', '/#farms'],
+  ['farms', 'Ag', '/#farms'],
   ['products', 'Products', '/#products'],
 ]
 
@@ -51,7 +51,7 @@ export function Foot() {
         <nav aria-label="Work">
           <h2>Work</h2>
           <Link to="/construction">Construction</Link>
-          <Link to="/lean-ag">Lean farming</Link>
+          <Link to="/lean-ag">Lean ag</Link>
           <Link to="/containers">Containers</Link>
         </nav>
         <nav aria-label="Software">

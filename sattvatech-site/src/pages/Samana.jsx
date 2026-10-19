@@ -118,7 +118,7 @@ const PIECES = [
   ['Windows and doors', 'Double-hung, casement, picture; insert or full frame; interior, outside, sliding and storm doors.', 'Old ones out and disposed of'],
   ['Flooring', 'Plank, laminate, hardwood, tile or carpet by room; underlayment, transitions, baseboard.', 'Up to eight rooms a piece'],
   ['Painting and trim', 'Walls, ceilings, trim and doors by room and wall height; baseboard, crown, chair rail and casings.', 'Primer only where it is needed'],
-  ['Farms and properties', 'Fence, cameras, power, containers, drying, wells and hoop houses on the real lot line, with Lean planning the season.', 'Built for our own farm sites first'],
+  ['Ag and properties', 'Fence, cameras, power, containers, drying, wells and hoop houses on the real lot line, with Lean planning the season.', 'Built for our own farm sites first'],
 ]
 
 export default function Samana() {

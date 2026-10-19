@@ -28,7 +28,7 @@ export default function Construction() {
           ['Construction management', 'Takeoffs, schedules, the trades lined up, inspections passed, and the owner kept current on every change.', 'Residential and commercial'],
           ['GC for tradespeople', 'Contractors of any size take on permitted jobs under our license and insurance, with the job planned and supervised.', 'The licensed umbrella'],
           ['Quote service', 'We write the quote, materials list and work order for contractors who would rather be on the tools.', <a href="/quote">Quote service</a>],
-          ['Farm and facility builds', 'Fence, cameras, power, containers, drying and wells for farms, priced and sequenced with the season.', <a href="/lean-ag">Lean agriculture</a>],
+          ['Ag and facility builds', 'Fence, cameras, power, containers, drying and wells for farms, priced and sequenced with the season.', <a href="/lean-ag">Lean ag</a>],
         ]} />
       </Sec>
 

@@ -5,7 +5,7 @@ import { PlanFarm } from '../drawings.jsx'
 /* v3 (2026-10-12): same words as before, the drawing-set look, farm green. */
 export default function LeanAg() {
   return (
-    <Page here="farms" title="Lean farming: Sattva Technologies" className="sx-farmpage">
+    <Page here="farms" title="Lean ag: Sattva Technologies" className="sx-farmpage">
       <Hero c="farms" title="We make the farm's process lean."
         lede="We plan a farm the way a good shop plans a line: every stage, every input and every hour, against the date it has to hit. Then we run it on data, with Farmmetric in the field and Samana's Lean and Flow behind it."
         acts={[['#talk', 'Talk about your farm', 'go'], ['/farmmetric', 'See Farmmetric']]}
@@ -37,7 +37,7 @@ export default function LeanAg() {
         <Band acts={[[FARM, 'Use Farmmetric free', 'ink'], ['/samana', 'See Samana']]}><b>It works for us. See if it works for you.</b> We run our own farm work on Farmmetric, our farm app, with Samana's Lean and Flow behind it. Farmmetric is free.</Band>
       </Sec>
 
-      <Talk title="Talk about your farm." sub="Your farm, its size, and what is slowing you down." topic="Lean farming" prompt="Your farm, its size, and what is slowing you down" />
+      <Talk title="Talk about your farm." sub="Your farm, its size, and what is slowing you down." topic="Lean ag" prompt="Your farm, its size, and what is slowing you down" />
     </Page>
   )
 }

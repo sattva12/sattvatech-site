@@ -233,6 +233,7 @@ export default function Quote() {
       <Hero c="construction" kicker="For Massachusetts contractors, small, medium and large" title="Quote more. Win more jobs."
         lede="Send us the job. We draw it, measure it and price every material and step, and it goes out in your name at your rates. Your first quote is free."
         acts={[['#form', 'Send us a job', 'go'], ['tel:5089168447', 'Call or text ' + TEL]]}
+        aside={<div className="sx-sheet"><div className="sx-sheet-dw sx-sheet-img"><img src="/media/customer.jpg" alt="A sample quote: the drawing beside every line, priced, with the total" width="1280" height="800" /></div><div className="sx-sheet-tb"><b>A quote, as your customer sees it</b><span>Drawn</span><span>Every line priced</span></div></div>}
         tb={[['First quote', 'Free'], ['In your name', 'Your logo on top'], ['Your customer', 'Stays yours'], ['Licensed', 'MA CSL CS-122574 · HIC 218120']]} />
 
       <Sec id="who" title="Who we are." sub="Sattva Technologies is a licensed Massachusetts builder. We run our own jobs with Samana, the software we built to draw, price and organize construction work, and we put it to work for contractors of every size, from a one-person outfit to a full company.">

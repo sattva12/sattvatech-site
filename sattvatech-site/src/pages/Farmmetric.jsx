@@ -49,7 +49,7 @@ export default function Farmmetric() {
         <p className="sx-note">Farmmetric is built by Sattva Technologies.</p>
       </Sec>
 
-      <End title="Built by people who build farms." acts={[[FARM, 'Go to Farmmetric', 'ink'], ['/lean-ag', 'Lean farming']]}>Sattva Technologies sets farms up, builds them and makes the process lean. Farmmetric is the tool we wanted on site, and we use it ourselves. See if it works for you.</End>
+      <End title="Built by people who build farms." acts={[[FARM, 'Go to Farmmetric', 'ink'], ['/lean-ag', 'Lean ag']]}>Sattva Technologies sets farms up, builds them and makes the process lean. Farmmetric is the tool we wanted on site, and we use it ourselves. See if it works for you.</End>
     </Page>
   )
 }
