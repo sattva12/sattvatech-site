@@ -23,6 +23,7 @@ export default function App() {
       <Route path="/sign-in" element={<Apps />} />
       <Route path="/samana" element={<Samana />} />
       <Route path="/quote" element={<Quote />} />
+      <Route path="/handyman" element={<Quote />} />
       <Route path="/farmmetric" element={<Farmmetric />} />
       <Route path="/farms" element={<Go to="/#farms" />} />
       <Route path="/contact" element={<Go to="/#talk" />} />

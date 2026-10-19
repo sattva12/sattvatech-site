@@ -1,51 +1,252 @@
-import { Page, Hero, Sec, Steps, Prices, End, Acts } from '../Kit.jsx'
-import { APP } from '../Chrome.jsx'
+import { useState } from 'react'
+import { Page, Hero, Sec, Steps, Prices, Spec, End } from '../Kit.jsx'
+import './quote.css'
 
-/* v3 (2026-10-12): same words as before, the drawing-set look. */
+/* The handyman intake page (2026-10-19, Handyman email chat). The trifold's QR code opens it at /handyman,
+   and /quote shows the same page. Our look on top (who we are, the service, the menu), the Contractor Quote
+   Questionnaire at the bottom. "Join forces" means the handyman owns the job and we help; it is not joining
+   our crew. Each submission goes to Formspree, which emails it on. Later it lands in Samana as a quote request. */
+
+const FORM = 'https://formspree.io/f/mbdpkqyj'
+const TEL = '508-916-8447'
+
+/* the kinds of work, and the questions each one asks: [label, type, options, required] */
+const FLOORS = ['Basement', '1st floor', '2nd floor', '3rd floor', 'Garage', 'Attic']
+const YN = ['Yes', 'No', 'Not sure']
+const KINDS = {
+  Deck: [
+    ['Length along the house (ft)', 'text', null, true],
+    ['Depth out from the house (ft)', 'text', null, true],
+    ['Height of the deck surface (ft-in)', 'text', null, true],
+    ['Attached to the house or freestanding', 'pick', ['Attached', 'Freestanding', 'Not sure']],
+    ['House wall type (siding, brick, stucco)', 'text'],
+    ['Decking', 'pick', ['Pressure-treated', 'Composite', 'Not sure']],
+    ['Railing: where and what style', 'text'],
+    ['Stairs: how many steps and which side', 'text'],
+    ['Ground', 'pick', ['Flat grass', 'Sloped grass', 'Gravel', 'Concrete', 'Not sure']],
+    ['Old deck to take down (size if yes)', 'text'],
+    ['Anything under or near it (hot tub, gas, AC, dryer vent)', 'text'],
+    ['Lighting or power', 'pick', YN],
+  ],
+  Flooring: [
+    ['Which floor', 'pick', FLOORS, true],
+    ['Each room: length x width (up to 8 rooms)', 'area', null, true],
+    ['New floor type', 'pick', ['Plank (LVP)', 'Laminate', 'Hardwood', 'Tile', 'Carpet', 'Not sure'], true],
+    ['What is down now', 'text'],
+    ['What is under it (plywood, concrete, not sure)', 'text'],
+    ['Soft spots, squeaks or out of level (say where)', 'text'],
+    ['Baseboard', 'pick', ['New', 'Keep', 'Not sure']],
+    ['Doors to trim (number)', 'text'],
+    ['Stairs to cover (number of steps)', 'text'],
+    ['Who buys the floor', 'pick', ['You', 'Customer', 'Us', 'Not sure']],
+    ['Furniture to move', 'pick', YN],
+  ],
+  Doors: [
+    ['Which floor', 'pick', FLOORS, true],
+    ['How many: interior, outside, sliding patio, storm', 'text', null, true],
+    ['Same opening or a new opening', 'pick', ['Same opening', 'New opening', 'Not sure']],
+    ['Width and height', 'text'],
+    ['Style and color (or "customer will pick")', 'text'],
+    ['Locks (keyed alike, smart, deadbolt)', 'text'],
+    ['Take out the old ones', 'pick', YN],
+  ],
+  Windows: [
+    ['Which floor', 'pick', FLOORS, true],
+    ['How many', 'text', null, true],
+    ['Same opening or a new opening', 'pick', ['Same opening', 'New opening', 'Not sure']],
+    ['Width and height', 'text'],
+    ['Type', 'pick', ['Double-hung', 'Slider', 'Casement', 'Picture', 'Not sure']],
+    ['Inside trim', 'pick', ['Reuse', 'New', 'Not sure']],
+    ['Outside siding type', 'text'],
+    ['Egress window in a bedroom', 'pick', YN],
+  ],
+  Bathroom: [
+    ['Which floor', 'pick', FLOORS, true],
+    ['Length, width and ceiling height', 'text', null, true],
+    ['New bathroom or remodel', 'pick', ['New', 'Remodel'], true],
+    ['Fixtures staying where they are or moving', 'pick', ['Staying', 'Moving', 'Not sure']],
+    ['Shower, tub or tub/shower; prefab or tiled', 'text'],
+    ['Vanity width and top', 'text'],
+    ['Toilet', 'pick', ['New', 'Reuse', 'Not sure']],
+    ['Floor', 'text'],
+    ['Walls (tile height, paint)', 'text'],
+    ['Exhaust fan vented outside', 'pick', YN],
+    ['Lights and outlets', 'text'],
+    ['Water damage, soft floor or mold', 'pick', YN],
+    ['Who picks the fixtures and tile', 'pick', ['You', 'Customer', 'Us', 'Not sure']],
+  ],
+  'Basement finish': [
+    ['Overall length and width', 'text', null, true],
+    ['Ceiling height, slab to joists', 'text', null, true],
+    ['Stairs: where, how wide, which way they run', 'text'],
+    ['Rooms wanted', 'text'],
+    ['Water now or in the past', 'pick', YN],
+    ['Bath drain already in the slab', 'pick', YN],
+    ['Below the sewer line (needs a pump)', 'pick', YN],
+    ['Heat', 'pick', ['Ducts', 'Mini splits', 'Not sure']],
+    ['Windows and egress', 'text'],
+    ['Ceiling', 'pick', ['Drywall', 'Drop ceiling', 'Not sure']],
+    ['Things in the way (poles, ducts, low pipes)', 'text'],
+  ],
+  'Room finish': [
+    ['Which floor', 'pick', FLOORS, true],
+    ['Room length, width and ceiling height', 'text', null, true],
+    ['Work needed', 'pick', ['Framing, drywall and paint', 'Drywall and paint', 'Paint only', 'Not sure']],
+    ['Windows, doors or closets in the room', 'text'],
+    ['Things in the way (ducts, pipes, wiring)', 'text'],
+  ],
+  'Something else': [
+    ['What is the work', 'area', null, true],
+    ['Sizes and quantities', 'text'],
+  ],
+}
+
+function Field({ name, label, type = 'text', options, required, hint }) {
+  const t = <span>{label}{required && <em> required</em>}{hint && <small>{hint}</small>}</span>
+  if (type === 'pick') return (
+    <label>{t}
+      <select name={name} required={required} defaultValue=""><option value="" disabled>Choose</option>{options.map((o) => <option key={o}>{o}</option>)}</select>
+    </label>
+  )
+  if (type === 'area') return <label className="wide">{t}<textarea name={name} rows="3" required={required} /></label>
+  return <label>{t}<input name={name} type={type} required={required} /></label>
+}
+
+function Job({ n, kind, onRemove }) {
+  const p = `Work ${n} (${kind}): `
+  return (
+    <fieldset className="qx-job">
+      <legend><b>{n}</b>{kind}<button type="button" onClick={onRemove} aria-label={'Remove ' + kind}>Remove</button></legend>
+      <input type="hidden" name={`Work ${n}`} value={kind} />
+      <div className="qx-grid">
+        {KINDS[kind].map(([label, type, options, req]) => <Field key={label} name={p + label} label={label} type={type} options={options} required={req} />)}
+        <Field name={p + 'In the price, or an option the customer may add later'} label="In the price, or an option the customer may add later" type="pick" options={['In the price', 'Option for later', 'Not sure']} />
+      </div>
+    </fieldset>
+  )
+}
+
+function Intake() {
+  const [jobs, setJobs] = useState([])
+  const [status, setStatus] = useState('')
+  const [ref] = useState(() => 'HQ-' + new Date().toISOString().slice(5, 10).replace('-', '') + '-' + Math.random().toString(36).slice(2, 6).toUpperCase())
+  const add = (kind) => setJobs((j) => [...j, { kind, id: Date.now() + Math.random() }])
+
+  async function send(e) {
+    e.preventDefault()
+    if (!jobs.length) { setStatus('pick'); return }
+    setStatus('sending')
+    try {
+      const res = await fetch(FORM, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(e.target) })
+      if (res.ok) { setStatus('sent'); window.scrollTo({ top: document.getElementById('form').offsetTop - 40 }) } else setStatus('error')
+    } catch { setStatus('error') }
+  }
+
+  if (status === 'sent') return (
+    <div className="qx-done" role="status">
+      <h3>Got it. Your job number is {ref}.</h3>
+      <p>Now text the photos (at least 3, every area), your sketch and a voice note of up to 2 minutes to <a href="sms:5089168447">{TEL}</a>, or email them to <a href={'mailto:info@sattvatech.com?subject=' + ref}>info@sattvatech.com</a>, with {ref} in the message.</p>
+      <p>We will be in touch within one business day, before your quote date.</p>
+    </div>
+  )
+
+  return (
+    <form className="qx-form" onSubmit={send}>
+      <input type="hidden" name="_subject" value={'Handyman quote request ' + ref} />
+      <input type="hidden" name="topic" value="Handyman quote request" />
+      <input type="hidden" name="Job number" value={ref} />
+      <input type="text" name="_gotcha" className="qx-trap" tabIndex="-1" autoComplete="off" aria-hidden="true" />
+
+      <section>
+        <h3><b>1</b>You and the job</h3>
+        <div className="qx-grid">
+          <Field name="Name" label="Your name" required />
+          <Field name="Company" label="Company" required />
+          <Field name="Phone" label="Phone" type="tel" required />
+          <Field name="email" label="Email" type="email" required />
+          <Field name="License or registration" label="License or registration number" />
+          <Field name="Job town and state" label="Job town and state" required hint="Town only. Never the customer's address." />
+          <Field name="House year built" label="Year the house was built" hint="Before 1978 means we plan for lead paint." />
+          <Field name="Floors in the house" label="Floors in the house" />
+          <Field name="Occupied during the work" label="Lived in during the work" type="pick" options={YN} />
+          <Field name="Permit" label="Who pulls the permit" type="pick" options={['You', 'Us', 'Not sure']} />
+          <Field name="Work dates" label="When the work needs to happen" hint="A date, or 'flexible'." />
+          <Field name="Quote needed by" label="When you need the quote back" type="date" required />
+          <Field name="Anything we should know" label="Anything we should know (access, pets, parking, hours)" type="area" />
+        </div>
+      </section>
+
+      <section>
+        <h3><b>2</b>Pick the work</h3>
+        <p className="qx-p">Add each kind of work on this job. You can add the same kind more than once, like two bathrooms.</p>
+        <div className="qx-picks">{Object.keys(KINDS).map((k) => <button type="button" key={k} onClick={() => add(k)}>+ {k}</button>)}</div>
+        {status === 'pick' && <p className="qx-err">Add at least one kind of work.</p>}
+        {jobs.map((j, i) => <Job key={j.id} n={i + 1} kind={j.kind} onRemove={() => setJobs((all) => all.filter((x) => x.id !== j.id))} />)}
+      </section>
+
+      <section>
+        <h3><b>3</b>Tell us in your words</h3>
+        <div className="qx-grid">
+          <Field name="Notes" type="area" label="What the customer wants and why now; what worries you; the one thing you are not sure how to price; anything about the customer (timing, how picky)." />
+        </div>
+        <p className="qx-p">Photos, a sketch with measurements and a voice note of up to 2 minutes: once you send this, we give you a job number and you text or email them to us.</p>
+      </section>
+
+      <div className="qx-send">
+        <p className="qx-promise">We check the specifications so your quote is complete and your job is organized. We never see your customer or your prices unless you send them to us. Anything not marked required can be answered "not sure".</p>
+        <button type="submit" disabled={status === 'sending'}>{status === 'sending' ? 'Sending' : 'Send the job'}</button>
+        {status === 'error' && <p className="qx-err">That did not send. Call or text {TEL}, or email info@sattvatech.com.</p>}
+      </div>
+    </form>
+  )
+}
+
 export default function Quote() {
   return (
-    <Page here="construction" title="Quote service for handymen and small crews: Sattva Technologies">
-      <Hero c="construction" title="We write the quote. You win the job."
-        lede="For handymen, carpenters, painters and small crews in Massachusetts. Send us the job; we send back a clear quote in your name, with every material, hour and step priced so your profit is in it. Your first quote is free."
-        acts={[['tel:5089168447', 'Call or text 508-916-8447', 'go'], ['mailto:info@sattvatech.com?subject=Quote%20for%20a%20job', 'Email the job']]}
-        tb={[['First quote', 'Free'], ['In your name', 'Your logo on top'], ['Your customer', 'Stays yours'], ['Review', 'By a licensed supervisor']]} />
+    <Page here="construction" title="Quotes for handymen and small crews: Sattva Technologies">
+      <Hero c="construction" kicker="For Massachusetts handymen and small crews" title="Quote more. Win more jobs."
+        lede="Send us the job. We draw it, measure it and price every material and step, and it goes out in your name at your rates. Your first quote is free."
+        acts={[['#form', 'Send us a job', 'go'], ['tel:5089168447', 'Call or text ' + TEL]]}
+        tb={[['First quote', 'Free'], ['In your name', 'Your logo on top'], ['Your customer', 'Stays yours'], ['Licensed', 'MA CSL CS-122574 · HIC 218120']]} />
 
-      <Sec id="how" title="How it works." sub="A short conversation, then the paperwork is ours.">
+      <Sec id="who" title="Who we are." sub="Sattva Technologies is a licensed Massachusetts builder. We run our own jobs with Samana, the software we built to draw, price and organize construction work, and we put it to work for crews like yours.">
+        <div className="sx-two">
+          <div>
+            <h3 className="sx-h3">Join forces</h3>
+            <p className="sx-p">You own the job. We back you up. You keep the customer, the relationship and the profit; we do the paperwork and step in when you ask. This is not joining our crew; it is us helping your business.</p>
+          </div>
+          <Spec rows={[
+            ['Your quotes', 'Clear, complete and in your name, so you can send more of them.'],
+            ['Your customer', 'Stays yours. We never contact them.'],
+            ['Overflow', 'Too much work, or a job past what you take on alone? We can help run it.'],
+            ['A licensed GC', 'Permits, supervision and project management when the job needs it.'],
+          ]} />
+        </div>
+      </Sec>
+
+      <Sec id="how" tone="alt" title="How it works.">
         <Steps steps={[
-          ['Send us the job', 'Measurements, photos and what the customer wants. A two-minute voice note works.'],
-          ['We build it', 'Every material, labor hour and step, in Samana, at your own labor rates.'],
-          ['It goes out as yours', 'Your name and logo on top. You stay in front of your customer; we never contact them.'],
-          ['First quote free', 'See it before you pay. After that, pick a plan or pay by the job.'],
+          ['Fill out the short form', 'The job, the sizes and what the customer wants. Then text us the photos.'],
+          ['We draw and measure', 'Every material, labor hour and step, checked against the specifications.'],
+          ['You set your rates', 'Your labor rates and your markup. We never see your prices unless you send them.'],
+          ['It goes out as yours', 'Your name and logo on top. You stay in front of your customer.'],
         ]} />
       </Sec>
 
-      <Sec id="menu" tone="alt" title="Pick what you need.">
-        <div className="sx-two">
-          <Prices title="Do it yourself in Samana" sub="The app, monthly. You put in your own labor rates." rows={[
-            ['Free', 'One active job, drawn and priced', '$0'],
-            ['Takeoff', 'A clear quote for your customer, in your name, with Flow: the materials list and work orders for your crew; 5 active jobs', '$20', 'a month'],
-          ]} foot={<a href="/samana#plans">All Samana plans</a>} />
-          <Prices title="Have a licensed GC do it" sub="Our time, on top of a plan." rows={[
-            ['Review', 'A construction supervisor checks the job before it goes out', '$25', 'a job'],
-            ['Full job write-up', 'Proposal, drawings, materials list and a work order', '$100', 'a job'],
-            ['GC service', 'Permits, supervision and project management, Massachusetts only', 'Estimate'],
-          ]} />
-        </div>
-        <p className="sx-note">Structural work, moved plumbing, egress, commercial work, three-families and anything beyond an unrestricted construction supervisor license always get a review. Your customer and your prices stay yours.</p>
+      <Sec id="menu" title="Pick what you need.">
+        <Prices rows={[
+          ['First quote', 'Your first job, quoted, to see how it works', 'Free'],
+          ['The quote', 'A clear quote for your customer, in your name', '$25', 'a job'],
+          ['The full package', 'The quote, the materials list and the work order, with a 1-hour call', '$100', 'a job'],
+          ['GC service', 'Permits, supervision and project management, Massachusetts only', 'Estimate'],
+        ]} foot="You pay when the quote is sent back to you." />
       </Sec>
 
-      <Sec id="flyer">
-        <div className="sx-flyer">
-          <img src="/media/quote-flyer.jpg" alt="The quote service flyer: we write the quote, you win the job, with the plans and how it works" width="1088" height="1408" loading="lazy" />
-          <div>
-            <h2 className="sx-h3" style={{ fontSize: 'clamp(32px, 3.6vw, 52px)' }}>Pass it on.</h2>
-            <p className="sx-p">The flyer, letter size, ready to print or text to a crew you know.</p>
-            <Acts acts={[['/sattva-quote-flyer.pdf', 'Download the flyer (PDF)', 'ink'], ['/samana', 'See the app it is built on']]} />
-          </div>
-        </div>
+      <Sec id="form" tone="alt" title="Send us a job." sub="About ten minutes. Never the customer's name, address or budget, and never your prices.">
+        <Intake />
       </Sec>
 
-      <End title="Got a job to price this week?" acts={[['tel:5089168447', 'Call or text 508-916-8447', 'ink'], [APP, 'Try Samana yourself']]}>Send it over. If it is past what a handyman should take on alone, we will say so, and we can run it as the GC.</End>
+      <End title="Rather talk it through?" acts={[['tel:5089168447', 'Call or text ' + TEL, 'ink'], ['mailto:info@sattvatech.com?subject=Handyman%20quote', 'Email info@sattvatech.com']]}>If the job is past what a handyman should take on alone, we will say so, and we can run it as the GC.</End>
     </Page>
   )
 }

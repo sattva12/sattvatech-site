@@ -1,0 +1,30 @@
+/* the handyman intake form (2026-10-19) */
+.qx-form { display: grid; gap: 40px; max-width: 980px; }
+.qx-form section { background: var(--white); border: 1px solid var(--rule); padding: clamp(20px, 3vw, 36px); }
+.qx-form h3 { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; font: 600 clamp(26px, 2.6vw, 34px)/1 var(--cond); }
+.qx-form h3 b, .qx-job legend b { display: inline-grid; place-items: center; width: 34px; height: 34px; background: var(--night); color: var(--line); font: 600 17px/1 var(--sans); }
+.qx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; }
+.qx-grid .wide { grid-column: 1 / -1; }
+.qx-form label { display: flex; flex-direction: column; gap: 7px; font-size: 15px; font-weight: 500; color: var(--ink); }
+.qx-form label em { font-style: normal; font-weight: 400; font-size: 13px; color: #a3261b; margin-left: 6px; }
+.qx-form label small { display: block; font-weight: 400; font-size: 13px; color: var(--steel); margin-top: 2px; }
+.qx-form input, .qx-form select, .qx-form textarea { width: 100%; box-sizing: border-box; padding: 12px 13px; border: 1px solid #b9c6d6; border-radius: 0; background: var(--white); color: var(--ink); font: 400 16px/1.4 var(--sans); }
+.qx-form input:focus-visible, .qx-form select:focus-visible, .qx-form textarea:focus-visible { outline: 3px solid var(--amber); outline-offset: 1px; border-color: var(--sheet); }
+.qx-p { margin: 0 0 16px; color: var(--steel); }
+.qx-picks { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+.qx-picks button { min-height: 44px; padding: 0 16px; border: 1px solid var(--night); background: var(--white); color: var(--night); font: 500 15px/1 var(--sans); cursor: pointer; }
+.qx-picks button:hover { background: var(--night); color: var(--line); }
+.qx-job { margin: 22px 0 0; padding: 22px; border: 1px solid var(--rule); border-left: 4px solid var(--amber); background: var(--paper); }
+.qx-job legend { display: flex; align-items: center; gap: 12px; padding: 0 8px; font: 600 20px/1 var(--cond); }
+.qx-job legend button { margin-left: 8px; border: 0; background: none; color: var(--steel); font: 400 14px/1 var(--sans); text-decoration: underline; cursor: pointer; }
+.qx-send { display: grid; gap: 16px; justify-items: start; }
+.qx-promise { margin: 0; max-width: 46em; color: var(--steel); }
+.qx-send button { min-height: 52px; padding: 0 32px; border: 0; background: var(--night); color: var(--line); font: 600 17px/1 var(--sans); cursor: pointer; }
+.qx-send button:hover { background: var(--deep); }
+.qx-send button:disabled { opacity: .6; }
+.qx-err { color: #a3261b; margin: 8px 0 0; }
+.qx-trap { position: absolute; left: -9999px; width: 1px; height: 1px; }
+.qx-done { max-width: 760px; background: var(--white); border: 1px solid var(--rule); border-left: 4px solid #3ea059; padding: 32px; }
+.qx-done h3 { margin: 0 0 14px; font: 600 30px/1.1 var(--cond); }
+.qx-done p { margin: 0 0 10px; }
+@media (max-width: 640px) { .qx-grid { grid-template-columns: 1fr; } .qx-job { padding: 16px 12px; } }
