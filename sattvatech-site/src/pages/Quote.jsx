@@ -14,6 +14,13 @@ const APP_READY = false
 const APP_LOGIN = 'https://app.sattvatech.com/login'
 
 /* the kinds of work, and the questions each one asks: [label, type, options, required] */
+/* what they want back, the same menu as the flyer: [value, title, what, price] */
+const PACKS = [
+  ['First quote (free)', 'First quote', 'Your first job, quoted. Free.', 'Free'],
+  ['The quote ($25)', 'The quote', 'A clear quote for your customer, in your name.', '$25'],
+  ['The full package ($100)', 'The full package', 'The quote, the materials list and the work order, plus a 1\u2011hour call with our GC.', '$100'],
+  ['GC service (estimate)', 'GC service', 'We run the job with you: permits, supervision, project management. Massachusetts.', 'Estimate'],
+]
 const FLOORS = ['Basement', '1st floor', '2nd floor', '3rd floor', 'Garage', 'Attic']
 const YN = ['Yes', 'No', 'Not sure']
 const KINDS = {
@@ -193,6 +200,20 @@ function Intake() {
           <Field name="Notes" type="area" label="What the customer wants and why now; what worries you; the one thing you are not sure how to price; anything about the customer (timing, how picky)." />
         </div>
         <p className="qx-p">Photos, a sketch with measurements and a voice note of up to 2 minutes: once you send this, we give you a job number and you text or email them to us.</p>
+      </section>
+
+      <section>
+        <h3><b>4</b>What you want back</h3>
+        <div className="qx-packs">
+          {PACKS.map(([v, t, w, p], i) => (
+            <label key={v} className="qx-pack">
+              <input type="radio" name="Package" value={v} required defaultChecked={i === 0} />
+              <span><b>{t}</b><small>{w}</small></span>
+              <em>{p}</em>
+            </label>
+          ))}
+        </div>
+        <p className="qx-p" style={{ marginTop: 14 }}>Your first quote is free. After that you pay when the quote is sent back to you; nothing is charged on this form.</p>
       </section>
 
       <div className="qx-send">

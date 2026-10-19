@@ -36,3 +36,12 @@
 .qx-way-go:hover { background: var(--night); color: var(--line); }
 .qx-soon { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; margin-top: 4px; background: var(--paper); border: 1px dashed var(--steel); color: var(--steel); font: 500 14px/1 var(--sans); }
 @media (max-width: 640px) { .qx-ways { grid-template-columns: 1fr; } }
+.qx-packs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.qx-form .qx-pack { flex-direction: row; align-items: flex-start; gap: 12px; padding: 14px 16px; border: 1px solid #b9c6d6; background: var(--white); cursor: pointer; font-weight: 400; }
+.qx-form .qx-pack:has(input:checked) { border: 2px solid var(--night); padding: 13px 15px; background: var(--paper); }
+.qx-form .qx-pack input { width: 18px; height: 18px; padding: 0; margin: 2px 0 0; flex: none; accent-color: var(--night); }
+.qx-pack span { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+.qx-pack b { font: 600 17px/1.1 var(--cond); }
+.qx-pack small { font-size: 14px; line-height: 1.4; color: var(--steel); }
+.qx-form .qx-pack em { margin: 0; font: 600 20px/1 var(--cond); font-style: normal; color: var(--night); white-space: nowrap; }
+@media (max-width: 640px) { .qx-packs { grid-template-columns: 1fr; } }
