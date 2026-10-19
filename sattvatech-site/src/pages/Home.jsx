@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { APP, FARM, TEL, TEL_HREF, MAIL } from '../Chrome.jsx'
+import { APP, FARM, Phone, MAIL } from '../Chrome.jsx'
 import { Top, Foot } from '../Shell.jsx'
 import ContactForm from './ContactForm.jsx'
 import { TeamBuild } from '../Kit.jsx'
@@ -71,7 +71,7 @@ function Opening() {
             <div><dt>MA Construction Supervisor</dt><dd>CS-122574</dd></div>
             <div><dt>Home Improvement Contractor</dt><dd>HIC 218120</dd></div>
             <div><dt>Based in</dt><dd>Massachusetts</dd></div>
-            <div><dt>Call or text</dt><dd><a href={TEL_HREF}>{TEL}</a></dd></div>
+            <div><dt>Call or text</dt><dd><Phone /></dd></div>
             <div className="sx-dwg-no"><dt>Sheet</dt><dd>A-101</dd></div>
           </dl>
         </div>
@@ -251,7 +251,7 @@ const APPS = [
   { id: 'farmmetric', logo: '/brand/farmmetric-lockup.svg', name: 'Farmmetric', sub: 'Free farm app', text: 'The farm’s jobs, sprays, harvest and drying, logged from a phone, with the records kept as you go. Live API connectors are coming soon.',
     price: 'Free', small: 'Google Play soon', go: [FARM, 'Use it free'], more: ['/farmmetric', 'What it does'] },
   { id: 'quote', name: 'Quote service', sub: 'For contractors, small, medium and large', text: 'Send us the job. We send back a clear quote in your name, with every material, hour and step priced.',
-    price: 'First quote free', small: 'Then $25 a review, $100 a full write-up', go: [TEL_HREF, 'Call or text ' + TEL], more: ['/contractors', 'How it works'] },
+    price: 'First quote free', small: 'Then $25 a review, $100 a full write-up', go: ['/#talk', 'Call or text'], more: ['/contractors', 'How it works'] },
 ]
 
 function Go({ to, className, children }) {
@@ -401,7 +401,7 @@ export default function Home() {
             <div>
               <h2 id="h-talk">Talk about a project.</h2>
               <p>Tell us where it is, what it is, and when it needs to be done.</p>
-              <a className="sx-talk-tel" href={TEL_HREF}>{TEL}</a>
+              <Phone className="sx-talk-tel" label="Show phone number" />
               <a className="sx-talk-mail" href={'mailto:' + MAIL}>{MAIL}</a>
             </div>
             <div className="sx-form"><ContactForm topic="Home page" prompt="Where it is, what it is, and when it needs to be done" /></div>

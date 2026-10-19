@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Logo } from './brand.jsx'
-import { APP, FARM, TEL, TEL_HREF, MAIL } from './Chrome.jsx'
+import { APP, FARM, Phone, MAIL } from './Chrome.jsx'
 import './v3.css'
 
 /* The v3 top bar: the logo, the three lines of work, the phone and sign in.
@@ -31,7 +31,7 @@ export function Top({ here }) {
           {NAV.map(([id, name, href]) => <a key={id} href={href} aria-current={here === id ? 'true' : undefined} onClick={() => setOpen(false)}>{name}</a>)}
         </nav>
         <div className="sx-top-r">
-          <a className="sx-tel" href={TEL_HREF}>{TEL}</a>
+          <Phone className="sx-tel" />
           <Link className="sx-signin" to="/sign-in">Sign in</Link>
           <button type="button" className="sx-menu" aria-expanded={open} aria-label="Menu" onClick={() => setOpen(!open)}><i /><i /></button>
         </div>
@@ -63,7 +63,7 @@ export function Foot() {
         </nav>
         <div className="sx-foot-c">
           <h2>Contact</h2>
-          <a href={TEL_HREF}>{TEL}</a>
+          <Phone />
           <a href={'mailto:' + MAIL}>{MAIL}</a>
         </div>
       </div>

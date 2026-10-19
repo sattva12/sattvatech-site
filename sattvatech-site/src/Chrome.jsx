@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Logo } from './brand.jsx'
 import './site.css'
@@ -5,8 +6,16 @@ import './site.css'
 export const APP = 'https://app.samana.tech'
 export const SAMANA_SITE = 'https://samana.tech'
 export const FARM = 'https://www.myfarmmetric.com'
-export const TEL = '508-916-8447'
-export const TEL_HREF = 'tel:5089168447'
+/* The public phone (Atul, Oct 19, 13:04): (508) 343-0101, shown only when clicked, and never written in the page as
+   one string, so scrapers do not pick it up. Never the old number. */
+const PH = ['508', '343', '01', '01']
+export function Phone({ className = '', label = 'Show phone', sms = false }) {
+  const [on, setOn] = useState(false)
+  const plain = className.indexOf('sx-btn') < 0 ? ' sx-phone-plain' : ''
+  if (!on) return <button type="button" className={className + ' sx-phone' + plain} onClick={() => setOn(true)}>{label}</button>
+  const d = PH.join('')
+  return <a className={className + ' sx-phone' + plain} href={(sms ? 'sms:+1' : 'tel:+1') + d}>{'(' + PH[0] + ') ' + PH[1] + '-' + PH[2] + PH[3]}</a>
+}
 export const MAIL = 'info@sattvatech.com'
 
 /* The app's own top bar, used across the site: the name, the lines of work as tabs, sign in on the right. */
@@ -26,7 +35,7 @@ export function SiteHeader({ here, cta }) {
           : <Link key={t.id} to={t.href} aria-current={here === t.id ? 'true' : undefined}><b>{t.name}</b><small>{t.sub}</small></Link>)}
       </nav>
       <div className="st-right">
-        <a className="st-tel" href={TEL_HREF}>{TEL}</a>
+        <Phone className="st-tel" />
         <Link className="st-hbtn" to="/sign-in">Sign in</Link>
         {cta}
         <span className="st-motto">Sattva: making things work</span>
@@ -53,7 +62,7 @@ export function SiteFoot() {
           <Link to="/sign-in">Sign in</Link>
         </nav>
         <div className="st-foot-c">
-          <a href={TEL_HREF}>{TEL}</a>
+          <Phone />
           <a href={'mailto:' + MAIL}>{MAIL}</a>
           <span><a href={APP + '/privacy'}>Privacy</a> <a href={APP + '/terms'}>Terms</a></span>
         </div>

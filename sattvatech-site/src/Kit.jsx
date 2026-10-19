@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Top, Foot } from './Shell.jsx'
 import ContactForm from './pages/ContactForm.jsx'
-import { TEL, TEL_HREF, MAIL } from './Chrome.jsx'
+import { Phone, MAIL } from './Chrome.jsx'
 import './site.css'
 import './v3.css'
 
@@ -18,7 +18,7 @@ export function Go({ to, className, children }) {
 /* acts: [[href, label, kind]] where kind is 'go' (solid), 'line' (outline) or 'ink' */
 export function Acts({ acts, className = '' }) {
   if (!acts || !acts.length) return null
-  return <div className={'sx-acts ' + className}>{acts.map(([to, label, kind = 'line']) => <Go key={label} to={to} className={'sx-btn sx-btn-' + kind}>{label}</Go>)}</div>
+  return <div className={'sx-acts ' + className}>{acts.map(([to, label, kind = 'line']) => to === 'phone' ? <Phone key={label} label={label} className={'sx-btn sx-btn-' + kind} /> : <Go key={label} to={to} className={'sx-btn sx-btn-' + kind}>{label}</Go>)}</div>
 }
 
 export function Page({ here, title, children, className = '' }) {
@@ -115,7 +115,7 @@ export function Talk({ title = 'Talk about a project.', sub = 'Tell us where it 
         <div>
           <h2 id="talk-h">{title}</h2>
           <p>{sub}</p>
-          <a className="sx-talk-tel" href={TEL_HREF}>{TEL}</a>
+          <Phone className="sx-talk-tel" label="Show phone number" />
           <a className="sx-talk-mail" href={'mailto:' + MAIL}>{MAIL}</a>
         </div>
         <div className="sx-form"><ContactForm topic={topic} prompt={prompt} /></div>

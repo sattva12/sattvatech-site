@@ -485,3 +485,8 @@
 
 .sx-sheet-img { padding: 0; }
 .sx-sheet-img img { display: block; width: 100%; height: auto; }
+
+/* The phone shows on a click (Oct 19): a plain one looks like the link it replaces */
+.sx-phone-plain { background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+a.sx-phone-plain { text-decoration: none; }
+.sx-tel.sx-phone-plain, .st-tel.sx-phone-plain { text-decoration: none; }

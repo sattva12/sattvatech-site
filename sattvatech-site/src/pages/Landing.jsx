@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { Phone } from '../Chrome.jsx'
 
 const DIVISIONS = [
   {
@@ -163,7 +164,7 @@ export default function Landing() {
         <div style={{ background: CREAM2, borderTop: `1px solid ${BORDER}`, padding: '18px 2.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
           <span style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif' }}>© 2025 Sattva Technologies LLC · Seekonk, MA · SAM.gov Active · CAGE 19CM8</span>
           <div style={{ display: 'flex', gap: 20 }}>
-            <a href="tel:5089168447" style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif', textDecoration: 'none' }}>(508) 916-8447</a>
+            <span style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif' }}><Phone /></span>
             <a href="mailto:apatel@sattvatech.com" style={{ fontSize: 10, color: '#8a8278', fontFamily: 'sans-serif', textDecoration: 'none' }}>apatel@sattvatech.com</a>
           </div>
         </div>
