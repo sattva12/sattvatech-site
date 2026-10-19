@@ -490,3 +490,23 @@
 .sx-phone-plain { background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 a.sx-phone-plain { text-decoration: none; }
 .sx-tel.sx-phone-plain, .st-tel.sx-phone-plain { text-decoration: none; }
+
+/* Contractors privacy and terms (Oct 19) */
+.sx-legal-open { padding-top: 120px; padding-bottom: 40px; }
+.sx-legal-sec { padding-top: 48px; }
+.sx-legal-back { font-size: 14px; color: var(--fog); margin-bottom: 12px; }
+.sx-legal-back a { color: inherit; }
+.sx-open.sx-legal-open .sx-legal-h { font: 600 clamp(32px, 4vw, 52px)/1.05 var(--cond); color: var(--line); margin: 0; }
+.sx-legal { max-width: 46em; color: var(--ink); font-size: 16px; line-height: 1.6; }
+.sx-legal h2 { font: 600 22px/1.25 var(--cond); margin: 32px 0 10px; }
+.sx-legal h3 { font-size: 17px; margin: 22px 0 8px; }
+.sx-legal p, .sx-legal ul { margin: 0 0 14px; }
+.sx-legal ul { padding-left: 22px; }
+.sx-legal li { margin: 4px 0; }
+.sx-legal table { border-collapse: collapse; width: 100%; margin: 8px 0 18px; font-size: 15px; display: block; overflow-x: auto; }
+.sx-legal th, .sx-legal td { text-align: left; vertical-align: top; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--rule, #d3dadd); }
+.sx-legal a { color: inherit; text-underline-offset: 3px; }
+.sx-legal-other { margin-top: 32px; font-size: 15px; }
+.qx-legal { font-size: 14px; color: var(--steel); margin-top: 12px; }
+.qx-legal a { color: inherit; }
+.qx-legal-foot { padding-top: 18px; padding-bottom: 18px; }

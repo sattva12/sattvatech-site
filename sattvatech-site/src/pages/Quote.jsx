@@ -221,6 +221,7 @@ function Intake() {
       <div className="qx-send">
         <p className="qx-promise">We check the specifications so your quote is complete and your job is organized. We never see your customer or your prices unless you send them to us. Anything not marked required can be answered "not sure".</p>
         <button type="submit" disabled={status === 'sending'}>{status === 'sending' ? 'Sending' : 'Send the job'}</button>
+        <p className="qx-legal">By sending, you agree to our <a href="/contractors/terms">Contractors Terms</a> and <a href="/contractors/privacy">Privacy Policy</a>.</p>
         {status === 'error' && <p className="qx-err">That did not send. Call or text us (<Phone />), or email info@sattvatech.com.</p>}
       </div>
     </form>
@@ -286,6 +287,7 @@ export default function Quote() {
       </Sec>
 
       <End title="Rather talk it through?" acts={[['phone', 'Call or text', 'ink'], ['mailto:info@sattvatech.com?subject=Contractor%20quote', 'Email info@sattvatech.com']]}>If a job needs more than your license or your crew can cover this week, we will say so, and we can run it as the GC.</End>
+      <p className="sx-wrap qx-legal qx-legal-foot"><a href="/contractors/privacy">Contractors Privacy Policy</a> · <a href="/contractors/terms">Contractors Terms</a></p>
     </Page>
   )
 }

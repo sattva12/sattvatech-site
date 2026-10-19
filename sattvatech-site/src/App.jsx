@@ -13,6 +13,7 @@ import Apps from './pages/Apps.jsx'
 import Samana from './pages/Samana.jsx'
 import Quote from './pages/Quote.jsx'
 import Farmmetric from './pages/Farmmetric.jsx'
+import Legal from './pages/Legal.jsx'
 
 function Go({ to }) { if (typeof window !== 'undefined') window.location.replace(to); return null }
 
@@ -29,6 +30,8 @@ export default function App() {
       <Route path="/sign-in" element={<Apps />} />
       <Route path="/samana" element={<Samana />} />
       <Route path="/contractors" element={<Quote />} />
+      <Route path="/contractors/privacy" element={<Legal which="privacy" />} />
+      <Route path="/contractors/terms" element={<Legal which="terms" />} />
       <Route path="/quote" element={<ToContractors />} />
       <Route path="/handyman" element={<ToContractors />} />
       <Route path="/farmmetric" element={<Farmmetric />} />
