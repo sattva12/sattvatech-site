@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { Page, Hero, Sec, Steps, Prices, Spec, End } from '../Kit.jsx'
 import './quote.css'
 
-/* Emails here are samana.tech (the apps), never sattvatech.com (private corporate), Atul Oct 19 11:41.
+/* Emails here are sattvatech.com: this is GC work, not app work (Atul, Oct 19 11:45). Only the Samana sign-in is samana.tech.
    The handyman intake page (2026-10-19, Handyman email chat). The trifold's QR code opens it at /handyman,
    and /quote shows the same page. Our look on top (who we are, the service, the menu), the Contractor Quote
    Questionnaire at the bottom. "Join forces" means the handyman owns the job and we help; it is not joining
    our crew. Each submission goes to Formspree, which emails it on. Later it lands in Samana as a quote request. */
 
-const FORM = 'https://formspree.io/f/mvkzlyzy'
+const FORM = 'https://formspree.io/f/mbdpkqyj'
 const TEL = '508-916-8447'
 /* flip to true when a handyman can sign in to Samana and land on the quote request (Samana app chat) */
 const APP_READY = false
@@ -156,7 +156,7 @@ function Intake() {
   if (status === 'sent') return (
     <div className="qx-done" role="status">
       <h3>Got it. Your job number is {ref}.</h3>
-      <p>Now text the photos (at least 3, every area), your sketch and a voice note of up to 2 minutes to <a href="sms:5089168447">{TEL}</a>, or email them to <a href={'mailto:info@samana.tech?subject=' + ref}>info@samana.tech</a>, with {ref} in the message.</p>
+      <p>Now text the photos (at least 3, every area), your sketch and a voice note of up to 2 minutes to <a href="sms:5089168447">{TEL}</a>, or email them to <a href={'mailto:info@sattvatech.com?subject=' + ref}>info@sattvatech.com</a>, with {ref} in the message.</p>
       <p>We will be in touch within one business day, before your quote date.</p>
     </div>
   )
@@ -220,7 +220,7 @@ function Intake() {
       <div className="qx-send">
         <p className="qx-promise">We check the specifications so your quote is complete and your job is organized. We never see your customer or your prices unless you send them to us. Anything not marked required can be answered "not sure".</p>
         <button type="submit" disabled={status === 'sending'}>{status === 'sending' ? 'Sending' : 'Send the job'}</button>
-        {status === 'error' && <p className="qx-err">That did not send. Call or text {TEL}, or email info@samana.tech.</p>}
+        {status === 'error' && <p className="qx-err">That did not send. Call or text {TEL}, or email info@sattvatech.com.</p>}
       </div>
     </form>
   )
@@ -283,7 +283,7 @@ export default function Quote() {
         <Intake />
       </Sec>
 
-      <End title="Rather talk it through?" acts={[['tel:5089168447', 'Call or text ' + TEL, 'ink'], ['mailto:info@samana.tech?subject=Handyman%20quote', 'Email info@samana.tech']]}>If the job is past what a handyman should take on alone, we will say so, and we can run it as the GC.</End>
+      <End title="Rather talk it through?" acts={[['tel:5089168447', 'Call or text ' + TEL, 'ink'], ['mailto:info@sattvatech.com?subject=Handyman%20quote', 'Email info@sattvatech.com']]}>If the job is past what a handyman should take on alone, we will say so, and we can run it as the GC.</End>
     </Page>
   )
 }
