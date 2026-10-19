@@ -3,14 +3,15 @@ import { Page, Hero, Sec, Steps, Prices, Spec, End } from '../Kit.jsx'
 import './quote.css'
 
 /* Emails here are sattvatech.com: this is GC work, not app work (Atul, Oct 19 11:45). Only the Samana sign-in is samana.tech.
-   The handyman intake page (2026-10-19, Handyman email chat). The trifold's QR code opens it at /handyman,
-   and /quote shows the same page. Our look on top (who we are, the service, the menu), the Contractor Quote
-   Questionnaire at the bottom. "Join forces" means the handyman owns the job and we help; it is not joining
+   CQS, the contractor quoting system (internal name, Atul Oct 19 11:50; "conquo"): the contractor intake page (2026-10-19, Handyman email chat). The trifold's QR code opens it at /contractors;
+   /quote and /handyman show the same page. Atul, Oct 19 11:49: never say "handyman" to customers (it reads as
+   a put-down); say contractors, small, medium and large. Our look on top (who we are, the service, the menu), the Contractor Quote
+   Questionnaire at the bottom. "Join forces" means the contractor owns the job and we help; it is not joining
    our crew. Each submission goes to Formspree, which emails it on. Later it lands in Samana as a quote request. */
 
 const FORM = 'https://formspree.io/f/mbdpkqyj'
 const TEL = '508-916-8447'
-/* flip to true when a handyman can sign in to Samana and land on the quote request (Samana app chat) */
+/* flip to true when a contractor can sign in to Samana and land on the quote request (Samana app chat) */
 const APP_READY = false
 const APP_LOGIN = 'https://app.samana.tech/login'
 
@@ -140,7 +141,7 @@ function Job({ n, kind, onRemove }) {
 function Intake() {
   const [jobs, setJobs] = useState([])
   const [status, setStatus] = useState('')
-  const [ref] = useState(() => 'HQ-' + new Date().toISOString().slice(5, 10).replace('-', '') + '-' + Math.random().toString(36).slice(2, 6).toUpperCase())
+  const [ref] = useState(() => 'CQS-' + new Date().toISOString().slice(5, 10).replace('-', '') + '-' + Math.random().toString(36).slice(2, 6).toUpperCase())
   const add = (kind) => setJobs((j) => [...j, { kind, id: Date.now() + Math.random() }])
 
   async function send(e) {
@@ -163,8 +164,8 @@ function Intake() {
 
   return (
     <form className="qx-form" onSubmit={send}>
-      <input type="hidden" name="_subject" value={'Handyman quote request ' + ref} />
-      <input type="hidden" name="topic" value="Handyman quote request" />
+      <input type="hidden" name="_subject" value={'Contractor quote request ' + ref} />
+      <input type="hidden" name="topic" value="Contractor quote request" />
       <input type="hidden" name="Job number" value={ref} />
       <input type="text" name="_gotcha" className="qx-trap" tabIndex="-1" autoComplete="off" aria-hidden="true" />
 
@@ -228,13 +229,13 @@ function Intake() {
 
 export default function Quote() {
   return (
-    <Page here="construction" title="Quotes for handymen and small crews: Sattva Technologies">
-      <Hero c="construction" kicker="For Massachusetts handymen and small crews" title="Quote more. Win more jobs."
+    <Page here="construction" title="Quotes for contractors: Sattva Technologies">
+      <Hero c="construction" kicker="For Massachusetts contractors, small, medium and large" title="Quote more. Win more jobs."
         lede="Send us the job. We draw it, measure it and price every material and step, and it goes out in your name at your rates. Your first quote is free."
         acts={[['#form', 'Send us a job', 'go'], ['tel:5089168447', 'Call or text ' + TEL]]}
         tb={[['First quote', 'Free'], ['In your name', 'Your logo on top'], ['Your customer', 'Stays yours'], ['Licensed', 'MA CSL CS-122574 · HIC 218120']]} />
 
-      <Sec id="who" title="Who we are." sub="Sattva Technologies is a licensed Massachusetts builder. We run our own jobs with Samana, the software we built to draw, price and organize construction work, and we put it to work for crews like yours.">
+      <Sec id="who" title="Who we are." sub="Sattva Technologies is a licensed Massachusetts builder. We run our own jobs with Samana, the software we built to draw, price and organize construction work, and we put it to work for contractors of every size, from a one-person outfit to a full company.">
         <div className="sx-two">
           <div>
             <h3 className="sx-h3">Join forces</h3>
@@ -277,13 +278,13 @@ export default function Quote() {
           <div>
             <b>Rather use paper?</b>
             <p>Print the questionnaire, fill it out on site, then text us a photo of each page.</p>
-            <a className="qx-way-go" href="/handyman-questionnaire.pdf">Print the questionnaire (PDF)</a>
+            <a className="qx-way-go" href="/contractor-questionnaire.pdf">Print the questionnaire (PDF)</a>
           </div>
         </div>
         <Intake />
       </Sec>
 
-      <End title="Rather talk it through?" acts={[['tel:5089168447', 'Call or text ' + TEL, 'ink'], ['mailto:info@sattvatech.com?subject=Handyman%20quote', 'Email info@sattvatech.com']]}>If the job is past what a handyman should take on alone, we will say so, and we can run it as the GC.</End>
+      <End title="Rather talk it through?" acts={[['tel:5089168447', 'Call or text ' + TEL, 'ink'], ['mailto:info@sattvatech.com?subject=Contractor%20quote', 'Email info@sattvatech.com']]}>If a job needs more than your license or your crew can cover this week, we will say so, and we can run it as the GC.</End>
     </Page>
   )
 }
