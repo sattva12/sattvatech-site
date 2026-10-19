@@ -10,7 +10,7 @@ import './quote.css'
    our crew. Each submission goes to Formspree, which emails it on. Later it lands in Samana as a quote request. */
 
 const FORM = 'https://formspree.io/f/mbdpkqyj'
-const TEL = '508-916-8447'
+const TEL = '(508) 343-0101'
 /* flip to true when a contractor can sign in to Samana and land on the quote request (Samana app chat) */
 const APP_READY = false
 const APP_LOGIN = 'https://app.samana.tech/login'
@@ -157,7 +157,7 @@ function Intake() {
   if (status === 'sent') return (
     <div className="qx-done" role="status">
       <h3>Got it. Your job number is {ref}.</h3>
-      <p>Now text the photos (at least 3, every area), your sketch and a voice note of up to 2 minutes to <a href="sms:5089168447">{TEL}</a>, or email them to <a href={'mailto:info@sattvatech.com?subject=' + ref}>info@sattvatech.com</a>, with {ref} in the message.</p>
+      <p>Now text the photos (at least 3, every area), your sketch and a voice note of up to 2 minutes to <a href="sms:5083430101">{TEL}</a>, or email them to <a href={'mailto:info@sattvatech.com?subject=' + ref}>info@sattvatech.com</a>, with {ref} in the message.</p>
       <p>We will be in touch within one business day, before your quote date.</p>
     </div>
   )
@@ -232,7 +232,7 @@ export default function Quote() {
     <Page here="construction" title="Quotes for contractors: Sattva Technologies">
       <Hero c="construction" kicker="For Massachusetts contractors, small, medium and large" title="Quote more. Win more jobs."
         lede="Send us the job. We draw it, measure it and price every material and step, and it goes out in your name at your rates. Your first quote is free."
-        acts={[['#form', 'Send us a job', 'go'], ['tel:5089168447', 'Call or text ' + TEL]]}
+        acts={[['#form', 'Send us a job', 'go'], ['tel:5083430101', 'Call or text ' + TEL]]}
         tb={[['First quote', 'Free'], ['In your name', 'Your logo on top'], ['Your customer', 'Stays yours'], ['Licensed', 'MA CSL CS-122574 · HIC 218120']]} />
 
       <Sec id="who" title="Who we are." sub="Sattva Technologies is a licensed Massachusetts builder. We run our own jobs with Samana, the software we built to draw, price and organize construction work, and we put it to work for contractors of every size, from a one-person outfit to a full company.">
@@ -284,7 +284,7 @@ export default function Quote() {
         <Intake />
       </Sec>
 
-      <End title="Rather talk it through?" acts={[['tel:5089168447', 'Call or text ' + TEL, 'ink'], ['mailto:info@sattvatech.com?subject=Contractor%20quote', 'Email info@sattvatech.com']]}>If a job needs more than your license or your crew can cover this week, we will say so, and we can run it as the GC.</End>
+      <End title="Rather talk it through?" acts={[['tel:5083430101', 'Call or text ' + TEL, 'ink'], ['mailto:info@sattvatech.com?subject=Contractor%20quote', 'Email info@sattvatech.com']]}>If a job needs more than your license or your crew can cover this week, we will say so, and we can run it as the GC.</End>
     </Page>
   )
 }

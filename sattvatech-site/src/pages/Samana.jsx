@@ -80,7 +80,7 @@ function Clip({ name, label }) {
 
 export function SamanaNav({ here }) {
   /* the company first: two divisions, the containers, the quote service; the apps live under their divisions and sign in from one place */
-  const cta = here === 'quote' ? <a className="sm-btn go" href="tel:5089168447">Call or text</a>
+  const cta = here === 'quote' ? <a className="sm-btn go" href="tel:5083430101">Call or text</a>
     : here === 'samana' ? <a className="sm-btn go" href={APP}>Start free</a>
     : here === 'farmmetric' ? <a className="sm-btn go" href={FARM}>Use it free</a>
     : (here === 'ag' || here === 'construction' || here === 'containers') ? <a className="sm-btn go" href="#talk">Talk to us</a> : null
