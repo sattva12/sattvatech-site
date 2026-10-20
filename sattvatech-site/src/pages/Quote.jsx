@@ -16,13 +16,31 @@ const APP_READY = false
 const APP_LOGIN = 'https://app.samana.tech/login'
 
 /* the kinds of work, and the questions each one asks: [label, type, options, required] */
+/* CQS pay and book (Stripe chat, Oct 20; Atul approved the layout 11:16). HIDDEN until Atul says go:
+   CQS_PAY = true shows the new menu in part 4 and, after sending, the Pay and Book panel. Nothing else changes. */
+const CQS_PAY = false
+const PAY_LINK = {
+  50: 'https://buy.stripe.com/9B6eV6bfK17b9HX6Xt8g007',
+  100: 'https://buy.stripe.com/14A8wI3NibLPdYd81x8g008',
+  150: 'https://buy.stripe.com/dRm00c2Je9DH5rHa9F8g009',
+}
+const BOOK = 'https://calendly.com/apatel-sattvatech/1-hr-quote-discussion'   /* ?a1= fills "Quote request ID" (question 1) */
+/* the new menu (Atul, Oct 20, 10:29; the call is in every tier): [value, title, what, price, tier $] */
+const PACKS_PAY = [
+  ['First quote (free)', 'First quote', 'Your first job, quoted, with a 1\u2011hour call.', 'Free', 0],
+  ['First job materials list + work order ($50)', 'Materials list + work order', 'For your first job: the detailed materials list and the work order, with a 1\u2011hour call.', '$50', 50],
+  ['Later quote ($100)', 'Later quote', 'A clear quote for your customer, in your name, with a 1\u2011hour call.', '$100', 100],
+  ['Full package ($150)', 'Full package', 'The quote, the materials list and the work order, with a 1\u2011hour call.', '$150', 150],
+  ['GC service (estimate)', 'GC service', 'We run the job with you: permits, supervision, project management. Massachusetts.', 'Estimate', null],
+]
 /* what they want back, the same menu as the flyer: [value, title, what, price] */
-const PACKS = [
+const PACKS_OLD = [
   ['First quote (free)', 'First quote', 'Your first job, quoted. Free.', 'Free'],
   ['The quote ($25)', 'The quote', 'A clear quote for your customer, in your name.', '$25'],
   ['The full package ($100)', 'The full package', 'The quote, the materials list and the work order, plus a 1\u2011hour call with our GC.', '$100'],
   ['GC service (estimate)', 'GC service', 'We run the job with you: permits, supervision, project management. Massachusetts.', 'Estimate'],
 ]
+const PACKS = CQS_PAY ? PACKS_PAY : PACKS_OLD
 const FLOORS = ['Basement', '1st floor', '2nd floor', '3rd floor', 'Garage', 'Attic']
 const YN = ['Yes', 'No', 'Not sure']
 const KINDS = {
@@ -138,9 +156,26 @@ function Job({ n, kind, onRemove }) {
   )
 }
 
+/* after sending: pay for the tier chosen (if any) and book the included hour, both carrying the job number */
+function PayBook({ jobNo, pack }) {
+  const tier = pack ? pack[4] : 0
+  const link = tier && PAY_LINK[tier]
+  return (
+    <div className="qx-paybook">
+      <h4>{link ? 'Next: pay, then book your call' : 'Next: book your included 1\u2011hour call'}</h4>
+      <div className="qx-pb-acts">
+        {link && <a className="qx-pb-pay" href={link + '?client_reference_id=' + encodeURIComponent(jobNo)} target="_blank" rel="noopener">Pay {pack[3]}</a>}
+        <a className="qx-pb-book" href={BOOK + '?a1=' + encodeURIComponent(jobNo)} target="_blank" rel="noopener">Book your included 1-hour call</a>
+      </div>
+      <p className="qx-pb-note">{link ? <>Nothing paid is released until your payment shows. If the card fails or you close the page, use the Pay button again, or text <Phone sms label="our phone (tap to show)" />. Keep this page open to book your call after paying; the payment page cannot bring you back here.</> : <>Your job number {jobNo} is already filled in on the booking page.</>}</p>
+    </div>
+  )
+}
+
 function Intake() {
   const [jobs, setJobs] = useState([])
   const [status, setStatus] = useState('')
+  const [pack, setPack] = useState(null)
   const [ref] = useState(() => 'CQS-' + new Date().toISOString().slice(5, 10).replace('-', '') + '-' + Math.random().toString(36).slice(2, 6).toUpperCase())
   const add = (kind) => setJobs((j) => [...j, { kind, id: Date.now() + Math.random() }])
 
@@ -148,6 +183,8 @@ function Intake() {
     e.preventDefault()
     if (!jobs.length) { setStatus('pick'); return }
     setStatus('sending')
+    const chosen = PACKS.find((p) => p[0] === new FormData(e.target).get('Package'))
+    setPack(chosen || null)
     try {
       const res = await fetch(FORM, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(e.target) })
       if (res.ok) { setStatus('sent'); window.scrollTo({ top: document.getElementById('form').offsetTop - 40 }) } else setStatus('error')
@@ -159,6 +196,7 @@ function Intake() {
       <h3>Got it. Your job number is {ref}.</h3>
       <p>Now text the photos (at least 3, every area), your sketch and a voice note of up to 2 minutes to <Phone sms label="our phone (tap to show)" />, or email them to <a href={'mailto:info@sattvatech.com?subject=' + ref}>info@sattvatech.com</a>, with {ref} in the message.</p>
       <p>We will be in touch within one business day, before your quote date.</p>
+      {CQS_PAY && <PayBook jobNo={ref} pack={pack} />}
     </div>
   )
 
@@ -215,7 +253,7 @@ function Intake() {
             </label>
           ))}
         </div>
-        <p className="qx-p" style={{ marginTop: 14 }}>Your first quote is free. After that you pay when the quote is sent back to you; nothing is charged on this form.</p>
+        <p className="qx-p" style={{ marginTop: 14 }}>{CQS_PAY ? 'Your first quote is free. For a paid choice, you pay right after sending, on the next screen; nothing is released until the payment shows.' : 'Your first quote is free. After that you pay when the quote is sent back to you; nothing is charged on this form.'}</p>
       </section>
 
       <div className="qx-send">

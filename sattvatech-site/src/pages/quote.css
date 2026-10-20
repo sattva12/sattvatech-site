@@ -45,3 +45,12 @@
 .qx-pack small { font-size: 14px; line-height: 1.4; color: var(--steel); }
 .qx-form .qx-pack em { margin: 0; font: 600 20px/1 var(--cond); font-style: normal; color: var(--night); white-space: nowrap; }
 @media (max-width: 640px) { .qx-packs { grid-template-columns: 1fr; } }
+
+/* CQS pay and book panel (hidden until CQS_PAY) */
+.qx-paybook { margin-top: 22px; padding: 20px 22px; border: 1px solid var(--rule, #d3dadd); border-left: 3px solid var(--c-construction, #3d7fd0); background: #fff; }
+.qx-paybook h4 { margin: 0 0 12px; font-size: 18px; }
+.qx-pb-acts { display: flex; flex-wrap: wrap; gap: 12px; }
+.qx-pb-acts a { display: inline-block; padding: 12px 20px; font-weight: 600; text-decoration: none; border: 1px solid var(--night, #0d2747); }
+.qx-pb-pay { background: var(--night, #0d2747); color: #fff; }
+.qx-pb-book { background: transparent; color: var(--night, #0d2747); }
+.qx-pb-note { margin: 12px 0 0; font-size: 14px; color: var(--steel, #5a6876); }
