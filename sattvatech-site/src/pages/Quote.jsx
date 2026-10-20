@@ -152,7 +152,7 @@ function Job({ n, kind, onRemove }) {
 /* after sending: pay for the tier chosen (if any) and book the included hour, both carrying the job number */
 function PayBook({ jobNo, pack }) {
   const tier = pack ? pack[4] : 0
-  const link = tier && PAY_LINK[tier]
+  const link = tier ? PAY_LINK[tier] : null
   return (
     <div className="qx-paybook">
       <h4>{link ? 'Next: pay, then book your call' : 'Next: book your included 1\u2011hour call'}</h4>
