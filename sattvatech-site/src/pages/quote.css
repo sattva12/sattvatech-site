@@ -54,3 +54,11 @@
 .qx-pb-pay { background: var(--night, #0d2747); color: #fff; }
 .qx-pb-book { background: transparent; color: var(--night, #0d2747); }
 .qx-pb-note { margin: 12px 0 0; font-size: 14px; color: var(--steel, #5a6876); }
+
+/* What you get: the sample quote (Oct 20) */
+.cq-sample-fig { margin: 0; }
+.cq-sample-fig a { display: block; }
+.cq-sample-fig img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid #d5dce3; border-radius: 4px; box-shadow: 0 24px 48px -28px rgba(13, 39, 71, .45); }
+.cq-sample-fig figcaption { margin-top: 12px; font-size: 15px; line-height: 1.5; color: var(--steel, #566676); }
+.cq-sample-fig figcaption b { color: var(--ink, #0f1a25); font-weight: 600; }
+.cq-sample-more { margin: 24px 0 0; font-size: 16px; }

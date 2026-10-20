@@ -287,9 +287,23 @@ export default function Quote() {
         <Steps steps={[
           ['Fill out the short form', 'The job, the sizes and what the customer wants. Then text us the photos.'],
           ['We draw and measure', 'Every material, labor hour and step, checked against the specifications.'],
-          ['You set your rates', 'Your labor rates and your markup. We never see your prices unless you send them.'],
+          ['You set your rates', 'Your labor rates and your markup. You check the quote before it goes out.'],
           ['It goes out as yours', 'Your name and logo on top. You stay in front of your customer.'],
         ]} />
+      </Sec>
+
+      <Sec id="sample" title="What you get." sub="A real quote we wrote for a basement finish, with the address and every price blocked out. Yours goes out with your name, your logo and your prices.">
+        <div className="sx-two cq-sample">
+          <figure className="cq-sample-fig">
+            <a href="/sample-quote-basement.pdf" target="_blank" rel="noopener"><img src="/media/sample-quote-1.jpg" alt="Page 1 of a sample quote: the company header, a floor plan of a finished basement with two bedrooms, a bath and a living area, and the start of the work included" width="935" height="1210" loading="lazy" /></a>
+            <figcaption><b>The drawing and the work.</b> A floor plan your customer can read, then every trade in plain words.</figcaption>
+          </figure>
+          <figure className="cq-sample-fig">
+            <a href="/sample-quote-basement.pdf" target="_blank" rel="noopener"><img src="/media/sample-quote-2.jpg" alt="Page 3 of a sample quote: material allowances, add-on options and the payment schedule, with the prices blocked out" width="935" height="1210" loading="lazy" /></a>
+            <figcaption><b>Choices and payments.</b> Allowances, add-on options and a payment schedule tied to the work.</figcaption>
+          </figure>
+        </div>
+        <p className="cq-sample-more"><a href="/sample-quote-basement.pdf" target="_blank" rel="noopener">See the whole sample quote (PDF, 4 pages)</a>. The full package adds the materials list and the work order for your crew.</p>
       </Sec>
 
       <Sec id="menu" title="Pick what you need.">
