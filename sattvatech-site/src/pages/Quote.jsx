@@ -18,7 +18,7 @@ const APP_LOGIN = 'https://app.samana.tech/login'
 /* the kinds of work, and the questions each one asks: [label, type, options, required] */
 /* CQS pay and book (Stripe chat, Oct 20; Atul approved the layout 11:16). HIDDEN until Atul says go:
    CQS_PAY = true shows the new menu in part 4 and, after sending, the Pay and Book panel. Nothing else changes. */
-const CQS_PAY = false
+const CQS_PAY = true   /* live Oct 20, 13:17 (Atul) */
 const PAY_LINK = {
   50: 'https://buy.stripe.com/9B6eV6bfK17b9HX6Xt8g007',
   100: 'https://buy.stripe.com/14A8wI3NibLPdYd81x8g008',
@@ -33,14 +33,7 @@ const PACKS_PAY = [
   ['Full package ($150)', 'Full package', 'The quote, the materials list and the work order, with a 1\u2011hour call.', '$150', 150],
   ['GC service (estimate)', 'GC service', 'We run the job with you: permits, supervision, project management. Massachusetts.', 'Estimate', null],
 ]
-/* what they want back, the same menu as the flyer: [value, title, what, price] */
-const PACKS_OLD = [
-  ['First quote (free)', 'First quote', 'Your first job, quoted. Free.', 'Free'],
-  ['The quote ($25)', 'The quote', 'A clear quote for your customer, in your name.', '$25'],
-  ['The full package ($100)', 'The full package', 'The quote, the materials list and the work order, plus a 1\u2011hour call with our GC.', '$100'],
-  ['GC service (estimate)', 'GC service', 'We run the job with you: permits, supervision, project management. Massachusetts.', 'Estimate'],
-]
-const PACKS = CQS_PAY ? PACKS_PAY : PACKS_OLD
+const PACKS = PACKS_PAY
 const FLOORS = ['Basement', '1st floor', '2nd floor', '3rd floor', 'Garage', 'Attic']
 const YN = ['Yes', 'No', 'Not sure']
 const KINDS = {
@@ -301,11 +294,12 @@ export default function Quote() {
 
       <Sec id="menu" title="Pick what you need.">
         <Prices rows={[
-          ['First quote', 'Your first job, quoted, to see how it works', 'Free'],
-          ['The quote', 'A clear quote for your customer, in your name', '$25', 'a job'],
-          ['The full package', 'The quote, the materials list and the work order, with a 1-hour call', '$100', 'a job'],
+          ['First quote', 'Your first job, quoted, with a 1-hour call', 'Free'],
+          ['Materials list + work order', 'For your first job: the detailed materials list and the work order, with a 1-hour call', '$50'],
+          ['Later quote', 'A clear quote for your customer, in your name, with a 1-hour call', '$100', 'a job'],
+          ['Full package', 'The quote, the materials list and the work order, with a 1-hour call', '$150', 'a job'],
           ['GC service', 'Permits, supervision and project management, Massachusetts only', 'Estimate'],
-        ]} foot="You pay when the quote is sent back to you." />
+        ]} foot="Paid services are paid before we start, through Stripe, right after you send the job. No subscription." />
       </Sec>
 
       <Sec id="form" tone="alt" title="Send us a job." sub="About ten minutes. Never the customer's name, address or budget, and never your prices.">

@@ -251,7 +251,7 @@ const APPS = [
   { id: 'farmmetric', logo: '/brand/farmmetric-lockup.svg', name: 'Farmmetric', sub: 'Free farm app', text: 'The farm’s jobs, sprays, harvest and drying, logged from a phone, with the records kept as you go. Live API connectors are coming soon.',
     price: 'Free', small: 'Google Play soon', go: [FARM, 'Use it free'], more: ['/farmmetric', 'What it does'] },
   { id: 'quote', name: 'Quote service', sub: 'For contractors, small, medium and large', text: 'Send us the job. We send back a clear quote in your name, with every material, hour and step priced.',
-    price: 'First quote free', small: 'Then $25 a review, $100 a full write-up', go: ['/#talk', 'Call or text'], more: ['/contractors', 'How it works'] },
+    price: 'First quote free', small: 'Then $100 a quote, $150 the full package', go: ['/#talk', 'Call or text'], more: ['/contractors', 'How it works'] },
 ]
 
 function Go({ to, className, children }) {
