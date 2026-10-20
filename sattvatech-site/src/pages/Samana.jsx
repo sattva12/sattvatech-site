@@ -199,11 +199,13 @@ export default function Samana() {
             ['Lean', 'Everything: Lean, Takeoff, Flow and the portals; one business unit, 5 people besides the owner, no job limit', '$30', 'a month'],
           ]} foot="On Lean, $5 a month each extra person and $20 a month each extra business unit, with 5 more people. Flow comes with Takeoff and Lean. The owner is never counted. Buying is inside the app: sign in, or start free, then pick the plan in Settings. You pay by card through Stripe and can cancel any time."
             acts={[[APP, 'Start free', 'ink'], [APP + '/settings', 'Buy a plan']]} />
-          <Prices title="Reviewed by a licensed GC" sub="Our time, on top of a plan." rows={[
-            ['Review', 'A construction supervisor checks the job before it goes out', '$25', 'a job'],
-            ['Full job write-up', 'Proposal, drawings, materials list and a work order for your crew', '$100', 'a job'],
+          <Prices title="Quotes from a licensed GC" sub="By the job, with or without a plan. Each comes with a 1-hour call." rows={[
+            ['First quote', 'Your first job, quoted', 'Free'],
+            ['Materials list + work order', 'For your first job: the detailed materials list and the work order', '$50'],
+            ['Later quote', 'A clear quote for your customer, in your name', '$100', 'a job'],
+            ['Full package', 'The quote, the materials list and the work order', '$150', 'a job'],
             ['GC service', 'Permits, supervision and project management, Massachusetts only', 'Estimate'],
-          ]} />
+          ]} acts={[['/contractors', 'Send us a job']]} />
         </div>
         <p className="sx-note">Commercial work, three-families and anything beyond an unrestricted construction supervisor license always get a review. Every number is a recommendation the contractor checks; the work order says where it came from.</p>
       </Sec>
