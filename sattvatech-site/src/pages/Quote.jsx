@@ -295,7 +295,7 @@ export default function Quote() {
   return (
     <Page here="construction" title="Quotes for contractors: Sattva Technologies">
       <Hero c="construction" kicker="For contractors anywhere, small, medium and large" title="Quote more. Win more jobs."
-        lede="Send us the job. We draw it, measure it and price every material and step, and it goes out in your name at your rates. Your first quote is free."
+        lede="We take the quoting off your plate, so your nights go back to you. Send us the job: we draw it, measure it and price every material and step, and it goes out in your name at your rates. Your first quote is free."
         acts={[['#form', 'Send us a job', 'go'], ['phone', 'Call or text']]}
         aside={<div className="sx-sheet"><div className="sx-sheet-dw sx-sheet-img"><img src="/media/customer.jpg" alt="A sample quote: the drawing beside every line, priced, with the total" width="1280" height="800" /></div><div className="sx-sheet-tb"><b>A quote, as your customer sees it</b><span>Drawn</span><span>Every line priced</span></div></div>}
         tb={[['First quote', 'Free'], ['In your name', 'Your logo on top'], ['Your customer', 'Stays yours'], ['Licensed', 'MA CSL CS-122574 · HIC 218120']]} />
