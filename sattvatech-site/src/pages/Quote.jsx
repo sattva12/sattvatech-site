@@ -149,19 +149,51 @@ function Job({ n, kind, onRemove }) {
   )
 }
 
-/* after sending: pay for the tier chosen (if any) and book the included hour, both carrying the job number */
+/* after sending: a paid choice shows only Pay; the booking button comes after payment (Atul, Oct 20, 17:18: "it lets you book your included call without paying").
+   Stripe's Payment Links send the payer back to /contractors/paid (set in Stripe, "After payment: redirect"); the job number rides along in this browser. */
+const PAID_KEY = 'cqs-last-job'
+function remember(jobNo, tier) { try { localStorage.setItem(PAID_KEY, JSON.stringify({ jobNo, tier, at: Date.now() })) } catch (e) { /* storage off: the booking page asks for the number */ } }
 function PayBook({ jobNo, pack }) {
   const tier = pack ? pack[4] : 0
   const link = tier ? PAY_LINK[tier] : null
+  if (link) return (
+    <div className="qx-paybook">
+      <h4>Next: pay, then we book your call</h4>
+      <div className="qx-pb-acts">
+        <a className="qx-pb-pay" href={link + '?client_reference_id=' + encodeURIComponent(jobNo)} target="_blank" rel="noopener" onClick={() => remember(jobNo, tier)}>Pay {pack[3]}</a>
+      </div>
+      <p className="qx-pb-note">After you pay, the payment page sends you to book your included 1-hour call. If it doesn't, we send you the booking link as soon as your payment shows. If the card fails or you close the page, use the Pay button again, or text <Phone sms label="our phone (tap to show)" />. Nothing paid is released until your payment shows.</p>
+    </div>
+  )
   return (
     <div className="qx-paybook">
-      <h4>{link ? 'Next: pay, then book your call' : 'Next: book your included 1\u2011hour call'}</h4>
+      <h4>Next: book your included 1{'\u2011'}hour call</h4>
       <div className="qx-pb-acts">
-        {link && <a className="qx-pb-pay" href={link + '?client_reference_id=' + encodeURIComponent(jobNo)} target="_blank" rel="noopener">Pay {pack[3]}</a>}
         <a className="qx-pb-book" href={BOOK + '?a1=' + encodeURIComponent(jobNo)} target="_blank" rel="noopener">Book your included 1-hour call</a>
       </div>
-      <p className="qx-pb-note">{link ? <>Nothing paid is released until your payment shows. If the card fails or you close the page, use the Pay button again, or text <Phone sms label="our phone (tap to show)" />. Keep this page open to book your call after paying; the payment page cannot bring you back here.</> : <>Your job number {jobNo} is already filled in on the booking page.</>}</p>
+      <p className="qx-pb-note">Your job number {jobNo} is already filled in on the booking page.</p>
     </div>
+  )
+}
+
+/* /contractors/paid: where Stripe sends a payer back */
+export function Paid() {
+  let saved = null
+  try { saved = JSON.parse(localStorage.getItem(PAID_KEY) || 'null') } catch (e) { saved = null }
+  const jobNo = saved && saved.jobNo ? saved.jobNo : ''
+  return (
+    <Page here="construction" title="Thank you: book your call, Sattva Technologies">
+      <Hero c="construction" kicker={jobNo ? 'Payment received · ' + jobNo : 'Payment received'} title="Thank you. Now book your call."
+        lede={jobNo ? 'Your job number is already filled in on the booking page.' : 'Have your job number (CQS-...) ready; the booking page asks for it.'} />
+      <Sec id="paid" title="Your included 1-hour call.">
+        <div className="qx-paybook">
+          <div className="qx-pb-acts">
+            <a className="qx-pb-book" href={BOOK + (jobNo ? '?a1=' + encodeURIComponent(jobNo) : '')} target="_blank" rel="noopener">Book your included 1-hour call</a>
+          </div>
+          <p className="qx-pb-note">Stripe emails your receipt. Questions: text <Phone sms label="our phone (tap to show)" /> or email info@sattvatech.com with your job number.</p>
+        </div>
+      </Sec>
+    </Page>
   )
 }
 
@@ -188,7 +220,7 @@ function Intake() {
     <div className="qx-done" role="status">
       <h3>Got it. Your job number is {ref}.</h3>
       <p>Now text the photos (at least 3, every area), your sketch and a voice note of up to 2 minutes to <Phone sms label="our phone (tap to show)" />, or email them to <a href={'mailto:info@sattvatech.com?subject=' + ref}>info@sattvatech.com</a>, with {ref} in the message.</p>
-      <p>We will be in touch within one business day, before your quote date.</p>
+      <p>We will be in touch by text or email to confirm your call.</p>
       {CQS_PAY && <PayBook jobNo={ref} pack={pack} />}
     </div>
   )
