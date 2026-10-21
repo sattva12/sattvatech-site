@@ -152,7 +152,17 @@ function Job({ n, kind, onRemove }) {
 /* after sending: a paid choice shows only Pay; the booking button comes after payment (Atul, Oct 20, 17:18: "it lets you book your included call without paying").
    Stripe's Payment Links send the payer back to /contractors/paid (set in Stripe, "After payment: redirect"); the job number rides along in this browser. */
 const PAID_KEY = 'cqs-last-job'
-function remember(jobNo, tier) { try { localStorage.setItem(PAID_KEY, JSON.stringify({ jobNo, tier, at: Date.now() })) } catch (e) { /* storage off: the booking page asks for the number */ } }
+function remember(jobNo, tier) {
+  const v = JSON.stringify({ jobNo, tier, at: Date.now() })
+  try { sessionStorage.setItem(PAID_KEY, v) } catch (e) { /* storage off */ }
+  try { localStorage.setItem(PAID_KEY, v) } catch (e) { /* storage off: the thank-you page asks for the number */ }
+}
+function recall() {
+  for (const st of ['sessionStorage', 'localStorage']) {
+    try { const v = JSON.parse(window[st].getItem(PAID_KEY) || 'null'); if (v && v.jobNo) return v } catch (e) { /* try the next */ }
+  }
+  return null
+}
 function PayBook({ jobNo, pack }) {
   const tier = pack ? pack[4] : 0
   const link = tier ? PAY_LINK[tier] : null
@@ -178,14 +188,13 @@ function PayBook({ jobNo, pack }) {
 
 /* /contractors/paid: where Stripe sends a payer back. Anyone can open it, so it never says the payment was checked. */
 export function Paid() {
-  let saved = null
-  try { saved = JSON.parse(localStorage.getItem(PAID_KEY) || 'null') } catch (e) { saved = null }
+  const saved = recall()
   const [typed, setTyped] = useState('')
   const jobNo = saved && saved.jobNo ? saved.jobNo : typed.trim().toUpperCase()
   return (
     <Page here="construction" title="Thank you: book your call, Sattva Technologies">
-      <Hero c="construction" kicker={saved && saved.jobNo ? 'Thank you · ' + saved.jobNo : 'Thank you'} title="Now book your included call."
-        lede="Thanks for your payment. Book your 1-hour call below. Nothing paid is released until your payment shows on our side." />
+      <Hero c="construction" kicker={saved && saved.jobNo ? 'Job ' + saved.jobNo : 'Contractor quotes'} title="Thank you, your payment went through."
+        lede="Book your included 1-hour call below. Nothing paid is released until the payment shows in Stripe." />
       <Sec id="paid" title="Your included 1-hour call.">
         <div className="qx-paybook">
           {!(saved && saved.jobNo) && (
@@ -197,7 +206,7 @@ export function Paid() {
           <div className="qx-pb-acts">
             <a className="qx-pb-book" href={BOOK + (jobNo ? '?a1=' + encodeURIComponent(jobNo) : '')} target="_blank" rel="noopener">Book your included 1-hour call</a>
           </div>
-          <p className="qx-pb-note">Stripe emails your receipt. Lost your request number, or questions? Text <Phone sms label="our phone (tap to show)" /> or email info@sattvatech.com.</p>
+          <p className="qx-pb-note">{saved && saved.jobNo ? 'Your job number is already filled in on the booking page. ' : ''}Or text <Phone sms label="our phone (tap to show)" /> with your request number. Stripe emails your receipt; questions to info@sattvatech.com.</p>
         </div>
       </Sec>
     </Page>

@@ -31,6 +31,8 @@ export default function App() {
       <Route path="/samana" element={<Samana />} />
       <Route path="/contractors" element={<Quote />} />
       <Route path="/contractors/paid" element={<Paid />} />
+      <Route path="/contractors/thanks" element={<Paid />} />
+      <Route path="/thanks" element={<Paid />} />
       <Route path="/contractors/privacy" element={<Legal which="privacy" />} />
       <Route path="/contractors/terms" element={<Legal which="terms" />} />
       <Route path="/quote" element={<ToContractors />} />
