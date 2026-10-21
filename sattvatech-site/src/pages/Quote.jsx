@@ -176,21 +176,28 @@ function PayBook({ jobNo, pack }) {
   )
 }
 
-/* /contractors/paid: where Stripe sends a payer back */
+/* /contractors/paid: where Stripe sends a payer back. Anyone can open it, so it never says the payment was checked. */
 export function Paid() {
   let saved = null
   try { saved = JSON.parse(localStorage.getItem(PAID_KEY) || 'null') } catch (e) { saved = null }
-  const jobNo = saved && saved.jobNo ? saved.jobNo : ''
+  const [typed, setTyped] = useState('')
+  const jobNo = saved && saved.jobNo ? saved.jobNo : typed.trim().toUpperCase()
   return (
     <Page here="construction" title="Thank you: book your call, Sattva Technologies">
-      <Hero c="construction" kicker={jobNo ? 'Payment received · ' + jobNo : 'Payment received'} title="Thank you. Now book your call."
-        lede={jobNo ? 'Your job number is already filled in on the booking page.' : 'Have your job number (CQS-...) ready; the booking page asks for it.'} />
+      <Hero c="construction" kicker={saved && saved.jobNo ? 'Thank you · ' + saved.jobNo : 'Thank you'} title="Now book your included call."
+        lede="Thanks for your payment. Book your 1-hour call below. Nothing paid is released until your payment shows on our side." />
       <Sec id="paid" title="Your included 1-hour call.">
         <div className="qx-paybook">
+          {!(saved && saved.jobNo) && (
+            <p className="qx-pb-note" style={{ marginTop: 0 }}>
+              <label htmlFor="paid-job">Your request number (CQS-MMDD-XXXX)</label><br />
+              <input id="paid-job" type="text" value={typed} onChange={(e) => setTyped(e.target.value)} placeholder="CQS-1021-AB12" autoComplete="off" style={{ marginTop: 6, padding: '10px 12px', font: 'inherit', minWidth: 220 }} />
+            </p>
+          )}
           <div className="qx-pb-acts">
             <a className="qx-pb-book" href={BOOK + (jobNo ? '?a1=' + encodeURIComponent(jobNo) : '')} target="_blank" rel="noopener">Book your included 1-hour call</a>
           </div>
-          <p className="qx-pb-note">Stripe emails your receipt. Questions: text <Phone sms label="our phone (tap to show)" /> or email info@sattvatech.com with your job number.</p>
+          <p className="qx-pb-note">Stripe emails your receipt. Lost your request number, or questions? Text <Phone sms label="our phone (tap to show)" /> or email info@sattvatech.com.</p>
         </div>
       </Sec>
     </Page>

@@ -48,7 +48,8 @@
 .sx-btn { display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border: 1px solid transparent; font: 500 15px/1 var(--sans); text-decoration: none; white-space: nowrap; transition: background-color .15s, border-color .15s, color .15s; }
 .sx-btn-go { background: var(--line); color: var(--night); }
 .sx-btn-go:hover { background: var(--white); }
-.sx-btn-line { border-color: currentColor; color: inherit; opacity: .9; }
+.sx-btn-line { border-color: currentColor; color: inherit; opacity: .9; background: transparent; }
+button.sx-btn { cursor: pointer; -webkit-appearance: none; appearance: none; }
 .sx-btn-line:hover { opacity: 1; background: rgba(127, 140, 155, .08); }
 .sx-btn-ink { background: var(--night); color: var(--line); }
 .sx-btn-ink:hover { background: var(--deep); }
