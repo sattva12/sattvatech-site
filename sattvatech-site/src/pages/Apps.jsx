@@ -21,7 +21,7 @@ export default function Apps() {
           <article className="sx-app sx-app-samana">
             <h4 className="sx-app-lockup"><img src="/brand/samana-logo-wide.svg" alt="Samana, EMCRP Software" /></h4>
             <p>Takeoff, drawings, quotes, work orders, the team app and cash flow, from one drawing.</p>
-            <div className="sx-price"><b>30 days free</b><span>Then $50 or $100 a month</span></div>
+            <div className="sx-price"><b>From $50 a month</b><span>30-day money-back guarantee</span></div>
             <div className="sx-acts"><a className="sx-btn sx-btn-ink" href={APP + '/login'}>Sign in to Samana</a><a className="sx-btn sx-btn-line" href="https://samana.tech">What it does</a></div>
           </article>
           <article className="sx-app sx-app-farmmetric">
