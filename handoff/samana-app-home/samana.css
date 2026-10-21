@@ -292,3 +292,9 @@ section[id] { scroll-margin-top: 72px; }
 .cform-msg { margin-top: 12px; font-size: 15px; color: var(--steel); }
 .cform-msg.ok { color: var(--green); font-weight: 500; }
 .cform-msg.err { color: var(--red); }
+
+/* plans, Oct 21: two cards, the yearly price under each, a contact line */
+.plans.p2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 880px; }
+.plan .y { margin: 4px 0 0; font-size: 13px; color: var(--steel, #566676); }
+.plans-more { margin: 22px 0 0; font-size: 16px; }
+@media (max-width: 640px) { .plans.p2 { grid-template-columns: minmax(0, 1fr); } }

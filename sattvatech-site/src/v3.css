@@ -511,3 +511,6 @@ a.sx-phone-plain { text-decoration: none; }
 .qx-legal { font-size: 14px; color: var(--steel); margin-top: 12px; }
 .qx-legal a { color: inherit; }
 .qx-legal-foot { padding-top: 18px; padding-bottom: 18px; }
+
+/* Samana plans alone, Oct 21 */
+.sx-plans-one { max-width: 720px; }

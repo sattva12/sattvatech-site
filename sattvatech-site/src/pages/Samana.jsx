@@ -81,7 +81,7 @@ function Clip({ name, label }) {
 export function SamanaNav({ here }) {
   /* the company first: two divisions, the containers, the quote service; the apps live under their divisions and sign in from one place */
   const cta = here === 'quote' ? <a className="sm-btn go" href="/contractors">Send us a job</a>
-    : here === 'samana' ? <a className="sm-btn go" href={APP}>Start free</a>
+    : here === 'samana' ? <a className="sm-btn go" href={APP}>Start your free month</a>
     : here === 'farmmetric' ? <a className="sm-btn go" href={FARM}>Use it free</a>
     : (here === 'ag' || here === 'construction' || here === 'containers') ? <a className="sm-btn go" href="#talk">Talk to us</a> : null
   const tab = (here === 'construction' || here === 'quote') ? 'construction' : here === 'ag' ? 'farms' : (here === 'containers' || here === 'samana' || here === 'farmmetric' || here === 'apps') ? 'products' : undefined
@@ -126,7 +126,7 @@ export default function Samana() {
     <Page here="products" title="Samana: From input to output, by Sattva Technologies">
       <Hero kicker={<img className="sx-kicker-logo" src="/brand/samana-logo-wide-dark.svg" alt="Samana, EMCRP Software" />} title="From input to output."
         lede="For businesses that build, grow and make things. Samana takes a job from the first measurement to the last dollar. Takeoff counts every piece and prices it. Lean turns it into steps with dates, crews and materials, and tells you when to order. Flow shows the cash by month. We built it to run our own construction and farm work. It runs any operation that has steps, people and materials."
-        acts={[[APP, 'Start with a free sample job', 'go'], ['https://samana.tech', 'Visit samana.tech'], ['#sheets', 'See it work']]}
+        acts={[[APP, 'Start your free month', 'go'], ['https://samana.tech', 'Visit samana.tech'], ['#sheets', 'See it work']]}
         aside={<HeroDrawing />}
         tb={[['Project', 'Sample job: 3-floor house'], ['Levels', 'Basement, 1st, 2nd, outside'], ['Lines priced', '100'], ['Time on site', '56 working days']]} />
 
@@ -191,26 +191,19 @@ export default function Samana() {
         </ol>
       </Sec>
 
-      <Sec id="plans" title="Plans." sub="Some of the simplest ways to make money are saving it: less waste, less waiting, nothing done twice. A leaner process is everyone's bottom line, so start free with one job and see your own numbers before you pay anything. When it pays for itself, pick a plan; each is named for the part of Samana it opens. You put in your own labor rates; we never see your customers or your prices unless you share them.">
-        <div className="sx-two">
-          <Prices title="Samana, monthly" sub="Every plan has the sample job to compare with." rows={[
-            ['Free', 'The owner and 1 active job, a taste of Sai, and Farmmetric; $5 a month each person on the Takeoff portal', '$0'],
-            ['Takeoff', 'Drawn and priced quotes, with Flow: the owner plus 1 person on the Takeoff portal, 5 active jobs; $5 a month each extra portal person', '$20', 'a month'],
-            ['Lean', 'Everything: Lean, Takeoff, Flow and the portals; one business unit, 5 people besides the owner, no job limit', '$30', 'a month'],
-          ]} foot="On Lean, $5 a month each extra person and $20 a month each extra business unit, with 5 more people. Flow comes with Takeoff and Lean. The owner is never counted. Buying is inside the app: sign in, or start free, then pick the plan in Settings. You pay by card through Stripe and can cancel any time."
-            acts={[[APP, 'Start free', 'ink'], [APP + '/settings', 'Buy a plan']]} />
-          <Prices title="Quotes from a licensed GC" sub="By the job, with or without a plan. Each comes with a 1-hour call." rows={[
-            ['First quote', 'Your first job, quoted', 'Free'],
-            ['Materials list + work order', 'For your first job: the detailed materials list and the work order', '$50'],
-            ['Later quote', 'A clear quote for your customer, in your name', '$100', 'a job'],
-            ['Full package', 'The quote, the materials list and the work order', '$150', 'a job'],
-            ['GC service', 'Permits, supervision and project management, Massachusetts only', 'Estimate'],
-          ]} acts={[['/contractors', 'Send us a job']]} />
+      <Sec id="plans" title="Plans." sub="Two plans, one platform for the whole job. Every plan starts with 30 days free and the sample job already set up, so you see your own numbers before you pay. No limit on jobs. You put in your own labor rates, and your customers and prices stay yours.">
+        <div className="sx-plans-one">
+          <Prices title="Samana" sub="Monthly, or a year up front: 12 months for the price of 11." rows={[
+            ['Takeoff', 'Drawn and priced quotes, the drawing set, the customer packet, the materials list and the work order, with Flow; 2 people included', '$50', 'a month'],
+            ['Lean', 'Lean, one schedule for every step, person and material, with Takeoff and Flow and the portals; 2 people included', '$100', 'a month'],
+            ['A year up front', 'Takeoff $550, Lean $1,100; full refund if you cancel within 30 days', '11 months', 'for 12'],
+            ['Each extra person', 'On either plan; crews, subs and partners on the portals never count', '$25', 'a month'],
+          ]} foot="On a monthly plan the first 30 days are free; cancel before day 30 and you pay nothing. Flow comes with both plans, and Takeoff comes with Lean. You pay by card through Stripe. Several teams, sites or a rollout with training: contact us."
+            acts={[[APP, 'Start your free month', 'ink'], ['https://samana.tech/#contact', 'Contact us']]} />
         </div>
-        <p className="sx-note">Commercial work, three-families and anything beyond an unrestricted construction supervisor license always get a review. Every number is a recommendation the contractor checks; the work order says where it came from.</p>
       </Sec>
 
-      <End title="Take the sample job apart. Then price your next one." acts={[[APP, 'Start free', 'ink'], ['/contractors', 'Or have us write your quote']]}>Sign in, and your company starts with a 3-floor sample: basement, two floors and a deck, already priced.</End>
+      <End title="Take the sample job apart. Then price your next one." acts={[[APP, 'Start your free month', 'ink'], ['https://samana.tech/#contact', 'Contact us']]}>Your first 30 days are free, and your company starts with a 3-floor sample: basement, two floors and a deck, already priced.</End>
     </Page>
   )
 }

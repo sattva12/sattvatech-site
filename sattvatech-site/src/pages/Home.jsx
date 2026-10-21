@@ -247,7 +247,7 @@ const ROOMS = [
 ]
 const APPS = [
   { id: 'samana', logo: '/brand/samana-logo-wide.svg', name: 'Samana', sub: 'From input to output', text: 'The app our own jobs run on. Takeoff draws and prices the job, Lean plans the steps and the crew, and Flow shows the budget and the cash by month.',
-    price: 'Free to start', small: 'Then $20 or $30 a month', go: [APP, 'Start free'], more: ['https://samana.tech', 'See it on samana.tech'] },
+    price: '30 days free', small: 'Then $50 or $100 a month', go: [APP, 'Start your free month'], more: ['https://samana.tech', 'See it on samana.tech'] },
   { id: 'farmmetric', logo: '/brand/farmmetric-lockup.svg', name: 'Farmmetric', sub: 'Free farm app', text: 'The farm’s jobs, sprays, harvest and drying, logged from a phone, with the records kept as you go. Live API connectors are coming soon.',
     price: 'Free', small: 'Google Play soon', go: [FARM, 'Use it free'], more: ['/farmmetric', 'What it does'] },
   { id: 'quote', name: 'Quote service', sub: 'For contractors, small, medium and large', text: 'Send us the job. We send back a clear quote in your name, with every material, hour and step priced.',
@@ -411,8 +411,8 @@ export default function Home() {
         <section className="sx-sec sx-freesec" id="free" aria-labelledby="h-free">
           <div className="sx-wrap">
             <div className="sx-free">
-              <p><b id="h-free">Why some of it is free.</b> Some of the simplest ways to make money are saving it: less waste, less waiting, nothing done twice. So Farmmetric is free, and Samana is free for your first job. You see your own numbers before you pay. Win-win means you are working with winners.</p>
-              <div className="sx-acts"><a className="sx-btn sx-btn-go" href={APP}>Start free</a><a className="sx-btn sx-btn-line" href="https://samana.tech/#plans">See the plans</a></div>
+              <p><b id="h-free">Why some of it is free.</b> Some of the simplest ways to make money are saving it: less waste, less waiting, nothing done twice. So Farmmetric is free, and every Samana plan starts with 30 days free. You see your own numbers before you pay. Win-win means you are working with winners.</p>
+              <div className="sx-acts"><a className="sx-btn sx-btn-go" href={APP}>Start your free month</a><a className="sx-btn sx-btn-line" href="https://samana.tech/#plans">See the plans</a></div>
             </div>
           </div>
         </section>
