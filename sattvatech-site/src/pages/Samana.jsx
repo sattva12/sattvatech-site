@@ -81,7 +81,7 @@ function Clip({ name, label }) {
 export function SamanaNav({ here }) {
   /* the company first: two divisions, the containers, the quote service; the apps live under their divisions and sign in from one place */
   const cta = here === 'quote' ? <a className="sm-btn go" href="/contractors">Send us a job</a>
-    : here === 'samana' ? <a className="sm-btn go" href={APP}>Get started</a>
+    : here === 'samana' ? <a className="sm-btn go" href="https://samana.tech/#contact">Coming soon</a>
     : here === 'farmmetric' ? <a className="sm-btn go" href={FARM}>Use it free</a>
     : (here === 'ag' || here === 'construction' || here === 'containers') ? <a className="sm-btn go" href="#talk">Talk to us</a> : null
   const tab = (here === 'construction' || here === 'quote') ? 'construction' : here === 'ag' ? 'farms' : (here === 'containers' || here === 'samana' || here === 'farmmetric' || here === 'apps') ? 'products' : undefined
@@ -126,7 +126,7 @@ export default function Samana() {
     <Page here="products" title="Samana: From input to output, by Sattva Technologies">
       <Hero kicker={<img className="sx-kicker-logo" src="/brand/samana-logo-wide-dark.svg" alt="Samana, EMCRP Software" />} title="From input to output."
         lede="For businesses that build, grow and make things. Samana takes a job from the first measurement to the last dollar. Takeoff counts every piece and prices it. Lean turns it into steps with dates, crews and materials, and tells you when to order. Flow shows the cash by month. We built it to run our own construction and farm work. It runs any operation that has steps, people and materials."
-        acts={[[APP, 'Get started', 'go'], ['https://samana.tech', 'Visit samana.tech'], ['#sheets', 'See it work']]}
+        acts={[['https://samana.tech/#contact', 'Coming soon: tell me when', 'go'], ['https://samana.tech', 'Visit samana.tech'], ['#sheets', 'See it work']]}
         aside={<HeroDrawing />}
         tb={[['Project', 'Sample job: 3-floor house'], ['Levels', 'Basement, 1st, 2nd, outside'], ['Lines priced', '100'], ['Time on site', '56 working days']]} />
 
@@ -191,7 +191,7 @@ export default function Samana() {
         </ol>
       </Sec>
 
-      <Sec id="plans" title="Plans." sub="Two plans, one platform for the whole job. Every plan comes with a 30-day money-back guarantee and the sample job already set up, so you see your own numbers in your first month. No limit on jobs. You put in your own labor rates, and your customers and prices stay yours.">
+      <Sec id="plans" title="Plans." sub="Opening to new companies soon. Two plans, one platform for the whole job. Every plan comes with a 30-day money-back guarantee and the sample job already set up, so you see your own numbers in your first month. No limit on jobs. You put in your own labor rates, and your customers and prices stay yours.">
         <div className="sx-plans-one">
           <Prices title="Samana" sub="Monthly, or a year up front: 12 months for the price of 11." rows={[
             ['Takeoff', 'Drawn and priced quotes, the drawing set, the customer packet, the materials list and the work order, with Flow; 2 people included', '$50', 'a month'],
@@ -199,11 +199,11 @@ export default function Samana() {
             ['A year up front', 'Takeoff $550, Lean $1,100; full refund if you cancel within 30 days', '11 months', 'for 12'],
             ['Each extra person', 'On either plan; crews, subs and partners on the portals never count', '$25', 'a month'],
           ]} foot="Every plan is charged on the day you start. Cancel within 30 days and you get a full refund, monthly or yearly. Flow comes with both plans, and Takeoff comes with Lean. You pay by card through Stripe. Several teams, sites or a rollout with training: contact us."
-            acts={[[APP, 'Get started', 'ink'], ['https://samana.tech/#contact', 'Contact us']]} />
+            acts={[['https://samana.tech/#contact', 'Coming soon: tell me when', 'ink']]} />
         </div>
       </Sec>
 
-      <End title="Take the sample job apart. Then price your next one." acts={[[APP, 'Get started', 'ink'], ['https://samana.tech/#contact', 'Contact us']]}>Every plan has a 30-day money-back guarantee, and your company starts with a 3-floor sample: basement, two floors and a deck, already priced.</End>
+      <End title="Take the sample job apart. Then price your next one." acts={[['https://samana.tech/#contact', 'Coming soon: tell me when', 'ink']]}>Samana opens to new companies soon. Every plan has a 30-day money-back guarantee, and your company starts with a 3-floor sample: basement, two floors and a deck, already priced.</End>
     </Page>
   )
 }
