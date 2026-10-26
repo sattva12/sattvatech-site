@@ -5,7 +5,7 @@ function ToContractors() {
   const { search, hash } = useLocation()
   return <Navigate to={'/contractors' + search + hash} replace />
 }
-import Home from './pages/Home.jsx'
+import Home from './pages/HomeNew.jsx'
 import Construction from './pages/Construction.jsx'
 import LeanAg from './pages/LeanAg.jsx'
 import Containers from './pages/Containers.jsx'
